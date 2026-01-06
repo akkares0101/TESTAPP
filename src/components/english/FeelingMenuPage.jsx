@@ -28,7 +28,7 @@ function FeelingMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. ปุ่มย้อนกลับ (มุมซ้ายบน) */}
+      {/* 1. ปุ่มย้อนกลับ */}
       <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
          <button 
           onClick={() => navigate('/alphabet')} 
@@ -41,40 +41,52 @@ function FeelingMenuPage({ isMuted }) {
         </button>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-10 px-4 mt-4">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-10 px-4 mt-8">
         
         {/* 2. หัวข้อ "Feeling and Movement" */}
-        <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-emerald-400 shadow-[0_6px_0_#34d399] mb-6">
+        <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-emerald-400 shadow-[0_6px_0_#34d399] mb-10">
             <h1 className="text-3xl md:text-5xl font-black text-gray-700 tracking-wide flex items-center gap-3">
               ✨ Feeling and Movement ✨
             </h1>
         </div>
 
-        {/* 3. Grid ปุ่มเมนู 2 ปุ่มใหญ่ (เฉพาะรูปภาพ) */}
-        <div className="flex flex-wrap justify-center gap-12 md:gap-24 w-full">
+        {/* 3. Grid ปุ่มเมนู (เฉพาะรูปภาพ ไร้กรอบ) */}
+        <div className="flex flex-wrap justify-center gap-16 md:gap-32 w-full items-center">
           
           {/* --- ปุ่ม Feeling --- */}
           <div
             onClick={() => { playClick(); navigate('/feeling/emotions'); }}
-            className="group relative cursor-pointer w-[300px] h-[300px] md:w-[400px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:-rotate-2"
+            className="
+              group relative cursor-pointer 
+              w-[280px] h-[280px] md:w-[450px] md:h-[450px] 
+              transition-transform duration-300 hover:scale-110 hover:-rotate-3
+              flex items-center justify-center
+            "
           >
-            {/* การ์ดพื้นหลังสีขาว */}
-            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-2xl overflow-hidden flex items-center justify-center p-4 bg-green-50">
-                {/* รูปภาพเต็มใบ */}
-                <img src={imgFeeling} alt="Feeling" className="w-full h-full object-contain drop-shadow-lg" />
-            </div>
+             {/* รูปภาพเพียวๆ พร้อมเงา */}
+             <img 
+               src={imgFeeling} 
+               alt="Feeling" 
+               className="w-full h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_25px_25px_rgba(0,0,0,0.4)] transition-all" 
+             />
           </div>
 
           {/* --- ปุ่ม Movement --- */}
           <div
             onClick={() => { playClick(); navigate('/feeling/movement'); }}
-            className="group relative cursor-pointer w-[300px] h-[300px] md:w-[400px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:rotate-2"
+            className="
+              group relative cursor-pointer 
+              w-[280px] h-[280px] md:w-[450px] md:h-[450px] 
+              transition-transform duration-300 hover:scale-110 hover:rotate-3
+              flex items-center justify-center
+            "
           >
-            {/* การ์ดพื้นหลังสีขาว */}
-            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-2xl overflow-hidden flex items-center justify-center p-4 bg-sky-50">
-                {/* รูปภาพเต็มใบ */}
-                <img src={imgMovement} alt="Movement" className="w-full h-full object-contain drop-shadow-lg" />
-            </div>
+             {/* รูปภาพเพียวๆ พร้อมเงา */}
+             <img 
+               src={imgMovement} 
+               alt="Movement" 
+               className="w-full h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_25px_25px_rgba(0,0,0,0.4)] transition-all" 
+             />
           </div>
 
         </div>
