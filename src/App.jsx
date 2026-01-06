@@ -10,7 +10,10 @@ import AlphabetMenuPage from './components/english/AlphabetMenuPage';
 import AlphabetLearningPage from './components/english/AlphabetLearningPage';
 import AlphabetGamePage from './components/english/AlphabetGamePage';
 import ABCSelectionPage from './components/english/ABCSelectionPage'; // หน้าทางแยก (เรียน/เกม)
-import DailyActivityPage from './components/english/DailyActivityPage'; // ⭐ เพิ่มหน้านี้เข้ามา
+import DailyActivityPage from './components/english/DailyActivityPage'; 
+import FeelingMenuPage from './components/english/FeelingMenuPage';
+// ⭐ เพิ่ม Import หน้าเกม Movement Matching (ที่ขาดหายไป)
+import MovementMatchingPage from './components/english/MovementMatchingPage';
 
 // --- โซนภาษาไทย ---
 import ThaiAlphabetPage from './components/thai/ThaiAlphabetPage'; 
@@ -99,7 +102,13 @@ function App() {
         <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} />} />
         <Route path="/alphabet/game" element={<AlphabetGamePage isMuted={isMuted} />} />
         
-        {/* ⭐ เพิ่ม Route หน้า Daily Activity (เชื่อมกับปุ่มที่ 7 ของหน้าเมนูอังกฤษ) */}
+        {/* หน้า Feeling Main Menu */}
+        <Route path="/feeling" element={<FeelingMenuPage isMuted={isMuted} />} />
+        
+        {/* ⭐ เพิ่ม Route หน้าเกม Movement Matching */}
+        <Route path="/feeling/movement" element={<MovementMatchingPage isMuted={isMuted} />} />
+
+        {/* หน้า Daily Activity */}
         <Route path="/activity" element={<DailyActivityPage isMuted={isMuted} />} />
 
         {/* --- โซนภาษาไทย --- */}
