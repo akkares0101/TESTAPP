@@ -9,16 +9,17 @@ import LessonPage from './components/LessonPage';
 import AlphabetMenuPage from './components/english/AlphabetMenuPage';
 import AlphabetLearningPage from './components/english/AlphabetLearningPage';
 import AlphabetGamePage from './components/english/AlphabetGamePage';
-import ABCSelectionPage from './components/english/ABCSelectionPage'; // หน้าทางแยก (เรียน/เกม)
+import ABCSelectionPage from './components/english/ABCSelectionPage'; 
 import DailyActivityPage from './components/english/DailyActivityPage'; 
 import FeelingMenuPage from './components/english/FeelingMenuPage';
-// ⭐ เพิ่ม Import หน้าเกม Movement Matching (ที่ขาดหายไป)
 import MovementMatchingPage from './components/english/MovementMatchingPage';
 
 // --- โซนภาษาไทย ---
 import ThaiAlphabetPage from './components/thai/ThaiAlphabetPage'; 
-import ThaiLearningPage from './components/thai/ThaiLearningPage'; 
 import ThaiGamePage from './components/thai/ThaiGamePage';        
+import ThaiWritingMenuPage from './components/thai/ThaiWritingMenuPage'; // เมนูการเขียน
+import ThaiReadingMenuPage from './components/thai/ThaiReadingMenuPage'; // ⭐ เมนูการอ่าน (เพิ่มใหม่)
+import ThaiLearningPage from './components/thai/ThaiLearningPage'; // (เก็บไว้ใช้เป็นหน้าเนื้อหา)
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from './components/ColorsMenuPage';
@@ -52,19 +53,15 @@ function HomeMenu({ isMuted }) {
   const navigate = useNavigate();
 
   const handleMenuClick = (item) => {
-    // 1. ภาษาอังกฤษ
     if (item.title === "ภาษาอังกฤษ") { 
       navigate('/alphabet'); 
     }
-    // 2. ภาษาไทย
     else if (item.title === "ภาษาไทย") { 
       navigate('/thai-alphabet'); 
     }
-    // 3. นิทาน
     else if (item.title === "นิทานอีสป") { 
       navigate('/stories'); 
     } 
-    // 4. วิชาอื่นๆ (คณิต, วิทย์ ฯลฯ) -> แจ้งเตือน
     else { 
       alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`); 
     }
@@ -101,19 +98,24 @@ function App() {
         <Route path="/alphabet/select" element={<ABCSelectionPage isMuted={isMuted} />} />
         <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} />} />
         <Route path="/alphabet/game" element={<AlphabetGamePage isMuted={isMuted} />} />
-        
-        {/* หน้า Feeling Main Menu */}
         <Route path="/feeling" element={<FeelingMenuPage isMuted={isMuted} />} />
-        
-        {/* ⭐ เพิ่ม Route หน้าเกม Movement Matching */}
         <Route path="/feeling/movement" element={<MovementMatchingPage isMuted={isMuted} />} />
-
-        {/* หน้า Daily Activity */}
         <Route path="/activity" element={<DailyActivityPage isMuted={isMuted} />} />
 
         {/* --- โซนภาษาไทย --- */}
         <Route path="/thai-alphabet" element={<ThaiAlphabetPage isMuted={isMuted} />} />
-        <Route path="/thai-alphabet/learn" element={<ThaiLearningPage isMuted={isMuted} />} />
+        
+        {/* เมนูการเขียน (5 ปุ่ม) */}
+        <Route path="/thai-alphabet/learn" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
+        
+        {/* ⭐ เปลี่ยนตรงนี้: เมนูการอ่าน (4 ปุ่ม) */}
+        {/* เดิม: /thai-vowels (จากหน้า ThaiAlphabetPage ปุ่มที่ 2) */}
+        <Route path="/thai-vowels" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
+
+        {/* Route ย่อยๆ ข้างใน (ชี้ไปหน้าเรียนรู้เนื้อหาเดิมก่อน กัน Error) */}
+        <Route path="/thai-alphabet/write-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
+        <Route path="/thai-alphabet/read-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
+
         <Route path="/thai-alphabet/game" element={<ThaiGamePage isMuted={isMuted} />} />
 
         {/* --- โซนอื่นๆ --- */}

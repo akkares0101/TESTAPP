@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// ⭐ Import รูปภาพประกอบ (เตรียมรูปให้พร้อมนะครับ)
-// แนะนำให้ใช้รูปที่สื่อถึงอารมณ์ (Feeling) และ การเคลื่อนไหว (Movement)
+// Import รูปภาพประกอบ
 import imgFeeling from '../../assets/images/buttons/img_feeling_card.png';   
 import imgMovement from '../../assets/images/buttons/img_movement_card.png'; 
 
@@ -42,51 +41,39 @@ function FeelingMenuPage({ isMuted }) {
         </button>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-8 px-4 mt-2">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-10 px-4 mt-4">
         
-        {/* 2. หัวข้อ "Feeling and Movement" (กรอบขาวขอบเขียว ตามรูป) */}
-        <div className="relative z-10 bg-white px-8 py-3 rounded-full border-[6px] border-emerald-400 shadow-[0_6px_0_#34d399] mb-4">
+        {/* 2. หัวข้อ "Feeling and Movement" */}
+        <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-emerald-400 shadow-[0_6px_0_#34d399] mb-6">
             <h1 className="text-3xl md:text-5xl font-black text-gray-700 tracking-wide flex items-center gap-3">
               ✨ Feeling and Movement ✨
             </h1>
         </div>
 
-        {/* 3. Grid ปุ่มเมนู 2 ปุ่มใหญ่ */}
-        <div className="flex flex-wrap justify-center gap-10 md:gap-20 w-full mt-4">
+        {/* 3. Grid ปุ่มเมนู 2 ปุ่มใหญ่ (เฉพาะรูปภาพ) */}
+        <div className="flex flex-wrap justify-center gap-12 md:gap-24 w-full">
           
           {/* --- ปุ่ม Feeling --- */}
           <div
-            onClick={() => { playClick(); navigate('/feeling/emotions'); }} // ⭐ ลิงค์ไปหน้าอารมณ์ (สร้างเพิ่มทีหลัง)
-            className="group relative cursor-pointer w-[280px] h-[320px] md:w-[350px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:-rotate-2"
+            onClick={() => { playClick(); navigate('/feeling/emotions'); }}
+            className="group relative cursor-pointer w-[300px] h-[300px] md:w-[400px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:-rotate-2"
           >
             {/* การ์ดพื้นหลังสีขาว */}
-            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-xl overflow-hidden flex flex-col items-center">
-                {/* รูปภาพ */}
-                <div className="w-full h-[75%] bg-green-50 flex items-center justify-center p-4">
-                    <img src={imgFeeling} alt="Feeling" className="w-full h-full object-contain drop-shadow-md" />
-                </div>
-                {/* ป้ายชื่อสีชมพู (Feeling) */}
-                <div className="w-full h-[25%] bg-pink-400 flex items-center justify-center border-t-4 border-white">
-                    <h2 className="text-3xl md:text-4xl font-black text-white drop-shadow-md tracking-wider">Feeling</h2>
-                </div>
+            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-2xl overflow-hidden flex items-center justify-center p-4 bg-green-50">
+                {/* รูปภาพเต็มใบ */}
+                <img src={imgFeeling} alt="Feeling" className="w-full h-full object-contain drop-shadow-lg" />
             </div>
           </div>
 
           {/* --- ปุ่ม Movement --- */}
           <div
-            onClick={() => { playClick(); navigate('/feeling/movement'); }} // ⭐ ลิงค์ไปหน้าเคลื่อนไหว (สร้างเพิ่มทีหลัง)
-            className="group relative cursor-pointer w-[280px] h-[320px] md:w-[350px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:rotate-2"
+            onClick={() => { playClick(); navigate('/feeling/movement'); }}
+            className="group relative cursor-pointer w-[300px] h-[300px] md:w-[400px] md:h-[400px] transition-transform duration-300 hover:scale-105 hover:rotate-2"
           >
             {/* การ์ดพื้นหลังสีขาว */}
-            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-xl overflow-hidden flex flex-col items-center">
-                {/* รูปภาพ */}
-                <div className="w-full h-[75%] bg-sky-50 flex items-center justify-center p-4">
-                     <img src={imgMovement} alt="Movement" className="w-full h-full object-contain drop-shadow-md" />
-                </div>
-                {/* ป้ายชื่อสีชมพู (Movement) */}
-                <div className="w-full h-[25%] bg-pink-400 flex items-center justify-center border-t-4 border-white">
-                    <h2 className="text-3xl md:text-4xl font-black text-white drop-shadow-md tracking-wider">Movement</h2>
-                </div>
+            <div className="absolute inset-0 bg-white rounded-[3rem] border-8 border-white shadow-2xl overflow-hidden flex items-center justify-center p-4 bg-sky-50">
+                {/* รูปภาพเต็มใบ */}
+                <img src={imgMovement} alt="Movement" className="w-full h-full object-contain drop-shadow-lg" />
             </div>
           </div>
 

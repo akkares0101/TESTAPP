@@ -4,17 +4,16 @@ import bgImage from '../../assets/images/bg.png';
 
 // Import รูปภาพ
 import imgWakeUp from '../../assets/images/daily/wakeup.png';    
-import imgBrush from '../../assets/images/daily/brush.png';     
-import imgShower from '../../assets/images/daily/shower.png';    
-import imgBreakfast from '../../assets/images/daily/breakfast.png';     
+import imgafter from '../../assets/images/daily/after.png';     
+import imggametime from '../../assets/images/daily/gametime.png';    
+import imgnight from '../../assets/images/daily/night.png';     
 import imgSchool from '../../assets/images/daily/school.png';    
 
-// ⭐ Import ไฟล์วิดีโอ (ต้องเอาวิดีโอไปวางในโฟลเดอร์ assets/videos/daily/ ก่อนนะครับ)
-// ถ้ายังไม่มีไฟล์วิดีโอจริง สามารถใช้ไฟล์ mp4 ทดสอบก่อนได้ครับ
+// Import วิดีโอ
 import vidWakeUp from '../../assets/videos/daily/wakeup.mp4';
-import vidBrush from '../../assets/videos/daily/brush.mp4';
-import vidShower from '../../assets/videos/daily/shower.mp4';
-import vidBreakfast from '../../assets/videos/daily/breakfast.mp4';
+import vidafter from '../../assets/videos/daily/after.mp4';
+import vidgametime from '../../assets/videos/daily/gametime.mp4';
+import vidnight from '../../assets/videos/daily/night.mp4';
 import vidSchool from '../../assets/videos/daily/school.mp4';
 
 const clickSound = new Audio('/sounds/click.mp3');
@@ -29,23 +28,24 @@ function DailyActivityPage({ isMuted }) {
     }
   };
 
-  // ⭐ เพิ่ม field 'video' เข้าไปในข้อมูลแต่ละปุ่ม
   const activities = [
     { id: 1, image: imgWakeUp, title: "Wake Up", video: vidWakeUp },
-    { id: 2, image: imgBrush, title: "Brush Teeth", video: vidBrush },
-    { id: 3, image: imgShower, title: "Take a Shower", video: vidShower },
-    { id: 4, image: imgBreakfast, title: "Breakfast", video: vidBreakfast },
-    { id: 5, image: imgSchool, title: "Go to School", video: vidSchool },
+    { id: 2, image: imgSchool, title: "Go to School", video: vidSchool }, // สลับเอา School ขึ้นมาแถวบนเพื่อให้ลำดับดูสมจริง (ตื่น -> ไปเรียน -> เลิกเรียน) หรือจะเรียงตามเดิมก็ได้ครับ
+    { id: 3, image: imgafter, title: "After school", video: vidafter },
+    { id: 4, image: imggametime, title: "Game Time", video: vidgametime },
+    { id: 5, image: imgnight, title: "Night", video: vidnight },
   ];
+
+  // ⭐ แบ่งข้อมูลเป็น 2 ชุด (3 ปุ่ม และ 2 ปุ่ม)
+  const topRow = activities.slice(0, 3);
+  const bottomRow = activities.slice(3, 5);
 
   const handleActivityClick = (item) => {
     playClick();
-    
-    // ⭐ สั่งให้กระโดดไปหน้า LessonPage พร้อมส่งคลิปวิดีโอไปด้วย
     navigate('/lesson', { 
       state: { 
-        title: item.title,   // ส่งชื่อเรื่องไปโชว์
-        videoSrc: item.video // ส่งไฟล์วิดีโอไปเล่น
+        title: item.title,   
+        videoSrc: item.video 
       } 
     });
   };
@@ -58,7 +58,7 @@ function DailyActivityPage({ isMuted }) {
         group relative cursor-pointer
         flex items-center justify-center
         
-        /* ขนาดปุ่มใหญ่ */
+        /* ขนาดปุ่ม */
         w-[160px] h-[160px] 
         md:w-[240px] md:h-[240px]
         
@@ -112,9 +112,19 @@ function DailyActivityPage({ isMuted }) {
            🌞 Daily Activity
         </h1>
 
-        {/* Grid ปุ่มเมนู */}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-10 w-full max-w-6xl">
-            {activities.map(renderButton)}
+        {/* ⭐ จัด Layout เป็น 2 แถว (3-2) */}
+        <div className="flex flex-col items-center gap-6 md:gap-10 w-full max-w-6xl">
+            
+            {/* แถวบน 3 ปุ่ม */}
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+                {topRow.map(renderButton)}
+            </div>
+
+            {/* แถวล่าง 2 ปุ่ม */}
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+                {bottomRow.map(renderButton)}
+            </div>
+
         </div>
 
       </div>
