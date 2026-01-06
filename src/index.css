@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* พื้นที่สำหรับตั้งค่า Theme ใหม่ */
+@theme {
+  /* ตัวอย่าง: เพิ่มสีใหม่ชื่อ 'neon-blue' */
+  --color-neon-blue: #00f0ff;
+
+  /* ตัวอย่าง: เพิ่มฟอนต์ */
+  --font-display: "Sarabun", sans-serif;
+}
