@@ -26,7 +26,7 @@ function AlphabetMenuPage({ isMuted }) {
   const menuItems = [
     { id: 1, image: btnABC, path: "/alphabet/select", title: "ABC" },
     { id: 2, image: btnFamily, path: "/eng-letters", title: "Family" },
-    { id: 3, image: btnSound, path: "/sound", title: "Phonics" },
+    { id: 3, image: btnSound, path: "/alphabet/game-sound", title: "Phonics" },
     { id: 4, image: btnFeeling, path: "/feeling", title: "Feelings" },
     { id: 5, image: btnColors, path: "/colors", title: "Colors" },
     { id: 6, image: btnDays, path: "/days", title: "Days" },

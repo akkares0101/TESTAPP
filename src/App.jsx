@@ -6,6 +6,7 @@ import MenuCard from './components/MenuCard';
 import LessonPage from './components/LessonPage'; 
 
 // --- โซนภาษาอังกฤษ ---
+import DifferentSoundGamePage from './components/english/DifferentSoundGamePage';
 import AlphabetMenuPage from './components/english/AlphabetMenuPage';
 import AlphabetLearningPage from './components/english/AlphabetLearningPage';
 import AlphabetGamePage from './components/english/AlphabetGamePage';
@@ -38,6 +39,7 @@ import sci from './assets/images/sci.png';
 import draw from './assets/images/draw.png';
 import Phonics from './assets/images/Phonics.png';
 
+// เพิ่มอาเซียน
 const menus = [
   { id: 1, title: "ภาษาไทย", image: thai },
   { id: 2, title: "ภาษาอังกฤษ", image: eng },
@@ -101,6 +103,7 @@ function App() {
         <Route path="/feeling" element={<FeelingMenuPage isMuted={isMuted} />} />
         <Route path="/feeling/movement" element={<MovementMatchingPage isMuted={isMuted} />} />
         <Route path="/activity" element={<DailyActivityPage isMuted={isMuted} />} />
+        <Route path="/alphabet/game-sound" element={<DifferentSoundGamePage isMuted={isMuted} />} />
 
         {/* --- โซนภาษาไทย --- */}
         <Route path="/thai-alphabet" element={<ThaiAlphabetPage isMuted={isMuted} />} />
@@ -108,7 +111,7 @@ function App() {
         {/* เมนูการเขียน (5 ปุ่ม) */}
         <Route path="/thai-alphabet/learn" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
         
-        {/* ⭐ เปลี่ยนตรงนี้: เมนูการอ่าน (4 ปุ่ม) */}
+
         {/* เดิม: /thai-vowels (จากหน้า ThaiAlphabetPage ปุ่มที่ 2) */}
         <Route path="/thai-vowels" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
 
