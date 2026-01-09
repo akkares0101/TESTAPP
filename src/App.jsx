@@ -14,7 +14,10 @@ import ABCSelectionPage from "./components/english/ABCSelectionPage";
 import DailyActivityPage from "./components/english/DailyActivityPage";
 import FeelingMenuPage from "./components/english/FeelingMenuPage";
 import MovementMatchingPage from "./components/english/MovementMatchingPage";
-import EmotionsGamePage from './components/english/EmotionsGamePage';
+import EmotionsGamePage from "./components/english/EmotionsGamePage";
+import FamilyMenuPage from "./components/english/FamilyMenuPage";
+import FamilyLearningPage from './components/english/FamilyLearningPage';
+import FamilyGamePage from './components/english/FamilyGamePage';
 
 // --- โซนภาษาไทย ---
 import ThaiAlphabetPage from "./components/thai/ThaiAlphabetPage";
@@ -148,6 +151,10 @@ function App() {
           path="/feeling/emotions"
           element={<EmotionsGamePage isMuted={isMuted} />}
         />{" "}
+        <Route path="/family" element={<FamilyMenuPage isMuted={isMuted} />} />
+        {/* Placeholder ไว้ก่อน ถ้ายังไม่ได้ทำหน้าเรียน/เกมของ Family */}
+<Route path="/family/learn" element={<FamilyLearningPage isMuted={isMuted} />} />
+<Route path="/family/game" element={<FamilyGamePage isMuted={isMuted} />} />
         {/* <-- อันใหม่ */}
         {/* --- โซนภาษาไทย --- */}
         <Route
