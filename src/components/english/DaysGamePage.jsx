@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/Daysbg.png";
 
 // Import รูปภาพวัน
-import imgSun from "../../assets/images/days/sunday.png";
-import imgMon from "../../assets/images/days/monday.png";
-import imgTue from "../../assets/images/days/tuesday.png";
-import imgWed from "../../assets/images/days/wednesday.png";
-import imgThu from "../../assets/images/days/thursday.png";
-import imgFri from "../../assets/images/days/friday.png";
-import imgSat from "../../assets/images/days/saturday.png";
+import imgSun from "../../assets/images/days/7.png";
+import imgMon from "../../assets/images/days/1.png";
+import imgTue from "../../assets/images/days/2.png";
+import imgWed from "../../assets/images/days/3.png";
+import imgThu from "../../assets/images/days/4.png";
+import imgFri from "../../assets/images/days/5.png";
+import imgSat from "../../assets/images/days/6.png";
 
 // Import เสียง
 const clickSound = new Audio("/sounds/click.mp3");
