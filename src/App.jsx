@@ -15,16 +15,25 @@ import DailyActivityPage from "./components/english/DailyActivityPage";
 import FeelingMenuPage from "./components/english/FeelingMenuPage";
 import MovementMatchingPage from "./components/english/MovementMatchingPage";
 import EmotionsGamePage from "./components/english/EmotionsGamePage";
-import FamilyMenuPage from "./components/english/FamilyMenuPage";
-import FamilyLearningPage from './components/english/FamilyLearningPage';
-import FamilyGamePage from './components/english/FamilyGamePage';
 
+import FamilyMenuPage from "./components/english/FamilyMenuPage";
+import FamilyLearningPage from "./components/english/FamilyLearningPage";
+import FamilyGamePage from "./components/english/FamilyGamePage";
 // --- โซนภาษาไทย ---
 import ThaiAlphabetPage from "./components/thai/ThaiAlphabetPage";
 import ThaiGamePage from "./components/thai/ThaiGamePage";
 import ThaiWritingMenuPage from "./components/thai/ThaiWritingMenuPage"; // เมนูการเขียน
 import ThaiReadingMenuPage from "./components/thai/ThaiReadingMenuPage"; // ⭐ เมนูการอ่าน (เพิ่มใหม่)
 import ThaiLearningPage from "./components/thai/ThaiLearningPage"; // (เก็บไว้ใช้เป็นหน้าเนื้อหา)
+
+// --- โซนอาเซียน ---
+import AseanMenuPage from "./components/asean/AseanMenuPage";
+import AseanNationalFlagsPage from "./components/asean/AseanNationalFlagsPage";
+import AseanGreetingsPage from "./components/asean/AseanGreetingsPage";
+import AseanNationalDishesPage from "./components/asean/AseanNationalDishesPage";
+import AseanNationalAnimalsPage from "./components/asean/AseanNationalAnimalsPage";
+import AseanNationalCostumesPage from "./components/asean/AseanNationalCostumesPage";
+import AseanNationalFlowersPage from "./components/asean/AseanNationalFlowersPage";
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from "./components/ColorsMenuPage";
@@ -66,6 +75,8 @@ function HomeMenu({ isMuted }) {
       navigate("/thai-alphabet");
     } else if (item.title === "นิทานอีสป") {
       navigate("/stories");
+    } else if (item.title === "อาเซียน") {
+      navigate("/asean");
     } else {
       alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`);
     }
@@ -153,8 +164,14 @@ function App() {
         />{" "}
         <Route path="/family" element={<FamilyMenuPage isMuted={isMuted} />} />
         {/* Placeholder ไว้ก่อน ถ้ายังไม่ได้ทำหน้าเรียน/เกมของ Family */}
-<Route path="/family/learn" element={<FamilyLearningPage isMuted={isMuted} />} />
-<Route path="/family/game" element={<FamilyGamePage isMuted={isMuted} />} />
+        <Route
+          path="/family/learn"
+          element={<FamilyLearningPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/family/game"
+          element={<FamilyGamePage isMuted={isMuted} />}
+        />
         {/* <-- อันใหม่ */}
         {/* --- โซนภาษาไทย --- */}
         <Route
@@ -183,6 +200,33 @@ function App() {
         <Route
           path="/thai-alphabet/game"
           element={<ThaiGamePage isMuted={isMuted} />}
+        />
+        {/* <-- อันใหม่ */}
+        {/* --- โซนอาเซียน --- */}
+        <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
+        <Route
+          path="/asean/flags"
+          element={<AseanNationalFlagsPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/greetings"
+          element={<AseanGreetingsPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/national-dishes"
+          element={<AseanNationalDishesPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/national-animals"
+          element={<AseanNationalAnimalsPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/national-costumes"
+          element={<AseanNationalCostumesPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/national-flowers"
+          element={<AseanNationalFlowersPage isMuted={isMuted} />}
         />
         {/* --- โซนอื่นๆ --- */}
         <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
