@@ -15,6 +15,9 @@ import DailyActivityPage from "./components/english/DailyActivityPage";
 import FeelingMenuPage from "./components/english/FeelingMenuPage";
 import MovementMatchingPage from "./components/english/MovementMatchingPage";
 import EmotionsGamePage from "./components/english/EmotionsGamePage";
+import DaysMenuPage from "./components/english/DaysMenuPage";
+import DaysLearningPage from "./components/english/DaysLearningPage";
+import DaysGamePage from "./components/english/DaysGamePage";
 
 import FamilyMenuPage from "./components/english/FamilyMenuPage";
 import FamilyLearningPage from "./components/english/FamilyLearningPage";
@@ -172,6 +175,12 @@ function App() {
           path="/family/game"
           element={<FamilyGamePage isMuted={isMuted} />}
         />
+        <Route path="/days" element={<DaysMenuPage isMuted={isMuted} />} />
+        <Route
+          path="/days/learn"
+          element={<DaysLearningPage isMuted={isMuted} />}
+        />
+        <Route path="/days/game" element={<DaysGamePage isMuted={isMuted} />} />
         {/* <-- อันใหม่ */}
         {/* --- โซนภาษาไทย --- */}
         <Route

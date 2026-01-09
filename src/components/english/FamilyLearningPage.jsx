@@ -52,8 +52,8 @@ function FamilyLearningPage({ isMuted }) {
     <div 
       className="min-h-screen w-full flex flex-col items-center py-6 select-none"
       style={{ 
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover', 
+       backgroundImage: `url(${bgImage})`,
+        backgroundSize: '100% 100%', 
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed', 
       }}
