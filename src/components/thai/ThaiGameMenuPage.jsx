@@ -40,7 +40,7 @@ function ThaiGameMenuPage({ isMuted }) {
       className="min-h-screen w-full flex flex-col items-center py-6"
       style={{ 
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover', 
+        backgroundSize: "100% 100%", 
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed', 
       }}
