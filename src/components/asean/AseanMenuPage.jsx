@@ -33,7 +33,7 @@ function AseanMenuPage({ isMuted }) {
       path: "/asean/national-animals",
       image: tempImg,
     },
-    { id: 5, title: "เกม", path: "/asean/game", image: tempImg },
+    { id: 5, title: "เกม", path: "/asean/game-menu", image: tempImg },
     {
       id: 6,
       title: "การแต่งกายประจำชาติ",
