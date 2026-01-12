@@ -26,10 +26,12 @@ import FamilyGamePage from "./components/english/FamilyGamePage";
 // --- โซนภาษาไทย ---
 import ThaiAlphabetPage from "./components/thai/ThaiAlphabetPage";
 import ThaiGamePage from "./components/thai/ThaiGamePage";
-import ThaiWritingMenuPage from "./components/thai/ThaiWritingMenuPage";
-import ThaiReadingMenuPage from "./components/thai/ThaiReadingMenuPage";
-import ThaiLearningPage from "./components/thai/ThaiLearningPage";
-import ThaiGameMenuPage from "./components/thai/ThaiGameMenuPage";
+import ThaiWritingMenuPage from "./components/thai/ThaiWritingMenuPage"; 
+import ThaiReadingMenuPage from "./components/thai/ThaiReadingMenuPage"; 
+import ThaiLearningPage from "./components/thai/ThaiLearningPage"; 
+import ThaiGameMenuPage from "./components/thai/ThaiGameMenuPage"; 
+// ⭐ Import หน้าเกมจับคู่เพิ่มเข้ามา
+import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage"; 
 
 // --- โซนอาเซียน ---
 import AseanMenuPage from "./components/asean/AseanMenuPage";
@@ -130,158 +132,65 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomeMenu isMuted={isMuted} />} />
-
+        
         {/* --- โซนภาษาอังกฤษ --- */}
-        <Route
-          path="/alphabet"
-          element={<AlphabetMenuPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/alphabet/select"
-          element={<ABCSelectionPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/alphabet/learn"
-          element={<AlphabetLearningPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/alphabet/game"
-          element={<AlphabetGamePage isMuted={isMuted} />}
-        />
-        <Route
-          path="/feeling"
-          element={<FeelingMenuPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/feeling/movement"
-          element={<MovementMatchingPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/activity"
-          element={<DailyActivityPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/alphabet/game-sound"
-          element={<DifferentSoundGamePage isMuted={isMuted} />}
-        />
-        <Route
-          path="/feeling/emotions"
-          element={<EmotionsGamePage isMuted={isMuted} />}
-        />
+        <Route path="/alphabet" element={<AlphabetMenuPage isMuted={isMuted} />} />
+        <Route path="/alphabet/select" element={<ABCSelectionPage isMuted={isMuted} />} />
+        <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} />} />
+        <Route path="/alphabet/game" element={<AlphabetGamePage isMuted={isMuted} />} />
+        <Route path="/feeling" element={<FeelingMenuPage isMuted={isMuted} />} />
+        <Route path="/feeling/movement" element={<MovementMatchingPage isMuted={isMuted} />} />
+        <Route path="/activity" element={<DailyActivityPage isMuted={isMuted} />} />
+        <Route path="/alphabet/game-sound" element={<DifferentSoundGamePage isMuted={isMuted} />} />
+        <Route path="/feeling/emotions" element={<EmotionsGamePage isMuted={isMuted} />} />
         <Route path="/family" element={<FamilyMenuPage isMuted={isMuted} />} />
-        <Route
-          path="/family/learn"
-          element={<FamilyLearningPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/family/game"
-          element={<FamilyGamePage isMuted={isMuted} />}
-        />
+        <Route path="/family/learn" element={<FamilyLearningPage isMuted={isMuted} />} />
+        <Route path="/family/game" element={<FamilyGamePage isMuted={isMuted} />} />
         <Route path="/days" element={<DaysMenuPage isMuted={isMuted} />} />
-        <Route
-          path="/days/learn"
-          element={<DaysLearningPage isMuted={isMuted} />}
-        />
+        <Route path="/days/learn" element={<DaysLearningPage isMuted={isMuted} />} />
         <Route path="/days/game" element={<DaysGamePage isMuted={isMuted} />} />
 
-        {/* --- โซนภาษาไทย (ปรับปรุงใหม่ Clean Code) --- */}
-
+        {/* --- โซนภาษาไทย --- */}
+        
         {/* 1. หน้าหลักภาษาไทย */}
-        <Route
-          path="/thai-alphabet"
-          element={<ThaiAlphabetPage isMuted={isMuted} />}
-        />
-
-        {/* 2. เมนูย่อย: การเขียน & การอ่าน (ไม่มีปุ่มเกมข้างในแล้ว) */}
-        <Route
-          path="/thai/writing"
-          element={<ThaiWritingMenuPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/thai/reading"
-          element={<ThaiReadingMenuPage isMuted={isMuted} />}
-        />
-        {/* เก็บ Route เก่าไว้เผื่อพิมพ์ตรงๆ (Optional) */}
-        <Route
-          path="/thai-alphabet/learn"
-          element={<ThaiWritingMenuPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/thai-vowels"
-          element={<ThaiReadingMenuPage isMuted={isMuted} />}
-        />
+        <Route path="/thai-alphabet" element={<ThaiAlphabetPage isMuted={isMuted} />} />
+        
+        {/* 2. เมนูย่อย: การเขียน & การอ่าน */}
+        <Route path="/thai/writing" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
+        <Route path="/thai/reading" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
+        <Route path="/thai-alphabet/learn" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
+        <Route path="/thai-vowels" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
 
         {/* 3. หน้าเนื้อหาเรียนรู้ (วิดีโอ ก-ฮ) */}
-        <Route
-          path="/thai-alphabet/write-consonant"
-          element={<ThaiLearningPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/thai-alphabet/read-consonant"
-          element={<ThaiLearningPage isMuted={isMuted} />}
-        />
+        <Route path="/thai-alphabet/write-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
+        <Route path="/thai-alphabet/read-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
+        
+        {/* ⭐ 4. โซนเกมภาษาไทย */}
+        
+        {/* ขั้นที่ 1: หน้าเลือกเกม */}
+        <Route path="/thai/game" element={<ThaiGameMenuPage isMuted={isMuted} />} />
 
-        {/* ⭐ 4. โซนเกมภาษาไทย (เส้นทางเดียวเท่านั้น) */}
-
-        {/* ขั้นที่ 1: กดปุ่ม "เกม" จากหน้าหลัก -> มาหน้าเลือกเกม */}
-        <Route
-          path="/thai/game"
-          element={<ThaiGameMenuPage isMuted={isMuted} />}
-        />
-
-        {/* ขั้นที่ 2: กดปุ่ม "ทายภาพ" จากหน้าเลือกเกม -> เข้าเล่นเกม */}
-        <Route
-          path="/thai/game/guess"
-          element={<ThaiGamePage isMuted={isMuted} />}
-        />
-        {/* เกมที่ 2: จับคู่ */}
-        <Route
-          path="/thai/game/match"
-          element={<ThaiMatchingGamePage isMuted={isMuted} />}
-        />
+        {/* ขั้นที่ 2: เกมต่างๆ */}
+        <Route path="/thai/game/guess" element={<ThaiGamePage isMuted={isMuted} />} />
+        {/* ⭐ เพิ่ม Route เกมจับคู่ตรงนี้ครับ */}
+        <Route path="/thai/game/match" element={<ThaiMatchingGamePage isMuted={isMuted} />} />
+        
 
         {/* --- โซนอาเซียน --- */}
         <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
-        <Route
-          path="/asean/flags"
-          element={<AseanNationalFlagsPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/asean/greetings"
-          element={<AseanGreetingsPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/asean/national-dishes"
-          element={<AseanNationalDishesPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/asean/national-animals"
-          element={<AseanNationalAnimalsPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/asean/national-costumes"
-          element={<AseanNationalCostumesPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/asean/national-flowers"
-          element={<AseanNationalFlowersPage isMuted={isMuted} />}
-        />
+        <Route path="/asean/flags" element={<AseanNationalFlagsPage isMuted={isMuted} />} />
+        <Route path="/asean/greetings" element={<AseanGreetingsPage isMuted={isMuted} />} />
+        <Route path="/asean/national-dishes" element={<AseanNationalDishesPage isMuted={isMuted} />} />
+        <Route path="/asean/national-animals" element={<AseanNationalAnimalsPage isMuted={isMuted} />} />
+        <Route path="/asean/national-costumes" element={<AseanNationalCostumesPage isMuted={isMuted} />} />
+        <Route path="/asean/national-flowers" element={<AseanNationalFlowersPage isMuted={isMuted} />} />
 
         {/* --- โซนอื่นๆ --- */}
         <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
-        <Route
-          path="/colors/learn"
-          element={<ColorsLearningPage isMuted={isMuted} />}
-        />
-        <Route
-          path="/colors/game"
-          element={<ColorsGamePage isMuted={isMuted} />}
-        />
+        <Route path="/colors/learn" element={<ColorsLearningPage isMuted={isMuted} />} />
+        <Route path="/colors/game" element={<ColorsGamePage isMuted={isMuted} />} />
         <Route path="/stories" element={<StoryMenuPage isMuted={isMuted} />} />
-        <Route
-          path="/stories/watch"
-          element={<StoryPlayerPage isMuted={isMuted} />}
-        />
+        <Route path="/stories/watch" element={<StoryPlayerPage isMuted={isMuted} />} />
         <Route path="/lesson" element={<LessonPage isMuted={isMuted} />} />
       </Routes>
     </BrowserRouter>
