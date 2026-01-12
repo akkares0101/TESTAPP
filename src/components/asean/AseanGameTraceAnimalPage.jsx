@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-function AseanGame() {
+function AseanGameTraceAnimalPage() {
   const iframeRef = useRef(null);
 
   useEffect(() => {
@@ -30,4 +30,4 @@ function AseanGame() {
   );
 }
 
-export default AseanGame;
+export default AseanGameTraceAnimalPage;

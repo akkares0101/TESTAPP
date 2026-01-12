@@ -7,7 +7,7 @@ import tempImg from "../../assets/images/thai/write.png";
 
 const clickSound = new Audio("/sounds/click.mp3");
 
-function AseanMenuPage({ isMuted }) {
+function AseanGameMenuPage({ isMuted }) {
   const navigate = useNavigate();
 
   const playClick = () => {
@@ -19,31 +19,10 @@ function AseanMenuPage({ isMuted }) {
 
   // ⭐ กำหนดหัวข้อ 7 อย่าง
   const menuItems = [
-    { id: 1, title: "ธงชาติ", path: "/asean/flags", image: tempImg },
-    { id: 2, title: "คำทักทาย", path: "/asean/greetings", image: tempImg },
     {
-      id: 3,
-      title: "อาหารประจำชาติ",
-      path: "/asean/national-dishes",
-      image: tempImg,
-    },
-    {
-      id: 4,
-      title: "สัตว์ประจำชาติ",
-      path: "/asean/national-animals",
-      image: tempImg,
-    },
-    { id: 5, title: "เกม", path: "/asean/game-menu", image: tempImg },
-    {
-      id: 6,
-      title: "การแต่งกายประจำชาติ",
-      path: "/asean/national-costumes",
-      image: tempImg,
-    },
-    {
-      id: 7,
-      title: "ดอกไม้ประจำชาติ",
-      path: "/asean/national-flowers",
+      id: 1,
+      title: "เกมลากเส้นสัตว์ประจำชาติอาเซียน",
+      path: "/asean/asean-trace",
       image: tempImg,
     },
   ];
@@ -147,4 +126,4 @@ function AseanMenuPage({ isMuted }) {
   );
 }
 
-export default AseanMenuPage;
+export default AseanGameMenuPage;

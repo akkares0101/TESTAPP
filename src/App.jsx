@@ -41,7 +41,8 @@ import AseanNationalDishesPage from "./components/asean/AseanNationalDishesPage"
 import AseanNationalAnimalsPage from "./components/asean/AseanNationalAnimalsPage";
 import AseanNationalCostumesPage from "./components/asean/AseanNationalCostumesPage";
 import AseanNationalFlowersPage from "./components/asean/AseanNationalFlowersPage";
-import AseanGamePage from "./components/asean/AseanGamePage";
+import AseanGameMenuPage from "./components/asean/AseanGameMenuPage";
+import AseanGameTraceAnimalPage from "./components/asean/AseanGameTraceAnimalPage";
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from "./components/ColorsMenuPage";
@@ -269,8 +270,12 @@ function App() {
           element={<AseanNationalFlowersPage isMuted={isMuted} />}
         />
         <Route
-          path="/asean/game"
-          element={<AseanGamePage isMuted={isMuted} />}
+          path="/asean/game-menu"
+          element={<AseanGameMenuPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/asean-trace"
+          element={<AseanGameTraceAnimalPage isMuted={isMuted} />}
         />
 
         {/* --- โซนอื่นๆ --- */}
