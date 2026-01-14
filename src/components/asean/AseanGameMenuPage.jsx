@@ -25,6 +25,12 @@ function AseanGameMenuPage({ isMuted }) {
       path: "/asean/asean-trace",
       image: tempImg,
     },
+    {
+      id: 2,
+      title: "เกมลากคำธงชาติอาเซียน",
+      path: "/asean/asean-flags",
+      image: tempImg,
+    },
   ];
 
   const topRow = menuItems.slice(0, 4);
