@@ -59,7 +59,7 @@ function AseanGameFlagsPage() {
           <iframe
             ref={iframeRef}
             title="Asean Godot Game"
-            src="/game/asean-flags/index.html"
+            src="/game/asean/asean-flags/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />
