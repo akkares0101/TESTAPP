@@ -21,14 +21,20 @@ function AseanGameMenuPage({ isMuted }) {
   const menuItems = [
     {
       id: 1,
-      title: "เกมลากเส้นสัตว์ประจำชาติอาเซียน",
+      title: "เกมสัตว์ประจำชาติ",
       path: "/asean/asean-trace",
       image: tempImg,
     },
     {
       id: 2,
-      title: "เกมลากคำธงชาติอาเซียน",
+      title: "เกมธงชาติอาเซียน",
       path: "/asean/asean-flags",
+      image: tempImg,
+    },
+    {
+      id: 3,
+      title: "เกมดอกไม้ประจำชาติ",
+      path: "/asean/asean-flowers",
       image: tempImg,
     },
   ];
