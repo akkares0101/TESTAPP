@@ -135,7 +135,7 @@ function DaysGamePage({ isMuted }) {
           onClick={() => navigate("/days")}
           className="bg-white px-4 py-2 md:px-6 md:py-3 rounded-full border-4 border-white shadow-md hover:scale-105 transition-all text-orange-500 font-black text-xl flex items-center gap-2"
         >
-          <span>◀</span> Back
+          Back
         </button>
 
         {/* Progress Bar */}

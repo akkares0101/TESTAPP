@@ -50,7 +50,7 @@ function DaysMenuPage({ isMuted }) {
           className="bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all flex items-center gap-2"
         >
           <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
-            ◀
+          
           </span>
           <span className="hidden md:inline font-black text-lg">ย้อนกลับ</span>
         </button>
@@ -60,7 +60,7 @@ function DaysMenuPage({ isMuted }) {
         {/* หัวข้อ */}
         <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-sky-400 shadow-[0_6px_0_#0ea5e9] mb-6">
           <h1 className="text-3xl md:text-5xl font-black text-gray-700 tracking-wide flex items-center gap-3">
-            📅 Days of the Week
+             Days of the Week
           </h1>
         </div>
 

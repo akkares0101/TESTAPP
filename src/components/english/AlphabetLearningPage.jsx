@@ -54,7 +54,7 @@ function AlphabetLearningPage({ isMuted }) {
 
         <div className="flex-1 flex justify-center items-center px-6 py-2 rounded-[2rem] shadow-xl border-[4px] border-white bg-rose-400">
            <h1 className="text-lg md:text-3xl font-black text-white tracking-wider flex items-center gap-2">
-             <span className="text-2xl md:text-4xl">🅰️</span> 
+             <span className="text-2xl md:text-4xl">🅰</span> 
              สื่อการสอน: {selectedLetter}
            </h1>
         </div>
