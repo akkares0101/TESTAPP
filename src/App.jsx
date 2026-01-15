@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import bgImage from "./assets/images/bg.png";
@@ -30,10 +30,9 @@ import ThaiWritingMenuPage from "./components/thai/ThaiWritingMenuPage";
 import ThaiReadingMenuPage from "./components/thai/ThaiReadingMenuPage";
 import ThaiLearningPage from "./components/thai/ThaiLearningPage";
 import ThaiGameMenuPage from "./components/thai/ThaiGameMenuPage";
-// ⭐ Import หน้าเกมจับคู่เพิ่มเข้ามา
 import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
 
-// --- โซนสังคมศึกษา (เพิ่มใหม่) ---
+// --- โซนสังคมศึกษา ---
 import SocialMenuPage from "./components/social/SocialMenuPage";
 
 // --- โซนอาเซียน ---
@@ -87,7 +86,7 @@ function HomeMenu({ isMuted }) {
     } else if (item.title === "ภาษาไทย") {
       navigate("/thai-alphabet");
     } else if (item.title === "สังคมศึกษา") {
-      navigate("/social"); // เพิ่มลิ้งค์ไปหน้าสังคมศึกษา
+      navigate("/social");
     } else if (item.title === "นิทานอีสป") {
       navigate("/stories");
     } else if (item.title === "อาเซียน") {
@@ -125,10 +124,37 @@ function HomeMenu({ isMuted }) {
 }
 
 function App() {
-  const [isMuted, setIsMuted] = useState(false);
+  // เริ่มต้นให้เสียงปิดอยู่ (true) เพื่อป้องกัน Browser บล็อก Autoplay
+  // ผู้ใช้ต้องกดปุ่มลำโพงเอง 1 ครั้งเพลงถึงจะเริ่มเล่น
+  const [isMuted, setIsMuted] = useState(true);
+  const audioRef = useRef(null);
+
+  // ควบคุมการเล่นเพลงเมื่อค่า isMuted เปลี่ยน
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.pause();
+      } else {
+        // ใช้ catch เพื่อกัน Error กรณี Browser บล็อกการเล่นเสียงอัตโนมัติ
+        audioRef.current.play().catch((error) => {
+          console.log("Audio play failed:", error);
+        });
+      }
+    }
+  }, [isMuted]);
+
+  // ตั้งระดับเสียงเพลงประกอบให้เบาหน่อย (30%) จะได้ไม่กวนเสียงอ่าน
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3;
+    }
+  }, []);
 
   return (
     <BrowserRouter>
+      {/* Element สำหรับเล่นเพลงประกอบ (ซ่อนไว้) */}
+      <audio ref={audioRef} src="/sounds/bg_music.mp3" loop />
+
       <button
         onClick={() => setIsMuted(!isMuted)}
         className={`fixed top-4 right-4 z-50 p-3 rounded-full shadow-xl border-4 border-white transition-all hover:scale-110 ${
@@ -195,14 +221,10 @@ function App() {
         <Route path="/days/game" element={<DaysGamePage isMuted={isMuted} />} />
 
         {/* --- โซนภาษาไทย --- */}
-
-        {/* 1. หน้าหลักภาษาไทย */}
         <Route
           path="/thai-alphabet"
           element={<ThaiAlphabetPage isMuted={isMuted} />}
         />
-
-        {/* 2. เมนูย่อย: การเขียน & การอ่าน */}
         <Route
           path="/thai/writing"
           element={<ThaiWritingMenuPage isMuted={isMuted} />}
@@ -219,8 +241,6 @@ function App() {
           path="/thai-vowels"
           element={<ThaiReadingMenuPage isMuted={isMuted} />}
         />
-
-        {/* 3. หน้าเนื้อหาเรียนรู้ (วิดีโอ ก-ฮ) */}
         <Route
           path="/thai-alphabet/write-consonant"
           element={<ThaiLearningPage isMuted={isMuted} />}
@@ -229,27 +249,20 @@ function App() {
           path="/thai-alphabet/read-consonant"
           element={<ThaiLearningPage isMuted={isMuted} />}
         />
-
-        {/* ⭐ 4. โซนเกมภาษาไทย */}
-
-        {/* ขั้นที่ 1: หน้าเลือกเกม */}
         <Route
           path="/thai/game"
           element={<ThaiGameMenuPage isMuted={isMuted} />}
         />
-
-        {/* ขั้นที่ 2: เกมต่างๆ */}
         <Route
           path="/thai/game/guess"
           element={<ThaiGamePage isMuted={isMuted} />}
         />
-        {/* ⭐ เพิ่ม Route เกมจับคู่ตรงนี้ครับ */}
         <Route
           path="/thai/game/match"
           element={<ThaiMatchingGamePage isMuted={isMuted} />}
         />
 
-        {/* --- โซนสังคมศึกษา (เพิ่มใหม่) --- */}
+        {/* --- โซนสังคมศึกษา --- */}
         <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
 
         {/* --- โซนอาเซียน --- */}
