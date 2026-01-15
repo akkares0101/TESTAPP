@@ -187,12 +187,12 @@ function FamilyGamePage({ isMuted }) {
           onClick={() => navigate("/family")}
           className="bg-white px-4 py-2 rounded-full border-4 border-white shadow-md hover:scale-105 transition-all text-orange-500 font-black text-xl flex items-center gap-2"
         >
-          <span>◀</span> Back
+          <span></span> Back
         </button>
 
         <div className="bg-yellow-400 px-8 py-3 rounded-full border-4 border-white shadow-lg animate-bounce-slow">
           <h1 className="text-3xl font-black text-white tracking-wide drop-shadow-md">
-            Family Matching ⭐
+            Family Matching 
           </h1>
         </div>
 

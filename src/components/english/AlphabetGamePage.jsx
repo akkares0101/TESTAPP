@@ -92,7 +92,7 @@ function AlphabetGamePage({ isMuted }) {
       {/* Game Area */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-2xl px-4 z-10">
         <p className="text-white text-xl font-bold mb-6 drop-shadow-lg animate-bounce bg-black/20 px-6 py-2 rounded-full">
-          👇 แตะที่การ์ดเพื่อสุ่มตัวใหม่! 👇
+           แตะที่การ์ดเพื่อสุ่มตัวใหม่! 
         </p>
 
         {/* Big Card */}

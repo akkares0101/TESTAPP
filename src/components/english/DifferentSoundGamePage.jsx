@@ -136,7 +136,7 @@ function DifferentSoundGamePage({ isMuted }) {
           onClick={() => navigate("/alphabet")}
           className="bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border-4 border-white shadow-lg hover:scale-105 transition-all text-purple-500 font-black text-xl flex items-center gap-2"
         >
-          <span>◀</span> Back
+          <span></span> Back
         </button>
 
         {/* Progress Bar */}

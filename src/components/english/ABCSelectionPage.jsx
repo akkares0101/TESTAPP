@@ -48,7 +48,7 @@ function ABCSelectionPage({ isMuted }) {
         
         {/* 2. หัวข้อเรื่อง */}
         <h1 className="text-4xl md:text-6xl font-black text-white drop-shadow-md mb-4 bg-orange-400/80 px-12 py-4 rounded-full border-4 border-white">
-           🔤 ABC
+          ABC
         </h1>
 
         {/* 3. ปุ่มทางแยก: สื่อการสอน vs เกม */}

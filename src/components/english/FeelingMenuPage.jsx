@@ -36,7 +36,7 @@ function FeelingMenuPage({ isMuted }) {
             group flex items-center gap-2 bg-white text-blue-500 px-4 py-2 md:px-6 md:py-3 rounded-[2rem] shadow-lg border-4 border-white hover:border-blue-200 hover:scale-105 active:scale-95 transition-all
           "
         >
-          <span className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">◀</span>
+          <span className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center"></span>
           <span className="hidden md:inline font-black text-xl">หน้าหลัก</span>
         </button>
       </div>

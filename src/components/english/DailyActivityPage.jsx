@@ -109,10 +109,10 @@ function DailyActivityPage({ isMuted }) {
         
         {/* หัวข้อ */}
         <h1 className="text-3xl md:text-5xl font-black text-white drop-shadow-md mb-4 bg-orange-400/80 px-10 py-3 rounded-full border-4 border-white">
-           🌞 Daily Activity
+            Daily Activity
         </h1>
 
-        {/* ⭐ จัด Layout เป็น 2 แถว (3-2) */}
+        {/*  จัด Layout เป็น 2 แถว (3-2) */}
         <div className="flex flex-col items-center gap-6 md:gap-10 w-full max-w-6xl">
             
             {/* แถวบน 3 ปุ่ม */}

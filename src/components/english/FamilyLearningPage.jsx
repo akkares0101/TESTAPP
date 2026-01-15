@@ -67,7 +67,7 @@ function FamilyLearningPage({ isMuted }) {
             group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all
           "
         >
-          <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center">◀</span>
+          <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"></span>
           <span className="hidden md:inline font-black text-lg">Back</span>
         </button>
 

@@ -33,6 +33,9 @@ import ThaiGameMenuPage from "./components/thai/ThaiGameMenuPage";
 // ⭐ Import หน้าเกมจับคู่เพิ่มเข้ามา
 import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
 
+// --- โซนสังคมศึกษา (เพิ่มใหม่) ---
+import SocialMenuPage from "./components/social/SocialMenuPage";
+
 // --- โซนอาเซียน ---
 import AseanMenuPage from "./components/asean/AseanMenuPage";
 import AseanNationalFlagsPage from "./components/asean/AseanNationalFlagsPage";
@@ -83,6 +86,8 @@ function HomeMenu({ isMuted }) {
       navigate("/alphabet");
     } else if (item.title === "ภาษาไทย") {
       navigate("/thai-alphabet");
+    } else if (item.title === "สังคมศึกษา") {
+      navigate("/social"); // เพิ่มลิ้งค์ไปหน้าสังคมศึกษา
     } else if (item.title === "นิทานอีสป") {
       navigate("/stories");
     } else if (item.title === "อาเซียน") {
@@ -243,6 +248,9 @@ function App() {
           path="/thai/game/match"
           element={<ThaiMatchingGamePage isMuted={isMuted} />}
         />
+
+        {/* --- โซนสังคมศึกษา (เพิ่มใหม่) --- */}
+        <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
 
         {/* --- โซนอาเซียน --- */}
         <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />

@@ -126,7 +126,7 @@ function DaysLearningPage({ isMuted }) {
           onClick={() => navigate("/days")}
           className="bg-white text-orange-500 px-4 py-2 rounded-full border-4 border-white shadow-md font-black hover:scale-105 transition-transform flex items-center gap-2"
         >
-          <span>◀</span> Back
+          <span></span> Back
         </button>
 
         <div className="bg-white/90 px-8 py-2 rounded-full border-4 border-sky-400 shadow-lg">
@@ -181,7 +181,7 @@ function DaysLearningPage({ isMuted }) {
             {/* ไอคอนปุ่ม Play (ลอยอยู่ตรงกลางเมื่อเอาเมาส์ชี้) */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 backdrop-blur-[2px]">
               <div className="bg-white/90 rounded-full w-16 h-16 flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                <span className="text-4xl ml-2">▶️</span>
+                <span className="text-4xl ml-2"></span>
               </div>
             </div>
           </div>
