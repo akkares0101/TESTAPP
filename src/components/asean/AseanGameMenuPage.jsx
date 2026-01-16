@@ -37,6 +37,12 @@ function AseanGameMenuPage({ isMuted }) {
       path: "/asean/asean-flowers",
       image: tempImg,
     },
+    {
+      id: 4,
+      title: "เกมแต่งกายประจำชาติ",
+      path: "/asean/asean-dress",
+      image: tempImg,
+    },
   ];
 
   const topRow = menuItems.slice(0, 4);
