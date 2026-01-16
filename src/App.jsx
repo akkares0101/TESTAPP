@@ -35,6 +35,9 @@ import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
 // --- โซนสังคมศึกษา ---
 import SocialMenuPage from "./components/social/SocialMenuPage";
 
+// --- โซนศิลปะ (เพิ่มใหม่) ---
+import ArtMenuPage from "./components/art/ArtMenuPage";
+
 // --- โซนอาเซียน ---
 import AseanMenuPage from "./components/asean/AseanMenuPage";
 import AseanNationalFlagsPage from "./components/asean/AseanNationalFlagsPage";
@@ -88,6 +91,8 @@ function HomeMenu({ isMuted }) {
       navigate("/thai-alphabet");
     } else if (item.title === "สังคมศึกษา") {
       navigate("/social");
+    } else if (item.title === "ศิลปะ") {
+      navigate("/art"); // เพิ่มลิ้งค์ไปหน้าศิลปะ
     } else if (item.title === "นิทานอีสป") {
       navigate("/stories");
     } else if (item.title === "อาเซียน") {
@@ -125,18 +130,14 @@ function HomeMenu({ isMuted }) {
 }
 
 function App() {
-  // เริ่มต้นให้เสียงปิดอยู่ (true) เพื่อป้องกัน Browser บล็อก Autoplay
-  // ผู้ใช้ต้องกดปุ่มลำโพงเอง 1 ครั้งเพลงถึงจะเริ่มเล่น
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef(null);
 
-  // ควบคุมการเล่นเพลงเมื่อค่า isMuted เปลี่ยน
   useEffect(() => {
     if (audioRef.current) {
       if (isMuted) {
         audioRef.current.pause();
       } else {
-        // ใช้ catch เพื่อกัน Error กรณี Browser บล็อกการเล่นเสียงอัตโนมัติ
         audioRef.current.play().catch((error) => {
           console.log("Audio play failed:", error);
         });
@@ -144,7 +145,6 @@ function App() {
     }
   }, [isMuted]);
 
-  // ตั้งระดับเสียงเพลงประกอบให้เบาหน่อย (30%) จะได้ไม่กวนเสียงอ่าน
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.3;
@@ -153,7 +153,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Element สำหรับเล่นเพลงประกอบ (ซ่อนไว้) */}
       <audio ref={audioRef} src="/sounds/bg_music.mp3" loop />
 
       <button
@@ -265,6 +264,9 @@ function App() {
 
         {/* --- โซนสังคมศึกษา --- */}
         <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
+
+        {/* --- โซนศิลปะ (เพิ่มใหม่) --- */}
+        <Route path="/art" element={<ArtMenuPage isMuted={isMuted} />} />
 
         {/* --- โซนอาเซียน --- */}
         <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
