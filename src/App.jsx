@@ -50,6 +50,7 @@ import AseanGameMenuPage from "./components/asean/AseanGameMenuPage";
 import AseanGameTraceAnimalPage from "./components/asean/AseanGameTraceAnimalPage";
 import AseanGameFlagsPage from "./components/asean/AseanGameFlagsPage";
 import AseanGameFlowersPage from "./components/asean/AseanGameFlowersPage";
+import AseanGameDressPage from "./components/asean/AseanGameDressPage";
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from "./components/ColorsMenuPage";
@@ -309,6 +310,10 @@ function App() {
         <Route
           path="/asean/asean-flowers"
           element={<AseanGameFlowersPage isMuted={isMuted} />}
+        />
+        <Route
+          path="/asean/asean-dress"
+          element={<AseanGameDressPage isMuted={isMuted} />}
         />
 
         {/* --- โซนอื่นๆ --- */}
