@@ -43,6 +43,12 @@ function AseanGameMenuPage({ isMuted }) {
       path: "/asean/asean-dress",
       image: tempImg,
     },
+    {
+      id: 5,
+      title: "เกมคำทักทาย",
+      path: "/asean/asean-greeting",
+      image: tempImg,
+    },
   ];
 
   const topRow = menuItems.slice(0, 4);
