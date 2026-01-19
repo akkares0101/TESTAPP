@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
-/* พื้นที่สำหรับตั้งค่า Theme ใหม่ */
 @theme {
-  /* ตัวอย่าง: เพิ่มสีใหม่ชื่อ 'neon-blue' */
   --color-neon-blue: #00f0ff;
-
-  /* ตัวอย่าง: เพิ่มฟอนต์ */
   --font-display: "Sarabun", sans-serif;
+}
+
+/* --- แก้ไข Path ให้ชี้ไปที่ src/assets --- */
+body {
+  /* ใส่จุด (.) นำหน้า เพื่อบอกว่าเริ่มจากโฟลเดอร์ปัจจุบัน (src) */
+  cursor: url('./assets/images/cursor.png'), auto; 
+}
+
+button, 
+a, 
+.cursor-pointer,
+[role="button"] {
+  cursor: url('./assets/images/pointer.png'), pointer;
 }
