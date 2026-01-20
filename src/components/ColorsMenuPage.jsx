@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import bgImage from '../assets/images/bg.png';
 
 // ⭐ Import รูปปุ่ม (อย่าลืมเอารูปไปวางและแก้ชื่อไฟล์ให้ตรงนะครับ)
-import btnMedia from '../assets/images/buttons/btn_colors_media.png'; // รูปปุ่มสื่อการสอนเรื่องสี
-import btnGame from '../assets/images/buttons/btn_colors_game.png';   // รูปปุ่มเกมทายสี
+import btnMedia from '../assets/images/buttons/btn_learn.png'; // รูปปุ่มสื่อการสอนเรื่องสี
+import btnGame from '../assets/images/buttons/btn_game.png';   // รูปปุ่มเกมทายสี
 
 // โหลดเสียง click
 const clickSound = new Audio('/sounds/click.mp3');

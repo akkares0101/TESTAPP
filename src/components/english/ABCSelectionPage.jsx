@@ -4,7 +4,7 @@ import bgImage from '../../assets/images/bg.png';
 
 // ⭐ Import รูปปุ่มทางแยก (เตรียมรูปให้พร้อมนะครับ)
 // แนะนำให้ใช้รูปเดิมที่มี หรือทำรูปใหม่ที่เขียนว่า "สื่อการสอน" กับ "เกม"
-import btnMedia from '../../assets/images/buttons/btn_media.png'; // ตั้งชื่อไฟล์ตามจริง
+import btnMedia from '../../assets/images/buttons/btn_learn.png'; // ตั้งชื่อไฟล์ตามจริง
 import btnGame from '../../assets/images/buttons/btn_game.png';   // ตั้งชื่อไฟล์ตามจริง
 
 const clickSound = new Audio('/sounds/click.mp3');

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png'; // พื้นหลังเดียวกัน
+import bgImage from '../../assets/images/bg.png'; 
 
 // --- Import รูปภาพของหน้านั้นๆ ---
 import btnCount from '../../assets/images/math/btn_count.png';           
@@ -13,7 +13,7 @@ import btnMoney from '../../assets/images/math/btn_money.png';
 
 const clickSound = new Audio('/sounds/click.mp3');
 
-function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Function ตามหน้านั้นๆ (เช่น ArtMenuPage)
+function MathMenuPage({ isMuted }) { 
   const navigate = useNavigate();
 
   const playClick = () => {
@@ -23,7 +23,6 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
     }
   };
 
-  // ⭐ เปลี่ยนข้อมูลในนี้ตามวิชา (จำนวนปุ่มจะมากน้อย ระบบจะจัดกลางให้เอง)
   const menuItems = [
     { id: 1, image: btnCount, path: "/math/counting", title: "สอนนับ" },
     { id: 2, image: btnReadEng, path: "/math/read-eng", title: "สอนอ่าน(อังกฤษ)" },
@@ -35,7 +34,6 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
   ];
 
   return (
-    // 1️⃣ CONTAINER หลัก: ล็อคความสูงเท่าจอ (h-screen)
     <div 
       className="h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
@@ -45,11 +43,10 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 2️⃣ ปุ่มย้อนกลับ: ตำแหน่งเดิมเป๊ะๆ ทุกหน้า */}
-      <div className="absolute top-4 left-4 z-50 md:top-8 md:left-8"> 
+      {/* ปุ่มย้อนกลับ */}
+      <div className="absolute top-4 left-4 z-50 md:top-40 md:left-70"> 
          <button 
           onClick={() => navigate('/')} 
-          // เปลี่ยนสี text-... border-... hover:border-... ตามธีมสีวิชาได้
           className="
              group flex items-center gap-3 bg-white text-blue-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-blue-100 hover:scale-105 active:scale-95 transition-all
           "
@@ -61,18 +58,18 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
         </button>
       </div>
 
-      {/* 3️⃣ พื้นที่เนื้อหา: จัดกึ่งกลาง (justify-center) */}
+      {/* พื้นที่เนื้อหา */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
         
-        {/* หัวข้อ: ขนาด font เท่าเดิมทุกหน้า */}
+        {/* หัวข้อ */}
         <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-blue-400 shadow-[0_4px_0_#60a5fa] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
             <h1 className="text-3xl md:text-6xl font-black text-blue-500 tracking-wide">
-              คณิตศาสตร์ {/* ⭐ เปลี่ยนชื่อวิชา */}
+              คณิตศาสตร์
             </h1>
         </div>
 
-        {/* 4️⃣ Grid ปุ่มเมนู: ใช้ Flex Wrap จัดกลาง */}
-        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[90rem]">
+        {/* Grid ปุ่มเมนู */}
+        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[95rem]">
             {menuItems.map((item) => (
               <div 
                 key={item.id}
@@ -83,8 +80,11 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ⭐ ขนาดปุ่มมาตรฐาน: มือถือ 140px / จอใหญ่ 240px */
-                  w-auto h-[140px] md:h-[240px] 
+                  /* ⭐⭐⭐ แก้ไขขนาดตรงนี้ครับ (ใหญ่ขึ้น) ⭐⭐⭐ */
+                  w-auto 
+                  h-[180px]      /* มือถือ: เพิ่มจาก 140 เป็น 180 */
+                  md:h-[300px]   /* จอคอม: เพิ่มจาก 240 เป็น 300 */
+                  
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "
               >
@@ -106,4 +106,4 @@ function MathMenuPage({ isMuted }) { // ⭐ เปลี่ยนชื่อ Fu
   );
 }
 
-export default MathMenuPage; 
+export default MathMenuPage;

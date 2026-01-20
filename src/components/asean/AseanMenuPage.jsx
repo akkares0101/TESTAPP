@@ -1,11 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import bgImage from '../../assets/images/bg.png';
 
-// ⭐ ใช้รูปชั่วคราวไปก่อน
-import tempImg from "../../assets/images/thai/write.png";
+// ⭐ Import รูปภาพจริง 7 รูป (ตรวจสอบชื่อไฟล์ให้ตรงกับในโฟลเดอร์ asean นะครับ)
+import btnFlag from '../../assets/images/asean/btn_flag.png';
+import btnGreeting from '../../assets/images/asean/btn_greeting.png';
+import btnFood from '../../assets/images/asean/btn_food.png';
+import btnAnimal from '../../assets/images/asean/btn_animal.png';
+import btnGame from '../../assets/images/asean/btn_game.png';
+import btnCostume from '../../assets/images/asean/btn_costume.png';
+import btnFlower from '../../assets/images/asean/btn_flower.png';
 
-const clickSound = new Audio("/sounds/click.mp3");
+const clickSound = new Audio('/sounds/click.mp3');
 
 function AseanMenuPage({ isMuted }) {
   const navigate = useNavigate();
@@ -17,132 +23,85 @@ function AseanMenuPage({ isMuted }) {
     }
   };
 
-  // ⭐ กำหนดหัวข้อ 7 อย่าง
   const menuItems = [
-    { id: 1, title: "ธงชาติ", path: "/asean/flags", image: tempImg },
-    { id: 2, title: "คำทักทาย", path: "/asean/greetings", image: tempImg },
-    {
-      id: 3,
-      title: "อาหารประจำชาติ",
-      path: "/asean/national-dishes",
-      image: tempImg,
-    },
-    {
-      id: 4,
-      title: "สัตว์ประจำชาติ",
-      path: "/asean/national-animals",
-      image: tempImg,
-    },
-    { id: 5, title: "เกม", path: "/asean/game-menu", image: tempImg },
-    {
-      id: 6,
-      title: "การแต่งกายประจำชาติ",
-      path: "/asean/national-costumes",
-      image: tempImg,
-    },
-    {
-      id: 7,
-      title: "ดอกไม้ประจำชาติ",
-      path: "/asean/national-flowers",
-      image: tempImg,
-    },
+    { id: 1, title: "ธงชาติ", path: "/asean/flags", image: btnFlag },
+    { id: 2, title: "คำทักทาย", path: "/asean/greetings", image: btnGreeting },
+    { id: 3, title: "อาหารประจำชาติ", path: "/asean/national-dishes", image: btnFood },
+    { id: 4, title: "สัตว์ประจำชาติ", path: "/asean/national-animals", image: btnAnimal },
+    { id: 5, title: "เกม", path: "/asean/game-menu", image: btnGame },
+    { id: 6, title: "การแต่งกายประจำชาติ", path: "/asean/national-costumes", image: btnCostume },
+    { id: 7, title: "ดอกไม้ประจำชาติ", path: "/asean/national-flowers", image: btnFlower },
   ];
 
-  const topRow = menuItems.slice(0, 4);
-  const bottomRow = menuItems.slice(4, 7);
-
-  const renderButton = (item) => (
-    <div
-      key={item.id}
-      onClick={() => {
-        playClick();
-        // ✅ แก้ไขตรงนี้: สั่งให้ไปตาม path ที่กำหนด
-        if (item.path) {
-          navigate(item.path);
-        }
-      }}
-      className="
-        group relative cursor-pointer
-        flex flex-col items-center justify-center
-        
-        w-[140px] h-[140px] 
-        md:w-[200px] md:h-[200px]
-        
-        transition-transform duration-300 cubic-bezier(0.34, 1.56, 0.64, 1)
-        hover:scale-110 hover:-rotate-2
-        active:scale-95 active:rotate-0
-      "
-    >
-      <img
-        src={item.image}
-        alt={item.title}
-        className="
-          w-full h-full object-contain
-          drop-shadow-lg group-hover:drop-shadow-2xl
-          transition-all duration-300
-        "
-      />
-
-      <div className="absolute bottom-2 bg-white/80 px-2 rounded-md">
-        <span className="text-sm md:text-lg font-bold text-orange-600">
-          {item.title}
-        </span>
-      </div>
-    </div>
-  );
-
   return (
-    <div
-      className="min-h-screen w-full flex flex-col items-center py-6"
-      style={{
+    <div 
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      style={{ 
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        backgroundSize: '100% 100%', 
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. ปุ่มย้อนกลับ */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
-        <button
-          onClick={() => navigate("/")}
+      {/* ปุ่มย้อนกลับ: ใช้ตำแหน่งมาตรฐานเดียวกับหน้าอื่นๆ (top-16) */}
+      <div className="absolute top-8 left-4 z-50 md:top-40 md:left-70"> 
+         <button 
+          onClick={() => navigate('/')} 
           className="
-            group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all
+             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
           "
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6 group-hover:-translate-x-1 transition-transform"
-          >
-            <path
-              fillRule="evenodd"
-              d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.114 0z"
-              clipRule="evenodd"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
-          <span className="hidden md:inline font-black text-lg">
-            กลับหน้าหลัก
-          </span>
+          <span className="font-black text-lg md:text-xl">กลับหน้าหลัก</span>
         </button>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-8 px-4 mt-2">
-        {/* 2. หัวข้อ */}
-        <h1 className="text-3xl md:text-5xl font-black text-white drop-shadow-md mb-4 bg-orange-400/80 px-10 py-3 rounded-full border-4 border-white">
-          อาเซียน (ASEAN)
-        </h1>
-
-        {/* 3. Grid ปุ่มเมนู */}
-        <div className="flex flex-col items-center gap-6 md:gap-10 w-full">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {topRow.map(renderButton)}
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {bottomRow.map(renderButton)}
-          </div>
+      {/* เนื้อหาหลัก */}
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
+        
+        {/* หัวข้อ */}
+        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
+            <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
+              อาเซียน (ASEAN)
+            </h1>
         </div>
+
+        {/* Grid เมนู 7 ปุ่ม */}
+        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[95rem]">
+            {menuItems.map((item) => (
+              <div 
+                key={item.id}
+                onClick={() => {
+                  playClick();
+                  if (item.path) navigate(item.path);
+                }}
+                className="
+                  group relative cursor-pointer
+                  flex items-center justify-center
+                  /* ขนาดปุ่มใหญ่มาตรฐาน */
+                  w-auto 
+                  h-[180px]      
+                  md:h-[300px]   
+                  
+                  transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
+                "
+              >
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
+                />
+              </div>
+            ))}
+        </div>
+
       </div>
+      
+      <style>{`
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+      `}</style>
     </div>
   );
 }

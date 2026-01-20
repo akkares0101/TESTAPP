@@ -49,33 +49,36 @@ function SocialMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* ปุ่มย้อนกลับ */}
-      <div className="absolute top-8 left-4 z-20 md:top-32 md:left-10"> 
+      {/* ⭐⭐⭐ แก้ไขตำแหน่งปุ่มย้อนกลับตรงนี้ ⭐⭐⭐
+         - top-8 (เดิม top-4): ขยับลงมาในมือถือ
+         - md:top-16 (เดิม md:top-8): ขยับลงมาเยอะๆ ในจอคอม
+      */}
+      <div className="absolute top-8 left-4 z-50 md:top-40 md:left-70"> 
          <button 
           onClick={() => navigate('/')} 
           className="
-             group flex items-center gap-3 bg-white text-orange-500 px-6 py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
+             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
           "
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6 group-hover:-translate-x-1 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
-          <span className="font-black text-xl">กลับหน้าหลัก</span>
+          <span className="font-black text-lg md:text-xl">กลับหน้าหลัก</span>
         </button>
       </div>
 
       {/* เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-32 md:pt-48"> 
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
         
         {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-12 py-3 rounded-full border-[6px] border-orange-400 shadow-[0_6px_0_#fb923c] mb-10 animate-bounce-slow">
-            <h1 className="text-4xl md:text-6xl font-black text-orange-500 tracking-wide">
+        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
+            <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
               สังคมศึกษา
             </h1>
         </div>
 
-        {/* Grid เมนู 10 ปุ่ม (5x2) */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-[90rem]">
+        {/* Grid เมนู 10 ปุ่ม */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-[95rem]">
             {menuItems.map((item) => (
               <div 
                 key={item.id}
@@ -86,8 +89,11 @@ function SocialMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ⭐ ปรับขนาดตรงนี้ครับ (ให้ใหญ่ขึ้น) */
-                  w-auto h-[160px] md:h-[240px]
+                  /* ขนาดปุ่มใหญ่ */
+                  w-auto 
+                  h-[180px]      
+                  md:h-[300px]   
+                  
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "
               >

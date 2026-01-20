@@ -59,7 +59,7 @@ function StoryMenuPage({ isMuted }) {
       </div>
 
       {/* Header & Back Button */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
+      <div className="w-full max-w-[95rem] px-4 mt-4 mb-1 z-20 flex justify-start">
          <button 
           onClick={() => navigate('/')} 
           onMouseEnter={playHover}
