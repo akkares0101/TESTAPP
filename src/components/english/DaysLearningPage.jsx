@@ -2,23 +2,23 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/Daysbg.png";
 
-// ⭐ 1. Import รูปหน้าปกของแต่ละวัน (เตรียมไฟล์ให้ครบนะครับ)
+/* ⭐ 1. Import รูปหน้าปกของแต่ละวัน (เตรียมไฟล์ให้ครบนะครับ)
 import imgSun from "../../assets/images/days/sunday.png";
 import imgMon from "../../assets/images/days/monday.png";
 import imgTue from "../../assets/images/days/tuesday.png";
 import imgWed from "../../assets/images/days/wednesday.png";
 import imgThu from "../../assets/images/days/thursday.png";
 import imgFri from "../../assets/images/days/friday.png";
-import imgSat from "../../assets/images/days/saturday.png";
+import imgSat from "../../assets/images/days/saturday.png";*/
 
-// ⭐ 2. Import วิดีโอ
+/* ⭐ 2. Import วิดีโอ
 import vidSun from "../../assets/videos/days/sunday.mp4";
 import vidMon from "../../assets/videos/days/monday.mp4";
 import vidTue from "../../assets/videos/days/tuesday.mp4";
 import vidWed from "../../assets/videos/days/wednesday.mp4";
 import vidThu from "../../assets/videos/days/thursday.mp4";
 import vidFri from "../../assets/videos/days/friday.mp4";
-import vidSat from "../../assets/videos/days/saturday.mp4";
+import vidSat from "../../assets/videos/days/saturday.mp4";*/
 
 const clickSound = new Audio("/sounds/click.mp3");
 
