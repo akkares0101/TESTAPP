@@ -45,7 +45,7 @@ function ScienceMenuPage({ isMuted }) {
       }}
     >
       {/* ปุ่มย้อนกลับ (ตำแหน่งเดียวกับหน้าอื่นๆ) */}
-      <div className="absolute top-8 left-4 z-50 md:top-16 md:left-10"> 
+      <div className="absolute top-8 left-4 z-50 md:top-45 md:left-80"> 
          <button 
           onClick={() => navigate('/')} 
           className="

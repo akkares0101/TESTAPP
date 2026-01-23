@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// ⭐ Import รูปปุ่ม (เตรียมรูปให้พร้อมนะครับ)
-import btnLearn from '../../assets/images/buttons/btn_learn.png'; // รูปปุ่มเรียน
-import btnGame from '../../assets/images/buttons/btn_game.png';   // รูปปุ่มเกม
+// ⭐ Import รูปปุ่ม
+import btnLearn from '../../assets/images/buttons/btn_learn.png'; 
+import btnGame from '../../assets/images/buttons/btn_game.png';   
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -22,20 +22,20 @@ function FamilyMenuPage({ isMuted }) {
     { 
       id: 1, 
       image: btnLearn, 
-      path: "/family/learn", // ลิงค์ไปหน้าเรียน (เดี๋ยวไปเพิ่ม Route ใน App.jsx)
+      path: "/family/learn", 
       title: "Family Vocabulary" 
     },
     { 
       id: 2, 
       image: btnGame, 
-      path: "/family/game", // ลิงค์ไปหน้าเกม (เดี๋ยวไปเพิ่ม Route ใน App.jsx)
+      path: "/family/game", 
       title: "Family Game" 
     },
   ];
 
   return (
     <div 
-      className="min-h-screen w-full flex flex-col items-center py-6"
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -43,29 +43,32 @@ function FamilyMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* ปุ่มย้อนกลับ */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
+      {/* 1. ปุ่มย้อนกลับ (ตำแหน่งมาตรฐาน) */}
+      <div className="absolute top-8 left-4 z-50 md:top-40 md:left-70">
          <button 
           onClick={() => navigate('/alphabet')} 
           className="
-            group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all
+             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
           "
         >
-          <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"></span>
-          <span className="hidden md:inline font-black text-lg">ย้อนกลับ</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          <span className="font-black text-lg md:text-xl">ย้อนกลับ</span>
         </button>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] gap-10 px-4 -mt-10">
+      {/* 2. เนื้อหาหลัก */}
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] gap-10 px-4 -mt-20 md:-mt-32">
         
         {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-orange-400 shadow-[0_6px_0_#fb923c] mb-6">
-            <h1 className="text-3xl md:text-5xl font-black text-gray-700 tracking-wide flex items-center gap-3">
+        <div className="relative z-10 bg-orange-400/80 px-12 py-4 rounded-full border-[6px] border-white shadow-lg animate-bounce-slow">
+            <h1 className="text-4xl md:text-6xl font-black text-white drop-shadow-md tracking-wide">
               👨‍👩‍👧‍👦 Family (ครอบครัว)
             </h1>
         </div>
 
-        {/* ปุ่มเมนู 2 ปุ่มใหญ่ */}
+        {/* 3. ปุ่มเมนู 2 ปุ่มใหญ่ (Grid) */}
         <div className="flex flex-wrap justify-center gap-10 md:gap-20 w-full">
             {menuItems.map((item) => (
               <div 
@@ -77,10 +80,11 @@ function FamilyMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่มใหญ่ */
-                  w-[200px] h-[200px] 
-                  md:w-[300px] md:h-[300px]
-                  /* Animation */
+                  
+                  /* ⭐ ปุ่มใหญ่สะใจ (แบบหน้าเรื่องสี/ABC) */
+                  w-[260px] h-[260px]        /* มือถือ */
+                  md:w-[400px] md:h-[400px]  /* จอคอม */
+
                   transition-transform duration-300 cubic-bezier(0.34, 1.56, 0.64, 1)
                   hover:scale-110 hover:-rotate-2
                   active:scale-95 active:rotate-0
@@ -89,17 +93,17 @@ function FamilyMenuPage({ isMuted }) {
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="
-                    w-full h-full object-contain
-                    drop-shadow-lg group-hover:drop-shadow-2xl
-                    transition-all duration-300
-                  "
+                  className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
                 />
               </div>
             ))}
         </div>
 
       </div>
+
+      <style>{`
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+      `}</style>
     </div>
   );
 }

@@ -50,7 +50,7 @@ function ArtMenuPage({ isMuted }) {
       }}
     >
       {/* ปุ่มย้อนกลับ */}
-      <div className="absolute top-8 left-4 z-20 md:top-32 md:left-10"> 
+      <div className="absolute top-8 left-4 z-20 md:top-32 md:left-40"> 
          <button 
           onClick={() => navigate('/')} 
           className="

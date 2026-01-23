@@ -35,7 +35,7 @@ import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
 // --- โซนคณิตศาสตร์ ---
 import MathMenuPage from "./components/math/MathMenuPage";
 
-// --- โซนวิทยาศาสตร์ (เพิ่มใหม่) ---
+// --- โซนวิทยาศาสตร์ ---
 import ScienceMenuPage from "./components/science/ScienceMenuPage";
 
 // --- โซนสังคมศึกษา ---
@@ -58,6 +58,9 @@ import AseanGameFlagsPage from "./components/asean/AseanGameFlagsPage";
 import AseanGameFlowersPage from "./components/asean/AseanGameFlowersPage";
 import AseanGameDressPage from "./components/asean/AseanGameDressPage";
 import AseanGameGreetingPage from "./components/asean/AseanGameGreetingPage";
+
+// --- โซน Phonics (เพิ่มใหม่) ---
+import PhonicsMenuPage from "./components/phonics/PhonicsMenuPage";
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from "./components/ColorsMenuPage";
@@ -100,7 +103,7 @@ function HomeMenu({ isMuted }) {
     } else if (item.title === "คณิตศาสตร์") {
       navigate("/math");
     } else if (item.title === "วิทยาศาสตร์") {
-      navigate("/science"); // เพิ่มลิ้งค์ไปหน้าวิทยาศาสตร์
+      navigate("/science");
     } else if (item.title === "สังคมศึกษา") {
       navigate("/social");
     } else if (item.title === "ศิลปะ") {
@@ -109,6 +112,8 @@ function HomeMenu({ isMuted }) {
       navigate("/stories");
     } else if (item.title === "อาเซียน") {
       navigate("/asean");
+    } else if (item.title === "Phonics") {
+      navigate("/phonics"); // ✅ เพิ่มลิ้งค์ไปหน้า Phonics
     } else {
       alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`);
     }
@@ -211,7 +216,7 @@ function App() {
         {/* --- โซนคณิตศาสตร์ --- */}
         <Route path="/math" element={<MathMenuPage isMuted={isMuted} />} />
 
-        {/* --- โซนวิทยาศาสตร์ (เพิ่มใหม่) --- */}
+        {/* --- โซนวิทยาศาสตร์ --- */}
         <Route path="/science" element={<ScienceMenuPage isMuted={isMuted} />} />
 
         {/* --- โซนสังคมศึกษา --- */}
@@ -234,6 +239,9 @@ function App() {
         <Route path="/asean/asean-flowers" element={<AseanGameFlowersPage isMuted={isMuted} />} />
         <Route path="/asean/asean-dress" element={<AseanGameDressPage isMuted={isMuted} />} />
         <Route path="/asean/asean-greeting" element={<AseanGameGreetingPage isMuted={isMuted} />} />
+
+        {/* --- โซน Phonics --- */}
+        <Route path="/phonics" element={<PhonicsMenuPage isMuted={isMuted} />} />
 
         {/* --- โซนอื่นๆ --- */}
         <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />

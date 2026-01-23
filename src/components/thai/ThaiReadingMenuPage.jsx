@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// Import รูปปุ่ม (เหลือ 3 ปุ่ม)
+// Import รูปปุ่ม (3 ปุ่ม)
 import btnConsonant from '../../assets/images/thai/btn_read_consonant.png'; 
 import btnTone from '../../assets/images/thai/btn_read_tone.png';           
 import btnVowel from '../../assets/images/thai/btn_read_vowel.png';         
@@ -19,7 +19,6 @@ function ThaiReadingMenuPage({ isMuted }) {
     }
   };
 
-  // ❌ ลบปุ่มเกมออกแล้ว
   const menuItems = [
     { id: 1, image: btnConsonant, path: "/thai-alphabet/read-consonant", title: "พยัญชนะไทย" },
     { id: 2, image: btnTone, path: "/thai-alphabet/read-tone", title: "วรรณยุกต์" },
@@ -28,35 +27,72 @@ function ThaiReadingMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="min-h-screen w-full flex flex-col items-center py-6"
-      style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      style={{ 
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: '100% 100%', 
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed', 
+      }}
     >
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
+      {/* 1. ปุ่มย้อนกลับ (ตำแหน่งมาตรฐาน) */}
+      <div className="absolute top-8 left-4 z-50 md:top-40 md:left-70">
          <button 
-          onClick={() => navigate('/thai-alphabet')} 
-          className="bg-white text-orange-500 px-4 py-2 rounded-full shadow-md border-4 border-white hover:scale-105 transition-all flex items-center gap-2 font-black"
+          onClick={() => navigate('/thai-alphabet')} // กลับไปหน้าเมนูไทย
+          className="
+             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
+          "
         >
-          <span>◀</span> ย้อนกลับ
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          <span className="font-black text-lg md:text-xl">ย้อนกลับ</span>
         </button>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center w-full gap-10 -mt-10">
-        <h1 className="text-4xl md:text-6xl font-black text-white bg-orange-400/80 px-12 py-4 rounded-full border-4 border-white">
-           📖 ฝึกอ่าน
-        </h1>
+      {/* 2. เนื้อหาหลัก */}
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10">
+        
+        {/* หัวข้อ */}
+        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
+            <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
+              📖 ฝึกอ่าน
+            </h1>
+        </div>
 
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+        {/* Grid เมนู 3 ปุ่ม */}
+        <div className="flex flex-wrap justify-center content-center gap-6 md:gap-12 w-full max-w-[95rem]">
             {menuItems.map((item) => (
-              <div
+              <div 
                 key={item.id}
-                onClick={() => { playClick(); navigate(item.path); }}
-                className="group relative cursor-pointer w-[160px] h-[160px] md:w-[240px] md:h-[240px] hover:scale-110 transition-transform"
+                onClick={() => {
+                  playClick();
+                  if (item.path) navigate(item.path);
+                }}
+                className="
+                  group relative cursor-pointer
+                  flex items-center justify-center
+                  /* ⭐ ขนาดปุ่มใหญ่มาตรฐาน */
+                  w-auto 
+                  h-[180px]      
+                  md:h-[300px]   
+                  
+                  transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
+                "
               >
-                <img src={item.image} alt={item.title} className="w-full h-full object-contain drop-shadow-lg" />
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
+                />
               </div>
             ))}
         </div>
       </div>
+
+      <style>{`
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+      `}</style>
     </div>
   );
 }
