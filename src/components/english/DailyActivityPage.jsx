@@ -2,19 +2,19 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/bg.png";
 
-/* Import รูปภาพ
+//Import รูปภาพ
 import imgWakeUp from '../../assets/images/daily/wakeup.png';    
 import imgafter from '../../assets/images/daily/after.png';     
 import imggametime from '../../assets/images/daily/gametime.png';    
 import imgnight from '../../assets/images/daily/night.png';     
-import imgSchool from '../../assets/images/daily/school.png';    */
+import imgSchool from '../../assets/images/daily/school.png';    
 
-/* Import วิดีโอ
+//Import วิดีโอ
 import vidWakeUp from '../../assets/videos/daily/wakeup.mp4';
 import vidafter from '../../assets/videos/daily/after.mp4';
 import vidgametime from '../../assets/videos/daily/gametime.mp4';
 import vidnight from '../../assets/videos/daily/night.mp4';
-import vidSchool from '../../assets/videos/daily/school.mp4';*/
+import vidSchool from '../../assets/videos/daily/school.mp4';
 
 const clickSound = new Audio("/sounds/click.mp3");
 
