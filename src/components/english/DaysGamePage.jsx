@@ -59,7 +59,7 @@ function DaysGamePage() {
           <iframe
             ref={iframeRef}
             title="Asean Godot Game"
-            src="/game/english/english-put-in-order/index.html"
+            src="/game/english/english-day/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />

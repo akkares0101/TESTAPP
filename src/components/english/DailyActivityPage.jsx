@@ -16,7 +16,7 @@ import vidgametime from '../../assets/videos/daily/gametime.mp4';
 import vidnight from '../../assets/videos/daily/night.mp4';
 import vidSchool from '../../assets/videos/daily/school.mp4';
 
-const clickSound = new Audio("/sounds/click.mp3");
+const clickSound = new Audio("/sounds/click.mp3");//
 
 function DailyActivityPage({ isMuted }) {
   const navigate = useNavigate();
