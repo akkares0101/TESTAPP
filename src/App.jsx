@@ -34,6 +34,12 @@ import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
 
 // --- โซนคณิตศาสตร์ ---
 import MathMenuPage from "./components/math/MathMenuPage";
+import MathCountingPage from "./components/math/MathCountingPage";
+import MathReadEngPage from "./components/math/MathReadEngPage";
+import MathReadArabicPage from "./components/math/MathReadArabicPage";
+import MathReadThaiPage from "./components/math/MathReadThaiPage";
+import MathWritingPage from "./components/math/MathWritingPage";
+import MathMoneyPage from "./components/math/MathMoneyPage";
 
 // --- โซนวิทยาศาสตร์ ---
 import ScienceMenuPage from "./components/science/ScienceMenuPage";
@@ -61,6 +67,11 @@ import AseanGameGreetingPage from "./components/asean/AseanGameGreetingPage";
 
 // --- โซน Phonics (เพิ่มใหม่) ---
 import PhonicsMenuPage from "./components/phonics/PhonicsMenuPage";
+import PhonicsSoundPage from "./components/phonics/PhonicsSoundPage";
+import PhonicsMappingPage from "./components/phonics/PhonicsMappingPage";
+import PhonicsVowelsPage from "./components/phonics/PhonicsVowelsPage";
+import PhonicsSpellingPage from "./components/phonics/PhonicsSpellingPage";
+import PhonicsReadingPage from "./components/phonics/PhonicsReadingPage";
 
 // --- โซนอื่นๆ ---
 import ColorsMenuPage from "./components/ColorsMenuPage";
@@ -113,7 +124,7 @@ function HomeMenu({ isMuted }) {
     } else if (item.title === "อาเซียน") {
       navigate("/asean");
     } else if (item.title === "Phonics") {
-      navigate("/phonics"); // ✅ เพิ่มลิ้งค์ไปหน้า Phonics
+      navigate("/phonics"); 
     } else {
       alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`);
     }
@@ -215,7 +226,12 @@ function App() {
 
         {/* --- โซนคณิตศาสตร์ --- */}
         <Route path="/math" element={<MathMenuPage isMuted={isMuted} />} />
-
+        <Route path="/math/counting" element={<MathCountingPage isMuted={isMuted} />} />
+        <Route path="/math/read-eng" element={<MathReadEngPage isMuted={isMuted} />} />
+        <Route path="/math/read-arabic" element={<MathReadArabicPage isMuted={isMuted} />} />
+        <Route path="/math/read-thai" element={<MathReadThaiPage isMuted={isMuted} />} />
+        <Route path="/math/writing" element={<MathWritingPage isMuted={isMuted} />} />
+        <Route path="/math/money" element={<MathMoneyPage isMuted={isMuted} />} />
         {/* --- โซนวิทยาศาสตร์ --- */}
         <Route path="/science" element={<ScienceMenuPage isMuted={isMuted} />} />
 
@@ -242,6 +258,11 @@ function App() {
 
         {/* --- โซน Phonics --- */}
         <Route path="/phonics" element={<PhonicsMenuPage isMuted={isMuted} />} />
+        <Route path="/phonics/sounds" element={<PhonicsSoundPage isMuted={isMuted} />} />
+        <Route path="/phonics/mapping" element={<PhonicsMappingPage isMuted={isMuted} />} />
+        <Route path="/phonics/vowels" element={<PhonicsVowelsPage isMuted={isMuted} />} />
+        <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} />} />
+        <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} />} />
 
         {/* --- โซนอื่นๆ --- */}
         <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
