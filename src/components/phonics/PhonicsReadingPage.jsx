@@ -43,20 +43,7 @@ function PhonicsReadingPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. ปุ่มย้อนกลับ */}
-      <div className="absolute top-8 left-4 z-50 md:top-16 md:left-10">
-         <button 
-          onClick={() => navigate('/phonics')} 
-          className="
-             group flex items-center gap-3 bg-white text-purple-600 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-purple-200 hover:scale-105 active:scale-95 transition-all
-          "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          <span className="font-black text-lg md:text-xl">กลับเมนู</span>
-        </button>
-      </div>
+
 
       {/* 2. เนื้อหาหลัก */}
       <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-24 md:pt-20 overflow-y-auto pb-10">

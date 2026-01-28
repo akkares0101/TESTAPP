@@ -58,38 +58,6 @@ function FamilyLearningPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* --- Header --- */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-between items-center">
-         {/* ปุ่มย้อนกลับ */}
-         <button 
-          onClick={() => navigate('/family')} 
-          className="
-            group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all
-          "
-        >
-          <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center"></span>
-          <span className="hidden md:inline font-black text-lg">Back</span>
-        </button>
-
-        {/* หัวข้อหน้า */}
-        <div className="bg-white/90 backdrop-blur-md px-8 py-2 rounded-full border-4 border-orange-400 shadow-lg hidden md:block">
-           <h1 className="text-3xl font-black text-orange-500 tracking-wide">
-             👨‍👩‍👧‍👦 Family Members
-           </h1>
-        </div>
-
-        {/* ปุ่มไปหน้าเกม (ทางลัด) */}
-        <button 
-          onClick={() => navigate('/family/game')} 
-          className="
-            group flex items-center gap-2 bg-green-500 text-white px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:bg-green-600 active:scale-95 transition-all
-          "
-        >
-          <span className="font-black text-lg">Play Game</span>
-          <span className="bg-white text-green-500 rounded-full w-8 h-8 flex items-center justify-center">▶</span>
-        </button>
-      </div>
-
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-6xl px-4 py-8">
         

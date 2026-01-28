@@ -74,33 +74,6 @@ function AlphabetMenuPage({ isMuted }) {
         backgroundPosition: 'center',
       }}
     >
-      {/* ปุ่มย้อนกลับ: วางลอย ไม่กินพื้นที่ layout */}
-      <div className="absolute top-40 left-100 z-20">
-        <button
-          onClick={() => navigate('/')}
-          className="
-            group flex items-center gap-2
-            bg-white text-orange-500
-            px-5 py-3
-            rounded-full shadow-md border-4 border-white
-            hover:border-orange-100 active:scale-95 transition-all
-          "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-7 h-7 group-hover:-translate-x-1 transition-transform"
-          >
-            <path
-              fillRule="evenodd"
-              d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.114 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <span className="hidden md:inline font-black text-xl">กลับหน้าหลัก</span>
-        </button>
-      </div>
 
       {/* เนื้อหากลางจอให้พอดี 4K */}
       <div className="flex-1 w-full flex flex-col items-center justify-center px-6">
