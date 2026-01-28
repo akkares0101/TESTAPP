@@ -43,18 +43,6 @@ function DaysMenuPage({ isMuted }) {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* ปุ่มย้อนกลับ */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
-        <button
-          onClick={() => navigate("/alphabet")}
-          className="bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all flex items-center gap-2"
-        >
-          <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
-          
-          </span>
-          <span className="hidden md:inline font-black text-lg">ย้อนกลับ</span>
-        </button>
-      </div>
 
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] gap-10 px-4 -mt-10">
         {/* หัวข้อ */}

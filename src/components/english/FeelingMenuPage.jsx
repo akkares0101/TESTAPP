@@ -28,19 +28,6 @@ function FeelingMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. ปุ่มย้อนกลับ */}
-      <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
-         <button 
-          onClick={() => navigate('/alphabet')} 
-          className="
-            group flex items-center gap-2 bg-white text-blue-500 px-4 py-2 md:px-6 md:py-3 rounded-[2rem] shadow-lg border-4 border-white hover:border-blue-200 hover:scale-105 active:scale-95 transition-all
-          "
-        >
-          <span className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center"></span>
-          <span className="hidden md:inline font-black text-xl">หน้าหลัก</span>
-        </button>
-      </div>
-
       <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-10 px-4 mt-8">
         
         {/* 2. หัวข้อ "Feeling and Movement" */}

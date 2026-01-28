@@ -69,27 +69,6 @@ function ColorsGamePage({ isMuted }) {
       
       {/* Header */}
       <div className="w-full max-w-4xl px-4 mt-2 mb-4 flex justify-between items-center z-10">
-         
-         {/* ⭐ แก้ไข: ปุ่มย้อนกลับแบบใหม่ (แคปซูล + ไอคอน SVG) */}
-         <button 
-          onClick={() => navigate(-1)} 
-          className="
-            group
-            flex items-center gap-2
-            bg-white text-orange-500 
-            px-4 py-2 md:px-5 md:py-2
-            rounded-full 
-            shadow-md
-            border-4 border-white hover:border-orange-100
-            active:scale-95 transition-all
-          "
-        >
-          {/* ไอคอนลูกศร SVG */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 group-hover:-translate-x-1 transition-transform">
-            <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clipRule="evenodd" />
-          </svg>
-          <span className="hidden md:inline font-black text-lg">กลับ</span>
-        </button>
 
         <div className="bg-white/90 px-8 py-2 rounded-full shadow-lg border-[3px] border-white backdrop-blur-sm">
            <h1 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 tracking-wider">
