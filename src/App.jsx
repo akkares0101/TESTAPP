@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 // Import ภาพพื้นหลังและ Components หลัก
 import bgImage from "./assets/images/bg.png";
 import MenuCard from "./components/MenuCard";
-import LessonPage from "./components/LessonPage"; 
+import LessonPage from "./components/LessonPage";
 
 // ================== Import โซนภาษาอังกฤษ ==================
 import DifferentSoundGamePage from "./components/english/DifferentSoundGamePage";
@@ -40,6 +46,7 @@ import MathReadArabicPage from "./components/math/MathReadArabicPage";
 import MathReadThaiPage from "./components/math/MathReadThaiPage";
 import MathWritingPage from "./components/math/MathWritingPage";
 import MathMoneyPage from "./components/math/MathMoneyPage";
+import MathGamePage from "./components/math/MathGamePage";
 
 // ================== Import โซนวิทยาศาสตร์ ==================
 import ScienceMenuPage from "./components/science/ScienceMenuPage";
@@ -114,10 +121,10 @@ const menus = [
 // --- Component: ปุ่มย้อนกลับกลาง (Global Back Button) ---
 function GlobalBackButton({ isMuted }) {
   const navigate = useNavigate();
-  const location = useLocation(); 
-  const clickSound = new Audio('/sounds/click.mp3');
+  const location = useLocation();
+  const clickSound = new Audio("/sounds/click.mp3");
 
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return null;
   }
 
@@ -146,8 +153,19 @@ function GlobalBackButton({ isMuted }) {
         "
         title="ย้อนกลับ"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="w-8 h-8 md:w-9 md:h-9">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={4}
+          stroke="currentColor"
+          className="w-8 h-8 md:w-9 md:h-9"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
         </svg>
       </button>
     </div>
@@ -157,10 +175,10 @@ function GlobalBackButton({ isMuted }) {
 // --- Component: ปุ่ม Home กลาง (Global Home Button) ---
 function GlobalHomeButton({ isMuted }) {
   const navigate = useNavigate();
-  const location = useLocation(); 
-  const clickSound = new Audio('/sounds/click.mp3');
+  const location = useLocation();
+  const clickSound = new Audio("/sounds/click.mp3");
 
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return null;
   }
 
@@ -169,7 +187,7 @@ function GlobalHomeButton({ isMuted }) {
       clickSound.currentTime = 0;
       clickSound.play().catch(() => {});
     }
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -189,7 +207,12 @@ function GlobalHomeButton({ isMuted }) {
         "
         title="กลับหน้าหลัก"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 md:w-9 md:h-9">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-8 h-8 md:w-9 md:h-9"
+        >
           <path d="M11.47 3.84a.75.75 0 011.06 0l8.635 8.635a.75.75 0 11-1.06 1.06l-2.035-2.035V20.25a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V11.49l-2.035 2.035a.75.75 0 11-1.06-1.06l8.635-8.635z" />
           <path d="M11.25 19.5h1.5v-6h-1.5v6z" />
         </svg>
@@ -229,11 +252,13 @@ function HomeMenu({ isMuted }) {
       }}
     >
       <div className="container mx-auto px-4 z-10 flex flex-col items-center">
-        <div className="
+        <div
+          className="
            flex flex-wrap justify-center items-center
            gap-6 md:gap-10 2xl:gap-14
            max-w-[80rem] 2xl:max-w-[100rem]
-        ">
+        "
+        >
           {menus.map((item) => (
             <MenuCard
               key={item.id}
@@ -261,7 +286,9 @@ function App() {
       if (isMuted || isVideoPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play().catch((error) => console.log("Audio play failed:", error));
+        audioRef.current
+          .play()
+          .catch((error) => console.log("Audio play failed:", error));
       }
     }
   }, [isMuted, isVideoPlaying]);
@@ -270,6 +297,7 @@ function App() {
     if (audioRef.current) audioRef.current.volume = 0.3;
   }, []);
 
+  // ฟังก์ชันซูม
   const handleZoomIn = () => setZoomLevel(prev => Math.min(prev + 0.1, 2.0));
   const handleZoomOut = () => setZoomLevel(prev => Math.max(prev - 0.1, 0.5));
   const handleResetZoom = () => setZoomLevel(1);
@@ -280,9 +308,27 @@ function App() {
 
       {/* --- Control Panel (มุมขวาบน) --- */}
       <div className="fixed top-4 right-4 z-[9999] flex items-center gap-2 bg-white/90 backdrop-blur px-2 py-2 rounded-full shadow-lg border-2 border-gray-200">
-        <button onClick={handleZoomOut} className="w-8 h-8 md:w-10 md:h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold active:scale-95 transition-all" title="ย่อขนาด">-</button>
-        <button onClick={handleResetZoom} className="min-w-[50px] text-center font-bold text-gray-700 text-sm md:text-base hover:text-blue-500" title="คืนค่าเดิม">{Math.round(zoomLevel * 100)}%</button>
-        <button onClick={handleZoomIn} className="w-8 h-8 md:w-10 md:h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold active:scale-95 transition-all" title="ขยายขนาด">+</button>
+        <button
+          onClick={handleZoomOut}
+          className="w-8 h-8 md:w-10 md:h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold active:scale-95 transition-all"
+          title="ย่อขนาด"
+        >
+          -
+        </button>
+        <button
+          onClick={handleResetZoom}
+          className="min-w-[50px] text-center font-bold text-gray-700 text-sm md:text-base hover:text-blue-500"
+          title="คืนค่าเดิม"
+        >
+          {Math.round(zoomLevel * 100)}%
+        </button>
+        <button
+          onClick={handleZoomIn}
+          className="w-8 h-8 md:w-10 md:h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold active:scale-95 transition-all"
+          title="ขยายขนาด"
+        >
+          +
+        </button>
         <div className="w-[1px] h-6 bg-gray-300 mx-1"></div>
         <button
           onClick={() => setIsMuted(!isMuted)}
@@ -298,6 +344,7 @@ function App() {
       <GlobalHomeButton isMuted={isMuted} />
       <GlobalBackButton isMuted={isMuted} />
 
+      {/* --- พื้นที่แสดงผลหลัก (Zoomable) --- */}
       <div 
         style={{ 
           zoom: zoomLevel, 
@@ -308,7 +355,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeMenu isMuted={isMuted} />} />
 
-          {/* ... Routes เดิมทั้งหมด ... */}
+          {/* ================= โซนภาษาอังกฤษ ================= */}
           <Route path="/alphabet" element={<AlphabetMenuPage isMuted={isMuted} />} />
           <Route path="/alphabet/select" element={<ABCSelectionPage isMuted={isMuted} />} />
           <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} />} />
@@ -324,6 +371,8 @@ function App() {
           <Route path="/days" element={<DaysMenuPage isMuted={isMuted} />} />
           <Route path="/days/learn" element={<DaysLearningPage isMuted={isMuted} />} />
           <Route path="/days/game" element={<DaysGamePage isMuted={isMuted} />} />
+
+          {/* ================= โซนภาษาไทย ================= */}
           <Route path="/thai-alphabet" element={<ThaiAlphabetPage isMuted={isMuted} />} />
           <Route path="/thai/writing" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
           <Route path="/thai/reading" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
@@ -334,6 +383,8 @@ function App() {
           <Route path="/thai/game" element={<ThaiGameMenuPage isMuted={isMuted} />} />
           <Route path="/thai/game/guess" element={<ThaiGamePage isMuted={isMuted} />} />
           <Route path="/thai/game/match" element={<ThaiMatchingGamePage isMuted={isMuted} />} />
+
+          {/* ================= โซนคณิตศาสตร์ ================= */}
           <Route path="/math" element={<MathMenuPage isMuted={isMuted} />} />
           <Route path="/math/counting" element={<MathCountingPage isMuted={isMuted} />} />
           <Route path="/math/read-eng" element={<MathReadEngPage isMuted={isMuted} />} />
@@ -341,9 +392,15 @@ function App() {
           <Route path="/math/read-thai" element={<MathReadThaiPage isMuted={isMuted} />} />
           <Route path="/math/writing" element={<MathWritingPage isMuted={isMuted} />} />
           <Route path="/math/money" element={<MathMoneyPage isMuted={isMuted} />} />
+
+          {/* ================= โซนวิทยาศาสตร์ ================= */}
           <Route path="/science" element={<ScienceMenuPage isMuted={isMuted} />} />
           <Route path="/science/intro" element={<ScienceIntroPage isMuted={isMuted} />} />
+
+          {/* ================= โซนสังคมศึกษา ================= */}
           <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
+
+          {/* ================= โซนศิลปะ ================= */}
           <Route path="/art" element={<ArtMenuPage isMuted={isMuted} />} />
           <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
           <Route path="/asean/flags" element={<AseanNationalFlagsPage isMuted={isMuted} />} />
@@ -358,38 +415,41 @@ function App() {
           <Route path="/asean/asean-flowers" element={<AseanGameFlowersPage isMuted={isMuted} />} />
           <Route path="/asean/asean-dress" element={<AseanGameDressPage isMuted={isMuted} />} />
           <Route path="/asean/asean-greeting" element={<AseanGameGreetingPage isMuted={isMuted} />} />
+
+          {/* ================= โซน Phonics ================= */}
           <Route path="/phonics" element={<PhonicsMenuPage isMuted={isMuted} />} />
           <Route path="/phonics/sounds" element={<PhonicsSoundPage isMuted={isMuted} />} />
           <Route path="/phonics/mapping" element={<PhonicsMappingPage isMuted={isMuted} />} />
           <Route path="/phonics/vowels" element={<PhonicsVowelsPage isMuted={isMuted} />} />
           <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} />} />
           <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} />} />
+
+          {/* ================= โซนอื่นๆ (สี, นิทาน) ================= */}
           <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
           <Route path="/colors/learn" element={<ColorsLearningPage isMuted={isMuted} />} />
           <Route path="/colors/game" element={<ColorsGamePage isMuted={isMuted} />} />
           <Route path="/stories" element={<StoryMenuPage isMuted={isMuted} />} />
           
-          {/* ✅ โซนบัตรคำศัพท์ (ใหม่) */}
-          <Route path="/flashcard" element={<FlashcardMenuPage isMuted={isMuted} />} />
-          <Route path="/flashcard/play" element={<FlashcardPlayerPage isMuted={isMuted} />} />
-
+          {/* ================= หน้าเล่นวิดีโอ (Lesson & Story Player) ================= */}
+          {/* ส่ง setIsVideoPlaying เพื่อปิดเพลงพื้นหลังตอนเล่นวิดีโอ */}
           <Route 
             path="/stories/watch" 
             element={
-              <StoryPlayerPage 
-                isMuted={isMuted} 
-                onVideoStateChange={setIsVideoPlaying} 
+              <StoryPlayerPage
+                isMuted={isMuted}
+                onVideoStateChange={setIsVideoPlaying}
               />
-            } 
+            }
           />
+
           <Route 
             path="/lesson" 
             element={
-              <LessonPage 
-                isMuted={isMuted} 
-                onVideoStateChange={setIsVideoPlaying} 
+              <LessonPage
+                isMuted={isMuted}
+                onVideoStateChange={setIsVideoPlaying}
               />
-            } 
+            }
           />
         </Routes>
       </div>
