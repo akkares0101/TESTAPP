@@ -13,24 +13,15 @@ function ColorsGamePage({ isMuted }) {
   const colors = [
     // --- โทนร้อน ---
     { id: 'red', name: 'RED', bg: 'bg-red-500', text: 'text-white', border: 'border-red-600' },
-    { id: 'rose', name: 'ROSE', bg: 'bg-rose-500', text: 'text-white', border: 'border-rose-600' },
     { id: 'orange', name: 'ORANGE', bg: 'bg-orange-500', text: 'text-white', border: 'border-orange-600' },
-    { id: 'amber', name: 'AMBER', bg: 'bg-amber-500', text: 'text-white', border: 'border-amber-600' },
     { id: 'yellow', name: 'YELLOW', bg: 'bg-yellow-400', text: 'text-yellow-900', border: 'border-yellow-500' },
     
     // --- โทนเย็น/เขียว ---
-    { id: 'lime', name: 'LIME', bg: 'bg-lime-400', text: 'text-lime-900', border: 'border-lime-500' },
-    { id: 'green', name: 'GREEN', bg: 'bg-green-500', text: 'text-white', border: 'border-green-600' },
-    { id: 'emerald', name: 'EMERALD', bg: 'bg-emerald-500', text: 'text-white', border: 'border-emerald-600' },
-    { id: 'teal', name: 'TEAL', bg: 'bg-teal-500', text: 'text-white', border: 'border-teal-600' },
-    { id: 'cyan', name: 'CYAN', bg: 'bg-cyan-400', text: 'text-cyan-900', border: 'border-cyan-500' },
-    
+    { id: 'green', name: 'GREEN', bg: 'bg-green-500', text: 'text-white', border: 'border-green-600' },    
     // --- โทนฟ้า/ม่วง ---
     { id: 'sky', name: 'SKY', bg: 'bg-sky-400', text: 'text-white', border: 'border-sky-500' },
     { id: 'blue', name: 'BLUE', bg: 'bg-blue-600', text: 'text-white', border: 'border-blue-700' },
-    { id: 'indigo', name: 'INDIGO', bg: 'bg-indigo-600', text: 'text-white', border: 'border-indigo-700' },
     { id: 'purple', name: 'PURPLE', bg: 'bg-purple-500', text: 'text-white', border: 'border-purple-600' },
-    { id: 'fuchsia', name: 'FUCHSIA', bg: 'bg-fuchsia-500', text: 'text-white', border: 'border-fuchsia-600' },
     { id: 'pink', name: 'PINK', bg: 'bg-pink-400', text: 'text-white', border: 'border-pink-500' },
 
     // --- สีพื้นฐาน ---
