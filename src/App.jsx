@@ -102,7 +102,7 @@ import sci from "./assets/images/sci.png";
 import draw from "./assets/images/draw.png";
 import Phonics from "./assets/images/Phonics.png";
 import asean from "./assets/images/asean.png";
-import flashcard from "./assets/images/flashcard.png"; // ⚠️ อย่าลืมหารูป flashcard.png มาใส่นะครับ
+import flashcard from "./assets/images/flashcard.png"; 
 
 // ข้อมูลเมนูหน้าแรก
 const menus = [
@@ -115,7 +115,7 @@ const menus = [
   { id: 7, title: "ศิลปะ", image: draw },
   { id: 8, title: "Phonics", image: Phonics },
   { id: 9, title: "อาเซียน", image: asean },
-  { id: 10, title: "บัตรคำศัพท์", image: flashcard }, // ✅ เพิ่มเมนูใหม่ตรงนี้
+  { id: 10, title: "บัตรคำศัพท์", image: flashcard },
 ];
 
 // --- Component: ปุ่มย้อนกลับกลาง (Global Back Button) ---
@@ -226,7 +226,6 @@ function HomeMenu({ isMuted }) {
   const navigate = useNavigate();
 
   const handleMenuClick = (item) => {
-    // ✅ เพิ่มเงื่อนไขสำหรับปุ่มบัตรคำศัพท์
     if (item.title === "ภาษาอังกฤษ") navigate("/alphabet");
     else if (item.title === "ภาษาไทย") navigate("/thai-alphabet");
     else if (item.title === "คณิตศาสตร์") navigate("/math");
@@ -236,7 +235,7 @@ function HomeMenu({ isMuted }) {
     else if (item.title === "นิทานอีสป") navigate("/stories");
     else if (item.title === "อาเซียน") navigate("/asean");
     else if (item.title === "Phonics") navigate("/phonics");
-    else if (item.title === "บัตรคำศัพท์") navigate("/flashcard"); // ✅ ลิงก์ไปหน้าใหม่
+    else if (item.title === "บัตรคำศัพท์") navigate("/flashcard"); 
     else alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`);
   };
 
@@ -424,6 +423,10 @@ function App() {
           <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} />} />
           <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} />} />
 
+          {/* ================= โซนบัตรคำศัพท์ (เพิ่มใหม่) ================= */}
+          <Route path="/flashcard" element={<FlashcardMenuPage isMuted={isMuted} />} />
+          <Route path="/flashcard/play" element={<FlashcardPlayerPage isMuted={isMuted} />} />
+
           {/* ================= โซนอื่นๆ (สี, นิทาน) ================= */}
           <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
           <Route path="/colors/learn" element={<ColorsLearningPage isMuted={isMuted} />} />
@@ -431,7 +434,6 @@ function App() {
           <Route path="/stories" element={<StoryMenuPage isMuted={isMuted} />} />
           
           {/* ================= หน้าเล่นวิดีโอ (Lesson & Story Player) ================= */}
-          {/* ส่ง setIsVideoPlaying เพื่อปิดเพลงพื้นหลังตอนเล่นวิดีโอ */}
           <Route 
             path="/stories/watch" 
             element={
