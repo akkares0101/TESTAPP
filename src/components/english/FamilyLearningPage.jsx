@@ -37,7 +37,7 @@ function FamilyLearningPage({ isMuted }) {
   const speakWord = (text) => {
     if (!isMuted) {
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US'; // สำเนียงอังกฤษ
+      utterance.lang = 'en-U'; // สำเนียงอังกฤษ
       utterance.rate = 0.8; // พูดช้าลงนิดนึงให้ฟังชัด
       window.speechSynthesis.speak(utterance);
     }
