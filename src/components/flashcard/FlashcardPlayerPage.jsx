@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
 // --------------------------------------------------------
-// 1. ข้อมูลการจัดกลุ่ม (Group Config)
+// 1. ข้อมูลการจัดกลุ่ม (คงเดิม)
 // --------------------------------------------------------
 const categoryGroups = {
   food: [
@@ -51,60 +51,45 @@ const findGroupKey = (catId) => {
 };
 
 // --------------------------------------------------------
-// 2. ข้อมูลบัตรคำ (Image Data)
+// 2. ข้อมูลบัตรคำ (คงเดิม)
 // --------------------------------------------------------
 const flashcardData = {
-  // ======================================================
-  // 👮 หมวดอาชีพ (อัปเดตตามไฟล์ 2.png - 11.png ใน folder job)
-  // ======================================================
   jobs: [
-    { word: "Firefighter", thai: "นักดับเพลิง", image: "/images/flashcards/job/2.png", color: "bg-red-50" },
-    { word: "Teacher", thai: "คุณครู", image: "/images/flashcards/job/3.png", color: "bg-orange-50" },
-    { word: "Soldier", thai: "ทหาร", image: "/images/flashcards/job/4.png", color: "bg-green-50" },
-    { word: "Chef", thai: "แม่ครัว", image: "/images/flashcards/job/5.png", color: "bg-yellow-50" },
-    { word: "Astronaut", thai: "นักบินอวกาศ", image: "/images/flashcards/job/6.png", color: "bg-blue-50" },
-    { word: "Judge", thai: "ผู้พิพากษา", image: "/images/flashcards/job/7.png", color: "bg-stone-50" },
-    { word: "Nurse", thai: "พยาบาล", image: "/images/flashcards/job/8.png", color: "bg-pink-50" },
-    { word: "Farmer", thai: "ชาวนา", image: "/images/flashcards/job/9.png", color: "bg-yellow-100" },
-    { word: "Policeman", thai: "ตำรวจ", image: "/images/flashcards/job/10.png", color: "bg-gray-100" },
-    { word: "Doctor", thai: "หมอ", image: "/images/flashcards/job/11.png", color: "bg-blue-50" },
+    { word: "Firefighter", thai: "นักดับเพลิง", image: "/images/flashcards/job/2.png" },
+    { word: "Teacher", thai: "คุณครู", image: "/images/flashcards/job/3.png" },
+    { word: "Soldier", thai: "ทหาร", image: "/images/flashcards/job/4.png" },
+    { word: "Chef", thai: "แม่ครัว", image: "/images/flashcards/job/5.png" },
+    { word: "Astronaut", thai: "นักบินอวกาศ", image: "/images/flashcards/job/6.png" },
+    { word: "Judge", thai: "ผู้พิพากษา", image: "/images/flashcards/job/7.png" },
+    { word: "Nurse", thai: "พยาบาล", image: "/images/flashcards/job/8.png" },
+    { word: "Farmer", thai: "ชาวนา", image: "/images/flashcards/job/9.png" },
+    { word: "Policeman", thai: "ตำรวจ", image: "/images/flashcards/job/10.png" },
+    { word: "Doctor", thai: "หมอ", image: "/images/flashcards/job/11.png" },
   ],
-
-  // ======================================================
-  // 🌻 หมวดดอกไม้ (คงเดิม)
-  // ======================================================
   flowers: [
-    { word: "Rose", thai: "ดอกกุหลาบ", image: "/images/flashcards/flowers/2.png", color: "bg-red-50" },
-    { word: "Tulip", thai: "ดอกทิวลิป", image: "/images/flashcards/flowers/3.png", color: "bg-pink-50" },
-    { word: "Marigold", thai: "ดอกดาวเรือง", image: "/images/flashcards/flowers/4.png", color: "bg-yellow-50" },
-    { word: "Lily", thai: "ดอกลิลลี่", image: "/images/flashcards/flowers/5.png", color: "bg-pink-50" },
-    { word: "Sunflower", thai: "ดอกทานตะวัน", image: "/images/flashcards/flowers/6.png", color: "bg-yellow-100" },
-    { word: "Jasmine", thai: "ดอกมะลิ", image: "/images/flashcards/flowers/7.png", color: "bg-green-50" },
-    { word: "Hydrangea", thai: "ดอกไฮเดรนเยีย", image: "/images/flashcards/flowers/8.png", color: "bg-blue-50" },
-    { word: "Orchid", thai: "ดอกกล้วยไม้", image: "/images/flashcards/flowers/9.png", color: "bg-purple-50" },
-    { word: "Hibiscus", thai: "ดอกชบา", image: "/images/flashcards/flowers/10.png", color: "bg-red-50" },
-    { word: "Frangipani", thai: "ดอกลีลาวดี", image: "/images/flashcards/flowers/11.png", color: "bg-yellow-50" },
+    { word: "Rose", thai: "ดอกกุหลาบ", image: "/images/flashcards/flowers/2.png" },
+    { word: "Tulip", thai: "ดอกทิวลิป", image: "/images/flashcards/flowers/3.png" },
+    { word: "Marigold", thai: "ดอกดาวเรือง", image: "/images/flashcards/flowers/4.png" },
+    { word: "Lily", thai: "ดอกลิลลี่", image: "/images/flashcards/flowers/5.png" },
+    { word: "Sunflower", thai: "ดอกทานตะวัน", image: "/images/flashcards/flowers/6.png" },
+    { word: "Jasmine", thai: "ดอกมะลิ", image: "/images/flashcards/flowers/7.png" },
+    { word: "Hydrangea", thai: "ดอกไฮเดรนเยีย", image: "/images/flashcards/flowers/8.png" },
+    { word: "Orchid", thai: "ดอกกล้วยไม้", image: "/images/flashcards/flowers/9.png" },
+    { word: "Hibiscus", thai: "ดอกชบา", image: "/images/flashcards/flowers/10.png" },
+    { word: "Frangipani", thai: "ดอกลีลาวดี", image: "/images/flashcards/flowers/11.png" },
   ],
-
-  // ======================================================
-  // 🦋 หมวดแมลง (คงเดิม)
-  // ======================================================
   insects: [
-    { word: "Grasshopper", thai: "ตั๊กแตน", image: "/images/flashcards/bug/13.png", color: "bg-green-50" },
-    { word: "Mosquito", thai: "ยุง", image: "/images/flashcards/bug/14.png", color: "bg-gray-50" },
-    { word: "Ladybug", thai: "เต่าทอง", image: "/images/flashcards/bug/15.png", color: "bg-red-50" },
-    { word: "Ant", thai: "มด", image: "/images/flashcards/bug/16.png", color: "bg-red-50" },
-    { word: "Beetle", thai: "ด้วง", image: "/images/flashcards/bug/17.png", color: "bg-stone-50" },
-    { word: "Dragonfly", thai: "แมลงปอ", image: "/images/flashcards/bug/18.png", color: "bg-sky-50" },
-    { word: "Bee", thai: "ผึ้ง", image: "/images/flashcards/bug/19.png", color: "bg-yellow-50" },
-    { word: "Butterfly", thai: "ผีเสื้อ", image: "/images/flashcards/bug/20.png", color: "bg-yellow-50" },
-    { word: "Fly", thai: "แมลงวัน", image: "/images/flashcards/bug/21.png", color: "bg-gray-50" },
-    { word: "Cockroach", thai: "แมลงสาบ", image: "/images/flashcards/bug/22.png", color: "bg-stone-50" },
+    { word: "Grasshopper", thai: "ตั๊กแตน", image: "/images/flashcards/bug/13.png" },
+    { word: "Mosquito", thai: "ยุง", image: "/images/flashcards/bug/14.png" },
+    { word: "Ladybug", thai: "เต่าทอง", image: "/images/flashcards/bug/15.png" },
+    { word: "Ant", thai: "มด", image: "/images/flashcards/bug/16.png" },
+    { word: "Beetle", thai: "ด้วง", image: "/images/flashcards/bug/17.png" },
+    { word: "Dragonfly", thai: "แมลงปอ", image: "/images/flashcards/bug/18.png" },
+    { word: "Bee", thai: "ผึ้ง", image: "/images/flashcards/bug/19.png" },
+    { word: "Butterfly", thai: "ผีเสื้อ", image: "/images/flashcards/bug/20.png" },
+    { word: "Fly", thai: "แมลงวัน", image: "/images/flashcards/bug/21.png" },
+    { word: "Cockroach", thai: "แมลงสาบ", image: "/images/flashcards/bug/22.png" },
   ],
-
-  // ======================================================
-  // 🎨 หมวดสีและรูปร่าง (คงเดิม)
-  // ======================================================
   colors: [
     { word: "Red", thai: "สีแดง", image: "/images/flashcards/basic/3.png" },
     { word: "Blue", thai: "สีน้ำเงิน", image: "/images/flashcards/basic/4.png" },
@@ -144,10 +129,6 @@ const flashcardData = {
     { word: "Pentagonal", thai: "ปริซึมห้าเหลี่ยม", image: "/images/flashcards/basic/37.png" },
     { word: "Hexagonal", thai: "ปริซึมหกเหลี่ยม", image: "/images/flashcards/basic/38.png" },
   ],
-
-  // ======================================================
-  // 🚗 หมวดยานพาหนะ (คงเดิม)
-  // ======================================================
   vehicles_land: [
     { word: "Car", thai: "รถยนต์", image: "/images/flashcards/vehicle/2.png" },
     { word: "Train", thai: "รถไฟ", image: "/images/flashcards/vehicle/3.png" },
@@ -189,10 +170,6 @@ const flashcardData = {
     { word: "Hot Air Balloon", thai: "บอลลูน", image: "/images/flashcards/vehicle/35.png" },
     { word: "Jet", thai: "เครื่องบินเจ็ท", image: "/images/flashcards/vehicle/36.png" },
   ],
-
-  // ======================================================
-  // 🍱 หมวดอาหาร 5 หมู่ (คงเดิม)
-  // ======================================================
   food_protein: [
     { word: "Chicken", thai: "เนื้อไก่", image: "/images/flashcards/food/4.png" },
     { word: "Pork", thai: "เนื้อหมู", image: "/images/flashcards/food/5.png" },
@@ -252,8 +229,6 @@ const flashcardData = {
     { word: "Sesame Seeds", thai: "งา", image: "/images/flashcards/food/55.png" },
     { word: "Sunflower Seeds", thai: "เมล็ดทานตะวัน", image: "/images/flashcards/food/56.png" },
   ],
-
-  // --- 🌽 ผักผลไม้ (คงเดิม) ---
   vegetables: [
     { word: "Chili", thai: "พริก", image: "/images/flashcards/nature/2.png" },
     { word: "Onion", thai: "หอมหัวใหญ่", image: "/images/flashcards/nature/3.png" },
@@ -282,8 +257,6 @@ const flashcardData = {
     { word: "Mango", thai: "มะม่วง", image: "/images/flashcards/nature/24.png" },
     { word: "Grape", thai: "องุ่น", image: "/images/flashcards/nature/25.png" },
   ],
-
-  // --- 🐘 สัตว์ (คงเดิม) ---
   animals_land: [
     { word: "Dog", thai: "สุนัข", image: "/images/flashcards/land/dog.jpg" },
     { word: "Rabbit", thai: "กระต่าย", image: "/images/flashcards/land/rabbit.jpg" },
@@ -356,14 +329,15 @@ const flashcardData = {
   ],
 };
 
-// --- Single Flashcard (No Frame, Just Image) ---
+// --- Single Flashcard ---
 function SingleFlashcard({ card, id }) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div id={id} className="h-screen w-full flex-shrink-0 snap-start flex flex-col items-center justify-center relative p-4 pb-36 pt-40 md:pt-48"> 
+    <div id={id} className="h-screen w-full flex-shrink-0 snap-start flex flex-col items-center justify-center relative p-4 pb-48 pt-32"> 
       
-      <div className="w-full max-w-5xl aspect-video relative group flex items-center justify-center">
+      {/* ✅ ปรับขนาดบัตรคำหลักให้เล็กลง (max-w-3xl) */}
+      <div className="w-full max-w-3xl aspect-video relative group flex items-center justify-center">
           {!hasError ? (
             <img 
                 src={card.image}
@@ -378,7 +352,8 @@ function SingleFlashcard({ card, id }) {
           )}
       </div>
 
-      <div className="absolute bottom-40 animate-bounce pointer-events-none flex flex-col items-center opacity-80">
+      {/* บอกให้เลื่อนลง */}
+      <div className="absolute bottom-44 animate-bounce pointer-events-none flex flex-col items-center opacity-80 scale-75">
          <span className="text-white font-bold text-lg drop-shadow-md bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm mb-1">
             ถัดไป
          </span>
@@ -448,35 +423,34 @@ function FlashcardPlayerPage({ isMuted }) {
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
          <button 
             onClick={() => navigate(-1)}
-            className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-red-200 hover:bg-red-50 text-red-500 transition-transform active:scale-95"
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-red-200 hover:bg-red-50 text-red-500 transition-transform active:scale-95"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-7 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
           
           <button 
             onClick={() => setIsGridOpen(true)}
-            className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-500 transition-transform active:scale-95"
-            title="ดูทั้งหมด"
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-blue-200 hover:bg-blue-50 text-blue-500 transition-transform active:scale-95"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-7 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
             </svg>
           </button>
       </div>
 
-      {/* Tab Menu */}
-      <div className="absolute top-28 md:top-36 left-1/2 transform -translate-x-1/2 z-40 w-full max-w-4xl px-4 flex justify-center pointer-events-none">
-         <div className="pointer-events-auto bg-white/90 backdrop-blur-md rounded-full border border-white/50 p-1.5 flex gap-1 shadow-lg overflow-x-auto no-scrollbar max-w-full">
+      {/* Tab Menu - ปรับขนาดให้เล็กลง */}
+      <div className="absolute top-24 md:top-28 left-1/2 transform -translate-x-1/2 z-40 w-full max-w-3xl px-4 flex justify-center pointer-events-none">
+         <div className="pointer-events-auto bg-white/90 backdrop-blur-md rounded-full border border-white/50 p-1 flex gap-1 shadow-md overflow-x-auto no-scrollbar max-w-full">
             {siblingCategories.map((cat) => (
                 <button
                     key={cat.id}
                     onClick={() => handleChangeCategory(cat.id)}
                     className={`
-                        px-4 py-2 rounded-full whitespace-nowrap text-sm md:text-base font-bold transition-all duration-300
+                        px-3 py-1.5 rounded-full whitespace-nowrap text-xs md:text-sm font-bold transition-all duration-300
                         ${currentCategory === cat.id 
-                            ? 'bg-yellow-400 text-black shadow-md scale-105' 
+                            ? 'bg-yellow-400 text-black shadow-sm scale-105' 
                             : 'bg-transparent text-gray-500 hover:bg-white hover:text-gray-700'
                         }
                     `}
@@ -487,22 +461,22 @@ function FlashcardPlayerPage({ isMuted }) {
          </div>
       </div>
 
-      {/* Grid Modal */}
+      {/* Grid Modal (คงเดิม) */}
       {isGridOpen && (
         <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex flex-col animate-fade-in">
            <div className="flex justify-between items-center p-6 text-white">
-              <h2 className="text-2xl font-bold">เลือกการ์ดที่ต้องการ</h2>
-              <button onClick={() => setIsGridOpen(false)} className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center">✕</button>
+              <h2 className="text-xl font-bold">เลือกการ์ดที่ต้องการ</h2>
+              <button onClick={() => setIsGridOpen(false)} className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center">✕</button>
            </div>
            <div className="flex-1 overflow-y-auto p-4 sm:p-8">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 max-w-5xl mx-auto">
                  {cards.map((card, index) => (
                     <button 
                        key={index}
                        onClick={() => scrollToCard(index)}
-                       className="group bg-white rounded-xl overflow-hidden aspect-video shadow-lg hover:ring-4 ring-yellow-400 transition-all transform hover:scale-105"
+                       className="group bg-white rounded-lg overflow-hidden aspect-video shadow-md hover:ring-2 ring-yellow-400 transition-all transform hover:scale-105"
                     >
-                       <div className={`w-full h-full ${card.color} flex flex-col items-center justify-center p-2`}>
+                       <div className="w-full h-full bg-white flex flex-col items-center justify-center p-1">
                           <img src={card.image} alt={card.word} className="h-full w-full object-contain" />
                        </div>
                     </button>
@@ -512,22 +486,22 @@ function FlashcardPlayerPage({ isMuted }) {
         </div>
       )}
 
-      {/* Thumbnail Bar */}
+      {/* ✅ Thumbnail Bar - ปรับให้เล็กลง (h-14) และชิดขอบล่าง (bottom-10) */}
       {cards.length > 0 && (
-        <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 w-full max-w-5xl h-20 bg-black/20 backdrop-blur-md rounded-2xl border border-white/20 z-40 flex items-center gap-2 px-4 overflow-x-auto no-scrollbar">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-14 bg-black/20 backdrop-blur-md rounded-xl border border-white/20 z-40 flex items-center gap-1.5 px-3 overflow-x-auto no-scrollbar">
             {cards.map((card, index) => (
               <button
                 key={index}
                 onClick={() => scrollToCard(index)}
                 className={`
-                  flex-shrink-0 h-14 aspect-video rounded-lg overflow-hidden border-[2px] transition-all duration-300 relative
-                  ${index === activeIndex ? 'border-yellow-400 scale-110 shadow-lg ring-2 ring-white' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'}
+                  flex-shrink-0 h-10 aspect-video rounded-md overflow-hidden border-[1.5px] transition-all duration-300 relative
+                  ${index === activeIndex ? 'border-yellow-400 scale-110 shadow-md ring-1 ring-white' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'}
                 `}
               >
-                <div className={`w-full h-full bg-white flex items-center justify-center`}>
+                <div className="w-full h-full bg-white flex items-center justify-center">
                    <img src={card.image} className="h-full w-full object-cover" />
                 </div>
-                <div className="absolute bottom-0 right-0 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded-tl-md font-bold">
+                <div className="absolute bottom-0 right-0 bg-black/60 text-white text-[7px] px-1 py-0.2 rounded-tl-sm font-bold">
                     {index + 1}
                 </div>
               </button>
@@ -547,7 +521,7 @@ function FlashcardPlayerPage({ isMuted }) {
             ))
         ) : (
             <div className="h-screen w-full flex flex-col items-center justify-center text-white bg-black/50">
-                <h2 className="text-2xl font-bold">ไม่พบข้อมูลในหมวดนี้</h2>
+                <h2 className="text-xl font-bold">ไม่พบข้อมูลในหมวดนี้</h2>
                 <button onClick={() => navigate(-1)} className="mt-4 bg-white text-black px-4 py-2 rounded-lg">ย้อนกลับ</button>
             </div>
         )}
@@ -555,17 +529,17 @@ function FlashcardPlayerPage({ isMuted }) {
         {/* End Screen */}
         {cards.length > 0 && (
             <div className="h-screen w-full flex-shrink-0 snap-start flex flex-col items-center justify-center text-white bg-black/60 backdrop-blur-md pb-24">
-                <h2 className="text-4xl font-black mb-4">จบหมวดนี้แล้ว! 🎉</h2>
-                <div className="flex gap-4">
+                <h2 className="text-2xl font-black mb-4">จบหมวดนี้แล้ว! 🎉</h2>
+                <div className="flex gap-4 scale-90">
                   <button 
                       onClick={() => scrollToCard(0)}
-                      className="bg-white text-gray-800 px-6 py-3 rounded-full font-bold text-lg hover:bg-gray-100 shadow-lg"
+                      className="bg-white text-gray-800 px-6 py-2.5 rounded-full font-bold text-base hover:bg-gray-100 shadow-md"
                   >
                       ↺ เล่นอีกรอบ
                   </button>
                   <button 
                       onClick={() => navigate(-1)}
-                      className="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-xl hover:scale-110 transition-transform shadow-lg border-4 border-white"
+                      className="bg-yellow-400 text-black px-8 py-2.5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-md border-2 border-white"
                   >
                       เลือกหมวดอื่น
                   </button>
@@ -577,10 +551,6 @@ function FlashcardPlayerPage({ isMuted }) {
       <style>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .perspective-1000 { perspective: 1000px; }
-        .transform-style-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
         .animate-fade-in { animation: fadeIn 0.2s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
       `}</style>

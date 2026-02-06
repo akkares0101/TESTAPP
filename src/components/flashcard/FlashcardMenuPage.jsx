@@ -15,7 +15,7 @@ function FlashcardMenuPage({ isMuted }) {
     }
   };
 
-  // ✅ 1. ข้อมูลปุ่ม (ใช้ชื่อไฟล์ตามที่คุณเตรียมไว้)
+  // ✅ 1. ข้อมูลปุ่ม
   const categories = [
     { 
       id: 1, 
@@ -135,42 +135,39 @@ function FlashcardMenuPage({ isMuted }) {
           </svg>
       </button>
 
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-24 pb-10">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-24 md:pt-32 pb-10">
         
         {/* หัวข้อ */}
-        <div className="bg-white/90 backdrop-blur-sm px-10 py-4 rounded-full border-[6px] border-orange-400 shadow-[0_6px_0_#f97316] mb-10 animate-bounce-slow">
+        <div className="bg-white/90 backdrop-blur-sm px-10 py-3 rounded-full border-[6px] border-orange-400 shadow-[0_6px_0_#f97316] mb-10 animate-bounce-slow">
             <h1 className="text-3xl md:text-5xl font-black text-orange-600 tracking-wide drop-shadow-sm">
               🎴 เลือกหมวดคำศัพท์
             </h1>
         </div>
 
         {/* ✅ Grid ปุ่มแบบไร้กรอบ (แสดงรูปเพียวๆ) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-7xl">
+        {/* ปรับ Gap ให้เหมาะสมกับขนาดปุ่ม */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 w-full max-w-7xl justify-items-center">
             {categories.map((cat) => (
               <button 
                 key={cat.id}
                 onClick={() => handleCategoryClick(cat)}
                 className="group relative flex flex-col items-center justify-center transition-transform duration-300 hover:scale-110 active:scale-95"
               >
-                {/* ✅ ส่วนแสดงรูปภาพ:
-                    - ลบ class border, bg-white, shadow, rounded ออกหมดแล้ว
-                    - รูปจะแสดงตามไฟล์ PNG ที่คุณใส่มา 100% (ซึ่งมีกรอบสวยอยู่แล้ว)
-                    - drop-shadow-2xl ช่วยให้รูปลอยเด้งออกมาจากพื้นหลัง
-                */}
+                {/* ✅ ปรับขนาดรูปภาพตรงนี้ */}
                 <img 
                     src={cat.image} 
                     alt={cat.title}
-                    className="w-full h-auto object-contain drop-shadow-xl group-hover:drop-shadow-2xl filter"
+                    // w-32 (มือถือ), w-48 (จอใหญ่) -> ขนาดกำลังสวย ไม่คับจอ
+                    className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-xl group-hover:drop-shadow-2xl filter"
                     onError={(e) => {
-                        // ถ้าหารูปไม่เจอ ให้ขึ้นกรอบเตือน
                         e.target.style.display = 'none';
-                        e.target.parentNode.innerHTML = `<div class="bg-white p-4 rounded-xl shadow-lg text-center border-4 border-dashed border-gray-300 w-40 h-40 flex items-center justify-center text-gray-400 font-bold">ใส่รูป<br/>${cat.title}</div>`;
+                        e.target.parentNode.innerHTML = `<div class="bg-white p-4 rounded-xl shadow-lg text-center border-4 border-dashed border-gray-300 w-32 h-32 flex items-center justify-center text-gray-400 font-bold text-xs">ใส่รูป<br/>${cat.title}</div>`;
                     }}
                 />
                 
-                {/* ✅ Badge สีแดง "กดเลือกย่อย" (เก็บไว้ตามดีไซน์) */}
+                {/* Badge สีแดง */}
                 {subCategoriesData[cat.type] && (
-                   <div className="absolute top-2 right-4 bg-red-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full border-2 border-white shadow-md animate-pulse z-10">
+                   <div className="absolute top-2 right-2 bg-red-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full border-2 border-white shadow-md animate-pulse z-10">
                       กดเลือกย่อย
                    </div>
                 )}
@@ -192,7 +189,6 @@ function FlashcardMenuPage({ isMuted }) {
               </button>
 
               <h2 className="text-2xl md:text-4xl font-black text-center text-gray-700 mb-8 flex items-center justify-center gap-3">
-                 {/* โชว์รูปเล็กหัวข้อ Popup */}
                  <img src={selectedCategory.image} className="w-16 h-16 object-contain drop-shadow-md" onError={(e)=>e.target.style.display='none'} />
                  {selectedCategory.title}
               </h2>

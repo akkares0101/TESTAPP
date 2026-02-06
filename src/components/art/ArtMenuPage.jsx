@@ -2,17 +2,17 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// Import รูปปุ่ม 10 ปุ่ม (ตั้งชื่อไฟล์ตามนี้หรือแก้ให้ตรงกับที่มีครับ)
-import btnLine from '../../assets/images/art/btn_line.png';           // 1. เส้น
-import btnColor from '../../assets/images/art/btn_color.png';         // 2. สีมหัศจรรย์
-import btnShape from '../../assets/images/art/btn_shape.png';         // 3. รูปร่างรอบตัว
-import btnTexture from '../../assets/images/art/btn_texture.png';     // 4. ลายและพื้นผิว
-import btnCollage from '../../assets/images/art/btn_collage.png';     // 5. ตัด-ปะคอลลาจ
-import btnPrint from '../../assets/images/art/btn_print.png';         // 6. พิมพ์ภาพ
-import btnSculpture from '../../assets/images/art/btn_sculpture.png'; // 7. ปั้นและ 3 มิติ
-import btnNature from '../../assets/images/art/btn_nature.png';       // 8. ศิลปะจากธรรมชาติ
-import btnEmotion from '../../assets/images/art/btn_emotion.png';     // 9. ศิลปะกับอารมณ์
-import btnDaily from '../../assets/images/art/btn_daily.png';         // 10. ศิลปะในชีวิตประจำวัน
+// Import รูปปุ่ม 10 ปุ่ม
+import btnLine from '../../assets/images/art/btn_line.png';           
+import btnColor from '../../assets/images/art/btn_color.png';         
+import btnShape from '../../assets/images/art/btn_shape.png';         
+import btnTexture from '../../assets/images/art/btn_texture.png';     
+import btnCollage from '../../assets/images/art/btn_collage.png';     
+import btnPrint from '../../assets/images/art/btn_print.png';         
+import btnSculpture from '../../assets/images/art/btn_sculpture.png'; 
+import btnNature from '../../assets/images/art/btn_nature.png';       
+import btnEmotion from '../../assets/images/art/btn_emotion.png';     
+import btnDaily from '../../assets/images/art/btn_daily.png';         
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -41,7 +41,7 @@ function ArtMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -49,35 +49,21 @@ function ArtMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* ปุ่มย้อนกลับ */}
-      <div className="absolute top-8 left-4 z-20 md:top-32 md:left-40"> 
-         <button 
-          onClick={() => navigate('/')} 
-          className="
-             group flex items-center gap-3 bg-white text-pink-500 px-6 py-3 rounded-full shadow-lg border-4 border-white hover:border-pink-100 hover:scale-105 active:scale-95 transition-all
-          "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6 group-hover:-translate-x-1 transition-transform">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          <span className="font-black text-xl">กลับหน้าหลัก</span>
-        </button>
-      </div>
-
       {/* เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-32 md:pt-48"> 
+      <div className="flex flex-col items-center gap-8 md:gap-12 z-10 px-4 w-full"> 
         
         {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-12 py-3 rounded-full border-[6px] border-pink-400 shadow-[0_6px_0_#f472b6] mb-10 animate-bounce-slow">
-            <h1 className="text-4xl md:text-6xl font-black text-pink-500 tracking-wide">
-              ศิลปะ
+        <div className="bg-white/90 backdrop-blur-sm px-12 py-4 rounded-full border-[6px] border-pink-400 shadow-[0_6px_0_#f472b6] animate-bounce-slow">
+            <h1 className="text-3xl md:text-5xl font-black text-pink-500 tracking-wide">
+              🎨 ศิลปะ
             </h1>
         </div>
 
-        {/* Grid เมนู 10 ปุ่ม (5x2) */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-[90rem]">
+        {/* Grid เมนู 10 ปุ่ม */}
+        {/* ปรับขนาด Container ให้กว้างขึ้นเพื่อรองรับปุ่มใหญ่ */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-10 max-w-[90rem]">
             {menuItems.map((item) => (
-              <div 
+              <button 
                 key={item.id}
                 onClick={() => {
                   playClick();
@@ -85,17 +71,20 @@ function ArtMenuPage({ isMuted }) {
                 }}
                 className="
                   group relative cursor-pointer
-                  flex items-center justify-center
-                  w-auto h-[160px] md:h-[240px]
-                  transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
+                  flex flex-col items-center justify-center
+                  transition-transform duration-300 hover:scale-110 active:scale-95
                 "
               >
+                {/* ✅ ปรับขนาดรูปปุ่มตรงนี้ 
+                   w-36 h-36 (มือถือ) 
+                   md:w-52 md:h-52 (จอใหญ่) 
+                */}
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
+                  className="w-36 h-36 md:w-52 md:h-52 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
                 />
-              </div>
+              </button>
             ))}
         </div>
 
