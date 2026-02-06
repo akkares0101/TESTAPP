@@ -28,33 +28,34 @@ function FeelingMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] gap-10 px-4 mt-8">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] gap-8 px-4">
         
         {/* 2. หัวข้อ "Feeling and Movement" */}
-        <div className="relative z-10 bg-white px-10 py-4 rounded-full border-[6px] border-emerald-400 shadow-[0_6px_0_#34d399] mb-10">
-            <h1 className="text-3xl md:text-5xl font-black text-gray-700 tracking-wide flex items-center gap-3">
+        <div className="relative z-10 bg-white px-8 py-3 rounded-full border-[5px] border-emerald-400 shadow-[0_5px_0_#34d399] mb-6 animate-bounce-slow">
+            <h1 className="text-2xl md:text-4xl font-black text-gray-700 tracking-wide flex items-center gap-3">
               ✨ Feeling and Movement ✨
             </h1>
         </div>
 
-        {/* 3. Grid ปุ่มเมนู (เฉพาะรูปภาพ ไร้กรอบ) */}
-        <div className="flex flex-wrap justify-center gap-16 md:gap-32 w-full items-center">
+        {/* 3. Grid ปุ่มเมนู (ลดขนาดลง 50%) */}
+        {/* ปรับ gap ให้ชิดกันมากขึ้น */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-20 w-full items-center">
           
           {/* --- ปุ่ม Feeling --- */}
           <div
             onClick={() => { playClick(); navigate('/feeling/emotions'); }}
             className="
               group relative cursor-pointer 
-              w-[280px] h-[280px] md:w-[450px] md:h-[450px] 
+              /* ✅ ปรับขนาดเล็กลง 50% */
+              w-36 h-36 md:w-60 md:h-60 
               transition-transform duration-300 hover:scale-110 hover:-rotate-3
               flex items-center justify-center
             "
           >
-             {/* รูปภาพเพียวๆ พร้อมเงา */}
              <img 
                src={imgFeeling} 
                alt="Feeling" 
-               className="w-full h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_25px_25px_rgba(0,0,0,0.4)] transition-all" 
+               className="w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.2)] group-hover:drop-shadow-[0_20px_20px_rgba(0,0,0,0.3)] transition-all" 
              />
           </div>
 
@@ -63,22 +64,26 @@ function FeelingMenuPage({ isMuted }) {
             onClick={() => { playClick(); navigate('/feeling/movement'); }}
             className="
               group relative cursor-pointer 
-              w-[280px] h-[280px] md:w-[450px] md:h-[450px] 
+              /* ✅ ปรับขนาดเล็กลง 50% */
+              w-36 h-36 md:w-60 md:h-60 
               transition-transform duration-300 hover:scale-110 hover:rotate-3
               flex items-center justify-center
             "
           >
-             {/* รูปภาพเพียวๆ พร้อมเงา */}
              <img 
                src={imgMovement} 
                alt="Movement" 
-               className="w-full h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_25px_25px_rgba(0,0,0,0.4)] transition-all" 
+               className="w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.2)] group-hover:drop-shadow-[0_20px_20px_rgba(0,0,0,0.3)] transition-all" 
              />
           </div>
 
         </div>
 
       </div>
+      
+      <style>{`
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+      `}</style>
     </div>
   );
 }

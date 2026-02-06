@@ -105,18 +105,18 @@ import Phonics from "./assets/images/Phonics.png";
 import asean from "./assets/images/asean.png";
 import flashcard from "./assets/images/flashcard.png";
 
-// ข้อมูลเมนูหน้าแรก
+// ✅ แก้ไขลำดับเมนูตามที่ขอ (อังกฤษ, Phonics, ไทย, คณิต, วิทย์, สังคม, อาเซียน, ศิลปะ, นิทาน)
 const menus = [
-  { id: 1, title: "ภาษาไทย", image: thai },
-  { id: 2, title: "ภาษาอังกฤษ", image: eng },
-  { id: 3, title: "คณิตศาสตร์", image: math },
-  { id: 4, title: "สังคมศึกษา", image: cont },
-  { id: 5, title: "นิทานอีสป", image: story },
-  { id: 6, title: "วิทยาศาสตร์", image: sci },
-  { id: 7, title: "ศิลปะ", image: draw },
-  { id: 8, title: "Phonics", image: Phonics },
-  { id: 9, title: "อาเซียน", image: asean },
-  { id: 10, title: "บัตรคำศัพท์", image: flashcard },
+  { id: 1, title: "ภาษาอังกฤษ", image: eng },
+  { id: 2, title: "Phonics", image: Phonics },
+  { id: 3, title: "ภาษาไทย", image: thai },
+  { id: 4, title: "คณิตศาสตร์", image: math },
+  { id: 5, title: "วิทยาศาสตร์", image: sci },
+  { id: 6, title: "สังคมศึกษา", image: cont },
+  { id: 7, title: "อาเซียน", image: asean },
+  { id: 8, title: "ศิลปะ", image: draw },
+  { id: 9, title: "นิทานอีสป", image: story },
+  { id: 10, title: "บัตรคำศัพท์", image: flashcard }, // คงไว้สุดท้ายเพื่อให้แถวสวยงาม (4-4-2)
 ];
 
 // --- Component: ปุ่มย้อนกลับกลาง (ขนาดปกติ) ---
@@ -241,7 +241,6 @@ function HomeMenu({ isMuted }) {
   };
 
   // Helper สำหรับ Render Card
-  // 🔽 เล็กลงอีก 60%! (w-14, w-16, w-20)
   const renderCard = (item) => (
     <MenuCard
       key={item.id}
@@ -263,21 +262,19 @@ function HomeMenu({ isMuted }) {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* 🔽 ลด Gap ระหว่างแถว */}
       <div className="container mx-auto px-4 z-10 flex flex-col items-center gap-2 md:gap-4">
         
-        {/* แถวที่ 1: 4 รายการ */}
-        {/* 🔽 ลด Gap ระหว่างปุ่ม */}
+        {/* แถวที่ 1: 4 รายการ (อังกฤษ, Phonics, ไทย, คณิต) */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4">
           {menus.slice(0, 4).map(renderCard)}
         </div>
 
-        {/* แถวที่ 2: 4 รายการ */}
+        {/* แถวที่ 2: 4 รายการ (วิทย์, สังคม, อาเซียน, ศิลปะ) */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4">
           {menus.slice(4, 8).map(renderCard)}
         </div>
 
-        {/* แถวที่ 3: 2 รายการ */}
+        {/* แถวที่ 3: 2 รายการ (นิทาน, บัตรคำ) */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4">
           {menus.slice(8, 10).map(renderCard)}
         </div>
@@ -370,7 +367,6 @@ function App() {
           {/* ... Routes ... */}
           <Route path="/alphabet" element={<AlphabetMenuPage isMuted={isMuted} />} />
           <Route path="/alphabet/select" element={<ABCSelectionPage isMuted={isMuted} />} />
-          {/* ✅ เพิ่ม onVideoStateChange ให้หน้าเรียน ABC */}
           <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/alphabet/game" element={<AlphabetGamePage isMuted={isMuted} />} />
           <Route path="/alphabet/game-sound" element={<DifferentSoundGamePage isMuted={isMuted} />} />
@@ -379,10 +375,8 @@ function App() {
           <Route path="/feeling/emotions" element={<EmotionsGamePage isMuted={isMuted} />} />
           <Route path="/activity" element={<DailyActivityPage isMuted={isMuted} />} />
           <Route path="/family" element={<FamilyMenuPage isMuted={isMuted} />} />
-          {/* ✅ เพิ่ม onVideoStateChange ให้หน้าเรียนครอบครัว */}
           <Route path="/family/learn" element={<FamilyLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/family/game" element={<FamilyGamePage isMuted={isMuted} />} />
-          {/* ✅ เพิ่ม onVideoStateChange ให้หน้าเรียนวัน (เพราะหน้า DaysMenuPage มีวิดีโอ) */}
           <Route path="/days" element={<DaysMenuPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/days/learn" element={<DaysLearningPage isMuted={isMuted} />} />
           <Route path="/days/game" element={<DaysGamePage isMuted={isMuted} />} />
@@ -441,7 +435,6 @@ function App() {
 
           {/* ================= โซนอื่นๆ (สี, นิทาน) ================= */}
           <Route path="/colors" element={<ColorsMenuPage isMuted={isMuted} />} />
-          {/* ✅ เพิ่ม onVideoStateChange ให้หน้าเรียนสี */}
           <Route path="/colors/learn" element={<ColorsLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/colors/game" element={<ColorsGamePage isMuted={isMuted} />} />
           <Route path="/stories" element={<StoryMenuPage isMuted={isMuted} />} />
