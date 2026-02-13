@@ -35,7 +35,7 @@ function MathMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -66,10 +66,10 @@ function MathMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ⭐⭐⭐ แก้ไขขนาดตรงนี้ครับ (ใหญ่ขึ้น) ⭐⭐⭐ */
+                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      /* มือถือ: เพิ่มจาก 140 เป็น 180 */
-                  md:h-[300px]   /* จอคอม: เพิ่มจาก 240 เป็น 300 */
+                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
+                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

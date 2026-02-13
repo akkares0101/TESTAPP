@@ -17,6 +17,7 @@ function MathCountingPage({ isMuted }) {
   // 🔢 ข้อมูลเลข 1-10 และไฟล์วิดีโอ
   // ⚠️ เตรียมไฟล์วิดีโอใน assets/videos/math/ : count_1.mp4 ถึง count_10.mp4
   const numberLessons = [
+    { id: 0, num: "0", color: "bg-rose-500", border: "border-red-300", video: "/videos/math/count_0.mp4" },
     { id: 1, num: "1", color: "bg-red-500", border: "border-red-700", video: "/videos/math/count_1.mp4" },
     { id: 2, num: "2", color: "bg-orange-500", border: "border-orange-700", video: "/videos/math/count_2.mp4" },
     { id: 3, num: "3", color: "bg-yellow-400", border: "border-yellow-600", video: "/videos/math/count_3.mp4" },
