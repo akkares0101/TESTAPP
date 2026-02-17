@@ -27,8 +27,7 @@ function ThaiAlphabetPage({ isMuted }) {
 
   return (
     <div 
-      // 1. ใช้ h-screen และ relative เพื่อเป็นกรอบอ้างอิง
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`, 
         backgroundSize: '100% 100%', 
@@ -36,35 +35,19 @@ function ThaiAlphabetPage({ isMuted }) {
         backgroundAttachment: 'fixed' 
       }}
     >
-      {/* 2. ⭐ แก้ไขตรงนี้: ใช้ absolute เพื่อลอยปุ่มไว้มุมจอ
-         ทำให้ขยับปุ่มได้อิสระ โดยไม่ดันเนื้อหาตรงกลาง 
-      */}
-      <div className="absolute top-8 left-4 z-50 md:top-50 md:left-100">
-         <button 
-          onClick={() => navigate('/')} 
-          className="
-             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
-          "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          <span className="font-black text-lg md:text-xl">กลับหน้าหลัก</span>
-        </button>
-      </div>
-
-      {/* 3. เนื้อหาหลัก (จัดกึ่งกลาง justify-center) */}
+      
+      {/* เนื้อหาหลัก */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10">
         
         {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
+        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-12 animate-bounce-slow transform scale-90 md:scale-100">
             <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
               ภาษาไทย
             </h1>
         </div>
 
         {/* Grid เมนู 3 ปุ่ม */}
-        <div className="flex flex-wrap justify-center content-center gap-6 md:gap-12 w-full max-w-[95rem]">
+        <div className="flex flex-wrap justify-center content-center gap-6 md:gap-16 w-full max-w-[95rem]">
             {menuItems.map((item) => (
               <div 
                 key={item.id}
@@ -75,10 +58,10 @@ function ThaiAlphabetPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่ม (ปรับให้ใหญ่เท่าหน้าอื่นๆ) */
+                  /* ⭐⭐⭐ ขยายใหญ่ขึ้นเพราะมีแค่ 3 ปุ่ม ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      
-                  md:h-[300px]   
+                  h-[180px]      /* มือถือ: ใหญ่ขึ้น (จาก 130 เป็น 180) */
+                  md:h-[320px]   /* จอคอม: ใหญ่ขึ้น (จาก 220 เป็น 320) */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

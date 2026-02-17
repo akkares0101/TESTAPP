@@ -258,7 +258,6 @@ function HomeMenu({ isMuted }) {
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "100%,100%",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
       }}
     >

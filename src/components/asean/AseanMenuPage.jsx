@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// ⭐ Import รูปภาพจริง 7 รูป (ตรวจสอบชื่อไฟล์ให้ตรงกับในโฟลเดอร์ asean นะครับ)
+// ⭐ Import รูปภาพจริง 7 รูป
 import btnFlag from '../../assets/images/asean/btn_flag.png';
 import btnGreeting from '../../assets/images/asean/btn_greeting.png';
 import btnFood from '../../assets/images/asean/btn_food.png';
@@ -35,7 +35,7 @@ function AseanMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -66,10 +66,10 @@ function AseanMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่มใหญ่มาตรฐาน */
+                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      
-                  md:h-[300px]   
+                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
+                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

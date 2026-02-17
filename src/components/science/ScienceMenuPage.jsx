@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
 // Import รูปปุ่ม (ตั้งชื่อไฟล์ตามนี้หรือแก้ให้ตรงกับที่มีครับ)
-// ถ้ายังไม่มีรูปจริง ให้ใช้รูปชั่วคราว (tempImg) ไปก่อนได้ครับ
 import btnIntro from '../../assets/images/science/btn_intro.png';           // 1. วิทยาศาสตร์คืออะไร
 import btnAnimals from '../../assets/images/science/btn_animals.png';       // 2. สิ่งมีชีวิตที่เป็นสัตว์
 import btnOrgans from '../../assets/images/science/btn_organs.png';         // 3. เกมหน้าที่ของอวัยวะภายนอก
@@ -36,7 +35,7 @@ function ScienceMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -67,10 +66,10 @@ function ScienceMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่มใหญ่สะใจ (ตามมาตรฐานหน้าอื่นๆ) */
+                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      
-                  md:h-[300px]   
+                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
+                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

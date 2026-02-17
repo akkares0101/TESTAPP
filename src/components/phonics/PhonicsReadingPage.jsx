@@ -26,8 +26,8 @@ function PhonicsReadingPage({ isMuted }) {
     { id: 8, sentence: "I can jump.", th: "ฉันกระโดดได้", color: "bg-teal-500", video: "/videos/phonics/read_8.mp4" },
   ];
 
-  // แปลงข้อมูลสำหรับ Playlist
-  const playlistItems = lessons.map(item => ({
+  // แปลงข้อมูลสำหรับ Playlist (✅ แก้เพิ่ม index ตรงนี้ให้แล้วครับ)
+  const playlistItems = lessons.map((item, index) => ({
     ...item,
     num: index + 1,      // โชว์เลขข้อ
     title: `ฝึกอ่าน: ${item.sentence}`
@@ -44,19 +44,18 @@ function PhonicsReadingPage({ isMuted }) {
       }}
     >
 
-
       {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-24 md:pt-20 overflow-y-auto pb-10">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
         
-        {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-purple-500 shadow-[0_4px_0_#a855f7] mb-8 animate-bounce-slow text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-purple-600 tracking-wide">
+        {/* หัวข้อ (เล็กลง) */}
+        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-6 animate-bounce-slow text-center scale-90 md:scale-100">
+            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
               📖 ฝึกอ่านประโยค (Reading)
             </h1>
         </div>
 
-        {/* 3. Grid ประโยค */}
-        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-6 max-w-7xl w-full">
+        {/* 3. Grid ประโยค (เล็กลง) */}
+        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4 max-w-7xl w-full">
             {playlistItems.map((item, index) => (
               <button
                 key={item.id}
@@ -71,32 +70,33 @@ function PhonicsReadingPage({ isMuted }) {
                 }}
                 className={`
                   group relative
-                  flex flex-col items-center justify-center p-4
-                  w-full md:w-[45%] lg:w-[30%] h-[120px] md:h-[160px]
-                  rounded-3xl
-                  bg-white border-l-[10px] ${item.color.replace('bg-', 'border-')}
-                  shadow-md hover:shadow-xl
+                  flex flex-col items-center justify-center p-2 md:p-3
+                  /* ⭐ ปรับลดขนาดความสูงตรงนี้ ⭐ */
+                  w-full md:w-[45%] lg:w-[30%] h-[90px] md:h-[120px]
+                  rounded-[1.5rem] md:rounded-3xl
+                  bg-white border-l-[6px] md:border-l-[8px] ${item.color.replace('bg-', 'border-')}
+                  shadow-sm hover:shadow-md
                   transition-all duration-200
-                  hover:scale-105 hover:-translate-x-2
+                  hover:scale-105 hover:-translate-x-1
                   text-left
                 `}
               >
-                {/* ประโยคภาษาอังกฤษ */}
-                <div className="w-full text-center">
-                    <span className={`text-2xl md:text-4xl font-black ${item.color.replace('bg-', 'text-')} drop-shadow-sm`}>
+                {/* ประโยคภาษาอังกฤษ (เล็กลง) */}
+                <div className="w-full text-center mt-1 md:mt-0">
+                    <span className={`text-xl md:text-3xl font-black ${item.color.replace('bg-', 'text-')} drop-shadow-sm`}>
                     {item.sentence}
                     </span>
                 </div>
                 
-                {/* คำแปลภาษาไทย */}
-                <div className="mt-2 w-full text-center">
-                    <span className="text-lg md:text-xl font-bold text-gray-500 bg-gray-100 px-4 py-1 rounded-full">
+                {/* คำแปลภาษาไทย (เล็กลง) */}
+                <div className="mt-1 md:mt-2 w-full text-center">
+                    <span className="text-sm md:text-lg font-bold text-gray-500 bg-gray-100 px-3 py-0.5 rounded-full">
                         {item.th}
                     </span>
                 </div>
 
-                {/* เลขข้อ */}
-                <div className={`absolute top-2 right-2 w-8 h-8 rounded-full ${item.color} text-white flex items-center justify-center font-bold text-sm`}>
+                {/* เลขข้อ (เล็กลง) */}
+                <div className={`absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 rounded-full ${item.color} text-white flex items-center justify-center font-bold text-xs md:text-sm`}>
                     {index + 1}
                 </div>
               </button>

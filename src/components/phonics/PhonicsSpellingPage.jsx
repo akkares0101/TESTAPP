@@ -47,17 +47,17 @@ function PhonicsSpellingPage({ isMuted }) {
     >
 
       {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-24 md:pt-20 overflow-y-auto pb-10">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
         
-        {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-purple-500 shadow-[0_4px_0_#a855f7] mb-8 animate-bounce-slow text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-purple-600 tracking-wide">
+        {/* หัวข้อ (เล็กลง) */}
+        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-6 animate-bounce-slow text-center scale-90 md:scale-100">
+            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
               🗣️ ฝึกสะกดคำ (Spelling)
             </h1>
         </div>
 
-        {/* 3. Grid คำศัพท์ */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-7xl">
+        {/* 3. Grid คำศัพท์ (เล็กลง) */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-6 max-w-7xl">
             {playlistItems.map((item, index) => (
               <button
                 key={item.id}
@@ -73,29 +73,32 @@ function PhonicsSpellingPage({ isMuted }) {
                 className={`
                   group relative
                   flex flex-col items-center justify-center
-                  w-[140px] h-[100px] md:w-[240px] md:h-[160px]
-                  rounded-3xl
+                  /* ⭐ ปรับลดขนาดลงตรงนี้ ⭐ */
+                  w-[110px] h-[80px]      /* มือถือ: ลดจาก 140x100 */
+                  md:w-[180px] md:h-[120px] /* จอคอม: ลดจาก 240x160 */
+                  
+                  rounded-2xl
                   ${item.color} 
-                  shadow-[0_8px_0_rgba(0,0,0,0.2)] hover:shadow-[0_4px_0_rgba(0,0,0,0.2)]
-                  border-4 border-white/20
+                  shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_rgba(0,0,0,0.2)]
+                  border-[3px] border-white/20
                   transition-all duration-150
                   hover:scale-105 hover:-translate-y-1
-                  active:translate-y-2 active:shadow-none
+                  active:translate-y-1 active:shadow-none
                 `}
               >
                 {/* คำศัพท์ภาษาอังกฤษ */}
-                <span className="text-4xl md:text-6xl font-black text-white drop-shadow-md tracking-wider">
+                <span className="text-3xl md:text-5xl font-black text-white drop-shadow-md tracking-wider leading-none">
                   {item.word}
                 </span>
                 
                 {/* คำอ่านแบบ Phonics (ตัวเล็ก) */}
-                <div className="mt-1 md:mt-2 bg-black/20 px-3 py-1 rounded-full text-white/90 text-xs md:text-sm font-bold">
+                <div className="mt-0.5 md:mt-1 bg-black/20 px-2 py-0.5 rounded-full text-white/90 text-[10px] md:text-xs font-bold">
                     {item.phonics}
                 </div>
 
-                {/* คำแปลภาษาไทย (ป้ายห้อยมุมขวาล่าง) */}
-                <div className="absolute -bottom-3 -right-2 bg-white px-3 py-1 rounded-lg shadow-md rotate-3 group-hover:rotate-0 transition-transform">
-                     <span className="text-xs md:text-base font-bold text-gray-700">{item.th}</span>
+                {/* คำแปลภาษาไทย (ป้ายห้อยมุมขวาล่าง - เล็กลง) */}
+                <div className="absolute -bottom-2 -right-1 bg-white px-2 py-0.5 rounded-lg shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
+                     <span className="text-[10px] md:text-sm font-bold text-gray-700">{item.th}</span>
                 </div>
               </button>
             ))}

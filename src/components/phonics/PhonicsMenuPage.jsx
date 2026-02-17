@@ -2,15 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// ⭐ Import รูปปุ่ม 7 ปุ่ม (สร้างโฟลเดอร์ phonics ไว้ใน assets/images ด้วยนะครับ)
-// ถ้ายังไม่มีรูปจริง ให้ใช้รูปชั่วคราว (เช่น btn_learn.png เดิม) ไปก่อนได้ครับ
-import btnSound from '../../assets/images/phonics/btn_sound.png';       // 1. เสียงตัวอักษร
-import btnCompare from '../../assets/images/phonics/btn_compare.png';   // 2. เทียบอักษร
-import btnVowel from '../../assets/images/phonics/btn_vowel.png';       // 3. สระในภาษาอังกฤษ
-import btnSpell from '../../assets/images/phonics/btn_spell.png';       // 4. ฝึกสะกดคำ
-import btnRead from '../../assets/images/phonics/btn_read.png';         // 5. ฝึกอ่าน
-import btnGame from '../../assets/images/phonics/btn_game.png';         // 6. เกมทายคำศัพท์
-import btnExercise from '../../assets/images/phonics/btn_exercise.png'; // 7. แบบฝึกหัด
+// ⭐ Import รูปปุ่ม 7 ปุ่ม
+import btnSound from '../../assets/images/phonics/btn_sound.png';       
+import btnCompare from '../../assets/images/phonics/btn_compare.png';   
+import btnVowel from '../../assets/images/phonics/btn_vowel.png';       
+import btnSpell from '../../assets/images/phonics/btn_spell.png';       
+import btnRead from '../../assets/images/phonics/btn_read.png';         
+import btnGame from '../../assets/images/phonics/btn_game.png';         
+import btnExercise from '../../assets/images/phonics/btn_exercise.png'; 
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -36,7 +35,7 @@ function PhonicsMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -44,7 +43,6 @@ function PhonicsMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-
 
       {/* เนื้อหาหลัก */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
@@ -68,10 +66,10 @@ function PhonicsMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่มใหญ่มาตรฐาน */
+                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      
-                  md:h-[300px]   
+                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
+                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

@@ -41,7 +41,7 @@ function SocialMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -49,23 +49,8 @@ function SocialMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* ⭐⭐⭐ แก้ไขตำแหน่งปุ่มย้อนกลับตรงนี้ ⭐⭐⭐
-         - top-8 (เดิม top-4): ขยับลงมาในมือถือ
-         - md:top-16 (เดิม md:top-8): ขยับลงมาเยอะๆ ในจอคอม
-      */}
-      <div className="absolute top-8 left-4 z-50 md:top-40 md:left-70"> 
-         <button 
-          onClick={() => navigate('/')} 
-          className="
-             group flex items-center gap-3 bg-white text-orange-500 px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg border-4 border-white hover:border-orange-100 hover:scale-105 active:scale-95 transition-all
-          "
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          <span className="font-black text-lg md:text-xl">กลับหน้าหลัก</span>
-        </button>
-      </div>
+      
+      {/* ❌ ลบปุ่มกลับหน้าหลักออกแล้วครับ */}
 
       {/* เนื้อหาหลัก */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
@@ -78,7 +63,7 @@ function SocialMenuPage({ isMuted }) {
         </div>
 
         {/* Grid เมนู 10 ปุ่ม */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-[95rem]">
+        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[95rem]">
             {menuItems.map((item) => (
               <div 
                 key={item.id}
@@ -89,10 +74,10 @@ function SocialMenuPage({ isMuted }) {
                 className="
                   group relative cursor-pointer
                   flex items-center justify-center
-                  /* ขนาดปุ่มใหญ่ */
+                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
                   w-auto 
-                  h-[180px]      
-                  md:h-[300px]   
+                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
+                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
                 "

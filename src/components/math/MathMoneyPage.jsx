@@ -63,7 +63,7 @@ function MathMoneyPage({ isMuted }) {
         </div>
 
         {/* ---------------- โซนเหรียญ (Coins) ---------------- */}
-        <div className="w-full max-w-6xl mb-8">
+        <div className="w-full max-w-6xl mb-8 flex flex-col items-center">
             <h2 className="text-2xl md:text-4xl font-black text-white drop-shadow-md mb-6 flex items-center gap-2">
                 🪙 เงินเหรียญ (Coins)
             </h2>
@@ -75,11 +75,11 @@ function MathMoneyPage({ isMuted }) {
                             playClick();
                             navigate('/lesson', { state: { playlist: moneyLessons, initialIndex: moneyLessons.findIndex(x => x.id === item.id) } });
                         }}
-                        className="group flex flex-col items-center gap-3 hover:scale-110 transition-transform duration-300"
+                        className="group flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
                     >
                         {/* วงกลมเหรียญ */}
                         <div className={`
-                            w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white shadow-xl
+                            w-20 h-20 md:w-28 md:h-28 rounded-full border-4 border-white shadow-xl
                             flex items-center justify-center overflow-hidden bg-white
                             ${item.bgColor}
                         `}>
@@ -88,9 +88,9 @@ function MathMoneyPage({ isMuted }) {
                                  onError={(e) => {e.target.style.display='none'}} // ซ่อนรูปถ้าหาไม่เจอแล้วโชว์เลขแทน
                             />
                             {/* Backup ตัวเลข (จะโชว์ถ้าไม่มีรูป) */}
-                            <span className="absolute text-4xl font-bold text-gray-700 opacity-50">{item.num}</span>
+                            <span className="absolute text-3xl font-bold text-gray-700 opacity-50">{item.num}</span>
                         </div>
-                        <span className="bg-white/90 px-3 py-1 rounded-full text-sm md:text-lg font-bold text-gray-700 shadow-sm">
+                        <span className="bg-white/90 px-3 py-0.5 rounded-full text-sm md:text-lg font-bold text-gray-700 shadow-sm">
                             {item.num} บาท
                         </span>
                     </button>
@@ -99,11 +99,11 @@ function MathMoneyPage({ isMuted }) {
         </div>
 
         {/* ---------------- โซนธนบัตร (Banknotes) ---------------- */}
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-6xl flex flex-col items-center">
             <h2 className="text-2xl md:text-4xl font-black text-white drop-shadow-md mb-6 flex items-center gap-2">
                 💵 ธนบัตร (Banknotes)
             </h2>
-            <div className="flex flex-wrap gap-6 justify-center">
+            <div className="flex flex-wrap gap-4 justify-center">
                 {moneyLessons.filter(m => m.type === 'note').map((item) => (
                     <button
                         key={item.id}
@@ -111,11 +111,11 @@ function MathMoneyPage({ isMuted }) {
                             playClick();
                             navigate('/lesson', { state: { playlist: moneyLessons, initialIndex: moneyLessons.findIndex(x => x.id === item.id) } });
                         }}
-                        className="group flex flex-col items-center gap-3 hover:scale-105 transition-transform duration-300"
+                        className="group flex flex-col items-center gap-2 hover:scale-105 transition-transform duration-300"
                     >
                         {/* กรอบสี่เหลี่ยมแบงก์ */}
                         <div className={`
-                            w-40 h-20 md:w-60 md:h-32 rounded-xl border-4 border-white shadow-xl
+                            w-32 h-16 md:w-52 md:h-28 rounded-xl border-4 border-white shadow-xl
                             flex items-center justify-center overflow-hidden relative
                             ${item.bgColor}
                         `}>
@@ -124,9 +124,9 @@ function MathMoneyPage({ isMuted }) {
                                   onError={(e) => {e.target.style.display='none'}} 
                              />
                              {/* Backup ตัวเลข */}
-                             <span className="absolute text-4xl font-black text-white/50">{item.num}</span>
+                             <span className="absolute text-3xl font-black text-white/50">{item.num}</span>
                         </div>
-                        <span className="bg-white/90 px-4 py-1 rounded-full text-sm md:text-lg font-bold text-gray-700 shadow-sm">
+                        <span className="bg-white/90 px-3 py-0.5 rounded-full text-sm md:text-lg font-bold text-gray-700 shadow-sm">
                             {item.num} บาท
                         </span>
                     </button>

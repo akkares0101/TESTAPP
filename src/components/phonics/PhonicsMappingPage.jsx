@@ -47,9 +47,9 @@ function PhonicsMappingPage({ isMuted }) {
   // แปลงข้อมูลให้เป็นรูปแบบ Playlist
   const lessons = mappingData.map((item) => ({
     id: item.id,
-    num: item.en, // โชว์ใน Playlist ด้านล่าง
+    num: item.en,
     title: `เทียบเสียง ${item.en} = ${item.th}`,
-    video: `/videos/phonics/map_${item.en.toLowerCase()}.mp4`, // public map_a.mp4, map_b.mp4...
+    video: `/videos/phonics/map_${item.en.toLowerCase()}.mp4`,
     ...item
   }));
 
@@ -64,19 +64,18 @@ function PhonicsMappingPage({ isMuted }) {
       }}
     >
 
-
       {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-24 md:pt-20 overflow-y-auto pb-10">
+      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
         
-        {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-purple-500 shadow-[0_4px_0_#a855f7] mb-8 animate-bounce-slow text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-purple-600 tracking-wide">
+        {/* หัวข้อ (เล็กลง) */}
+        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-6 animate-bounce-slow text-center scale-90 md:scale-100">
+            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
               🔠 เทียบอักษร (A-Z Mapping)
             </h1>
         </div>
 
-        {/* 3. Grid ปุ่ม A-Z พร้อมคำเทียบไทย */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-5 max-w-7xl">
+        {/* 3. Grid ปุ่ม A-Z (เล็กลง) */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 max-w-6xl">
             {lessons.map((item, index) => (
               <button
                 key={item.id}
@@ -92,27 +91,30 @@ function PhonicsMappingPage({ isMuted }) {
                 className={`
                   group relative
                   flex flex-col items-center justify-center
-                  w-[90px] h-[90px] md:w-[140px] md:h-[140px]
-                  rounded-2xl
+                  /* ⭐ ปรับลดขนาดลงตรงนี้ ⭐ */
+                  w-[70px] h-[70px]      /* มือถือ: ลดจาก 90 เหลือ 70 */
+                  md:w-[100px] md:h-[100px] /* จอคอม: ลดจาก 140 เหลือ 100 */
+                  
+                  rounded-xl
                   ${item.color} 
-                  shadow-[0_6px_0_rgba(0,0,0,0.2)] hover:shadow-[0_3px_0_rgba(0,0,0,0.2)]
-                  border-4 border-white/30
+                  shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_rgba(0,0,0,0.2)]
+                  border-[3px] border-white/30
                   transition-all duration-150
                   hover:scale-110 hover:-translate-y-1
-                  active:translate-y-2 active:shadow-none
+                  active:translate-y-1 active:shadow-none
                 `}
               >
                 {/* ตัวอักษรภาษาอังกฤษ */}
-                <span className="text-4xl md:text-6xl font-black text-white drop-shadow-md leading-none">
+                <span className="text-3xl md:text-5xl font-black text-white drop-shadow-md leading-none">
                   {item.en}
                 </span>
                 
                 {/* เครื่องหมายเท่ากับ */}
-                <span className="text-white/80 text-sm md:text-lg font-bold">=</span>
+                <span className="text-white/80 text-xs md:text-sm font-bold -mt-1 md:-mt-0">=</span>
 
-                {/* ตัวอักษรไทย (พื้นหลังขาวให้เด่น) */}
-                <div className="bg-white/90 px-2 py-0.5 rounded-md shadow-sm w-[90%] truncate">
-                   <span className={`text-sm md:text-xl font-bold ${item.color.replace('bg-', 'text-')}`}>
+                {/* ตัวอักษรไทย (พื้นหลังขาว) */}
+                <div className="bg-white/90 px-1 py-0.5 rounded-md shadow-sm w-[90%] truncate mt-0.5">
+                   <span className={`text-xs md:text-base font-bold ${item.color.replace('bg-', 'text-')}`}>
                      {item.th}
                    </span>
                 </div>
