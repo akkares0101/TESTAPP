@@ -1,114 +1,124 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-const clickSound = new Audio('/sounds/click.mp3');
-
-function PhonicsSpellingPage({ isMuted }) {
+function PhonicsSpellingPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
-  const playClick = () => {
-    if (!isMuted) {
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
+  // 🎥 Path วิดีโอหลัก (คลิปรวม CVC Spelling)
+  // ⚠️ อย่าลืมเตรียมไฟล์วิดีโอและเปลี่ยนชื่อให้ตรงนะครับ
+  const mainVideo = "/videos/phonics/cvc_spelling.mp4";
+
+  // 🎵 จัดการเสียง BGM (ปิดเพลงพื้นหลังเมื่อเข้าหน้านี้)
+  useEffect(() => {
+    if (onVideoStateChange) onVideoStateChange(true); // ปิด BGM
+    return () => {
+      if (onVideoStateChange) onVideoStateChange(false); // เปิด BGM เมื่อออก
+    };
+  }, [onVideoStateChange]);
+
+  // ▶️ สั่งให้วิดีโอเล่นทันทีที่โหลดหน้าเสร็จ
+  useEffect(() => {
+    if (videoRef.current) {
+      // ลดเสียงลงเหลือ 30% เพื่อไม่ให้ดังเกินไป
+      videoRef.current.volume = 0.3; 
+      
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
+  }, []);
+
+  // ฟังก์ชันกระโดดไปเวลาที่กำหนด
+  const jumpToTime = (seconds) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = seconds;
+      videoRef.current.play(); // สั่งเล่นต่อทันที
     }
   };
 
-  // 🔠 ข้อมูลคำศัพท์ฝึกสะกด (CVC Words ง่ายๆ)
-  const lessons = [
-    { id: 1, word: "CAT", th: "แมว", phonics: "C-A-T", color: "bg-red-500", video: "/videos/phonics/spell_cat.mp4" },
-    { id: 2, word: "DOG", th: "สุนัข", phonics: "D-O-G", color: "bg-orange-500", video: "/videos/phonics/spell_dog.mp4" },
-    { id: 3, word: "BAT", th: "ค้างคาว", phonics: "B-A-T", color: "bg-yellow-400", video: "/videos/phonics/spell_bat.mp4" },
-    { id: 4, word: "PIG", th: "หมู", phonics: "P-I-G", color: "bg-pink-400", video: "/videos/phonics/spell_pig.mp4" },
-    { id: 5, word: "HEN", th: "แม่ไก่", phonics: "H-E-N", color: "bg-green-500", video: "/videos/phonics/spell_hen.mp4" },
-    { id: 6, word: "SUN", th: "พระอาทิตย์", phonics: "S-U-N", color: "bg-amber-500", video: "/videos/phonics/spell_sun.mp4" },
-    { id: 7, word: "BOX", th: "กล่อง", phonics: "B-O-X", color: "bg-blue-500", video: "/videos/phonics/spell_box.mp4" },
-    { id: 8, word: "FOX", th: "สุนัขจิ้งจอก", phonics: "F-O-X", color: "bg-orange-600", video: "/videos/phonics/spell_fox.mp4" },
-    { id: 9, word: "BUS", th: "รถบัส", phonics: "B-U-S", color: "bg-teal-500", video: "/videos/phonics/spell_bus.mp4" },
-    { id: 10, word: "RAT", th: "หนู", phonics: "R-A-T", color: "bg-gray-500", video: "/videos/phonics/spell_rat.mp4" },
+  // 🔠 ข้อมูลปุ่มกดข้ามเวลา (A, E, I, O, U)
+  const timeStamps = [
+    { id: 1, char: "A", time: 29,  color: "bg-red-500", border: "border-red-600" },      // 0:29
+    { id: 2, char: "E", time: 110, color: "bg-yellow-400", border: "border-yellow-500" }, // 1:50
+    { id: 3, char: "I", time: 179, color: "bg-green-500", border: "border-green-600" },  // 2:59
+    { id: 4, char: "O", time: 250, color: "bg-blue-500", border: "border-blue-600" },    // 4:10
+    { id: 5, char: "U", time: 322, color: "bg-purple-500", border: "border-purple-600" } // 5:22
   ];
-
-  // แปลงข้อมูลสำหรับ Playlist
-  const playlistItems = lessons.map(item => ({
-    ...item,
-    num: item.word,      // โชว์คำศัพท์ใน Playlist
-    title: `สะกดคำ: ${item.word} (${item.th})`
-  }));
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden bg-orange-50"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed', 
+        backgroundPosition: 'center', 
       }}
     >
+      
+      {/* ส่วนบน: ปุ่มย้อนกลับ & หัวข้อ */}
+      <div className="relative z-20 w-full px-4 pt-4 pb-2 flex items-center justify-between">
+         <button 
+            onClick={() => navigate(-1)} 
+            className="bg-white border-[3px] border-orange-300 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-md active:scale-95 transition-all"
+         >
+            <span className="text-2xl">⬅️</span>
+         </button>
 
-      {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
-        
-        {/* หัวข้อ (เล็กลง) */}
-        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-6 animate-bounce-slow text-center scale-90 md:scale-100">
-            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
-              🗣️ ฝึกสะกดคำ (Spelling)
+         <div className="bg-white/90 border-[3px] border-purple-400 px-6 py-1.5 rounded-full shadow-sm">
+            <h1 className="text-lg md:text-2xl font-black text-purple-600">
+                🗣️ ฝึกสะกดคำ (Spelling)
             </h1>
-        </div>
-
-        {/* 3. Grid คำศัพท์ (เล็กลง) */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-6 max-w-7xl">
-            {playlistItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  playClick();
-                  navigate('/lesson', { 
-                    state: { 
-                        playlist: playlistItems, 
-                        initialIndex: index 
-                    } 
-                  });
-                }}
-                className={`
-                  group relative
-                  flex flex-col items-center justify-center
-                  /* ⭐ ปรับลดขนาดลงตรงนี้ ⭐ */
-                  w-[110px] h-[80px]      /* มือถือ: ลดจาก 140x100 */
-                  md:w-[180px] md:h-[120px] /* จอคอม: ลดจาก 240x160 */
-                  
-                  rounded-2xl
-                  ${item.color} 
-                  shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_rgba(0,0,0,0.2)]
-                  border-[3px] border-white/20
-                  transition-all duration-150
-                  hover:scale-105 hover:-translate-y-1
-                  active:translate-y-1 active:shadow-none
-                `}
-              >
-                {/* คำศัพท์ภาษาอังกฤษ */}
-                <span className="text-3xl md:text-5xl font-black text-white drop-shadow-md tracking-wider leading-none">
-                  {item.word}
-                </span>
-                
-                {/* คำอ่านแบบ Phonics (ตัวเล็ก) */}
-                <div className="mt-0.5 md:mt-1 bg-black/20 px-2 py-0.5 rounded-full text-white/90 text-[10px] md:text-xs font-bold">
-                    {item.phonics}
-                </div>
-
-                {/* คำแปลภาษาไทย (ป้ายห้อยมุมขวาล่าง - เล็กลง) */}
-                <div className="absolute -bottom-2 -right-1 bg-white px-2 py-0.5 rounded-lg shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
-                     <span className="text-[10px] md:text-sm font-bold text-gray-700">{item.th}</span>
-                </div>
-              </button>
-            ))}
-        </div>
-
+         </div>
+         <div className="w-12"></div> {/* พื้นที่ว่างจัดสมดุล */}
       </div>
 
-      <style>{`
-        .animate-bounce-slow { animation: bounce 3s infinite; }
-      `}</style>
+      {/* 📺 Video Player (เล่นทันที) */}
+      <div className="flex-1 w-full flex flex-col items-center justify-center min-h-0 px-2 pb-2">
+         <div className="relative w-full max-w-4xl aspect-video bg-black rounded-[2rem] border-[8px] border-orange-400 shadow-[0_10px_0_#ea580c] overflow-hidden">
+            <video
+                ref={videoRef}
+                src={mainVideo}
+                className="w-full h-full object-contain" 
+                controls
+                autoPlay
+                playsInline
+                muted={isMuted}
+            />
+         </div>
+      </div>
+
+      {/* 🔢 ปุ่มกดข้ามเวลา (A, E, I, O, U) */}
+      <div className="relative z-20 w-full pb-6 pt-2 flex justify-center items-center">
+         <div className="bg-white/80 backdrop-blur-md px-6 py-3 rounded-[2rem] border-[4px] border-blue-200 shadow-lg flex gap-3 md:gap-6 overflow-x-auto no-scrollbar">
+            
+            <div className="flex flex-col justify-center mr-2">
+                 <span className="text-xs md:text-sm font-bold text-gray-500">เลือกสระ:</span>
+            </div>
+
+            {timeStamps.map((item) => (
+                <button
+                    key={item.id}
+                    onClick={() => jumpToTime(item.time)}
+                    className={`
+                        group flex flex-col items-center justify-center
+                        w-12 h-12 md:w-16 md:h-16
+                        rounded-full 
+                        ${item.color} ${item.border} border-[3px]
+                        shadow-md transition-all duration-150
+                        hover:scale-110 hover:-translate-y-1 hover:shadow-lg
+                        active:scale-90 active:translate-y-1
+                    `}
+                >
+                    <span className="text-2xl md:text-3xl font-black text-white drop-shadow-md">
+                        {item.char}
+                    </span>
+                </button>
+            ))}
+         </div>
+      </div>
+
     </div>
   );
 }

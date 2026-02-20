@@ -410,10 +410,10 @@ function App() {
           <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
           <Route path="/asean/flags" element={<AseanNationalFlagsPage isMuted={isMuted} />} />
           <Route path="/asean/greetings" element={<AseanGreetingsPage isMuted={isMuted} />} />
-          <Route path="/asean/national-dishes" element={<AseanNationalDishesPage isMuted={isMuted} />} />
-          <Route path="/asean/national-animals" element={<AseanNationalAnimalsPage isMuted={isMuted} />} />
-          <Route path="/asean/national-costumes" element={<AseanNationalCostumesPage isMuted={isMuted} />} />
-          <Route path="/asean/national-flowers" element={<AseanNationalFlowersPage isMuted={isMuted} />} />
+          <Route path="/asean/national-dishes" element={<AseanNationalDishesPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
+          <Route path="/asean/national-animals" element={<AseanNationalAnimalsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
+          <Route path="/asean/national-costumes" element={<AseanNationalCostumesPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
+          <Route path="/asean/national-flowers" element={<AseanNationalFlowersPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
           <Route path="/asean/game-menu" element={<AseanGameMenuPage isMuted={isMuted} />} />
           <Route path="/asean/asean-trace" element={<AseanGameTraceAnimalPage isMuted={isMuted} />} />
           <Route path="/asean/asean-flags" element={<AseanGameFlagsPage isMuted={isMuted} />} />
@@ -423,10 +423,24 @@ function App() {
 
           <Route path="/phonics" element={<PhonicsMenuPage isMuted={isMuted} />} />
           <Route path="/phonics/sounds" element={<PhonicsSoundPage isMuted={isMuted} />} />
-          <Route path="/phonics/mapping" element={<PhonicsMappingPage isMuted={isMuted} />} />
-          <Route path="/phonics/vowels" element={<PhonicsVowelsPage isMuted={isMuted} />} />
-          <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} />} />
-          <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} />} />
+          
+          {/* ✅ แก้ไข: เพิ่ม onVideoStateChange ให้หน้า Mapping และ Vowels (และอื่นๆ เผื่อไว้) */}
+          <Route 
+            path="/phonics/mapping" 
+            element={<PhonicsMappingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} 
+          />
+          <Route 
+            path="/phonics/vowels" 
+            element={<PhonicsVowelsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} 
+          />
+          <Route 
+            path="/phonics/spelling" 
+            element={<PhonicsSpellingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} 
+          />
+          <Route 
+            path="/phonics/reading" 
+            element={<PhonicsReadingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} 
+          />
 
           {/* ================= โซนบัตรคำศัพท์ (Flashcard) ================= */}
           <Route path="/flashcard" element={<FlashcardMenuPage isMuted={isMuted} />} />

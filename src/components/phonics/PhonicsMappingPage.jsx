@@ -14,43 +14,41 @@ function PhonicsMappingPage({ isMuted }) {
     }
   };
 
-  // 🔠 ข้อมูลเทียบเสียง A-Z เป็นภาษาไทย
-  const mappingData = [
-    { id: 1, en: "A", th: "แอะ / เอ", color: "bg-red-500" },
-    { id: 2, en: "B", th: "บ", color: "bg-orange-500" },
-    { id: 3, en: "C", th: "ค / ซ", color: "bg-yellow-400" },
-    { id: 4, en: "D", th: "ด", color: "bg-green-500" },
-    { id: 5, en: "E", th: "เอะ / อี", color: "bg-teal-500" },
-    { id: 6, en: "F", th: "ฟ", color: "bg-blue-500" },
-    { id: 7, en: "G", th: "ก / จ", color: "bg-indigo-500" },
-    { id: 8, en: "H", th: "ฮ", color: "bg-purple-500" },
-    { id: 9, en: "I", th: "อิ / ไอ", color: "bg-pink-500" },
-    { id: 10, en: "J", th: "จ", color: "bg-rose-500" },
-    { id: 11, en: "K", th: "ค", color: "bg-red-400" },
-    { id: 12, en: "L", th: "ล", color: "bg-orange-400" },
-    { id: 13, en: "M", th: "ม", color: "bg-amber-400" },
-    { id: 14, en: "N", th: "น", color: "bg-lime-500" },
-    { id: 15, en: "O", th: "ออ / โอ", color: "bg-emerald-500" },
-    { id: 16, en: "P", th: "พ", color: "bg-cyan-500" },
-    { id: 17, en: "Q", th: "คว", color: "bg-sky-500" },
-    { id: 18, en: "R", th: "ร", color: "bg-violet-500" },
-    { id: 19, en: "S", th: "ส", color: "bg-fuchsia-500" },
-    { id: 20, en: "T", th: "ท", color: "bg-pink-500" },
-    { id: 21, en: "U", th: "อะ / อุ", color: "bg-rose-400" },
-    { id: 22, en: "V", th: "ว (ฝ)", color: "bg-red-500" },
-    { id: 23, en: "W", th: "ว", color: "bg-orange-500" },
-    { id: 24, en: "X", th: "กซ", color: "bg-yellow-500" },
-    { id: 25, en: "Y", th: "ย", color: "bg-green-500" },
-    { id: 26, en: "Z", th: "ซ", color: "bg-blue-500" },
+  // 🎥 Path วิดีโอหลัก
+  const mainVideoPath = "/videos/phonics/phonics_mapping.mp4"; 
+
+  const lessons = [
+    { 
+      id: 1, 
+      title: "พยัญชนะ", 
+      subTitle: "Consonants",
+      desc: "เทียบเสียง B, C, D, F...",
+      video: mainVideoPath, 
+      // ธีมสีฟ้า
+      bgGradient: "from-cyan-400 to-blue-500",
+      shadowColor: "shadow-blue-400",
+      icon: "🗣️",
+      decor: "B C D F G H..." 
+    },
+    { 
+      id: 2, 
+      title: "สระ", 
+      subTitle: "Vowels",
+      desc: "เทียบเสียง A, E, I, O, U",
+      video: `${mainVideoPath}#t=78`, // เริ่มนาทีที่ 1:18 (78 วินาที)
+      // ธีมสีชมพู
+      bgGradient: "from-pink-400 to-rose-500",
+      shadowColor: "shadow-rose-400",
+      icon: "🅰️",
+      decor: "A E I O U",
+      badge: "เริ่มนาทีที่ 1:18 ⏩"
+    }
   ];
 
-  // แปลงข้อมูลให้เป็นรูปแบบ Playlist
-  const lessons = mappingData.map((item) => ({
-    id: item.id,
-    num: item.en,
-    title: `เทียบเสียง ${item.en} = ${item.th}`,
-    video: `/videos/phonics/map_${item.en.toLowerCase()}.mp4`,
-    ...item
+  const playlistItems = lessons.map((item, index) => ({
+    ...item,
+    num: index + 1,
+    title: `${item.title} (${item.subTitle})`
   }));
 
   return (
@@ -64,59 +62,80 @@ function PhonicsMappingPage({ isMuted }) {
       }}
     >
 
-      {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
+      {/* เนื้อหาหลัก */}
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pb-10">
         
-        {/* หัวข้อ (เล็กลง) */}
-        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-6 animate-bounce-slow text-center scale-90 md:scale-100">
-            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
-              🔠 เทียบอักษร (A-Z Mapping)
+        {/* หัวข้อ (ตกแต่งใหม่) */}
+        <div className="relative z-10 bg-white/90 backdrop-blur-sm px-10 py-3 rounded-full border-[5px] border-purple-400 shadow-[0_8px_0_rgba(168,85,247,0.4)] mb-12 animate-bounce-slow text-center">
+            <h1 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 tracking-wide drop-shadow-sm">
+              🔠 เทียบเสียง (Mapping)
             </h1>
         </div>
 
-        {/* 3. Grid ปุ่ม A-Z (เล็กลง) */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 max-w-6xl">
-            {lessons.map((item, index) => (
+        {/* Container การ์ด 2 ใบ */}
+        <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full justify-center items-center max-w-5xl">
+            {playlistItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => {
                   playClick();
                   navigate('/lesson', { 
                     state: { 
-                        playlist: lessons, 
+                        playlist: playlistItems, 
                         initialIndex: index 
                     } 
                   });
                 }}
                 className={`
-                  group relative
-                  flex flex-col items-center justify-center
-                  /* ⭐ ปรับลดขนาดลงตรงนี้ ⭐ */
-                  w-[70px] h-[70px]      /* มือถือ: ลดจาก 90 เหลือ 70 */
-                  md:w-[100px] md:h-[100px] /* จอคอม: ลดจาก 140 เหลือ 100 */
-                  
-                  rounded-xl
-                  ${item.color} 
-                  shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_rgba(0,0,0,0.2)]
-                  border-[3px] border-white/30
-                  transition-all duration-150
-                  hover:scale-110 hover:-translate-y-1
-                  active:translate-y-1 active:shadow-none
+                  group relative overflow-hidden
+                  flex flex-col items-center justify-between
+                  w-full max-w-[320px] md:max-w-[380px]
+                  h-[200px] md:h-[280px]
+                  rounded-[2.5rem]
+                  bg-gradient-to-br ${item.bgGradient}
+                  border-[6px] border-white/40
+                  shadow-[0_15px_30px_-5px_rgba(0,0,0,0.3)]
+                  ${item.shadowColor ? `hover:${item.shadowColor}/50` : ''}
+                  transition-all duration-300
+                  hover:scale-105 hover:-translate-y-2
+                  active:scale-95 active:shadow-none
                 `}
               >
-                {/* ตัวอักษรภาษาอังกฤษ */}
-                <span className="text-3xl md:text-5xl font-black text-white drop-shadow-md leading-none">
-                  {item.en}
+                {/* ลวดลายพื้นหลังจางๆ */}
+                <span className="absolute -top-4 -left-4 text-9xl text-white/10 font-black rotate-12 select-none">
+                    {index === 0 ? "ABC" : "AEIOU"}
                 </span>
                 
-                {/* เครื่องหมายเท่ากับ */}
-                <span className="text-white/80 text-xs md:text-sm font-bold -mt-1 md:-mt-0">=</span>
+                {/* 🔵 Badge (ป้ายบอกเวลาสำหรับสระ) */}
+                {item.badge && (
+                    <div className="absolute top-4 right-4 bg-white text-rose-500 px-3 py-1 rounded-full text-xs md:text-sm font-bold shadow-md animate-pulse">
+                        {item.badge}
+                    </div>
+                )}
 
-                {/* ตัวอักษรไทย (พื้นหลังขาว) */}
-                <div className="bg-white/90 px-1 py-0.5 rounded-md shadow-sm w-[90%] truncate mt-0.5">
-                   <span className={`text-xs md:text-base font-bold ${item.color.replace('bg-', 'text-')}`}>
-                     {item.th}
-                   </span>
+                {/* ส่วนเนื้อหาตรงกลาง */}
+                <div className="flex flex-col items-center justify-center flex-1 z-10 pt-4">
+                    {/* ไอคอนใหญ่ */}
+                    <div className="text-5xl md:text-7xl mb-2 drop-shadow-md grayscale-0 group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                    </div>
+
+                    {/* ชื่อหัวข้อหลัก */}
+                    <h2 className="text-3xl md:text-5xl font-black text-white drop-shadow-lg tracking-wide">
+                        {item.title}
+                    </h2>
+                    
+                    {/* ชื่อรอง (ภาษาอังกฤษ) */}
+                    <span className="text-white/90 text-sm md:text-lg font-bold tracking-wider uppercase bg-black/10 px-4 py-0.5 rounded-full mt-1">
+                        {item.subTitle}
+                    </span>
+                </div>
+
+                {/* ส่วนล่าง (คำอธิบาย) */}
+                <div className="w-full bg-black/20 backdrop-blur-sm py-3 px-4 z-10 border-t border-white/20">
+                    <p className="text-white text-sm md:text-lg font-medium truncate w-full text-center">
+                        {item.decor}
+                    </p>
                 </div>
               </button>
             ))}

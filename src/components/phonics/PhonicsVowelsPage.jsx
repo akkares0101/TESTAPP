@@ -1,138 +1,122 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-const clickSound = new Audio('/sounds/click.mp3');
-
-function PhonicsVowelsPage({ isMuted }) {
+function PhonicsVowelsPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
-  const playClick = () => {
-    if (!isMuted) {
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
+  // 🎥 Path วิดีโอหลัก (คลิปรวม)
+  const mainVideo = "/videos/phonics/vowels_song.mp4";
+
+  // 🎵 จัดการเสียง BGM (ปิดเพลงพื้นหลังเมื่อเข้าหน้านี้)
+  useEffect(() => {
+    if (onVideoStateChange) onVideoStateChange(true); // ปิด BGM
+    return () => {
+      if (onVideoStateChange) onVideoStateChange(false); // เปิด BGM เมื่อออก
+    };
+  }, [onVideoStateChange]);
+
+  // ▶️ สั่งให้วิดีโอเล่นทันทีที่โหลดหน้าเสร็จ + 🔉 ปรับลดเสียงลง
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.volume = 0.5; 
+      
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
+  }, []);
+
+  // ฟังก์ชันกระโดดไปเวลาที่กำหนด
+  const jumpToTime = (seconds) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = seconds;
+      videoRef.current.play(); // สั่งเล่นต่อทันทีเผื่อวิดีโอหยุดอยู่
     }
   };
 
-  // 🔤 ข้อมูลสระ 5 ตัว (A, E, I, O, U)
-  const lessons = [
-    { 
-      id: 1, 
-      num: "A", 
-      title: "สระ A (แอะ / เอ)", 
-      desc: "Short: แอะ (Ant) / Long: เอ (Cake)",
-      color: "bg-red-500", 
-      border: "border-red-600",
-      video: "/videos/phonics/vowel_a.mp4" 
-    },
-    { 
-      id: 2, 
-      num: "E", 
-      title: "สระ E (เอะ / อี)", 
-      desc: "Short: เอะ (Egg) / Long: อี (Bee)",
-      color: "bg-yellow-400", 
-      border: "border-yellow-500",
-      video: "/videos/phonics/vowel_e.mp4" 
-    },
-    { 
-      id: 3, 
-      num: "I", 
-      title: "สระ I (อิ / ไอ)", 
-      desc: "Short: อิ (Igloo) / Long: ไอ (Ice)",
-      color: "bg-green-500", 
-      border: "border-green-600",
-      video: "/videos/phonics/vowel_i.mp4" 
-    },
-    { 
-      id: 4, 
-      num: "O", 
-      title: "สระ O (เอาะ / โอ)", 
-      desc: "Short: เอาะ (Ox) / Long: โอ (Bone)",
-      color: "bg-blue-500", 
-      border: "border-blue-600",
-      video: "/videos/phonics/vowel_o.mp4" 
-    },
-    { 
-      id: 5, 
-      num: "U", 
-      title: "สระ U (อะ / อู)", 
-      desc: "Short: อะ (Up) / Long: อู (Cube)",
-      color: "bg-purple-500", 
-      border: "border-purple-600",
-      video: "/videos/phonics/vowel_u.mp4" 
-    },
+  // 🔤 ข้อมูลปุ่มกดข้ามเวลา
+  const timeStamps = [
+    { id: 1, char: "A", time: 64, color: "bg-red-500", border: "border-red-600" },    // 1:04
+    { id: 2, char: "E", time: 83, color: "bg-yellow-400", border: "border-yellow-500" }, // 1:23
+    { id: 3, char: "I", time: 107, color: "bg-green-500", border: "border-green-600" },  // 1:47
+    { id: 4, char: "O", time: 129, color: "bg-blue-500", border: "border-blue-600" },    // 2:09
+    { id: 5, char: "U", time: 155, color: "bg-purple-500", border: "border-purple-600" }, // 2:35
   ];
 
   return (
     <div 
-      className="h-screen w-full flex flex-col items-center relative overflow-hidden"
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden bg-sky-100"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed', 
+        backgroundPosition: 'center', 
       }}
     >
+      
+      {/* ส่วนบน: ปุ่มย้อนกลับ & หัวข้อ */}
+      <div className="relative z-20 w-full px-4 pt-4 pb-2 flex items-center justify-between">
+         <button 
+            onClick={() => navigate(-1)} 
+            className="bg-white border-[3px] border-orange-300 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-md active:scale-95 transition-all"
+         >
+            <span className="text-2xl">⬅️</span>
+         </button>
 
-      {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-start w-full max-w-[100rem] px-4 pt-16 md:pt-14 overflow-y-auto pb-10">
-        
-        {/* หัวข้อ (เล็กลง) */}
-        <div className="relative z-10 bg-white px-6 py-1.5 md:px-10 md:py-2 rounded-full border-[3px] md:border-[5px] border-purple-500 shadow-[0_3px_0_#a855f7] mb-8 animate-bounce-slow text-center scale-90 md:scale-100">
-            <h1 className="text-2xl md:text-4xl font-black text-purple-600 tracking-wide">
-              🅰️ สระภาษาอังกฤษ (Vowels)
+         <div className="bg-white/90 border-[3px] border-purple-400 px-6 py-1.5 rounded-full shadow-sm">
+            <h1 className="text-lg md:text-2xl font-black text-purple-600">
+                🅰️ สระภาษาอังกฤษ
             </h1>
-        </div>
-
-        {/* 3. Grid สระ 5 ตัว (เล็กลง) */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-7xl">
-            {lessons.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  playClick();
-                  navigate('/lesson', { 
-                    state: { 
-                        playlist: lessons, 
-                        initialIndex: index 
-                    } 
-                  });
-                }}
-                className={`
-                  group relative
-                  flex flex-col items-center justify-center
-                  /* ⭐ ปรับลดขนาดลงตรงนี้ ⭐ */
-                  w-[100px] h-[100px]      /* มือถือ: ลดจาก 140 เหลือ 100 */
-                  md:w-[160px] md:h-[160px] /* จอคอม: ลดจาก 220 เหลือ 160 */
-                  
-                  rounded-full /* เป็นวงกลม */
-                  ${item.color} ${item.border} border-[6px]
-                  shadow-[0_6px_15px_rgba(0,0,0,0.2)]
-                  transition-all duration-300
-                  hover:scale-110 hover:-rotate-3 hover:shadow-[0_10px_20px_rgba(0,0,0,0.3)]
-                  active:scale-95 active:translate-y-2
-                `}
-              >
-                {/* ตัวอักษร */}
-                <span className="text-5xl md:text-8xl font-black text-white drop-shadow-md mb-1 md:mb-2">
-                  {item.num}
-                </span>
-                
-                {/* คำอธิบายสั้นๆ (ป้ายห้อย) */}
-                <div className="absolute -bottom-3 bg-white px-2 py-0.5 rounded-full shadow-md border-2 border-gray-100 min-w-[70px] md:min-w-[90px]">
-                    <span className={`text-xs md:text-base font-bold ${item.color.replace('bg-', 'text-')}`}>
-                         {item.title.split('(')[1].replace(')', '')}
-                    </span>
-                </div>
-              </button>
-            ))}
-        </div>
-
+         </div>
+         <div className="w-12"></div> {/* พื้นที่ว่างจัดสมดุล */}
       </div>
 
-      <style>{`
-        .animate-bounce-slow { animation: bounce 3s infinite; }
-      `}</style>
+      {/* 📺 Video Player (เล่นทันที) */}
+      <div className="flex-1 w-full flex flex-col items-center justify-center min-h-0 px-2 pb-2">
+         <div className="relative w-full max-w-4xl aspect-video bg-black rounded-[2rem] border-[8px] border-yellow-400 shadow-[0_10px_0_#d97706] overflow-hidden">
+            <video
+                ref={videoRef}
+                src={mainVideo}
+                className="w-full h-full object-contain" 
+                controls
+                autoPlay // ✅ เล่นอัตโนมัติ
+                playsInline
+                muted={isMuted} // รับค่า Mute จาก App (ถ้า App ปิดเสียง วิดีโอจะเงียบสนิท)
+            />
+         </div>
+      </div>
+
+      {/* 🔢 ปุ่มกดข้ามเวลา (A, E, I, O, U) */}
+      <div className="relative z-20 w-full pb-6 pt-2 flex justify-center items-center">
+         <div className="bg-white/80 backdrop-blur-md px-6 py-3 rounded-[2rem] border-[4px] border-blue-200 shadow-lg flex gap-3 md:gap-6 overflow-x-auto no-scrollbar">
+            
+            <div className="flex flex-col justify-center mr-2">
+                 <span className="text-xs md:text-sm font-bold text-gray-500">เลือกสระ:</span>
+            </div>
+
+            {timeStamps.map((item) => (
+                <button
+                    key={item.id}
+                    onClick={() => jumpToTime(item.time)}
+                    className={`
+                        group flex flex-col items-center justify-center
+                        w-12 h-12 md:w-16 md:h-16
+                        rounded-full 
+                        ${item.color} ${item.border} border-[3px]
+                        shadow-md transition-all duration-150
+                        hover:scale-110 hover:-translate-y-1 hover:shadow-lg
+                        active:scale-90 active:translate-y-1
+                    `}
+                >
+                    <span className="text-2xl md:text-3xl font-black text-white drop-shadow-md">
+                        {item.char}
+                    </span>
+                </button>
+            ))}
+         </div>
+      </div>
+
     </div>
   );
 }

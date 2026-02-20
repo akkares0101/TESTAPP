@@ -2,102 +2,69 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/bg.png";
 
-// รับ props: globalVolume (ความดัง) และ isMuted (ปิดเสียง) มาจากตัวแม่
-function AseanNationalFlagPage({ globalVolume, isMuted }) {
+function AseanNationalFlagsPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
-  const videoRef = useRef(null); // ⭐ เพิ่ม ref สำหรับคุมวิดีโอ
+  const videoRef = useRef(null);
+  
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  // ข้อมูลประเทศ (ใช้ id เป็นชื่อไฟล์วิดีโอ)
-  const aseanCountries = [
-    { id: "thai", name: "ไทย" },
-    { id: "indo", name: "อินโดนีเซีย" },
-    { id: "malay", name: "มาเลเซีย" },
-    { id: "sing", name: "สิงคโปร์" },
-    { id: "phil", name: "ฟิลิปปินส์" },
-    { id: "laos", name: "ลาว" },
-    { id: "viet", name: "เวียดนาม" },
-    { id: "myan", name: "เมียนมา" },
-    { id: "brunei", name: "บรูไน" },
-    { id: "cam", name: "กัมพูชา" },
-    { id: "timor", name: "ติมอร์-เลสเต" },
-  ];
+  // 🎥 Path วิดีโอหลัก (คลิปรวมธงชาติ)
+  // ⚠️ เตรียมไฟล์นี้ไว้ใน public/videos/asean/flags.mp4
+  const mainVideo = "/videos/asean/flags.mp4";
 
-  // ธีมสี (เหมือนหน้า ก-ฮ)
-  const colorThemes = [
-    {
-      bg: "from-rose-400 to-pink-500",
-      border: "border-pink-600",
-      shadow: "shadow-pink-200",
-    },
-    {
-      bg: "from-sky-400 to-blue-500",
-      border: "border-blue-600",
-      shadow: "shadow-sky-200",
-    },
-    {
-      bg: "from-green-400 to-emerald-500",
-      border: "border-emerald-600",
-      shadow: "shadow-green-200",
-    },
-    {
-      bg: "from-orange-400 to-amber-500",
-      border: "border-amber-600",
-      shadow: "shadow-orange-200",
-    },
-    {
-      bg: "from-purple-400 to-violet-500",
-      border: "border-violet-600",
-      shadow: "shadow-purple-200",
-    },
-  ];
-
-  // ⭐ ฟังก์ชันหาไฟล์วิดีโอ: ต้องมีไฟล์ใน folder /videos/asean/ ชื่อตาม id เช่น thai.mp4
-  const getVideoSrc = (id) => `/videos/asean/${id}.mp4`;
-
-  // ⭐ useEffect สำหรับ Auto-play เหมือนหน้า ก-ฮ
+  // 🎵 จัดการเสียง BGM (ให้เพลงพื้นหลังดับเมื่อเข้ามาหน้านี้)
   useEffect(() => {
-    if (selectedCountry && videoRef.current) {
-      videoRef.current.volume = globalVolume || 1.0;
-      videoRef.current.load(); // สั่งโหลดไฟล์ใหม่เมื่อเปลี่ยนประเทศ
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((e) => console.log("Auto-play error:", e));
-      }
-    }
-  }, [selectedCountry, globalVolume]);
+    if (onVideoStateChange) onVideoStateChange(true);
+    return () => {
+      if (onVideoStateChange) onVideoStateChange(false);
+    };
+  }, [onVideoStateChange]);
 
-  const CountryButton = ({ country, index }) => {
-    const isSelected = selectedCountry?.id === country.id;
-    const theme = colorThemes[index % colorThemes.length];
-    return (
-      <button
-        onClick={() => setSelectedCountry(country)}
-        className={`
-          group relative h-10 md:h-12 px-3 md:px-5 rounded-xl md:rounded-2xl 
-          bg-gradient-to-br ${
-            theme.bg
-          } border-b-4 border-r-2 border-l-0 border-t-0 ${theme.border}
-          flex items-center justify-center shadow-md md:shadow-lg ${
-            theme.shadow
-          }
-          transition-all duration-200
-          ${
-            isSelected
-              ? "translate-y-1 border-b-0 brightness-110 ring-4 ring-white/50 scale-95"
-              : "hover:-translate-y-1 hover:scale-110"
-          }
-        `}
-      >
-        <span className="text-sm md:text-xl font-black text-white drop-shadow-sm whitespace-nowrap">
-          {country.name}
-        </span>
-      </button>
-    );
+  // ▶️ สั่งให้วิดีโอเริ่มเล่นอัตโนมัติเมื่อเข้ามา
+  useEffect(() => {
+    if (videoRef.current) {
+        videoRef.current.volume = 0.5; // ลดเสียงลงนิดหน่อย
+        videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
+  // 🚩 ข้อมูลประเทศและเวลา (วินาที)
+  const aseanData = [
+    { id: "asean", name: "ธงอาเซียน", time: 32 },    // 0:32
+    { id: "thai", name: "ไทย", time: 69 },           // 1:09
+    { id: "indo", name: "อินโดนีเซีย", time: 84 },   // 1:24
+    { id: "malay", name: "มาเลเซีย", time: 96 },     // 1:36
+    { id: "sing", name: "สิงคโปร์", time: 111 },     // 1:51
+    { id: "phil", name: "ฟิลิปปินส์", time: 122 },   // 2:02
+    { id: "laos", name: "ลาว", time: 136 },          // 2:16
+    { id: "viet", name: "เวียดนาม", time: 147 },     // 2:27
+    { id: "myan", name: "เมียนมา", time: 158 },      // 2:38
+    { id: "brunei", name: "บรูไน", time: 170 },      // 2:50
+    { id: "cam", name: "กัมพูชา", time: 183 },       // 3:03
+    { id: "timor", name: "ติมอร์-เลสเต", time: 194 } // 3:14
+  ];
+
+  // ธีมสี 
+  const colorThemes = [
+    { bg: "from-rose-400 to-pink-500", border: "border-pink-600", shadow: "shadow-pink-200" },
+    { bg: "from-sky-400 to-blue-500", border: "border-blue-600", shadow: "shadow-sky-200" },
+    { bg: "from-green-400 to-emerald-500", border: "border-emerald-600", shadow: "shadow-green-200" },
+    { bg: "from-orange-400 to-amber-500", border: "border-amber-600", shadow: "shadow-orange-200" },
+    { bg: "from-purple-400 to-violet-500", border: "border-violet-600", shadow: "shadow-purple-200" },
+  ];
+
+  // ⏩ ฟังก์ชันเมื่อกดเลือกประเทศ ให้วิดีโอกระโดดไปตามเวลา
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
+    if (videoRef.current) {
+      videoRef.current.currentTime = country.time;
+      videoRef.current.play(); // สั่งให้เล่นต่อเผื่อวิดีโอหยุดอยู่
+    }
   };
 
   return (
     <div className="relative h-screen w-full overflow-hidden flex flex-col items-center">
+      {/* Background */}
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -106,59 +73,90 @@ function AseanNationalFlagPage({ globalVolume, isMuted }) {
         }}
       ></div>
 
-      <div className="w-full max-w-6xl px-4 flex justify-between items-center py-2 shrink-0 h-16 md:h-20 z-10">
+      {/* Header */}
+      <div className="w-full max-w-6xl px-4 flex justify-between items-center py-2 shrink-0 h-16 md:h-20 z-10 pt-4">
         <button
           onClick={() => navigate("/asean")}
-          className="bg-white text-orange-500 w-10 h-10 md:w-12 md:h-12 rounded-full font-black text-xl md:text-2xl shadow-sm border-4 border-white hover:scale-110"
+          className="bg-white text-orange-500 w-12 h-12 md:w-14 md:h-14 rounded-full font-black text-2xl shadow-sm border-[3px] border-orange-200 hover:scale-110 active:scale-95 transition-transform flex items-center justify-center"
         >
-          ◀
+          ⬅️
         </button>
-        <div className="bg-white/90 px-6 py-1 rounded-full shadow-lg border-4 border-orange-200">
-          <h1 className="text-xl md:text-3xl font-black text-orange-500">
-            ธงชาติอาเซียน
+        <div className="bg-white/90 px-8 py-2 rounded-full shadow-lg border-[4px] border-orange-300">
+          <h1 className="text-xl md:text-3xl font-black text-orange-600 tracking-wide">
+            🚩 ธงชาติอาเซียน
           </h1>
         </div>
-        <div className="w-10 md:w-12"></div>
+        <div className="w-12 md:w-14"></div>
       </div>
 
+      {/* Video Player Area */}
       <div className="w-full max-w-5xl px-4 flex-1 min-h-0 flex flex-col justify-center pb-2 z-10">
-        <div className="w-full h-full bg-orange-100 ring-4 ring-white rounded-[2rem] border-[8px] border-orange-300 shadow-xl overflow-hidden relative flex flex-col">
-          <div className="flex-1 bg-black relative flex items-center justify-center">
-            {selectedCountry ? (
-              // ⭐ ใช้ <video> แทน <img>
-              <video
+        <div className="relative w-full aspect-video bg-black rounded-[2rem] border-[8px] border-orange-300 shadow-[0_10px_0_#c2410c] overflow-hidden group">
+            <video
                 ref={videoRef}
+                src={mainVideo}
                 className="w-full h-full object-contain"
                 controls
                 muted={isMuted}
                 autoPlay
-              >
-                <source
-                  src={getVideoSrc(selectedCountry.id)}
-                  type="video/mp4"
-                />
-              </video>
-            ) : (
-              <div className="text-white/30 text-center">
-                <span className="text-6xl">🎬</span>
-                <p>เลือกประเทศ</p>
-              </div>
+                playsInline
+            />
+            {/* Overlay ชื่อประเทศที่กำลังเลือกอยู่ */}
+            {selectedCountry && (
+                <div className="absolute top-4 left-4 bg-black/60 text-white px-4 py-1 rounded-full text-lg backdrop-blur-sm pointer-events-none animate-fade-in">
+                    📍 {selectedCountry.name}
+                </div>
             )}
+        </div>
+      </div>
+
+      {/* Control Panel (Buttons) */}
+      <div className="w-full max-w-6xl h-[30vh] md:h-[25vh] shrink-0 bg-white/80 backdrop-blur-md rounded-t-[2.5rem] p-4 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] flex flex-col z-20 border-t-4 border-white">
+        <div className="text-center mb-2">
+            <span className="text-gray-500 font-bold text-sm bg-white px-3 py-1 rounded-full shadow-sm">
+                เลือกเพื่อดูธงชาติแต่ละประเทศ
+            </span>
+        </div>
+        <div className="flex-1 overflow-y-auto pb-4 px-2 no-scrollbar">
+          <div className="flex flex-wrap justify-center gap-3">
+            {aseanData.map((country, index) => {
+               const theme = colorThemes[index % colorThemes.length];
+               const isSelected = selectedCountry?.id === country.id;
+               
+               return (
+                  <button
+                    key={country.id}
+                    onClick={() => handleSelectCountry(country)}
+                    className={`
+                      relative px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl
+                      bg-gradient-to-br ${theme.bg}
+                      border-b-[4px] border-r-[2px] border-l-0 border-t-0 ${theme.border}
+                      shadow-md transition-all duration-150
+                      flex items-center gap-2
+                      ${isSelected 
+                        ? "translate-y-1 border-b-0 brightness-110 ring-4 ring-white scale-95" 
+                        : "hover:-translate-y-1 hover:scale-105 hover:brightness-105"
+                      }
+                    `}
+                  >
+                    <span className="text-base md:text-xl font-black text-white drop-shadow-sm whitespace-nowrap">
+                      {country.name}
+                    </span>
+                  </button>
+               );
+            })}
           </div>
         </div>
       </div>
 
-      <div className="w-full max-w-6xl h-[30vh] shrink-0 bg-white/60 backdrop-blur-xl rounded-t-[2rem] p-3 shadow-lg flex flex-col z-10">
-        <div className="flex-1 overflow-y-auto pb-4 scrollbar-hide">
-          <div className="flex flex-wrap justify-center gap-2 px-1">
-            {aseanCountries.map((country, index) => (
-              <CountryButton key={country.id} country={country} index={index} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fade-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
+      `}</style>
     </div>
   );
 }
 
-export default AseanNationalFlagPage;
+export default AseanNationalFlagsPage;
