@@ -1,99 +1,90 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// Import รูปปกวิดีโอ (ถ้าไม่มีใช้รูปปุ่มเดิมแก้ขัดได้ครับ)
-// ต้องตรวจสอบว่า path นี้มีรูปอยู่จริง หรือลบ import นี้ออกแล้วใช้ path รูปอื่น
-import coverImg from '../../assets/images/science/btn_intro.png'; 
+// ลบ coverImg ออกได้เลยเพราะเราใช้ Video Player แทนแล้ว
 
-const clickSound = new Audio('/sounds/click.mp3');
-
-function ScienceIntroPage({ isMuted }) {
+function ScienceIntroPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
-  const playClick = () => {
-    if (!isMuted) {
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
+  // 🧪 Path วิดีโอหลัก
+  // ⚠️ เตรียมไฟล์วิดีโอไว้ที่: public/videos/science/science_intro.mp4
+  const mainVideo = "/videos/science/science_intro.mp4";
+
+  // 🎵 จัดการเสียง BGM (ให้เพลงพื้นหลังดับเมื่อเข้ามาหน้านี้)
+  useEffect(() => {
+    if (onVideoStateChange) onVideoStateChange(true);
+    return () => {
+      if (onVideoStateChange) onVideoStateChange(false);
+    };
+  }, [onVideoStateChange]);
+
+  // ▶️ สั่งให้วิดีโอเริ่มเล่นอัตโนมัติเมื่อเข้ามา
+  useEffect(() => {
+    if (videoRef.current) {
+        videoRef.current.volume = 0.5; // ลดเสียงวิดีโอลงระดับกลาง
+        videoRef.current.play().catch(() => {});
     }
-  };
-
-  // 🧪 ข้อมูลวิดีโอ
-  const lessons = [
-    { 
-      id: 1, 
-      num: "1", 
-      title: "วิทยาศาสตร์คืออะไร?", 
-      video: "/videos/science/science_intro.mp4", // ⚠️ เตรียมไฟล์นี้นะครับ
-      color: "bg-green-500", 
-      border: "border-green-700" 
-    },
-  ];
+  }, []);
 
   return (
     <div 
       className="h-screen w-full flex flex-col items-center relative overflow-hidden"
       style={{ 
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover', 
+        backgroundSize: '100% 100%', 
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 2. เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10">
+      
+      {/* 1. ส่วนหัว (Header & ปุ่มกลับ) */}
+      <div className="w-full max-w-[95rem] px-4 py-4 flex justify-between items-center z-20 shrink-0 mt-4">
+        {/* ปุ่มกลับ */}
+        <button 
+          onClick={() => navigate('/science')} 
+          className="
+            group flex items-center justify-center
+            w-12 h-12 md:w-16 md:h-16
+            bg-white text-green-600 rounded-full 
+            shadow-[0_4px_0_#86efac] border-[3px] border-green-200 
+            hover:scale-110 hover:-translate-y-1 hover:shadow-[0_6px_0_#86efac] 
+            active:scale-95 active:translate-y-1 active:shadow-none
+            transition-all duration-200
+          "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 md:w-10 md:h-10">
+            <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.114 0z" clipRule="evenodd" />
+          </svg>
+        </button>
+
+        {/* ป้ายชื่อเรื่อง */}
+        <div className="flex-1 flex justify-center items-center px-6 py-2 md:py-3 rounded-[3rem] shadow-lg border-[4px] border-green-300 bg-white/90 backdrop-blur-md mx-4 max-w-2xl">
+           <h1 className="text-xl md:text-3xl font-black tracking-wide text-green-600 truncate">
+             🧪 บทนำ: วิทยาศาสตร์คืออะไร?
+           </h1>
+        </div>
         
-        {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-green-500 shadow-[0_4px_0_#22c55e] mb-10 animate-bounce-slow">
-            <h1 className="text-3xl md:text-5xl font-black text-green-600 tracking-wide">
-              🧪 บทนำ: วิทยาศาสตร์คืออะไร
-            </h1>
-        </div>
-
-        {/* การ์ดเลือกวิดีโอ */}
-        <div className="flex flex-wrap justify-center gap-8">
-            {lessons.map((item, index) => (
-                <div 
-                    key={item.id}
-                    onClick={() => {
-                        playClick();
-                        navigate('/lesson', { state: { playlist: lessons, initialIndex: index } });
-                    }}
-                    className="
-                        group relative cursor-pointer
-                        w-[280px] h-[200px] md:w-[400px] md:h-[280px]
-                        bg-white rounded-3xl border-8 border-green-300 shadow-2xl
-                        flex flex-col items-center justify-center overflow-hidden
-                        hover:scale-105 hover:border-green-500 transition-all duration-300
-                    "
-                >
-                    {/* ปุ่ม Play */}
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                        <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center shadow-lg group-hover:bg-green-500 group-hover:text-white transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 ml-1">
-                                <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    {/* ถ้ามีรูป coverImg ให้ใช้ ถ้าไม่มีให้ใช้สีพื้นแทน */}
-                    <img 
-                        src={coverImg} 
-                        alt="Cover" 
-                        className="w-full h-[70%] object-contain p-4 group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {e.target.style.display='none'}} 
-                    />
-
-                    {/* ชื่อคลิป */}
-                    <div className="absolute bottom-0 w-full h-[30%] bg-green-100 flex items-center justify-center px-4">
-                        <span className="text-xl md:text-2xl font-black text-green-700 truncate">{item.title}</span>
-                    </div>
-                </div>
-            ))}
-        </div>
-
+        {/* ตัวดัน Layout ให้ป้ายชื่ออยู่ตรงกลาง */}
+        <div className="w-12 md:w-16"></div>
       </div>
-      <style>{` .animate-bounce-slow { animation: bounce 3s infinite; } `}</style>
+
+      {/* 2. Video Player Area (ตรงกลางจอใหญ่ๆ) */}
+      <div className="w-full max-w-6xl px-4 flex-1 min-h-0 flex flex-col items-center justify-center z-10 pb-8">
+        <div className="relative w-full aspect-video bg-black rounded-[2rem] border-[8px] border-green-400 shadow-[0_15px_0_#22c55e] overflow-hidden group">
+            <video
+                ref={videoRef}
+                src={mainVideo}
+                className="w-full h-full object-contain"
+                controls
+                muted={isMuted} // ลิงก์กับปุ่มเปิด/ปิดเสียงหลักของแอป
+                autoPlay
+                playsInline
+            />
+        </div>
+      </div>
+
     </div>
   );
 }

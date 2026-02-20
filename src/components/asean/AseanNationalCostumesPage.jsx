@@ -76,11 +76,7 @@ function AseanNationalCostumesPage({ isMuted, onVideoStateChange }) {
 
       {/* Header */}
       <div className="w-full max-w-6xl px-4 flex justify-between items-center py-2 shrink-0 h-16 md:h-20 z-10 pt-4">
-        <button
-          onClick={() => navigate("/asean")}
-          className="bg-white text-orange-500 w-12 h-12 md:w-14 md:h-14 rounded-full font-black text-2xl shadow-sm border-[3px] border-orange-200 hover:scale-110 active:scale-95 transition-transform flex items-center justify-center"
-        >
-          ⬅️
+        <button>
         </button>
         <div className="bg-white/90 px-8 py-2 rounded-full shadow-lg border-[4px] border-orange-300">
           <h1 className="text-xl md:text-3xl font-black text-orange-600 tracking-wide">
