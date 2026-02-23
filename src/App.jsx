@@ -56,6 +56,7 @@ import ScienceEnvironmentPage from "./components/science/ScienceEnvironmentPage"
 import ScienceSortingPage from "./components/science/ScienceSortingPage";
 import ScienceReviewEnvPage from "./components/science/ScienceReviewEnvPage";
 import ScienceReviewBodyPage from "./components/science/ScienceReviewBodyPage";
+import ScienceGamePage from "./components/science/ScienceGamePage";
 
 // ================== Import โซนสังคมศึกษา ==================
 import SocialMenuPage from "./components/social/SocialMenuPage";
@@ -429,6 +430,7 @@ function App() {
           <Route path="/science/sorting" element={<ScienceSortingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/science/review-env" element={<ScienceReviewEnvPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/science/review-body" element={<ScienceReviewBodyPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/science/organs-game" element={<ScienceGamePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
 
           {/* ... Routes สังคม ... */}
           <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
