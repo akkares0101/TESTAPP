@@ -2,17 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// Import รูปปุ่ม 10 ปุ่ม
-import btnNation from '../../assets/images/social/btn_nation.png';
-import btnReligion from '../../assets/images/social/btn_religion.png';
-import btnCulture from '../../assets/images/social/btn_culture.png';
-import btnDays from '../../assets/images/social/btn_days.png';
-import btnFamily from '../../assets/images/social/btn_family.png';
-import btnBehave from '../../assets/images/social/btn_behave.png';
-import btnSelfCare from '../../assets/images/social/btn_selfcare.png';
-import btnExercise from '../../assets/images/social/btn_exercise.png';
-import btnPractice from '../../assets/images/social/btn_practice.png';
-import btnGame from '../../assets/images/social/btn_game.png';
+// Import รูปปุ่ม (แก้ไขตัวแปรให้ตรงกับความหมายของภาพตามรูปที่ส่งมาล่าสุด)
+import imgReligion from '../../assets/images/social/21.png';
+import imgImportantDays from '../../assets/images/social/22.png';
+import imgCulture from '../../assets/images/social/23.png';
+import imgFlag from '../../assets/images/social/24.png';
+import imgFamily from '../../assets/images/social/25.png';
+import imgRoutines from '../../assets/images/social/26.png';
+import imgDressing from '../../assets/images/social/27.png';
+import imgSelfCare from '../../assets/images/social/28.png';
+import imgGame from '../../assets/images/social/btn_game.png'; 
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -26,68 +25,54 @@ function SocialMenuPage({ isMuted }) {
     }
   };
 
+  // จัดเรียงลำดับตามรูปภาพ 21.png -> 28.png และปุ่มเกมตามที่คุณต้องการ
   const menuItems = [
-    { id: 1, image: btnNation, path: "/social/nation", title: "ชาติ" },
-    { id: 2, image: btnReligion, path: "/social/religion", title: "ศาสนา" },
-    { id: 3, image: btnCulture, path: "/social/culture", title: "วัฒนธรรม" },
-    { id: 4, image: btnDays, path: "/social/days", title: "วันสำคัญ" },
-    { id: 5, image: btnFamily, path: "/social/family", title: "ครอบครัว" },
-    { id: 6, image: btnBehave, path: "/social/manners", title: "ปฏิบัติตัว" },
-    { id: 7, image: btnSelfCare, path: "/social/selfcare", title: "ดูแลตัวเอง" },
-    { id: 8, image: btnExercise, path: "/social/exercise", title: "แบบฝึกหัด" },
-    { id: 9, image: btnPractice, path: "/social/practice", title: "การปฏิบัติ" },
-    { id: 10, image: btnGame, path: "/social/game", title: "เกม" },
+    { id: 1, image: imgReligion, path: "/social/religion", title: "ศาสนา" },
+    { id: 2, image: imgImportantDays, path: "/social/important-days", title: "วันสำคัญ" },
+    { id: 3, image: imgCulture, path: "/social/culture", title: "วัฒนธรรม" },
+    { id: 4, image: imgFlag, path: "/social/flag", title: "ธงชาติ" },
+    { id: 5, image: imgFamily, path: "/social/family", title: "ครอบครัว" },
+    { id: 6, image: imgRoutines, path: "/social/routines", title: "กิจวัตรประจำวัน" },
+    { id: 7, image: imgDressing, path: "/social/dressing", title: "การแต่งกาย" },
+    { id: 8, image: imgSelfCare, path: "/social/self-care", title: "การดูแลตัวเอง" },
+    { id: 9, image: imgGame, path: "/social/game", title: "เกมสังคมศึกษา" },
   ];
 
   return (
     <div 
-      className="min-h-screen w-full flex flex-col items-center relative overflow-hidden"
-      style={{ 
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: '100% 100%', 
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed', 
-      }}
+      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
-      
-      {/* ❌ ลบปุ่มกลับหน้าหลักออกแล้วครับ */}
-
-      {/* เนื้อหาหลัก */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10"> 
+      <div className="flex flex-col items-center gap-8 md:gap-12 z-10 px-4 w-full pt-10 pb-10"> 
         
         {/* หัวข้อ */}
-        <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
-            <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
-              สังคมศึกษา
+        <div className="bg-white/90 backdrop-blur-sm px-10 py-3 md:px-12 md:py-4 rounded-full border-[6px] border-blue-400 shadow-[0_6px_0_#60a5fa] animate-bounce-slow">
+            <h1 className="text-3xl md:text-5xl font-black text-blue-600 tracking-wide">
+              🗺️ สังคมศึกษา
             </h1>
         </div>
 
-        {/* Grid เมนู 10 ปุ่ม */}
-        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[95rem]">
+        {/* Container เมนู 9 ปุ่ม */}
+        <div className="flex flex-wrap justify-center content-center gap-6 md:gap-10 max-w-[90rem]">
             {menuItems.map((item) => (
-              <div 
+              <button 
                 key={item.id}
                 onClick={() => {
                   playClick();
-                  if (item.path) navigate(item.path);
+                  navigate(item.path);
                 }}
                 className="
                   group relative cursor-pointer
-                  flex items-center justify-center
-                  /* ⭐⭐⭐ ปรับลดขนาดลงตรงนี้ครับ ⭐⭐⭐ */
-                  w-auto 
-                  h-[130px]      /* มือถือ: ลดจาก 180 เหลือ 130 */
-                  md:h-[220px]   /* จอคอม: ลดจาก 300 เหลือ 220 */
-                  
-                  transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
+                  flex flex-col items-center justify-center
+                  transition-transform duration-300 hover:scale-110 active:scale-95
                 "
               >
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
+                  className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
                 />
-              </div>
+              </button>
             ))}
         </div>
 

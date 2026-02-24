@@ -24,7 +24,9 @@ function PhonicsMenuPage({ isMuted }) {
   };
 
   const menuItems = [
-    { id: 1, title: "เสียงตัวอักษร", path: "/phonics/sounds", image: btnSound },
+    // 🛑 ซ่อน "เสียงตัวอักษร" ไว้ก่อน โดยใส่ // ข้างหน้าครับ
+    // { id: 1, title: "เสียงตัวอักษร", path: "/phonics/sounds", image: btnSound },
+    
     { id: 2, title: "เทียบอักษร", path: "/phonics/mapping", image: btnCompare },
     { id: 3, title: "สระภาษาอังกฤษ", path: "/phonics/vowels", image: btnVowel },
     { id: 4, title: "ฝึกสะกดคำ", path: "/phonics/spelling", image: btnSpell },
@@ -54,7 +56,7 @@ function PhonicsMenuPage({ isMuted }) {
             </h1>
         </div>
 
-        {/* Grid เมนู 7 ปุ่ม */}
+        {/* Grid เมนูที่เหลือ 6 ปุ่ม */}
         <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 w-full max-w-[95rem]">
             {menuItems.map((item) => (
               <div 

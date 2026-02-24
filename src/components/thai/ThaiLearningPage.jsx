@@ -1,188 +1,99 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
+import React, { useRef, useEffect } from 'react';
+import bgImage from '../../assets/images/bg.png';
 
-function ThaiLearningPage({ globalVolume, isMuted }) {
-  const navigate = useNavigate();
+function ThaiLearningPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
-  const [selectedChar, setSelectedChar] = useState(null);
 
-  const thaiConsonants = [
-    "ก",
-    "ข",
-    "ฃ",
-    "ค",
-    "ฅ",
-    "ฆ",
-    "ง",
-    "จ",
-    "ฉ",
-    "ช",
-    "ซ",
-    "ฌ",
-    "ญ",
-    "ฎ",
-    "ฏ",
-    "ฐ",
-    "ฑ",
-    "ฒ",
-    "ณ",
-    "ด",
-    "ต",
-    "ถ",
-    "ท",
-    "ธ",
-    "น",
-    "บ",
-    "ป",
-    "ผ",
-    "ฝ",
-    "พ",
-    "ฟ",
-    "ภ",
-    "ม",
-    "ย",
-    "ร",
-    "ล",
-    "ว",
-    "ศ",
-    "ษ",
-    "ส",
-    "ห",
-    "ฬ",
-    "อ",
-    "ฮ",
-  ];
-
-  const colorThemes = [
-    {
-      bg: "from-rose-400 to-pink-500",
-      border: "border-pink-600",
-      shadow: "shadow-pink-200",
-    },
-    {
-      bg: "from-sky-400 to-blue-500",
-      border: "border-blue-600",
-      shadow: "shadow-sky-200",
-    },
-    {
-      bg: "from-green-400 to-emerald-500",
-      border: "border-emerald-600",
-      shadow: "shadow-green-200",
-    },
-    {
-      bg: "from-orange-400 to-amber-500",
-      border: "border-amber-600",
-      shadow: "shadow-orange-200",
-    },
-    {
-      bg: "from-purple-400 to-violet-500",
-      border: "border-violet-600",
-      shadow: "shadow-purple-200",
-    },
-  ];
-
-  const getVideoSrc = (char) => `/videos/thai/${char}.mp4`;
-
-  const handleLetterClick = (char) => setSelectedChar(char);
-
+  // 🎵 จัดการเสียง BGM
   useEffect(() => {
-    if (selectedChar && videoRef.current) {
-      videoRef.current.volume = globalVolume || 1.0;
-      videoRef.current.load();
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((e) => console.log("Auto-play error:", e));
-      }
-    }
-  }, [selectedChar, globalVolume]);
+    if (onVideoStateChange) onVideoStateChange(true);
+    return () => {
+      if (onVideoStateChange) onVideoStateChange(false);
+    };
+  }, [onVideoStateChange]);
 
-  const ThaiCharButton = ({ char, index }) => {
-    const isSelected = selectedChar === char;
-    const theme = colorThemes[index % colorThemes.length];
-    return (
-      <button
-        onClick={() => handleLetterClick(char)}
-        className={`
-          group relative w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl 
-          bg-gradient-to-br ${
-            theme.bg
-          } border-b-4 border-r-2 border-l-0 border-t-0 ${theme.border}
-          flex items-center justify-center shadow-md md:shadow-lg ${
-            theme.shadow
-          }
-          transition-all duration-200
-          ${
-            isSelected
-              ? "translate-y-1 border-b-0 brightness-110 ring-4 ring-white/50 scale-95"
-              : "hover:-translate-y-1 hover:scale-110"
-          }
-        `}
-      >
-        <span className="text-lg md:text-2xl font-black text-white drop-shadow-sm">
-          {char}
-        </span>
-      </button>
-    );
+  // 📝 ข้อมูลตัวอักษรและเวลา (44 ตัว)
+  const consonants = [
+    { char: 'ก', time: 14 }, { char: 'ข', time: 23 }, { char: 'ฃ', time: 31 },
+    { char: 'ค', time: 40 }, { char: 'ฅ', time: 49 }, { char: 'ฆ', time: 59 },
+    { char: 'ง', time: 69 }, { char: 'จ', time: 77 }, { char: 'ฉ', time: 86 },
+    { char: 'ช', time: 98 }, { char: 'ซ', time: 107 }, { char: 'ฌ', time: 117 },
+    { char: 'ญ', time: 126 }, { char: 'ฎ', time: 134 }, { char: 'ฏ', time: 144 },
+    { char: 'ฐ', time: 153 }, { char: 'ฑ', time: 163 }, { char: 'ฒ', time: 171 },
+    { char: 'ณ', time: 181 }, { char: 'ด', time: 190 }, { char: 'ต', time: 201 },
+    { char: 'ถ', time: 217 }, { char: 'ท', time: 230 }, { char: 'ธ', time: 242 },
+    { char: 'น', time: 254 }, { char: 'บ', time: 268 }, { char: 'ป', time: 281 },
+    { char: 'ผ', time: 294 }, { char: 'ฝ', time: 307 }, { char: 'พ', time: 320 },
+    { char: 'ฟ', time: 333 }, { char: 'ภ', time: 348 }, { char: 'ม', time: 361 },
+    { char: 'ย', time: 373 }, { char: 'ร', time: 386 }, { char: 'ล', time: 398 },
+    { char: 'ว', time: 411 }, { char: 'ศ', time: 423 }, { char: 'ษ', time: 437 },
+    { char: 'ส', time: 449 }, { char: 'ห', time: 460 }, { char: 'ฬ', time: 471 },
+    { char: 'อ', time: 483 }, { char: 'ฮ', time: 495 }
+  ];
+
+  // 🎯 ฟังก์ชันเมื่อกดปุ่มตัวอักษร
+  const handleLetterClick = (timeInSeconds) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = timeInSeconds;
+      videoRef.current.play().catch(() => {});
+    }
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex flex-col items-center">
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "100% 100%",
-        }}
-      ></div>
-
-      <div className="w-full max-w-6xl px-4 flex justify-between items-center py-2 shrink-0 h-16 md:h-20 z-10">
-        <button
-          onClick={() => navigate("/thai-alphabet")}
-          className="bg-white text-orange-500 w-10 h-10 md:w-12 md:h-12 rounded-full font-black text-xl md:text-2xl shadow-sm border-4 border-white hover:scale-110"
-        >
-          ◀
-        </button>
-        <div className="bg-white/90 px-6 py-1 rounded-full shadow-lg border-4 border-orange-200">
-          <h1 className="text-xl md:text-3xl font-black text-orange-500">
-            🇹🇭 ฝึกท่อง ก-ฮ
-          </h1>
+    <div 
+      className="h-screen w-full flex flex-col relative overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      
+      {/* 1. ส่วนหัว (บีบให้เล็กที่สุด) */}
+      <div className="w-full flex justify-center items-center z-20 pt-2 pb-1 shrink-0">
+        <div className="px-6 py-1 md:px-10 md:py-1 rounded-full border-[3px] md:border-[4px] border-pink-300 bg-white/90 shadow-md">
+           <h1 className="text-lg md:text-2xl font-black text-pink-600">
+             🇹🇭 ฝึกอ่านพยัญชนะ ก-ฮ
+           </h1>
         </div>
-        <div className="w-10 md:w-12"></div>
       </div>
 
-      <div className="w-full max-w-5xl px-4 flex-1 min-h-0 flex flex-col justify-center pb-2 z-10">
-        <div className="w-full h-full bg-orange-100 ring-4 ring-white rounded-[2rem] border-[8px] border-orange-300 shadow-xl overflow-hidden relative flex flex-col">
-          <div className="flex-1 bg-black relative flex items-center justify-center">
-            {selectedChar ? (
-              <video
-                ref={videoRef}
-                className="w-full h-full object-contain"
-                controls
-                muted={isMuted}
-                autoPlay
+      {/* 2. โซนวิดีโอ (⭐ ขยายให้ใหญ่ขึ้น กินพื้นที่ 55% - 65% ของจอ) */}
+      <div className="w-full h-[50vh] md:h-[60vh] lg:h-[65vh] flex justify-center items-center shrink-0 z-10 px-4 py-2">
+        <video
+            ref={videoRef}
+            src="/videos/thai/อ่านพยัญชนะ.mp4" 
+            className="h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-pink-400 shadow-lg object-contain"
+            controls
+            muted={isMuted} 
+            playsInline
+        />
+      </div>
+
+      {/* 3. โซนปุ่ม 44 ตัว (⭐ พื้นที่เล็กลง และจำกัดความกว้างให้ปุ่มดูจิ๋วและน่ารักขึ้น) */}
+      <div className="flex-1 w-full flex justify-center items-center px-2 md:px-4 pb-4 pt-1 z-10">
+        <div className="w-full h-full max-w-[70rem] mx-auto bg-white/60 backdrop-blur-md rounded-2xl p-2 md:p-3 border-2 border-pink-200 shadow-inner flex flex-col justify-center">
+          
+          {/* จัด Grid: 11 คอลัมน์ (ได้ 4 แถวพอดี) */}
+          <div className="flex-1 grid grid-cols-8 md:grid-cols-11 gap-1 md:gap-1.5 h-full">
+            {consonants.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleLetterClick(item.time)}
+                className="
+                  w-full h-full flex items-center justify-center
+                  bg-white text-pink-600 font-bold 
+                  text-base sm:text-lg md:text-xl lg:text-2xl /* ⭐ ลดขนาดตัวหนังสือ */
+                  rounded-lg md:rounded-xl border-[2px] border-pink-300
+                  shadow-[0_2px_0_#f9a8d4] md:shadow-[0_3px_0_#f9a8d4]
+                  hover:bg-pink-50 hover:scale-[1.05] hover:border-pink-500 hover:text-pink-700
+                  active:scale-95 active:translate-y-1 active:shadow-none
+                  transition-all duration-150 cursor-pointer
+                "
               >
-                <source src={getVideoSrc(selectedChar)} type="video/mp4" />
-              </video>
-            ) : (
-              <div className="text-white/30 text-center">
-                <span className="text-6xl">🎬</span>
-                <p>เลือกพยัญชนะ</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full max-w-6xl h-[30vh] shrink-0 bg-white/60 backdrop-blur-xl rounded-t-[2rem] p-3 shadow-lg flex flex-col z-10">
-        <div className="flex-1 overflow-y-auto pb-4 scrollbar-hide">
-          <div className="flex flex-wrap justify-center gap-2 px-1">
-            {thaiConsonants.map((char, index) => (
-              <ThaiCharButton key={char} char={char} index={index} />
+                {item.char}
+              </button>
             ))}
           </div>
         </div>
       </div>
+
     </div>
   );
 }

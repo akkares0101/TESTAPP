@@ -7,7 +7,6 @@ function PhonicsSpellingPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
 
   // 🎥 Path วิดีโอหลัก (คลิปรวม CVC Spelling)
-  // ⚠️ อย่าลืมเตรียมไฟล์วิดีโอและเปลี่ยนชื่อให้ตรงนะครับ
   const mainVideo = "/videos/phonics/cvc_spelling.mp4";
 
   // 🎵 จัดการเสียง BGM (ปิดเพลงพื้นหลังเมื่อเข้าหน้านี้)

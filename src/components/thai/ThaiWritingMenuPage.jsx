@@ -24,7 +24,6 @@ function ThaiWritingMenuPage({ isMuted }) {
     { id: 1, image: btnConsonant, path: "/thai-alphabet/write-consonant", title: "พยัญชนะไทย" },
     { id: 2, image: btnTone, path: "/thai-alphabet/write-tone", title: "วรรณยุกต์" },
     { id: 3, image: btnVowel, path: "/thai-alphabet/write-vowel", title: "สระ" },
-    { id: 4, image: btnHandwriting, path: "/thai-alphabet/handwriting", title: "คัดลายมือ" },
   ];
 
   return (

@@ -5,7 +5,7 @@ import bgImage from '../../assets/images/bg.png';
 // Import รูปปุ่ม (3 ปุ่ม)
 import btnConsonant from '../../assets/images/thai/btn_read_consonant.png'; 
 import btnTone from '../../assets/images/thai/btn_read_tone.png';           
-import btnVowel from '../../assets/images/thai/btn_read_vowel.png';         
+import btnVowel from '../../assets/images/thai/46.png';         
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -35,11 +35,10 @@ function ThaiReadingMenuPage({ isMuted }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-
       {/* 2. เนื้อหาหลัก */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[100rem] px-4 pt-10">
         
-        {/* หัวข้อ */}
+        {/* หัวข้อ (อย่าลืมไปใส่ .animate-bounce-slow ใน index.css นะครับ) */}
         <div className="relative z-10 bg-white px-8 py-2 md:px-12 md:py-3 rounded-full border-[4px] md:border-[6px] border-orange-400 shadow-[0_4px_0_#fb923c] mb-6 md:mb-10 animate-bounce-slow transform scale-90 md:scale-100">
             <h1 className="text-3xl md:text-6xl font-black text-orange-500 tracking-wide">
               📖 ฝึกอ่าน
@@ -49,7 +48,7 @@ function ThaiReadingMenuPage({ isMuted }) {
         {/* Grid เมนู 3 ปุ่ม */}
         <div className="flex flex-wrap justify-center content-center gap-6 md:gap-12 w-full max-w-[95rem]">
             {menuItems.map((item) => (
-              <div 
+              <button 
                 key={item.id}
                 onClick={() => {
                   playClick();
@@ -64,6 +63,7 @@ function ThaiReadingMenuPage({ isMuted }) {
                   md:h-[300px]   
                   
                   transition-transform duration-300 hover:scale-110 hover:-rotate-2 active:scale-95
+                  bg-transparent border-none outline-none focus:outline-none
                 "
               >
                 <img 
@@ -71,14 +71,10 @@ function ThaiReadingMenuPage({ isMuted }) {
                   alt={item.title} 
                   className="w-full h-full object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all duration-300"
                 />
-              </div>
+              </button>
             ))}
         </div>
       </div>
-
-      <style>{`
-        .animate-bounce-slow { animation: bounce 3s infinite; }
-      `}</style>
     </div>
   );
 }

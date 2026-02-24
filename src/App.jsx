@@ -31,12 +31,12 @@ import FamilyGamePage from "./components/english/FamilyGamePage";
 
 // ================== Import โซนภาษาไทย ==================
 import ThaiAlphabetPage from "./components/thai/ThaiAlphabetPage";
-import ThaiGamePage from "./components/thai/ThaiGamePage";
 import ThaiWritingMenuPage from "./components/thai/ThaiWritingMenuPage";
 import ThaiReadingMenuPage from "./components/thai/ThaiReadingMenuPage";
 import ThaiLearningPage from "./components/thai/ThaiLearningPage";
-import ThaiGameMenuPage from "./components/thai/ThaiGameMenuPage";
-import ThaiMatchingGamePage from "./components/thai/ThaiMatchingGamePage";
+import ThaiReadVowelsPage from "./components/thai/ThaiReadVowelsPage";
+import ThaiReadTonePage from "./components/thai/ThaiReadTonePage"; 
+import ThaiWriteConsonantPage from "./components/thai/ThaiWriteConsonantPage";
 
 // ================== Import โซนคณิตศาสตร์ ==================
 import MathMenuPage from "./components/math/MathMenuPage";
@@ -60,6 +60,14 @@ import ScienceReviewBodyPage from "./components/science/ScienceReviewBodyPage";
 // ================== Import โซนสังคมศึกษา ==================
 import SocialMenuPage from "./components/social/SocialMenuPage";
 import SocialGamePage from "./components/social/SocialGamePage";
+import SocialSelfCarePage from "./components/social/SocialSelfCarePage"; // ⭐
+import SocialDressingPage from "./components/social/SocialDressingPage"; // ⭐
+import SocialRoutinesPage from "./components/social/SocialRoutinesPage"; // ⭐
+import SocialFamilyPage from "./components/social/SocialFamilyPage"; // ⭐
+import SocialFlagPage from "./components/social/SocialFlagPage"; // ⭐
+import SocialCulturePage from "./components/social/SocialCulturePage"; // ⭐
+import SocialImportantDaysPage from "./components/social/SocialImportantDaysPage"; // ⭐
+import SocialReligionPage from "./components/social/SocialReligionPage"; // ⭐
 
 // ================== Import โซนศิลปะ ==================
 import ArtMenuPage from "./components/art/ArtMenuPage";
@@ -117,7 +125,6 @@ import Phonics from "./assets/images/Phonics.png";
 import asean from "./assets/images/asean.png";
 import flashcard from "./assets/images/flashcard.png";
 
-// ✅ แก้ไขลำดับเมนูตามที่ขอ (อังกฤษ, Phonics, ไทย, คณิต, วิทย์, สังคม, อาเซียน, ศิลปะ, นิทาน)
 const menus = [
   { id: 1, title: "ภาษาอังกฤษ", image: eng },
   { id: 2, title: "Phonics", image: Phonics },
@@ -150,7 +157,7 @@ function GlobalBackButton({ isMuted }) {
   };
 
   return (
-    <div className="fixed bottom-4 left-20 z-[9999]"> {/* 🛠️ ปรับ left ให้รับกับขนาดปุ่ม */}
+    <div className="fixed bottom-4 left-20 z-[9999]">
       <button
         onClick={handleBack}
         className="
@@ -338,7 +345,7 @@ function App() {
     <BrowserRouter>
       <audio ref={audioRef} src="/sounds/bg_music.mp3" loop />
 
-      {/* Control Panel (ลดขนาดปุ่มลดเสียง/เพิ่มเสียงลง) */}
+      {/* Control Panel */}
       <div className="fixed top-4 right-4 z-[9999] flex items-center gap-2 bg-white/90 backdrop-blur px-2 py-1.5 rounded-full shadow-lg border-2 border-gray-200">
         <button
           onClick={handleVolumeDown}
@@ -404,12 +411,11 @@ function App() {
           <Route path="/thai/writing" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
           <Route path="/thai/reading" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
           <Route path="/thai-alphabet/learn" element={<ThaiWritingMenuPage isMuted={isMuted} />} />
-          <Route path="/thai-vowels" element={<ThaiReadingMenuPage isMuted={isMuted} />} />
-          <Route path="/thai-alphabet/write-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
-          <Route path="/thai-alphabet/read-consonant" element={<ThaiLearningPage isMuted={isMuted} />} />
-          <Route path="/thai/game" element={<ThaiGameMenuPage isMuted={isMuted} />} />
-          <Route path="/thai/game/guess" element={<ThaiGamePage isMuted={isMuted} />} />
-          <Route path="/thai/game/match" element={<ThaiMatchingGamePage isMuted={isMuted} />} />
+          <Route path="/thai-alphabet/read-vowel" element={<ThaiReadVowelsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/thai-alphabet/read-tone" element={<ThaiReadTonePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} /> 
+          <Route path="/thai-alphabet/read-consonant" element={<ThaiLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
+          <Route path="/thai-alphabet/write-consonant" element={<ThaiWriteConsonantPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
+          
 
           {/* ... Routes คณิต ... */}
           <Route path="/math" element={<MathMenuPage isMuted={isMuted} />} />
@@ -430,9 +436,17 @@ function App() {
           <Route path="/science/review-env" element={<ScienceReviewEnvPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/science/review-body" element={<ScienceReviewBodyPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
 
-          {/* ... Routes สังคม ... */}
+          {/* ================= โซนสังคมศึกษา ================= */}
           <Route path="/social" element={<SocialMenuPage isMuted={isMuted} />} />
           <Route path="/social/game" element={<SocialGamePage isMuted={isMuted} />} />
+          <Route path="/social/self-care" element={<SocialSelfCarePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/dressing" element={<SocialDressingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/routines" element={<SocialRoutinesPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/family" element={<SocialFamilyPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/flag" element={<SocialFlagPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/culture" element={<SocialCulturePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/important-days" element={<SocialImportantDaysPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/social/religion" element={<SocialReligionPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
 
           {/* ... Routes ศิลปะ ... */}
           <Route path="/art" element={<ArtMenuPage isMuted={isMuted} />} />

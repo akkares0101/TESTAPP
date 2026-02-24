@@ -5,34 +5,29 @@ function ColorsLearningPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const MASTER_VIDEO_SRC = '/videos/colors/all_colors.mp4'; 
 
-  // 📂 อัปเดต Timestamp ตามที่ขอครับ (หน่วย: วินาที)
+  // 📂 อัปเดต Timestamp ใหม่ตามที่คุณแจ้งมาครับ
   const colorLessons = [
-    { id: 'green', name: '1. สีเขียว', color: 'bg-green-600', shadow: 'shadow-green-200', text: 'text-white', timestamp: 14 },
-    { id: 'lime', name: '2. สีเขียวอ่อน', color: 'bg-lime-400', shadow: 'shadow-lime-100', text: 'text-lime-900', timestamp: 45 },
-    { id: 'orange', name: '3. สีส้ม', color: 'bg-orange-500', shadow: 'shadow-orange-200', text: 'text-white', timestamp: 89 }, // ✅ 1.29 นาที
-    { id: 'yellow', name: '4. สีเหลือง', color: 'bg-yellow-400', shadow: 'shadow-yellow-100', text: 'text-yellow-900', timestamp: 119 }, // ✅ 1.59 นาที
-    { id: 'brown', name: '5. สีน้ำตาล', color: 'bg-amber-800', shadow: 'shadow-orange-200', text: 'text-white', timestamp: 135 },
-    { id: 'pink', name: '6. สีชมพู', color: 'bg-pink-400', shadow: 'shadow-pink-200', text: 'text-white', timestamp: 165 },
+    { id: 'green', name: '1. สีเขียว', color: 'bg-green-600', shadow: 'shadow-green-200', text: 'text-white', timestamp: 17 },
+    { id: 'lime', name: '2. สีเขียวอ่อน', color: 'bg-lime-400', shadow: 'shadow-lime-100', text: 'text-lime-900', timestamp: 48 },
+    { id: 'orange', name: '3. สีส้ม', color: 'bg-orange-500', shadow: 'shadow-orange-200', text: 'text-white', timestamp: 95 }, 
+    { id: 'yellow', name: '4. สีเหลือง', color: 'bg-yellow-400', shadow: 'shadow-yellow-100', text: 'text-yellow-900', timestamp: 119 }, 
+    { id: 'brown', name: '5. สีน้ำตาล', color: 'bg-amber-800', shadow: 'shadow-orange-200', text: 'text-white', timestamp: 142 },
+    { id: 'pink', name: '6. สีชมพู', color: 'bg-pink-400', shadow: 'shadow-pink-200', text: 'text-white', timestamp: 167 },
     { id: 'gray', name: '7. สีเทา', color: 'bg-gray-500', shadow: 'shadow-gray-300', text: 'text-white', timestamp: 195 },
     { id: 'sky', name: '8. สีฟ้า', color: 'bg-sky-400', shadow: 'shadow-sky-200', text: 'text-white', timestamp: 225 },
-    { id: 'red', name: '9. สีแดง', color: 'bg-red-600', shadow: 'shadow-red-200', text: 'text-white', timestamp: 261 }, // ✅ 4.21 นาที
-    { id: 'black', name: '10. สีดำ', color: 'bg-gray-900', shadow: 'shadow-gray-400', text: 'text-white', timestamp: 285 },
-    { id: 'purple', name: '11. สีม่วง', color: 'bg-purple-600', shadow: 'shadow-purple-200', text: 'text-white', timestamp: 315 },
-    { id: 'blue', name: '12. สีน้ำเงิน', color: 'bg-blue-700', shadow: 'shadow-blue-200', text: 'text-white', timestamp: 345 },
-    { id: 'white', name: '13. สีขาว', color: 'bg-white', shadow: 'shadow-gray-300', text: 'text-gray-800', border: 'border-2 border-gray-200', timestamp: 375 },
+    { id: 'red', name: '9. สีแดง', color: 'bg-red-600', shadow: 'shadow-red-200', text: 'text-white', timestamp: 275 }, 
+    { id: 'black', name: '10. สีดำ', color: 'bg-gray-900', shadow: 'shadow-gray-400', text: 'text-white', timestamp: 295 },
+    { id: 'purple', name: '11. สีม่วง', color: 'bg-purple-600', shadow: 'shadow-purple-200', text: 'text-white', timestamp: 326 },
+    { id: 'blue', name: '12. สีน้ำเงิน', color: 'bg-blue-700', shadow: 'shadow-blue-200', text: 'text-white', timestamp: 357 },
+    { id: 'white', name: '13. สีขาว', color: 'bg-white', shadow: 'shadow-gray-300', text: 'text-gray-800', border: 'border-2 border-gray-200', timestamp: 385 },
   ];
 
   const [currentLesson, setCurrentLesson] = useState(colorLessons[0]);
 
-  // ตัดเสียง BGM เมื่อเข้าหน้า
   useEffect(() => {
-    if (onVideoStateChange) {
-      onVideoStateChange(true);
-    }
+    if (onVideoStateChange) onVideoStateChange(true);
     return () => {
-      if (onVideoStateChange) {
-        onVideoStateChange(false);
-      }
+      if (onVideoStateChange) onVideoStateChange(false);
     };
   }, [onVideoStateChange]);
 
@@ -92,7 +87,7 @@ function ColorsLearningPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 3. Bottom Bar: ปุ่มกด 2 แถว (เล็ก) */}
+      {/* 3. Bottom Bar: ปุ่มกด 13 สี */}
       <div className="w-full h-auto py-3 z-20 shrink-0">
         <div className="flex justify-center items-center">
             <div className="bg-white/40 backdrop-blur-md px-4 py-3 rounded-[2rem] shadow-lg border border-white/40 w-fit mx-auto">
