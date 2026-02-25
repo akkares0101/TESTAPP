@@ -102,6 +102,7 @@ import PhonicsMappingPage from "./components/phonics/PhonicsMappingPage";
 import PhonicsVowelsPage from "./components/phonics/PhonicsVowelsPage";
 import PhonicsSpellingPage from "./components/phonics/PhonicsSpellingPage";
 import PhonicsReadingPage from "./components/phonics/PhonicsReadingPage";
+import PhonicsGamePage from "./components/phonics/PhonicsGamePage";
 
 // ================== Import โซนบัตรคำ (Flashcard) ==================
 import FlashcardMenuPage from "./components/flashcard/FlashcardMenuPage";
@@ -482,6 +483,7 @@ function App() {
           <Route path="/phonics/vowels" element={<PhonicsVowelsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/phonics/game" element={<PhonicsGamePage isMuted={isMuted} />} />
 
           {/* ================= บัตรคำศัพท์ / อื่นๆ ================= */}
           <Route path="/flashcard" element={<FlashcardMenuPage isMuted={isMuted} />} />
