@@ -28,18 +28,19 @@ function AseanNationalFlowersPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // 🌸 ข้อมูลประเทศและเวลา (วินาที)
+  // 🌸 ข้อมูลประเทศและเวลา (วินาที) อัปเดตใหม่ล่าสุด!
   const aseanData = [
     { id: "brunei", name: "บรูไน", time: 16 },       // 0:16
-    { id: "cam", name: "กัมพูชา", time: 38 },        // 0:38
-    { id: "indo", name: "อินโดนีเซีย", time: 62 },   // 1:02
-    { id: "laos", name: "ลาว", time: 87 },           // 1:27
+    { id: "cam", name: "กัมพูชา", time: 37 },        // 0:37
+    { id: "indo", name: "อินโดนีเซีย", time: 61 },   // 1:01
+    { id: "laos", name: "ลาว", time: 86 },           // 1:26
     { id: "malay", name: "มาเลเซีย", time: 109 },    // 1:49
     { id: "myan", name: "เมียนมา", time: 125 },      // 2:05
     { id: "phil", name: "ฟิลิปปินส์", time: 148 },   // 2:28
     { id: "sing", name: "สิงคโปร์", time: 166 },     // 2:46
-    { id: "viet", name: "เวียดนาม", time: 190 },     // 3:33
-    { id: "timor", name: "ติมอร์-เลสเต", time: 229 } // 3:49
+    { id: "thai", name: "ไทย", time: 191 },          // 3:11
+    { id: "viet", name: "เวียดนาม", time: 210 },     // 3:30
+    { id: "timor", name: "ติมอร์-เลสเต", time: 231 }  // 3:51
   ];
 
   // ธีมสี (เหมือนหน้า ก-ฮ)

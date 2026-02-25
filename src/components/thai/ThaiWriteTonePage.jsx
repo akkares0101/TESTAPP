@@ -3,37 +3,25 @@ import bgImage from '../../assets/images/bg.png';
 
 const clickSound = new Audio('/sounds/click.mp3');
 
-function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
+function ThaiWriteTonePage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(true);
 
-  // ⭐ ใช้ useRef แทน useState เพื่อให้วาดเส้นได้ลื่นไหล ไม่เกิดอาการแลคหรือวาดไม่ติด
+  // ระบบวาดและเลื่อน
   const isDrawing = useRef(false);
-
-  // ⭐ ตัวแปรสำหรับระบบ Drag to Scroll
   const isDraggingMenu = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
-  const hasMoved = useRef(false); // เช็คว่าเป็นการ "ลาก" หรือ "คลิก"
+  const hasMoved = useRef(false);
 
-  const consonants = [
-    { char: 'ก', time: 50 }, { char: 'ข', time: 60 }, { char: 'ฃ', time: 70 }, 
-    { char: 'ค', time: 80 }, { char: 'ฅ', time: 90 }, { char: 'ฆ', time: 97 },
-    { char: 'ง', time: 108 }, { char: 'จ', time: 118 }, { char: 'ฉ', time: 129 },
-    { char: 'ช', time: 139 }, { char: 'ซ', time: 149 }, { char: 'ฌ', time: 159 },
-    { char: 'ญ', time: 169 }, { char: 'ฎ', time: 179 }, { char: 'ฏ', time: 189 },
-    { char: 'ฐ', time: 200 }, { char: 'ฑ', time: 209 }, { char: 'ฒ', time: 219 },
-    { char: 'ณ', time: 231 }, { char: 'ด', time: 243 }, { char: 'ต', time: 253 },
-    { char: 'ถ', time: 266 }, { char: 'ท', time: 277 }, { char: 'ธ', time: 289 },
-    { char: 'น', time: 300 }, { char: 'บ', time: 312 }, { char: 'ป', time: 324 },
-    { char: 'ผ', time: 335 }, { char: 'ฝ', time: 346 }, { char: 'พ', time: 357 },
-    { char: 'ฟ', time: 370 }, { char: 'ภ', time: 381 }, { char: 'ม', time: 393 },
-    { char: 'ย', time: 404 }, { char: 'ร', time: 415 }, { char: 'ล', time: 427 },
-    { char: 'ว', time: 439 }, { char: 'ศ', time: 450 }, { char: 'ษ', time: 460 },
-    { char: 'ส', time: 471 }, { char: 'ห', time: 479 }, { char: 'ฬ', time: 491 },
-    { char: 'อ', time: 501 }, { char: 'ฮ', time: 510 }
+  // 📝 ข้อมูลวรรณยุกต์และเวลาที่แปลงเป็นวินาทีแล้ว
+  const tones = [
+    { name: 'ไม้เอก', char: ' ่', time: 40 },   // 0.40
+    { name: 'ไม้โท', char: ' ้', time: 57 },    // 0.57
+    { name: 'ไม้ตรี', char: ' ๊', time: 75 },    // 1.15
+    { name: 'ไม้จัตวา', char: ' ๋', time: 93 }   // 1.33
   ];
 
   useEffect(() => {
@@ -47,7 +35,6 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     const updateCanvasSize = () => {
       const canvas = canvasRef.current;
       if (canvas) {
-        // อัปเดตขนาดพิกเซลให้ตรงกับที่แสดงผลจริงเสมอ
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
       }
@@ -64,40 +51,43 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     }
   };
 
-  // ==========================================
-  // 🎨 ระบบวาดเขียนที่อัปเกรดความลื่นไหล
-  // ==========================================
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top) * scaleY;
 
     const ctx = canvas.getContext('2d');
     ctx.beginPath();
     ctx.moveTo(x, y);
-    isDrawing.current = true; // เปิดโหมดวาดทันที
+    isDrawing.current = true;
   };
 
   const draw = (e) => {
     if (!isDrawing.current) return;
+    e.preventDefault();
     
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top) * scaleY;
 
     const ctx = canvas.getContext('2d');
-    // เซ็ตคุณสมบัติหัวปากกาทุกครั้ง ป้องกันการบัคตอนขยายหน้าจอ
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#f97316'; 
+    ctx.strokeStyle = '#a855f7'; // ⭐ เปลี่ยนสีปากกาเป็นสีม่วง (Purple)
     ctx.lineWidth = 14;
     
     ctx.lineTo(x, y);
@@ -108,12 +98,9 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     isDrawing.current = false;
   };
 
-  // ==========================================
-  // ⭐ ระบบเลื่อนเมนูและการกดเลือกตัวอักษร
-  // ==========================================
   const handleMenuMouseDown = (e) => {
     isDraggingMenu.current = true;
-    hasMoved.current = false; // รีเซ็ตการลาก
+    hasMoved.current = false;
     startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
     scrollLeft.current = scrollContainerRef.current.scrollLeft;
   };
@@ -131,20 +118,17 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
     const walk = (x - startX.current) * 2;
-    
-    // ถ้าระยะลากมากพอ ให้ถือว่าเป็นการ "ลาก" (ไม่ใช่การคลิก)
     if (Math.abs(walk) > 10) {
         hasMoved.current = true;
     }
     scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
-  const handleLetterClick = (time) => {
+  const handleToneClick = (time) => {
     if (hasMoved.current) {
-        hasMoved.current = false; // ถ้าระบบจับได้ว่าเป็นการลาก ให้ข้ามฟังก์ชันคลิกไปเลย
+        hasMoved.current = false;
         return;
     }
-
     playClick();
     if (videoRef.current) {
       videoRef.current.currentTime = time;
@@ -179,8 +163,8 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="w-full flex justify-center items-center pt-4 z-30 shrink-0">
-        <div className="bg-white/90 px-8 py-1 rounded-full border-[3px] border-orange-400 shadow-sm">
-           <h1 className="text-xl md:text-2xl font-black text-orange-600">ฝึกเขียนพยัญชนะ</h1>
+        <div className="bg-white/90 px-8 py-1 rounded-full border-[3px] border-purple-400 shadow-sm">
+           <h1 className="text-xl md:text-2xl font-black text-purple-600">ฝึกเขียนวรรณยุกต์</h1>
         </div>
       </div>
 
@@ -188,7 +172,7 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
         <div className="relative h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden">
           <video
             ref={videoRef}
-            src="/videos/thai/เขียนพยัญชนะ.mp4" 
+            src="/videos/thai/เขียนวรรณยุกต์.mp4" 
             className="w-full h-full object-contain pointer-events-none"
             onPlay={() => setIsPaused(false)}
             onPause={() => setIsPaused(true)}
@@ -226,6 +210,7 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
         </button>
       </div>
 
+      {/* แถบเลือกวรรณยุกต์ (ปุ่มขยายกว้างขึ้นเพราะมีชื่อด้วย) */}
       <div className="w-full px-4 pb-6 pt-4 z-30 shrink-0 select-none">
         <div 
           ref={scrollContainerRef}
@@ -233,15 +218,16 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
           onMouseLeave={handleMenuMouseLeave}
           onMouseUp={handleMenuMouseUp}
           onMouseMove={handleMenuMouseMove}
-          className="max-w-[75rem] mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-3 border-2 border-white shadow-md flex overflow-x-auto gap-2 scrollbar-hide cursor-grab active:cursor-grabbing"
+          className="max-w-[75rem] mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-3 border-2 border-white shadow-md flex justify-center gap-3 md:gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
         >
-          {consonants.map((item, index) => (
+          {tones.map((item, index) => (
             <button
               key={index}
-              onClick={() => handleLetterClick(item.time)}
-              className="shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-white text-orange-600 font-bold text-2xl rounded-xl border-2 border-orange-100 shadow-sm hover:bg-orange-50 active:scale-90 transition-all pointer-events-auto"
+              onClick={() => handleToneClick(item.time)}
+              className="shrink-0 px-4 md:px-8 h-14 md:h-16 flex flex-col items-center justify-center bg-white text-purple-600 rounded-xl border-2 border-purple-200 shadow-sm hover:bg-purple-50 active:scale-95 transition-all pointer-events-auto"
             >
-              {item.char}
+              <span className="text-2xl md:text-3xl font-black leading-none">{item.char}</span>
+              <span className="text-xs md:text-sm font-bold mt-1">{item.name}</span>
             </button>
           ))}
         </div>
@@ -255,4 +241,4 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
   );
 }
 
-export default ThaiWriteConsonantPage;
+export default ThaiWriteTonePage;

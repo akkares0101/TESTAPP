@@ -37,6 +37,8 @@ import ThaiLearningPage from "./components/thai/ThaiLearningPage";
 import ThaiReadVowelsPage from "./components/thai/ThaiReadVowelsPage";
 import ThaiReadTonePage from "./components/thai/ThaiReadTonePage"; 
 import ThaiWriteConsonantPage from "./components/thai/ThaiWriteConsonantPage";
+import ThaiWriteVowelsPage from "./components/thai/ThaiWriteVowelsPage";
+import ThaiWriteTonePage from "./components/thai/ThaiWriteTonePage";
 
 // ================== Import โซนคณิตศาสตร์ ==================
 import MathMenuPage from "./components/math/MathMenuPage";
@@ -417,7 +419,8 @@ function App() {
           <Route path="/thai-alphabet/read-tone" element={<ThaiReadTonePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} /> 
           <Route path="/thai-alphabet/read-consonant" element={<ThaiLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
           <Route path="/thai-alphabet/write-consonant" element={<ThaiWriteConsonantPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
-          
+          <Route path="/thai-alphabet/write-vowel" element={<ThaiWriteVowelsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
+          <Route path="/thai-alphabet/write-tone" element={<ThaiWriteTonePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
 
           {/* ... Routes คณิต ... */}
           <Route path="/math" element={<MathMenuPage isMuted={isMuted} />} />

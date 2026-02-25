@@ -28,18 +28,19 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // 🍲 ข้อมูลประเทศและเวลา (วินาที)
+  // 🍲 ข้อมูลประเทศและเวลา (วินาที) อัปเดตใหม่!
   const aseanData = [
-    { id: "brunei", name: "บรูไน", time: 11 },       // 0:11
-    { id: "cam", name: "กัมพูชา", time: 26 },        // 0:26
-    { id: "indo", name: "อินโดนีเซีย", time: 39 },   // 0:39
-    { id: "laos", name: "ลาว", time: 54 },           // 0:54
-    { id: "sing", name: "สิงคโปร์", time: 69 },      // 1:09
-    { id: "malay", name: "มาเลเซีย", time: 82 },     // 1:22
-    { id: "myan", name: "เมียนมา", time: 99 },       // 1:39
-    { id: "phil", name: "ฟิลิปปินส์", time: 110 },   // 1:50
-    { id: "thai", name: "ไทย", time: 124 },          // 2:04
-    { id: "viet", name: "เวียดนาม", time: 137 },     // 2:17
+    { id: "brunei", name: "บรูไน", time: 13 },       // 0:13
+    { id: "cam", name: "กัมพูชา", time: 28 },        // 0:28
+    { id: "indo", name: "อินโดนีเซีย", time: 42 },   // 0:42
+    { id: "laos", name: "ลาว", time: 58 },           // 0:58
+    { id: "sing", name: "สิงคโปร์", time: 75 },      // 1:15
+    { id: "malay", name: "มาเลเซีย", time: 88 },     // 1:28
+    { id: "myan", name: "เมียนมา", time: 111 },      // 1:51
+    { id: "phil", name: "ฟิลิปปินส์", time: 132 },   // 2:12
+    { id: "thai", name: "ไทย", time: 153 },          // 2:33
+    { id: "viet", name: "เวียดนาม", time: 165 },     // 2:45
+    { id: "timor", name: "ติมอร์", time: 187 }       // 3:07
   ];
 
   // ธีมสี (เหมือนหน้า ก-ฮ)
