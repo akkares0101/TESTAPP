@@ -62,10 +62,7 @@ function AlphabetGamePage({ isMuted }) {
     >
       {/* Header */}
       <div className="w-full max-w-4xl px-4 mt-2 mb-4 flex justify-between items-center z-10">
-        <button
-          onClick={() => navigate(-1)}
-          className="group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all"
-        >
+        <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -78,7 +75,6 @@ function AlphabetGamePage({ isMuted }) {
               clipRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline font-black text-lg">กลับ</span>
         </button>
 
         <div className="bg-white/90 px-8 py-2 rounded-full shadow-lg border-[3px] border-white backdrop-blur-sm">
