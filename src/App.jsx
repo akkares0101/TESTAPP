@@ -393,7 +393,7 @@ function App() {
           <Route path="/" element={<HomeMenu isMuted={isMuted} />} />
 
           {/* ... Routes ภาษาอังกฤษ ... */}
-          <Route path="/alphabet" element={<AlphabetMenuPage isMuted={isMuted} />} />
+          <Route path="/alphabet" element={<AlphabetMenuPage isMuted={isMuted} /> }onVideoStateChange={setIsVideoPlaying} />
           <Route path="/alphabet/select" element={<ABCSelectionPage isMuted={isMuted} />} />
           <Route path="/alphabet/learn" element={<AlphabetLearningPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/alphabet/game" element={<AlphabetGamePage isMuted={isMuted} />} />
