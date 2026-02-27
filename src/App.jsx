@@ -81,6 +81,7 @@ import ArtBeautifulWorldPage from "./components/art/ArtBeautifulWorldPage";
 import ArtColorTonePage from "./components/art/ArtColorTonePage"; 
 import ArtLineArtPage from "./components/art/ArtLineArtPage"; 
 import ArtToolsPage from "./components/art/ArtToolsPage"; 
+import ArtGamePage from "./components/art/ArtGamePage";
 
 // ================== Import โซนอาเซียน ==================
 import AseanMenuPage from "./components/asean/AseanMenuPage";
@@ -463,7 +464,7 @@ function App() {
           <Route path="/art/color-tone" element={<ArtColorTonePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} /> 
           <Route path="/art/line-art" element={<ArtLineArtPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} /> 
           <Route path="/art/tools" element={<ArtToolsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} /> 
-
+          <Route path="/art/game" element={<ArtGamePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           {/* ... Routes อาเซียน ... */}
           <Route path="/asean" element={<AseanMenuPage isMuted={isMuted} />} />
           <Route path="/asean/flags" element={<AseanNationalFlagsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
@@ -486,7 +487,7 @@ function App() {
           <Route path="/phonics/vowels" element={<PhonicsVowelsPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/phonics/spelling" element={<PhonicsSpellingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/phonics/reading" element={<PhonicsReadingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
-          <Route path="/phonics/game" element={<PhonicsGamePage isMuted={isMuted} />} />
+          <Route path="/phonics/game" element={<PhonicsGamePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying}/>} />
 
           {/* ================= บัตรคำศัพท์ / อื่นๆ ================= */}
           <Route path="/flashcard" element={<FlashcardMenuPage isMuted={isMuted} />} />
