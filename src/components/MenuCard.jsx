@@ -22,7 +22,7 @@ function MenuCard({ image, onClick, isMuted }) {
       clickSound.play().catch(() => {});
     }
     
-    // 2. ⭐ สั่งให้ทำงาน (เรียกฟังก์ชันที่ App.jsx ส่งมา)
+    // 2. สั่งให้ทำงาน (เรียกฟังก์ชันที่ App.jsx ส่งมา)
     if (onClick) {
       onClick();
     }
@@ -31,21 +31,21 @@ function MenuCard({ image, onClick, isMuted }) {
   return (
     <div 
       onMouseEnter={playHover}
-      onClick={handleClick} // ⭐ ต้องมีบรรทัดนี้ เพื่อรับคำสั่งคลิก
+      onClick={handleClick}
       className="
         group relative 
-        /* กำหนดขนาด */
-        w-full max-w-[280px] 
+        /* ⭐ ปรับขนาดให้พอดีเป๊ะ: มือถือ w-32 -> แท็บเล็ต w-48 -> ทีวี w-[240px] */
+        w-32 sm:w-40 md:w-48 lg:w-56 xl:w-[240px] 
         aspect-[4/3]
         cursor-pointer 
         flex items-center justify-center
         
         /* Animation: เด้งดึ๋ง */
-        transition-transform duration-300 cubic-bezier(0.34, 1.56, 0.64, 1)
+        transition-transform duration-300
         hover:scale-110 hover:-rotate-2
         active:scale-95 active:rotate-0
         
-        /* ⭐ เพิ่ม z-index เพื่อให้แน่ใจว่าคลิกติด ไม่จมอยู่ใต้ layer อื่น */
+        /* z-index เพื่อให้คลิกง่าย */
         z-10
       "
     >
