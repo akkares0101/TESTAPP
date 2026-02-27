@@ -1,15 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
 const clickSound = new Audio('/sounds/click.mp3');
 
 function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
-  const navigate = useNavigate();
   const videoRef = useRef(null);
   const [selectedWord, setSelectedWord] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // ธีมสีปุ่มแบบเดียวกับภาษาอังกฤษ
   const colorThemes = [
     { bg: "bg-rose-400", border: "border-rose-500" },
     { bg: "bg-sky-400", border: "border-sky-500" },
@@ -19,7 +17,6 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
     { bg: "bg-orange-400", border: "border-orange-500" },
   ];
 
-  // 🎵 จัดการเสียง BGM
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);
     return () => {
@@ -34,7 +31,6 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
     }
   };
 
-  // 📖 ข้อมูลคำศัพท์ (แปลงเวลาเป็นวินาทีแล้ว)
   const words = [
     { id: 1, word: "CAT", th: "แมว", time: 9 },      
     { id: 2, word: "BAT", th: "ค้างคาว", time: 34 },   
@@ -52,13 +48,25 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
     { id: 14, word: "WIG", th: "วิกผม", time: 289 },    
   ];
 
-  // ฟังก์ชันเมื่อกดเลือกคำศัพท์
   const handleSelectWord = (item) => {
     playClick();
     setSelectedWord(item);
     if (videoRef.current) {
       videoRef.current.currentTime = item.time;
       videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const togglePlay = () => {
+    playClick();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -72,69 +80,75 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. Header (เล็กและกะทัดรัด) */}
-      <div className="w-full max-w-5xl px-4 flex justify-center items-center py-2 shrink-0 z-10 mt-1">
-        <div className="bg-white px-6 py-1.5 md:px-8 md:py-2 rounded-full border-[3px] md:border-[4px] border-purple-400 shadow-sm text-center">
-            <h1 className="text-lg md:text-2xl font-black text-purple-600 tracking-wide">
-              📖 ฝึกอ่านคำศัพท์ (Phonics)
+      <style>{`
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      {/* 1. Header (เล็กมาก เพื่อคืนพื้นที่) */}
+      <div className="w-full px-4 flex justify-center items-center py-1 shrink-0 z-10">
+        <div className="bg-white/90 px-8 py-1 rounded-full border-[2px] border-purple-400">
+            <h1 className="text-lg md:text-xl font-black text-purple-600 tracking-tight">
+              📖 ฝึกอ่าน Phonics
             </h1>
         </div>
       </div>
 
-      {/* 2. Video Player Area (จอใหญ่เต็มตา 60-65% ของจอ) */}
-      <div className="w-full max-w-5xl px-2 md:px-4 flex-1 min-h-0 flex flex-col justify-center pb-2 z-10">
-        <div className="relative w-full h-full max-h-[60vh] md:max-h-[65vh] bg-black rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-purple-200 shadow-[0_15px_40px_rgba(0,0,0,0.3)] overflow-hidden group">
+      {/* 2. Video Player Area (ขยายใหญ่สุด 70vh) */}
+      <div className="w-full flex-1 flex flex-col items-center justify-center z-10 px-2 min-h-0">
+        <div className="relative w-full max-w-[1100px] aspect-video max-h-[70vh] bg-black rounded-[2rem] border-[4px] md:border-[8px] border-purple-400 shadow-[0_8px_0_#a855f7] overflow-hidden">
             <video
                 ref={videoRef}
-                src="/videos/phonics/reading.mp4" /* ⚠️ อย่าลืมเตรียมไฟล์วิดีโอนะครับ */
+                src="/videos/phonics/reading.mp4" 
                 className="w-full h-full object-contain"
                 controls
                 muted={isMuted}
                 playsInline
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
             />
         </div>
       </div>
 
-      {/* 3. Bottom Grid (ปุ่มคำศัพท์สไตล์อังกฤษ) */}
-      <div className="w-full max-w-5xl h-[30vh] shrink-0 bg-white/70 backdrop-blur-xl rounded-t-[2rem] border-t-4 border-white/80 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] flex flex-col z-20 pt-2 pb-4">
+      {/* 3. แผงปุ่มจิ๋ว (บีบพื้นที่สุดๆ เพื่อไม่ให้เกิด Scroll) */}
+      <div className="w-full max-w-[1150px] shrink-0 bg-white/90 backdrop-blur-md rounded-t-[2.5rem] border-t-2 border-white shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex flex-col items-center z-20 pt-2 pb-4">
         
-        <div className="text-center pb-2 shrink-0">
-            <span className="text-gray-500 font-bold text-xs md:text-sm bg-white px-4 py-1 rounded-full shadow-sm border border-gray-100">
-                เลือกคำศัพท์เพื่อฝึกอ่าน
-            </span>
+        {/* แถวปุ่มเล่น/หยุด */}
+        <div className="flex items-center gap-4 mb-2 shrink-0">
+            <button 
+                onClick={togglePlay}
+                className={`px-8 py-1.5 rounded-full text-base font-black text-white shadow-md transition-all ${isPlaying ? 'bg-rose-500' : 'bg-emerald-500'}`}
+            >
+                {isPlaying ? 'หยุด' : 'เล่นต่อ'}
+            </button>
+            <span className="text-purple-500 font-bold text-xs uppercase tracking-widest">Select Word</span>
         </div>
 
-        {/* ตารางคำศัพท์ */}
-        <div className="flex-1 overflow-y-auto p-2 scrollbar-hide">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 max-w-4xl mx-auto pb-4">
+        {/* ตารางคำศัพท์ (ปุ่มเล็กมาก w-20 เพื่อให้จบในหน้าเดียว) */}
+        <div className="w-full px-4">
+          <div className="flex flex-wrap justify-center gap-1.5 md:gap-2">
             {words.map((item, index) => {
               const theme = colorThemes[index % colorThemes.length];
-
               return (
                 <button
                   key={item.id}
                   onClick={() => handleSelectWord(item)}
                   className={`
                     flex flex-col items-center justify-center shrink-0
-                    w-[4.5rem] h-14 md:w-24 md:h-16 
-                    rounded-xl text-white shadow-sm transition-all duration-150
-                    ${theme.bg} border-b-[4px] border-r-2 ${theme.border}
-                    ${selectedWord?.id === item.id ? 'translate-y-1 border-b-0 brightness-110 ring-2 ring-white scale-110 z-10' : 'hover:-translate-y-1 hover:brightness-105'}
+                    w-16 h-10 md:w-20 md:h-12
+                    rounded-lg text-white shadow-sm transition-all
+                    ${theme.bg} border-b-[3px] border-r-[1px] ${theme.border}
+                    ${selectedWord?.id === item.id ? 'translate-y-1 border-b-0 ring-2 ring-white scale-105' : 'hover:-translate-y-0.5'}
                   `}
                 >
-                  <span className="text-xl md:text-2xl font-black leading-none drop-shadow-sm">{item.word}</span>
-                  <span className="text-[10px] md:text-xs font-bold mt-0.5 opacity-90 leading-none">{item.th}</span>
+                  <span className="text-sm md:text-lg font-black leading-none uppercase">{item.word}</span>
+                  <span className="text-[8px] md:text-[10px] font-bold opacity-90 leading-none">{item.th}</span>
                 </button>
               );
             })}
           </div>
         </div>
       </div>
-
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
     </div>
   );
 }

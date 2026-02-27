@@ -160,8 +160,14 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
         backgroundAttachment: 'fixed', 
       }}
     >
-      {/* 1. Header (จัดกึ่งกลาง ลบปุ่มกลับออก และทำให้กะทัดรัดขึ้น) */}
-      <div className="w-full max-w-5xl px-4 py-2 flex justify-center items-center z-10 shrink-0">
+      {/* ⭐ CSS สำหรับซ่อนสกอร์บาร์แบบเด็ดขาด */}
+      <style>{`
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      {/* 1. Header (❌ ไม่มีปุ่มกลับ จัดกึ่งกลางกะทัดรัด) */}
+      <div className="w-full px-4 py-2 flex justify-center items-center z-10 shrink-0">
         <div className="flex justify-center items-center px-6 py-1 rounded-[1.5rem] shadow-lg border-[3px] border-white bg-blue-400">
            <h1 className="text-lg md:text-xl font-black text-white tracking-wider flex items-center gap-2">
              <div className="bg-white/20 px-3 py-0.5 rounded-lg min-w-[2.5rem] text-center">
@@ -175,9 +181,9 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 2. Video Player & Canvas - ⭐ ขยายจอใหญ่สุด (ให้กินพื้นที่ที่เหลือ flex-1) */}
-      <div className="w-full max-w-5xl px-2 md:px-4 flex-1 min-h-0 flex flex-col items-center justify-center z-10">
-        <div className="w-full h-full max-h-[70vh] md:max-h-[75vh] bg-black rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-blue-200 shadow-[0_15px_40px_rgba(0,0,0,0.4)] relative overflow-hidden flex flex-col">
+      {/* 2. Video Player & Canvas (สูตรผอมเพรียว 950px ตัดขอบดำ) */}
+      <div className="w-full max-w-[950px] px-2 md:px-4 flex-1 min-h-0 flex flex-col items-center justify-center z-10">
+        <div className="relative w-full h-full max-h-[65vh] bg-black rounded-[1.5rem] md:rounded-[2rem] border-[6px] md:border-[8px] border-blue-400 shadow-[0_10px_0_#3b82f6] overflow-hidden group flex flex-col">
           <video 
             ref={videoRef}
             className="w-full h-full object-contain bg-black pointer-events-none"
@@ -203,12 +209,12 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 3. แผงควบคุม (เล่นต่อ/หยุด/ลบ) */}
-      <div className="w-full flex justify-center gap-3 px-4 pt-2 pb-1 z-30 shrink-0">
+      {/* 3. แผงควบคุม (เล่นต่อ/หยุด/ลบ) - ย่อขนาดให้ประหยัดพื้นที่ */}
+      <div className="w-full flex justify-center gap-3 px-4 pt-3 pb-1 z-30 shrink-0">
         <button 
           onClick={togglePlay} 
           className={`
-            min-w-[120px] md:min-w-[150px] py-1.5 md:py-2.5 rounded-2xl font-black text-lg md:text-xl transition-all shadow-md active:translate-y-1 active:shadow-none
+            min-w-[120px] md:min-w-[150px] py-1.5 md:py-2.5 rounded-2xl font-black text-lg transition-all shadow-md active:translate-y-1 active:shadow-none
             ${isPaused ? "bg-emerald-500 text-white border-b-[6px] border-emerald-700" : "bg-amber-500 text-white border-b-[6px] border-amber-700"}
           `}
         >
@@ -216,46 +222,46 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
         </button>
         <button 
           onClick={clearCanvas} 
-          className="min-w-[120px] md:min-w-[150px] bg-rose-500 text-white py-1.5 md:py-2.5 rounded-2xl font-black text-lg md:text-xl border-b-[6px] border-rose-700 shadow-md active:translate-y-1 active:shadow-none transition-all"
+          className="min-w-[120px] md:min-w-[150px] bg-rose-500 text-white py-1.5 md:py-2.5 rounded-2xl font-black text-lg border-b-[6px] border-rose-700 shadow-md active:translate-y-1 active:shadow-none transition-all"
         >
           ลบที่เขียน
         </button>
       </div>
 
-      {/* 4. แผงเมนูโหมด & ตัวอักษร (⭐ บีบความสูงลงเพื่อคืนพื้นที่ให้จอวิดีโอ) */}
-      <div className="w-full max-w-5xl shrink-0 bg-white/70 backdrop-blur-xl rounded-t-[2rem] border-t-4 border-white/80 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] flex flex-col z-10 pt-2 pb-4 md:pb-6">
+      {/* 4. แผงเมนูโหมด & ตัวอักษร (ดีไซน์บีบความสูง คืนพื้นที่ให้จอวิดีโอ) */}
+      <div className="w-full max-w-[950px] shrink-0 bg-white/80 backdrop-blur-md rounded-t-[2rem] border-t-4 border-white shadow-[0_-5px_20px_rgba(0,0,0,0.1)] flex flex-col z-10 pt-2 pb-4">
         
-        {/* แผงปุ่มโหมด */}
-        <div className="flex flex-wrap justify-center gap-2 py-1 px-2 border-b border-white/50 shrink-0">
+        {/* แผงปุ่มโหมด (ย่อให้เพรียว) */}
+        <div className="flex flex-wrap justify-center gap-2 py-1 px-2 border-b border-white/50 shrink-0 mb-2">
             <button 
                 onClick={() => { playClick(); setIsUpperCase(true); setViewMode('standard'); }}
-                className={`px-3 py-1 rounded-full font-bold text-xs md:text-sm transition-all shadow-sm border-2 ${isUpperCase && viewMode === 'standard' ? 'bg-blue-500 text-white border-blue-600 scale-105' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}
+                className={`px-3 py-1 rounded-full font-bold text-[10px] md:text-xs transition-all border-2 ${isUpperCase && viewMode === 'standard' ? 'bg-blue-500 text-white border-blue-600' : 'bg-white text-gray-500 border-gray-200'}`}
             >
-                ABC พิมพ์ใหญ่
+                ABC ใหญ่
             </button>
             <button 
                 onClick={() => { playClick(); setIsUpperCase(false); setViewMode('standard'); }}
-                className={`px-3 py-1 rounded-full font-bold text-xs md:text-sm transition-all shadow-sm border-2 ${!isUpperCase && viewMode === 'standard' ? 'bg-pink-500 text-white border-pink-600 scale-105' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}
+                className={`px-3 py-1 rounded-full font-bold text-[10px] md:text-xs transition-all border-2 ${!isUpperCase && viewMode === 'standard' ? 'bg-pink-500 text-white border-pink-600' : 'bg-white text-gray-500 border-gray-200'}`}
             >
-                abc พิมพ์เล็ก
+                abc เล็ก
             </button>
             <button 
                 onClick={() => { playClick(); setViewMode('writing_upper'); }}
-                className={`px-3 py-1 rounded-full font-bold text-xs md:text-sm transition-all shadow-sm border-2 ${viewMode === 'writing_upper' ? 'bg-orange-500 text-white border-orange-600 scale-105' : 'bg-white text-orange-500 border-orange-200 hover:bg-orange-50'}`}
+                className={`px-3 py-1 rounded-full font-bold text-[10px] md:text-xs transition-all border-2 ${viewMode === 'writing_upper' ? 'bg-orange-500 text-white border-orange-600' : 'bg-white text-orange-500 border-orange-200'}`}
             >
                 วิธีเขียน (ใหญ่)
             </button>
             <button 
                 onClick={() => { playClick(); setViewMode('writing_lower'); }}
-                className={`px-3 py-1 rounded-full font-bold text-xs md:text-sm transition-all shadow-sm border-2 ${viewMode === 'writing_lower' ? 'bg-purple-500 text-white border-purple-600 scale-105' : 'bg-white text-purple-500 border-purple-200 hover:bg-purple-50'}`}
+                className={`px-3 py-1 rounded-full font-bold text-[10px] md:text-xs transition-all border-2 ${viewMode === 'writing_lower' ? 'bg-purple-500 text-white border-purple-600' : 'bg-white text-purple-500 border-purple-200'}`}
             >
                 วิธีเขียน (เล็ก)
             </button>
         </div>
 
-        {/* ตารางตัวอักษร */}
-        <div className="w-full overflow-y-auto p-2 scrollbar-hide max-h-[16vh] md:max-h-[20vh]">
-          <div className="flex flex-wrap justify-center gap-1.5 md:gap-2">
+        {/* ตารางตัวอักษร (คุมความสูงให้นิ่ง) */}
+        <div className="w-full overflow-y-auto px-4 scrollbar-hide max-h-[12vh] md:max-h-[15vh]">
+          <div className="flex flex-wrap justify-center gap-1.5">
             {letters.map((char, index) => {
               const theme = colorThemes[index % colorThemes.length];
               const displayChar = isUpperCase ? char : char.toLowerCase();
@@ -265,10 +271,10 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
                   key={char}
                   onClick={() => handleLetterChange(char)} 
                   className={`
-                    w-9 h-9 md:w-11 md:h-11 rounded-lg text-lg md:text-xl font-black text-white shadow-sm transition-all duration-150
+                    w-8 h-8 md:w-10 md:h-10 rounded-lg text-sm md:text-base font-black text-white shadow-sm transition-all
                     flex items-center justify-center shrink-0
-                    ${theme.bg} border-b-2 border-r ${theme.border}
-                    ${selectedLetter === char ? 'translate-y-0.5 border-b-0 brightness-110 ring-2 ring-white scale-110' : 'hover:-translate-y-0.5'}
+                    ${theme.bg} border-b-2 ${theme.border}
+                    ${selectedLetter === char ? 'scale-110 ring-2 ring-white border-b-0 translate-y-0.5' : ''}
                   `}
                 >
                   {displayChar}
