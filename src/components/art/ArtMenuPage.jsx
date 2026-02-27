@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
 
-// ⭐ Import รูปปุ่ม 8 ปุ่ม (เพิ่มปุ่มเกมเข้าไปเป็นปุ่มที่ 8)
+// ⭐ Import รูปปุ่ม 8 ปุ่ม
 import btnVisualElements from '../../assets/images/art/btn_1.png'; // ทัศนธาตุ
 import btnColoring from '../../assets/images/art/btn_2.png';             // ฝึกระบายสี
 import btnTexture from '../../assets/images/art/btn_3.png';               // พื้นผิวในศิลปะ
@@ -24,7 +24,6 @@ function ArtMenuPage({ isMuted }) {
     }
   };
 
-  // 🎨 ข้อมูลเมนูศิลปะทั้ง 8 เรื่อง (เพิ่มเกมศิลปะเข้าไปให้ครบคู่)
   const menuItems = [
     { id: 1, image: btnVisualElements, path: "/art/visual-elements", title: "ทัศนธาตุ" },
     { id: 2, image: btnColoring, path: "/art/coloring", title: "ฝึกระบายสี" },
@@ -38,7 +37,7 @@ function ArtMenuPage({ isMuted }) {
 
   return (
     <div 
-      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden py-8"
       style={{ 
         backgroundImage: `url(${bgImage})`,
         backgroundSize: '100% 100%', 
@@ -47,17 +46,17 @@ function ArtMenuPage({ isMuted }) {
       }}
     >
       {/* เนื้อหาหลัก */}
-      <div className="flex flex-col items-center gap-8 md:gap-12 z-10 px-4 w-full pt-10 pb-10"> 
+      <div className="flex flex-col items-center gap-6 md:gap-10 z-10 px-4 w-full"> 
         
-        {/* หัวข้อ */}
-        <div className="bg-white/90 backdrop-blur-sm px-10 py-3 md:px-12 md:py-4 rounded-full border-[4px] md:border-[6px] border-pink-400 shadow-[0_4px_0_#f472b6] md:shadow-[0_6px_0_#f472b6] animate-bounce-slow">
-            <h1 className="text-3xl md:text-5xl font-black text-pink-500 tracking-wide">
+        {/* หัวข้อ (ปรับขนาดให้พอดีจอ) */}
+        <div className="bg-white/90 backdrop-blur-sm px-10 py-2.5 md:px-14 md:py-3.5 rounded-full border-[4px] md:border-[6px] border-pink-400 shadow-[0_4px_0_#f472b6] md:shadow-[0_6px_0_#f472b6] animate-bounce-slow mb-2">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-pink-500 tracking-wide">
               🎨 ศิลปะ
             </h1>
         </div>
 
-        {/* Container เมนู 8 ปุ่ม (เรียงได้สมมาตรพอดีเลยครับ) */}
-        <div className="flex flex-wrap justify-center content-center gap-6 md:gap-10 max-w-[90rem]">
+        {/* Container เมนู 8 ปุ่ม (บีบ max-width ให้ปุ่มเกาะกลุ่มกันตรงกลาง) */}
+        <div className="flex flex-wrap justify-center content-center gap-4 md:gap-8 lg:gap-10 max-w-[85rem]">
             {menuItems.map((item) => (
               <button 
                 key={item.id}
@@ -71,11 +70,11 @@ function ArtMenuPage({ isMuted }) {
                   transition-transform duration-300 hover:scale-110 active:scale-95
                 "
               >
-                {/* ขนาดรูปปุ่ม */}
+                {/* ⭐ ปรับขนาดรูปปุ่มให้พอดีกับจอทีวี ไม่ใหญ่จนล้น */}
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="w-32 h-32 md:w-52 md:h-52 object-contain drop-shadow-xl group-hover:drop-shadow-2xl transition-all"
+                  className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 object-contain drop-shadow-lg group-hover:drop-shadow-2xl transition-all"
                 />
               </button>
             ))}
