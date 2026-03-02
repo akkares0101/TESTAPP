@@ -48,7 +48,7 @@ function PhonicsSpellingPage({ isMuted, onVideoStateChange }) {
   // 🔠 ข้อมูลปุ่มกดข้ามเวลา
   const timeStamps = [
     { id: 1, char: "A", time: 29,  color: "bg-red-500", border: "border-red-600" },      
-    { id: 2, char: "E", time: 110, color: "bg-yellow-400", border: "border-yellow-500" }, 
+    { id: 2, char: "E", time: 108, color: "bg-yellow-400", border: "border-yellow-500" }, 
     { id: 3, char: "I", time: 179, color: "bg-green-500", border: "border-green-600" },  
     { id: 4, char: "O", time: 250, color: "bg-blue-500", border: "border-blue-600" },    
     { id: 5, char: "U", time: 322, color: "bg-purple-500", border: "border-purple-600" } 

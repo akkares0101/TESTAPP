@@ -32,7 +32,7 @@ function PhonicsMenuPage({ isMuted }) {
     { id: 4, title: "ฝึกสะกดคำ", path: "/phonics/spelling", image: btnSpell },
     { id: 5, title: "ฝึกอ่าน", path: "/phonics/reading", image: btnRead },
     { id: 6, title: "เกมทายคำศัพท์", path: "/phonics/game", image: btnGame },
-    { id: 7, title: "แบบฝึกหัด", path: "/phonics/exercises", image: btnExercise },
+   // { id: 7, title: "แบบฝึกหัด", path: "/phonics/exercises", image: btnExercise },
   ];
 
   return (

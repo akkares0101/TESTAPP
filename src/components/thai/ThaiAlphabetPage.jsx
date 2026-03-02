@@ -22,7 +22,6 @@ function ThaiAlphabetPage({ isMuted }) {
   const menuItems = [
     { id: 1, image: btnWrite, path: "/thai/writing", title: "การเขียน" },
     { id: 2, image: btnRead, path: "/thai/reading", title: "การอ่าน" },
-    { id: 3, image: btnGame, path: "/thai/game", title: "เกมภาษาไทย" }, 
   ];
 
   return (

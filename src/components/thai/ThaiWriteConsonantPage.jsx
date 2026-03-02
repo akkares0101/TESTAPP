@@ -9,14 +9,11 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(true);
 
-  // ⭐ ใช้ useRef แทน useState เพื่อให้วาดเส้นได้ลื่นไหล ไม่เกิดอาการแลคหรือวาดไม่ติด
   const isDrawing = useRef(false);
-
-  // ⭐ ตัวแปรสำหรับระบบ Drag to Scroll
   const isDraggingMenu = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
-  const hasMoved = useRef(false); // เช็คว่าเป็นการ "ลาก" หรือ "คลิก"
+  const hasMoved = useRef(false);
 
   const consonants = [
     { char: 'ก', time: 50 }, { char: 'ข', time: 60 }, { char: 'ฃ', time: 70 }, 
@@ -38,16 +35,13 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
 
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);
-    return () => {
-      if (onVideoStateChange) onVideoStateChange(false);
-    };
+    return () => { if (onVideoStateChange) onVideoStateChange(false); };
   }, [onVideoStateChange]);
 
   useEffect(() => {
     const updateCanvasSize = () => {
       const canvas = canvasRef.current;
       if (canvas) {
-        // อัปเดตขนาดพิกเซลให้ตรงกับที่แสดงผลจริงเสมอ
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
       }
@@ -64,66 +58,45 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     }
   };
 
-  // ==========================================
-  // 🎨 ระบบวาดเขียนที่อัปเกรดความลื่นไหล
-  // ==========================================
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
     const ctx = canvas.getContext('2d');
     ctx.beginPath();
     ctx.moveTo(x, y);
-    isDrawing.current = true; // เปิดโหมดวาดทันที
+    isDrawing.current = true;
   };
 
   const draw = (e) => {
     if (!isDrawing.current) return;
-    
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
     const ctx = canvas.getContext('2d');
-    // เซ็ตคุณสมบัติหัวปากกาทุกครั้ง ป้องกันการบัคตอนขยายหน้าจอ
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.strokeStyle = '#f97316'; 
-    ctx.lineWidth = 14;
-    
+    ctx.lineWidth = 12;
     ctx.lineTo(x, y);
     ctx.stroke();
   };
 
-  const stopDrawing = () => {
-    isDrawing.current = false;
-  };
+  const stopDrawing = () => { isDrawing.current = false; };
 
-  // ==========================================
-  // ⭐ ระบบเลื่อนเมนูและการกดเลือกตัวอักษร
-  // ==========================================
   const handleMenuMouseDown = (e) => {
     isDraggingMenu.current = true;
-    hasMoved.current = false; // รีเซ็ตการลาก
+    hasMoved.current = false;
     startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
     scrollLeft.current = scrollContainerRef.current.scrollLeft;
-  };
-
-  const handleMenuMouseLeave = () => {
-    isDraggingMenu.current = false;
-  };
-
-  const handleMenuMouseUp = () => {
-    isDraggingMenu.current = false;
   };
 
   const handleMenuMouseMove = (e) => {
@@ -131,20 +104,12 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
     const walk = (x - startX.current) * 2;
-    
-    // ถ้าระยะลากมากพอ ให้ถือว่าเป็นการ "ลาก" (ไม่ใช่การคลิก)
-    if (Math.abs(walk) > 10) {
-        hasMoved.current = true;
-    }
+    if (Math.abs(walk) > 10) hasMoved.current = true;
     scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
   const handleLetterClick = (time) => {
-    if (hasMoved.current) {
-        hasMoved.current = false; // ถ้าระบบจับได้ว่าเป็นการลาก ให้ข้ามฟังก์ชันคลิกไปเลย
-        return;
-    }
-
+    if (hasMoved.current) { hasMoved.current = false; return; }
     playClick();
     if (videoRef.current) {
       videoRef.current.currentTime = time;
@@ -175,17 +140,24 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
 
   return (
     <div 
-      className="h-screen w-full flex flex-col relative overflow-hidden bg-cover bg-center"
+      className="h-screen w-full flex flex-col items-center relative overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="w-full flex justify-center items-center pt-4 z-30 shrink-0">
-        <div className="bg-white/90 px-8 py-1 rounded-full border-[3px] border-orange-400 shadow-sm">
-           <h1 className="text-xl md:text-2xl font-black text-orange-600">ฝึกเขียนพยัญชนะ</h1>
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      {/* 1. Header */}
+      <div className="w-full flex justify-center items-center pt-2 z-30 shrink-0">
+        <div className="bg-white/95 px-8 py-1.5 rounded-full border-[3px] border-orange-400 shadow-sm">
+           <h1 className="text-xl md:text-2xl font-black text-orange-600">✍️ ฝึกเขียนพยัญชนะ</h1>
         </div>
       </div>
 
-      <div className="flex-1 w-full flex justify-center items-center px-4 relative z-10 min-h-0 pt-2">
-        <div className="relative h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden">
+      {/* 2. Video & Canvas Area (ปรับสัดส่วนความสูงเล็กน้อย) */}
+      <div className="w-full h-[48vh] md:h-[55vh] flex justify-center items-center px-4 relative z-10 min-h-0 pt-2 shrink-0">
+        <div className="relative h-full aspect-video bg-black rounded-[2rem] md:rounded-[3rem] border-[8px] border-white shadow-2xl overflow-hidden group">
           <video
             ref={videoRef}
             src="/videos/thai/เขียนพยัญชนะ.mp4" 
@@ -205,52 +177,56 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
             onTouchMove={draw}
             onTouchEnd={stopDrawing}
           />
+          {isPaused && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/10 pointer-events-none z-10">
+               <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center animate-pulse">
+                  <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-orange-500 border-b-[10px] border-b-transparent ml-1"></div>
+               </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="w-full flex justify-center gap-4 px-4 pt-4 z-30">
+      {/* 3. Controls (ปุ่มเล่น/ลบ) */}
+      <div className="w-full flex justify-center gap-6 px-4 pt-4 z-30 shrink-0">
         <button 
           onClick={togglePlay} 
           className={`
-            min-w-[140px] md:min-w-[180px] py-3 rounded-2xl font-black text-xl transition-all shadow-lg active:translate-y-1 active:shadow-none
-            ${isPaused ? "bg-emerald-500 text-white border-b-8 border-emerald-700" : "bg-amber-500 text-white border-b-8 border-amber-700"}
+            min-w-[140px] md:min-w-[200px] py-2.5 rounded-2xl font-black text-xl md:text-2xl transition-all shadow-[0_6px_0_#9a3412] active:translate-y-[4px] active:shadow-none
+            ${isPaused ? "bg-emerald-500 text-white shadow-[0_6px_0_#065f46]" : "bg-amber-500 text-white"}
           `}
         >
           {isPaused ? "เล่นต่อ" : "หยุดเขียน"}
         </button>
         <button 
           onClick={clearCanvas} 
-          className="min-w-[140px] md:min-w-[180px] bg-rose-500 text-white py-3 rounded-2xl font-black text-xl border-b-8 border-rose-700 shadow-lg active:translate-y-1 active:shadow-none transition-all"
+          className="min-w-[140px] md:min-w-[200px] bg-rose-500 text-white py-2.5 rounded-2xl font-black text-xl md:text-2xl shadow-[0_6px_0_#9f1239] active:translate-y-[4px] active:shadow-none transition-all"
         >
           ลบที่เขียน
         </button>
       </div>
 
-      <div className="w-full px-4 pb-6 pt-4 z-30 shrink-0 select-none">
+      {/* 4. Scrollable Menu (ขยับขึ้นมาด้านบนด้วย items-center และปรับ margin/padding) */}
+      <div className="flex-1 w-full flex justify-center items-center px-4 pb-4 pt-2 z-30 select-none min-h-0">
         <div 
           ref={scrollContainerRef}
           onMouseDown={handleMenuMouseDown}
-          onMouseLeave={handleMenuMouseLeave}
-          onMouseUp={handleMenuMouseUp}
+          onMouseLeave={() => isDraggingMenu.current = false}
+          onMouseUp={() => isDraggingMenu.current = false}
           onMouseMove={handleMenuMouseMove}
-          className="max-w-[75rem] mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-3 border-2 border-white shadow-md flex overflow-x-auto gap-2 scrollbar-hide cursor-grab active:cursor-grabbing"
+          className="max-w-[75rem] w-full bg-white/40 backdrop-blur-md rounded-[2.5rem] p-3 border-2 border-white/50 shadow-lg flex overflow-x-auto gap-3 scrollbar-hide cursor-grab active:cursor-grabbing px-6"
         >
           {consonants.map((item, index) => (
             <button
               key={index}
               onClick={() => handleLetterClick(item.time)}
-              className="shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-white text-orange-600 font-bold text-2xl rounded-xl border-2 border-orange-100 shadow-sm hover:bg-orange-50 active:scale-90 transition-all pointer-events-auto"
+              className="shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-white text-orange-600 font-black text-2xl md:text-3xl rounded-2xl border-2 border-orange-100 shadow-sm hover:scale-110 active:scale-95 transition-all"
             >
               {item.char}
             </button>
           ))}
         </div>
       </div>
-
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
     </div>
   );
 }

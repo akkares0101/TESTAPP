@@ -6,10 +6,17 @@ function ThaiReadVowelsPage({ isMuted, onVideoStateChange }) {
 
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);
+    
+    // ⭐ ปรับลดระดับเสียงวิดีโอให้เหลือ 70% (0.7) ทันทีที่โหลดหน้าจอ
+    if (videoRef.current) {
+      videoRef.current.volume = 0.7; 
+    }
+
     return () => {
       if (onVideoStateChange) onVideoStateChange(false);
     };
   }, [onVideoStateChange]);
+  
 
   // 📝 ข้อมูลสระ 32 ตัว และเวลาที่แปลงเป็นวินาทีแล้ว
   const vowels = [
