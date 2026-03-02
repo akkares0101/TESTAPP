@@ -25,19 +25,19 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // 🐘 ข้อมูลประเทศและเวลา
+  // 🐘 ข้อมูลประเทศและเวลา (อัปเดตเวลาเป็นวินาทีเรียบร้อยแล้ว)
   const aseanData = [
-    { id: "brunei", name: "บรูไน", time: 15 },
-    { id: "cam", name: "กัมพูชา", time: 33 },
-    { id: "indo", name: "อินโดนีเซีย", time: 47 },
-    { id: "laos", name: "ลาว", time: 64 },
-    { id: "malay", name: "มาเลเซีย", time: 78 },
-    { id: "myan", name: "เมียนมา", time: 93 },
-    { id: "phil", name: "ฟิลิปปินส์", time: 109 },
-    { id: "sing", name: "สิงคโปร์", time: 124 },
-    { id: "thai", name: "ไทย", time: 138 },
-    { id: "viet", name: "เวียดนาม", time: 152 },
-    { id: "timor", name: "ติมอร์", time: 166 }
+    { id: "brunei", name: "บรูไน", time: 13 },
+    { id: "cam", name: "กัมพูชา", time: 37 },
+    { id: "indo", name: "อินโดนีเซีย", time: 58 },
+    { id: "laos", name: "ลาว", time: 80 },
+    { id: "malay", name: "มาเลเซีย", time: 98 },
+    { id: "myan", name: "เมียนมา", time: 118 },
+    { id: "phil", name: "ฟิลิปปินส์", time: 138 },
+    { id: "sing", name: "สิงคโปร์", time: 158 },
+    { id: "thai", name: "ไทย", time: 174 },
+    { id: "viet", name: "เวียดนาม", time: 190 },
+    { id: "timor", name: "ติมอร์", time: 206 }
   ];
 
   const colorThemes = [
@@ -84,7 +84,7 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
         }}
       ></div>
 
-      {/* 1. Header (❌ ไม่มีปุ่มกลับ จัดกึ่งกลางพรีเมียม) */}
+      {/* 1. Header */}
       <div className="w-full px-4 flex justify-center items-center py-2 shrink-0 z-10 mt-1">
         <div className="bg-white/90 backdrop-blur-md px-10 py-1.5 rounded-full border-[3px] border-orange-400 shadow-sm">
           <h1 className="text-xl md:text-2xl font-black text-orange-600 tracking-wide">
@@ -93,7 +93,7 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 2. Video Player Area (ขยายจอใหญ่ 1100px และสูง 65vh) */}
+      {/* 2. Video Player Area */}
       <div className="w-full flex-1 flex flex-col items-center justify-center z-10 px-4 min-h-0">
         <div className="relative w-full max-w-[1100px] aspect-video max-h-[65vh] bg-black rounded-[2.5rem] border-[6px] md:border-[10px] border-orange-300 shadow-[0_12px_0_#c2410c] overflow-hidden group">
             <video
@@ -115,7 +115,7 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 3. แผงปุ่มจิ๋ว (บีบพื้นที่สุดๆ เพื่อให้จบในหน้าเดียว) */}
+      {/* 3. แผงปุ่มจิ๋ว */}
       <div className="w-full max-w-[1150px] shrink-0 bg-white/90 backdrop-blur-md rounded-t-[2.5rem] border-t-2 border-white shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex flex-col items-center z-20 pt-2 pb-5">
         
         {/* แถวปุ่มเล่น/หยุด */}
@@ -129,7 +129,7 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
             <span className="text-orange-500 font-bold text-xs uppercase tracking-widest hidden md:block">Select Country</span>
         </div>
 
-        {/* ตารางประเทศ (ปุ่มเล็กลงเพื่อให้ครบ 11 ประเทศโดยไม่ต้องเลื่อน) */}
+        {/* ตารางประเทศ */}
         <div className="w-full px-6">
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {aseanData.map((country, index) => {

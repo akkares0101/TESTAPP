@@ -25,26 +25,26 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // 🍲 ข้อมูลประเทศและเวลา
+  // 🍲 ข้อมูลประเทศและเวลา (เพิ่มเวลาให้ทุกปุ่มอย่างละ 1 วินาทีเพื่อความสมูท)
   const aseanData = [
-    { id: "brunei", name: "บรูไน", time: 13 },
-    { id: "cam", name: "กัมพูชา", time: 28 },
-    { id: "indo", name: "อินโดนีเซีย", time: 42 },
-    { id: "laos", name: "ลาว", time: 58 },
-    { id: "sing", name: "สิงคโปร์", time: 75 },
-    { id: "malay", name: "มาเลเซีย", time: 88 },
-    { id: "myan", name: "เมียนมา", time: 111 },
-    { id: "phil", name: "ฟิลิปปินส์", time: 132 },
-    { id: "thai", name: "ไทย", time: 153 },
-    { id: "viet", name: "เวียดนาม", time: 165 },
-    { id: "timor", name: "ติมอร์", time: 187 }
+    { id: "brunei", name: "บรูไน", time: 15 },        // เดิม 14 -> 15
+    { id: "cam", name: "กัมพูชา", time: 31 },        // เดิม 30 -> 31
+    { id: "indo", name: "อินโดนีเซีย", time: 48 },    // เดิม 47 -> 48
+    { id: "laos", name: "ลาว", time: 70 },           // เดิม 69 -> 70
+    { id: "sing", name: "สิงคโปร์", time: 86 },      // เดิม 85 -> 86
+    { id: "malay", name: "มาเลเซีย", time: 107 },    // เดิม 106 -> 107
+    { id: "myan", name: "เมียนมา", time: 129 },      // เดิม 128 (จาก 2.08) -> 129
+    { id: "phil", name: "ฟิลิปปินส์", time: 149 },   // เดิม 148 -> 149
+    { id: "thai", name: "ไทย", time: 172 },          // เดิม 171 -> 172
+    { id: "viet", name: "เวียดนาม", time: 189 },     // เดิม 188 -> 189
+    { id: "timor", name: "ติมอร์-เลสเต", time: 204 } // เดิม 203 -> 204
   ];
 
   const colorThemes = [
     { bg: "from-rose-400 to-pink-500", border: "border-pink-600" },
     { bg: "from-sky-400 to-blue-500", border: "border-blue-600" },
     { bg: "from-green-400 to-emerald-500", border: "border-emerald-600" },
-    { bg: "from-orange-400 to-amber-500", border: "border-amber-600" },
+    { bg: "from-orange-400 to-amber-500", border: "border-orange-600" }, // แก้ไขชื่อตัวแปรสีนิดหน่อย
     { bg: "from-purple-400 to-violet-500", border: "border-violet-600" },
   ];
 
@@ -84,7 +84,7 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
         }}
       ></div>
 
-      {/* 1. Header (❌ ไม่มีปุ่มกลับ จัดกึ่งกลางพรีเมียม) */}
+      {/* 1. Header */}
       <div className="w-full px-4 flex justify-center items-center py-2 shrink-0 z-10 mt-1">
         <div className="bg-white/90 backdrop-blur-md px-10 py-1.5 rounded-full border-[3px] border-orange-400 shadow-sm">
           <h1 className="text-xl md:text-2xl font-black text-orange-600 tracking-wide">
@@ -93,7 +93,7 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 2. Video Player Area (ขยายจอใหญ่ 1100px และสูง 65vh) */}
+      {/* 2. Video Player Area */}
       <div className="w-full flex-1 flex flex-col items-center justify-center z-10 px-4 min-h-0">
         <div className="relative w-full max-w-[1100px] aspect-video max-h-[65vh] bg-black rounded-[2.5rem] border-[6px] md:border-[10px] border-orange-300 shadow-[0_12px_0_#c2410c] overflow-hidden group">
             <video
@@ -115,10 +115,9 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 3. แผงปุ่มจิ๋ว (บีบพื้นที่สุดๆ เพื่อให้จบในหน้าเดียว) */}
+      {/* 3. แผงปุ่มจิ๋ว */}
       <div className="w-full max-w-[1150px] shrink-0 bg-white/90 backdrop-blur-md rounded-t-[2.5rem] border-t-2 border-white shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex flex-col items-center z-20 pt-2 pb-5">
         
-        {/* แถวปุ่มเล่น/หยุด */}
         <div className="flex items-center gap-4 mb-3 shrink-0">
             <button 
                 onClick={togglePlay}
@@ -129,7 +128,6 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
             <span className="text-orange-500 font-bold text-xs uppercase tracking-widest hidden md:block">Select Dish</span>
         </div>
 
-        {/* ตารางประเทศ (ปุ่มเล็กลงเพื่อให้ครบ 11 ประเทศโดยไม่ต้องเลื่อน) */}
         <div className="w-full px-6">
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {aseanData.map((country, index) => {
