@@ -1,13 +1,24 @@
+/* 1. โหลดฟอนต์จาก Google Fonts (เลือกอันใดอันหนึ่งหรือทั้งคู่) */
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;700&display=swap');
+
 @import "tailwindcss";
 
 @theme {
   --color-neon-blue: #00f0ff;
-  --font-display: "Sarabun", sans-serif;
+  /* 2. กำหนดฟอนต์หลักของระบบที่นี่ */
+  --font-display: "Itim", cursive;
+  --font-sans: "Itim", cursive; /* บังคับให้ Tailwind ใช้ฟอนต์นี้เป็นฟอนต์พื้นฐาน */
 }
 
-/* --- แก้ไข Path ให้ชี้ไปที่ src/assets --- */
+/* 3. บังคับใช้ฟอนต์กับ HTML และ Body */
+@layer base {
+  html, body {
+    font-family: "Itim", cursive;
+  }
+}
+
+/* --- ส่วนของ Cursor เดิมที่คุณตั้งค่าไว้ --- */
 body {
-  /* ใส่จุด (.) นำหน้า เพื่อบอกว่าเริ่มจากโฟลเดอร์ปัจจุบัน (src) */
   cursor: url('./assets/images/cursor.png'), auto; 
 }
 
