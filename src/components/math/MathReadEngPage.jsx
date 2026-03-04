@@ -14,8 +14,8 @@ function MathReadEngPage({ isMuted }) {
     }
   };
 
-  // 🔤 ข้อมูลเลข 1-10 + คำศัพท์อังกฤษ
-  // ⚠️ เตรียมไฟล์วิดีโอ: eng_1.mp4 ถึง eng_10.mp4
+  // ข้อมูลเลข 1-10 + คำศัพท์อังกฤษ
+  // เตรียมไฟล์วิดีโอ: eng_1.mp4 ถึง eng_10.mp4
   const lessons = [
     { id: 1, num: "1", text: "ONE", title: "Number ONE", color: "bg-red-500", shadow: "shadow-red-500/50", video: "/videos/math/eng_1.mp4" },
     { id: 2, num: "2", text: "TWO", title: "Number TWO", color: "bg-orange-500", shadow: "shadow-orange-500/50", video: "/videos/math/eng_2.mp4" },

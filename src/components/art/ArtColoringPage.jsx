@@ -8,6 +8,7 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
   
   const isDrawing = useRef(false);
   const [currentColor, setCurrentColor] = useState('#ef4444');
+  const [currentSize, setCurrentSize] = useState(18); // ⭐ เพิ่ม State สำหรับเก็บขนาดเส้น
 
   const mainVideo = "/videos/art/coloring.mp4";
 
@@ -20,7 +21,14 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
     { id: 'blue', hex: '#3b82f6', bg: 'bg-blue-500' },
     { id: 'purple', hex: '#a855f7', bg: 'bg-purple-500' },
     { id: 'pink', hex: '#ec4899', bg: 'bg-pink-400' },
-    { id: 'white', hex: '#ffffff', bg: 'bg-white' },
+    { id: 'white', hex: '#ffffff', bg: 'bg-white' }, // ใช้สีขาวเป็นยางลบได้
+  ];
+
+  // ⭐ กำหนดขนาดเส้น (เล็ก, กลาง, ใหญ่)
+  const brushSizes = [
+    { id: 'small', size: 8, label: 'เล็ก', icon: 'w-3 h-3' },
+    { id: 'medium', size: 18, label: 'กลาง', icon: 'w-5 h-5' },
+    { id: 'large', size: 30, label: 'ใหญ่', icon: 'w-7 h-7' },
   ];
 
   useEffect(() => {
@@ -73,7 +81,7 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.strokeStyle = currentColor;
-    ctx.lineWidth = 18;
+    ctx.lineWidth = currentSize; // ⭐ ดึงค่าขนาดเส้นที่เลือกมาใช้งาน
     ctx.lineTo(x, y);
     ctx.stroke();
   };
@@ -105,7 +113,7 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 2. Video Player & Canvas Area - เคลียร์หน้าจอ 100% */}
+      {/* 2. Video Player & Canvas Area */}
       <div className="w-full h-[55vh] md:h-[65vh] flex justify-center items-center z-10 px-4 min-h-0">
         <div className="relative w-full max-w-5xl h-full bg-black rounded-[2.5rem] border-[8px] md:border-[10px] border-white shadow-2xl overflow-hidden">
             <video
@@ -129,27 +137,46 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
                 onTouchMove={draw}
                 onTouchEnd={() => isDrawing.current = false}
             />
-            {/* ⭐ นำส่วน Overlay ที่เคยบังจอออกเรียบร้อยแล้วครับ ⭐ */}
         </div>
       </div>
 
-      {/* 3. แผงควบคุม (จานสี + ปุ่ม Action) */}
+      {/* 3. แผงควบคุม (จานสี + ขนาดเส้น + ปุ่ม Action) */}
       <div className="flex-1 w-full flex flex-col items-center justify-center px-4 pt-2 pb-4 z-20 shrink-0">
         
-        {/* จานสี */}
-        <div className="bg-white/40 backdrop-blur-md px-4 py-2 rounded-[2rem] border-2 border-white/50 shadow-md mb-3 w-full max-w-2xl flex justify-center">
-          <div className="flex gap-2 md:gap-3 flex-wrap justify-center">
-            {colors.map((color) => (
+        <div className="flex flex-col md:flex-row gap-3 md:gap-6 items-center w-full max-w-4xl justify-center mb-3">
+          
+          {/* เลือกขนาดเส้น ⭐ */}
+          <div className="bg-white/40 backdrop-blur-md px-4 py-2 rounded-full border-2 border-white/50 shadow-md flex items-center gap-3">
+            <span className="text-sm font-bold text-gray-700">ขนาด:</span>
+            {brushSizes.map((brush) => (
               <button
-                key={color.id}
-                onClick={() => setCurrentColor(color.hex)}
-                className={`
-                  w-9 h-9 md:w-11 md:h-11 rounded-full ${color.bg} border-[3px] shadow-sm transition-all
-                  ${currentColor === color.hex ? 'border-white scale-110 ring-2 ring-violet-400 -translate-y-1' : 'border-white/70'}
-                `}
-              ></button>
+                key={brush.id}
+                onClick={() => setCurrentSize(brush.size)}
+                className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full transition-all ${
+                  currentSize === brush.size ? 'bg-white shadow-md scale-110 ring-2 ring-violet-400' : 'hover:bg-white/50'
+                }`}
+              >
+                <div className={`${brush.icon} bg-gray-700 rounded-full`} style={{ backgroundColor: currentColor }}></div>
+              </button>
             ))}
           </div>
+
+          {/* จานสี */}
+          <div className="bg-white/40 backdrop-blur-md px-4 py-2 rounded-full border-2 border-white/50 shadow-md flex justify-center">
+            <div className="flex gap-2 md:gap-3 flex-wrap justify-center items-center">
+              {colors.map((color) => (
+                <button
+                  key={color.id}
+                  onClick={() => setCurrentColor(color.hex)}
+                  className={`
+                    w-8 h-8 md:w-10 md:h-10 rounded-full ${color.bg} border-[3px] shadow-sm transition-all
+                    ${currentColor === color.hex ? 'border-white scale-110 ring-2 ring-violet-400 -translate-y-1' : 'border-white/70'}
+                  `}
+                ></button>
+              ))}
+            </div>
+          </div>
+
         </div>
 
         {/* ปุ่มควบคุม */}

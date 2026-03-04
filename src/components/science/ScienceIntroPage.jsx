@@ -5,10 +5,10 @@ function ScienceIntroPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // 🧪 Path วิดีโอหลัก
+  //  Path วิดีโอหลัก
   const mainVideo = "/videos/science/science_intro.mp4";
 
-  // 🎵 จัดการเสียง BGM
+  //  จัดการเสียง BGM
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);
     return () => {
@@ -16,7 +16,7 @@ function ScienceIntroPage({ isMuted, onVideoStateChange }) {
     };
   }, [onVideoStateChange]);
 
-  // ▶️ สั่งให้วิดีโอเริ่มเล่นอัตโนมัติ
+  // ▶ สั่งให้วิดีโอเริ่มเล่นอัตโนมัติ
   useEffect(() => {
     if (videoRef.current) {
         videoRef.current.volume = 0.5;
@@ -24,7 +24,7 @@ function ScienceIntroPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // ⭐ ฟังก์ชันสำหรับปุ่มกดหยุด/เล่นต่อ
+  //  ฟังก์ชันสำหรับปุ่มกดหยุด/เล่นต่อ
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {

@@ -25,26 +25,24 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  // 🍲 ข้อมูลประเทศและเวลา (เพิ่มเวลาให้ทุกปุ่มอย่างละ 1 วินาทีเพื่อความสมูท)
-  const aseanData = [
-    { id: "brunei", name: "บรูไน", time: 15 },        // เดิม 14 -> 15
-    { id: "cam", name: "กัมพูชา", time: 31 },        // เดิม 30 -> 31
-    { id: "indo", name: "อินโดนีเซีย", time: 48 },    // เดิม 47 -> 48
-    { id: "laos", name: "ลาว", time: 70 },           // เดิม 69 -> 70
-    { id: "sing", name: "สิงคโปร์", time: 86 },      // เดิม 85 -> 86
-    { id: "malay", name: "มาเลเซีย", time: 107 },    // เดิม 106 -> 107
-    { id: "myan", name: "เมียนมา", time: 129 },      // เดิม 128 (จาก 2.08) -> 129
-    { id: "phil", name: "ฟิลิปปินส์", time: 149 },   // เดิม 148 -> 149
-    { id: "thai", name: "ไทย", time: 172 },          // เดิม 171 -> 172
-    { id: "viet", name: "เวียดนาม", time: 189 },     // เดิม 188 -> 189
-    { id: "timor", name: "ติมอร์-เลสเต", time: 204 } // เดิม 203 -> 204
+  const aseanData = [ // เดิม 14 -> 15
+    { id: "cam", name: "กัมพูชา", time: 31 },      
+    { id: "indo", name: "อินโดนีเซีย", time: 48 },   
+    { id: "laos", name: "ลาว", time: 70 },         
+    { id: "sing", name: "สิงคโปร์", time: 86 },    
+    { id: "malay", name: "มาเลเซีย", time: 107 },    
+    { id: "myan", name: "เมียนมา", time: 129 },      
+    { id: "phil", name: "ฟิลิปปินส์", time: 149 },   
+    { id: "thai", name: "ไทย", time: 172 },          
+    { id: "viet", name: "เวียดนาม", time: 189 },     
+    { id: "timor", name: "ติมอร์-เลสเต", time: 204 } 
   ];
 
   const colorThemes = [
     { bg: "from-rose-400 to-pink-500", border: "border-pink-600" },
     { bg: "from-sky-400 to-blue-500", border: "border-blue-600" },
     { bg: "from-green-400 to-emerald-500", border: "border-emerald-600" },
-    { bg: "from-orange-400 to-amber-500", border: "border-orange-600" }, // แก้ไขชื่อตัวแปรสีนิดหน่อย
+    { bg: "from-orange-400 to-amber-500", border: "border-orange-600" },
     { bg: "from-purple-400 to-violet-500", border: "border-violet-600" },
   ];
 

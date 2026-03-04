@@ -14,7 +14,7 @@ function MathReadArabicPage({ isMuted }) {
     }
   };
 //เตรียมไฟล์วิดีโอชื่อ arabic_1.mp4 ถึง arabic_10.mp4
-  // 🔢 ข้อมูลเลข 1-10 (ตัวเลขอารบิก)
+  // ข้อมูลเลข 1-10 (ตัวเลขอารบิก)
   const lessons = [
     { id: 1, num: "1", title: "เลข 1 (อารบิก)", color: "bg-red-500", border: "border-red-600", video: "/videos/math/arabic_1.mp4" },
     { id: 2, num: "2", title: "เลข 2 (อารบิก)", color: "bg-orange-500", border: "border-orange-600", video: "/videos/math/arabic_2.mp4" },
