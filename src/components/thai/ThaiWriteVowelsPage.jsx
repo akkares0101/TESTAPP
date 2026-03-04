@@ -156,7 +156,7 @@ function ThaiWriteVowelsPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 2. Video & Canvas Area (ขยายใหญ่ขึ้น) */}
+      {/* 2. Video & Canvas Area */}
       <div className="w-full h-[50vh] md:h-[58vh] flex justify-center items-center px-4 relative z-10 min-h-0 pt-2 shrink-0">
         <div className="relative h-full aspect-video bg-black rounded-[2rem] md:rounded-[3rem] border-[8px] border-white shadow-2xl overflow-hidden group">
           <video
@@ -189,7 +189,7 @@ function ThaiWriteVowelsPage({ isMuted, onVideoStateChange }) {
         </div>
       </div>
 
-      {/* 3. Control Buttons (ปุ่ม 3D สวยๆ) */}
+      {/* 3. Control Buttons */}
       <div className="w-full flex justify-center gap-6 px-4 pt-4 z-30 shrink-0">
         <button 
           onClick={togglePlay} 
@@ -208,25 +208,39 @@ function ThaiWriteVowelsPage({ isMuted, onVideoStateChange }) {
         </button>
       </div>
 
-      {/* 4. Vowel Menu (แถบเลื่อนด้านล่าง) */}
-      <div className="flex-1 w-full flex items-end px-4 pb-6 z-30 select-none">
-        <div 
-          ref={scrollContainerRef}
-          onMouseDown={handleMenuMouseDown}
-          onMouseLeave={() => isDraggingMenu.current = false}
-          onMouseUp={() => isDraggingMenu.current = false}
-          onMouseMove={handleMenuMouseMove}
-          className="max-w-6xl mx-auto bg-white/40 backdrop-blur-md rounded-[2.5rem] p-3 border-2 border-white/50 shadow-lg flex overflow-x-auto gap-3 scrollbar-hide cursor-grab active:cursor-grabbing px-6"
-        >
-          {vowels.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => handleLetterClick(item.time)}
-              className="shrink-0 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-white text-emerald-600 font-black text-2xl md:text-4xl rounded-2xl border-2 border-emerald-100 shadow-sm hover:scale-110 active:scale-95 transition-all"
-            >
-              {item.char}
-            </button>
-          ))}
+      {/* 4. Vowel Menu (แถบเลื่อนด้านล่าง - ปรับปรุงใหม่ ⭐) */}
+      <div className="flex-1 w-full flex flex-col justify-end items-center px-4 pb-4 z-30 select-none">
+        
+        {/* ข้อความกระตุ้นให้รู้ว่าเลื่อนได้ (มีแอนิเมชันเด้งเบาๆ) */}
+        <div className="flex items-center gap-2 mb-2 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-sm animate-bounce">
+          <span className="text-emerald-600 font-bold text-sm md:text-base">👈 เลื่อนซ้าย-ขวา เพื่อเลือกสระ 👉</span>
+        </div>
+
+        <div className="relative w-full max-w-5xl">
+          {/* เงาไล่สีซ้าย-ขวา (Fade Edges) ทำให้ดูมีมิติว่ามีปุ่มซ่อนอยู่ */}
+          <div className="absolute top-0 left-0 w-6 h-full bg-gradient-to-r from-white/60 to-transparent z-10 rounded-l-[2rem] pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-6 h-full bg-gradient-to-l from-white/60 to-transparent z-10 rounded-r-[2rem] pointer-events-none"></div>
+
+          <div 
+            ref={scrollContainerRef}
+            onMouseDown={handleMenuMouseDown}
+            onMouseLeave={() => isDraggingMenu.current = false}
+            onMouseUp={() => isDraggingMenu.current = false}
+            onMouseMove={handleMenuMouseMove}
+            /* ปรับ p-3 เหลือ p-2 และปรับ px-6 เหลือ px-4 ให้กล่องเล็กลง */
+            className="bg-white/50 backdrop-blur-md rounded-[2rem] p-2 border-2 border-white/60 shadow-lg flex overflow-x-auto gap-2 scrollbar-hide cursor-grab active:cursor-grabbing px-4"
+          >
+            {vowels.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleLetterClick(item.time)}
+                /* ปรับขนาดปุ่มจาก w-14/w-20 เป็น w-12/w-16 และลดขนาดฟอนต์ลง 1 สเตป */
+                className="shrink-0 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white text-emerald-600 font-black text-xl md:text-3xl rounded-xl md:rounded-2xl border-2 border-emerald-100 shadow-sm hover:scale-110 active:scale-95 transition-all"
+              >
+                {item.char}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

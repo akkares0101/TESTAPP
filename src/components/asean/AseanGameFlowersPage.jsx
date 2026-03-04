@@ -1,17 +1,30 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png"; // เช็ค path รูปให้ถูกนะครับ
+import bgImage from "../../assets/images/bg.png"; 
 
-function AseanGameFlowersPage() {
+// ⭐ 1. รับ onVideoStateChange เข้ามาเพื่อจัดการเพลง Background
+function AseanGameFlowersPage({ onVideoStateChange }) {
   const navigate = useNavigate();
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    // ⭐ 2. สั่งหยุดเพลงพื้นหลังทันทีที่เข้ามาที่หน้านี้
+    if (onVideoStateChange) {
+      onVideoStateChange(true);
+    }
+
     // Focus ที่ตัวเกมเพื่อให้กดเล่นได้เลย
     if (iframeRef.current) {
       iframeRef.current.focus();
     }
-  }, []);
+
+    // ⭐ 3. เมื่อกดออกไปหน้าอื่น ให้เพลงพื้นหลังกลับมาเล่นปกติ
+    return () => {
+      if (onVideoStateChange) {
+        onVideoStateChange(false);
+      }
+    };
+  }, [onVideoStateChange]);
 
   return (
     <div
@@ -23,10 +36,10 @@ function AseanGameFlowersPage() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* 1. Navbar (โค้ดชุดเดียวกับหน้าเมนู เพื่อให้ตำแหน่งเป๊ะ) */}
+      {/* 1. Navbar */}
       <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
         <button
-          onClick={() => navigate("/asean/game-menu")} // กลับไปหน้าเมนูเกม
+          onClick={() => navigate("/asean/game-menu")} 
           className="
             group flex items-center gap-2 bg-white text-orange-500 px-4 py-2 md:px-5 md:py-2 rounded-full shadow-md border-4 border-white hover:border-orange-100 active:scale-95 transition-all
           "
@@ -51,10 +64,6 @@ function AseanGameFlowersPage() {
 
       {/* 2. ส่วนแสดงผลเกม (จัดกึ่งกลาง + ล็อค 16:9 + พอดีจอ) */}
       <div className="flex-1 w-full flex items-center justify-center px-4 overflow-hidden">
-        {/* - aspect-video: ล็อคสัดส่วน 16:9
-            - max-h-[80vh]: ห้ามสูงเกิน 80% ของจอ (กันตกขอบ)
-            - max-w-[90vw]: ห้ามกว้างเกิน 90% ของจอ
-        */}
         <div className="relative w-full max-w-7xl aspect-video max-h-[75vh] shadow-2xl rounded-2xl border-4 border-white overflow-hidden bg-black">
           <iframe
             ref={iframeRef}

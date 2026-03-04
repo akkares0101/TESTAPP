@@ -1,15 +1,28 @@
 import React, { useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png"; // เช็ค path รูปให้ถูกนะครับ
+import bgImage from "../../assets/images/bg.png"; 
 
-function ScienceGamePage() {
+// ⭐ 1. รับ onVideoStateChange เข้ามาเพื่อจัดการเพลง Background
+function ScienceGamePage({ onVideoStateChange }) {
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    // ⭐ 2. สั่งหยุดเพลงพื้นหลังทันทีที่เข้าหน้านี้
+    if (onVideoStateChange) {
+      onVideoStateChange(true);
+    }
+
     // Focus ที่ตัวเกมเพื่อให้กดเล่นได้เลย
     if (iframeRef.current) {
       iframeRef.current.focus();
     }
-  }, []);
+
+    // ⭐ 3. คืนค่าเพลงพื้นหลังให้กลับมาเล่นปกติ เมื่อกดออกจากหน้านี้
+    return () => {
+      if (onVideoStateChange) {
+        onVideoStateChange(false);
+      }
+    };
+  }, [onVideoStateChange]);
 
   return (
     <div
@@ -24,13 +37,13 @@ function ScienceGamePage() {
       {/* 2. ส่วนแสดงผลเกม (จัดกึ่งกลาง + ล็อค 16:9 + พอดีจอ) */}
       <div className="flex-1 w-full flex items-center justify-center px-4 overflow-hidden">
         {/* - aspect-video: ล็อคสัดส่วน 16:9
-            - max-h-[80vh]: ห้ามสูงเกิน 80% ของจอ (กันตกขอบ)
+            - max-h-[75vh]: ห้ามสูงเกิน 75% ของจอ (กันตกขอบ)
             - max-w-[90vw]: ห้ามกว้างเกิน 90% ของจอ
         */}
         <div className="relative w-full max-w-7xl aspect-video max-h-[75vh] shadow-2xl rounded-2xl border-4 border-white overflow-hidden bg-black">
           <iframe
             ref={iframeRef}
-            title="Asean Godot Game"
+            title="Science Godot Game"
             src="/game/science/gamescience/index.html"
             className="w-full h-full border-none block"
             allowFullScreen

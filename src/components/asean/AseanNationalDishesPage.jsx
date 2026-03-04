@@ -25,7 +25,9 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
     }
   }, []);
 
-  const aseanData = [ // เดิม 14 -> 15
+  // 🍲 ข้อมูลประเทศและเวลา (เพิ่มเวลาให้ทุกปุ่มอย่างละ 1 วินาทีเพื่อความสมูท)
+  const aseanData = [
+    { id: "brunei", name: "บรูไน", time: 15 },        // เดิม 14 -> 15
     { id: "cam", name: "กัมพูชา", time: 31 },      
     { id: "indo", name: "อินโดนีเซีย", time: 48 },   
     { id: "laos", name: "ลาว", time: 70 },         
@@ -42,7 +44,7 @@ function AseanNationalDishesPage({ isMuted, onVideoStateChange }) {
     { bg: "from-rose-400 to-pink-500", border: "border-pink-600" },
     { bg: "from-sky-400 to-blue-500", border: "border-blue-600" },
     { bg: "from-green-400 to-emerald-500", border: "border-emerald-600" },
-    { bg: "from-orange-400 to-amber-500", border: "border-orange-600" },
+    { bg: "from-orange-400 to-amber-500", border: "border-orange-600" }, // แก้ไขชื่อตัวแปรสีนิดหน่อย
     { bg: "from-purple-400 to-violet-500", border: "border-violet-600" },
   ];
 

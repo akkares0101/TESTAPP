@@ -1,15 +1,28 @@
 import React, { useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png"; // เช็ค path รูปให้ถูกนะครับ
+import bgImage from "../../assets/images/bg.png"; 
 
-function ArtGamePage() {
+// ⭐ 1. รับ onVideoStateChange เข้ามาทาง Props
+function ArtGamePage({ onVideoStateChange }) {
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    // ⭐ 2. สั่งปิดเพลงพื้นหลังของ App.js ทันทีที่เข้าหน้านี้
+    if (onVideoStateChange) {
+      onVideoStateChange(true);
+    }
+
     // Focus ที่ตัวเกมเพื่อให้กดเล่นได้เลย
     if (iframeRef.current) {
       iframeRef.current.focus();
     }
-  }, []);
+
+    // ⭐ 3. คืนค่าเพลงพื้นหลังให้กลับมาเล่นปกติ ตอนกดออกหรือย้อนกลับไปหน้าอื่น
+    return () => {
+      if (onVideoStateChange) {
+        onVideoStateChange(false);
+      }
+    };
+  }, [onVideoStateChange]);
 
   return (
     <div
