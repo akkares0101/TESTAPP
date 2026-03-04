@@ -46,7 +46,6 @@ import MathCountingPage from "./components/math/MathCountingPage";
 import MathReadEngPage from "./components/math/MathReadEngPage";
 import MathReadArabicPage from "./components/math/MathReadArabicPage";
 import MathReadThaiPage from "./components/math/MathReadThaiPage";
-import MathWritingPage from "./components/math/MathWritingPage";
 import MathMoneyPage from "./components/math/MathMoneyPage";
 import MathGamePage from "./components/math/MathGamePage";
 
@@ -363,7 +362,6 @@ function App() {
           <Route path="/math/read-eng" element={<MathReadEngPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/math/read-arabic" element={<MathReadArabicPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/math/read-thai" element={<MathReadThaiPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
-          <Route path="/math/writing" element={<MathWritingPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/math/money" element={<MathMoneyPage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
           <Route path="/math/game" element={<MathGamePage isMuted={isMuted} onVideoStateChange={setIsVideoPlaying} />} />
 

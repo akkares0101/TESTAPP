@@ -7,7 +7,6 @@ import btnCount from '../../assets/images/math/btn_count.png';
 import btnReadEng from '../../assets/images/math/btn_read_eng.png';     
 import btnReadArabic from '../../assets/images/math/btn_read_arabic.png'; 
 import btnReadThai from '../../assets/images/math/btn_read_thai.png';   
-import btnWrite from '../../assets/images/math/btn_write.png';           
 import btnGame from '../../assets/images/math/btn_game.png';             
 import btnMoney from '../../assets/images/math/btn_money.png';           
 
@@ -28,7 +27,6 @@ function MathMenuPage({ isMuted }) {
     { id: 2, image: btnReadEng, path: "/math/read-eng", title: "สอนอ่าน(อังกฤษ)" },
     { id: 3, image: btnReadArabic, path: "/math/read-arabic", title: "สอนอ่าน(อารบิก)" },
     { id: 4, image: btnReadThai, path: "/math/read-thai", title: "สอนอ่าน(ไทย)" },
-    //{ id: 5, image: btnWrite, path: "/math/writing", title: "สอนเขียน" },
     { id: 6, image: btnGame, path: "/math/game", title: "เกมตัวเลข" },
     { id: 7, image: btnMoney, path: "/math/money", title: "เงิน" },
   ];

@@ -65,7 +65,7 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
       videoRef.current.currentTime = item.time;
       videoRef.current.play();
       setIsPlaying(true);
-      setCurrentWordEndTime(item.endTime); // ⭐ กำหนดจุดหยุดตามข้อมูลใน List
+      setCurrentWordEndTime(item.endTime); 
     }
   };
 

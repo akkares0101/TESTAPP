@@ -23,7 +23,7 @@ function DifferentSoundGamePage() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* 1. Navbar (โค้ดชุดเดียวกับหน้าเมนู เพื่อให้ตำแหน่งเป๊ะ) */}
+
       <div className="w-full max-w-[95rem] px-4 mt-4 mb-2 z-20 flex justify-start">
         <button
           onClick={() => navigate("/alphabet")} // กลับไปหน้าเมนูเกม

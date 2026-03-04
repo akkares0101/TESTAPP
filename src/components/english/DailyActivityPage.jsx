@@ -21,7 +21,6 @@ const clickSound = new Audio("/sounds/click.mp3");
 function DailyActivityPage({ isMuted }) {
   const navigate = useNavigate();
   
-  // ⭐ State สำหรับเก็บข้อมูลกิจกรรมที่กำลังเล่นอยู่ (ถ้าเป็น null คืออยู่หน้าเมนูรวม)
   const [activeItem, setActiveItem] = useState(null);
 
   const playClick = () => {

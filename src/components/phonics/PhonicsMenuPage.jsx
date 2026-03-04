@@ -24,9 +24,7 @@ function PhonicsMenuPage({ isMuted }) {
   };
 
   const menuItems = [
-    // 🛑 ซ่อน "เสียงตัวอักษร" ไว้ก่อน โดยใส่ // ข้างหน้าครับ
     // { id: 1, title: "เสียงตัวอักษร", path: "/phonics/sounds", image: btnSound },
-    
     { id: 2, title: "เทียบอักษร", path: "/phonics/mapping", image: btnCompare },
     { id: 3, title: "สระภาษาอังกฤษ", path: "/phonics/vowels", image: btnVowel },
     { id: 4, title: "ฝึกสะกดคำ", path: "/phonics/spelling", image: btnSpell },

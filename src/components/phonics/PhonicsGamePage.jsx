@@ -36,7 +36,6 @@ function PhonicsGamePage() {
         </div>
       </div>
 
-      {/* 2. ส่วนแสดงผลเกม (ขยายใหญ่เต็มสเปก 1100px) */}
       <div className="w-full flex-1 flex flex-col items-center justify-center z-10 px-4 min-h-0 pb-6">
         {/* ใช้ความกว้าง 1100px เพื่อให้เห็นรายละเอียดเกมชัดเจน */}
         <div className="relative w-full max-w-[1100px] aspect-video max-h-[75vh] bg-black rounded-[2rem] border-[6px] md:border-[10px] border-white shadow-2xl overflow-hidden">

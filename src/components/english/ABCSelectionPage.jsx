@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg.png';
-
-// ⭐ Import รูปปุ่มทางแยก
 import btnMedia from '../../assets/images/buttons/btn_learn.png'; 
 import btnGame from '../../assets/images/buttons/btn_game.png';   
 
