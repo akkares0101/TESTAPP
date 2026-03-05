@@ -140,6 +140,7 @@ const menus = [
   { id: 8, title: "ศิลปะ", image: draw },
   { id: 9, title: "นิทานอีสป", image: story },
   { id: 10, title: "บัตรคำศัพท์", image: flashcard },
+  { id: 11, title: "Ebook", image: story },
 ];
 
 function GlobalBackButton({ isMuted }) {
@@ -221,6 +222,7 @@ function HomeMenu({ isMuted }) {
     else if (item.title === "อาเซียน") navigate("/asean");
     else if (item.title === "Phonics") navigate("/phonics");
     else if (item.title === "บัตรคำศัพท์") navigate("/flashcard");
+    // ⭐ ส่วนของ Ebook จะไปเข้าเงื่อนไข else ด้างล่าง และโชว์ Alert ไปก่อนครับ
     else alert(`วิชา ${item.title} กำลังอยู่ระหว่างการพัฒนาครับ 🚧`);
   };
 
@@ -252,7 +254,8 @@ function HomeMenu({ isMuted }) {
           {menus.slice(4, 8).map(renderCard)}
         </div>
         <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-          {menus.slice(8, 10).map(renderCard)}
+          {/* ⭐ ปรับจาก .slice(8, 10) เป็น .slice(8, 11) เพื่อให้เรนเดอร์ปุ่มที่ 11 (Ebook) ด้วยครับ */}
+          {menus.slice(8, 11).map(renderCard)}
         </div>
       </div>
     </div>
@@ -436,5 +439,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
