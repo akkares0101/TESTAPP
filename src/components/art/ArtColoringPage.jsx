@@ -81,12 +81,12 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
     }
   };
 
-  const formatTime = (time) => {
+  const  formatTime = (time) => {
     if (isNaN(time)) return "0:00";
     const m = Math.floor(time / 60);
-    const s = Math.floor(time % 60);
+    const s = Math.floor(time % 60); 
     return `${m}:${s < 10 ? '0' : ''}${s}`;
-  };
+  }; 
 
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
