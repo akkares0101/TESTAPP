@@ -5,7 +5,7 @@ import bgImage from '../assets/images/bg.png';
 // Import รูปปุ่มนิทาน 5 เรื่อง
 import btnStory1 from '../assets/images/buttons/btn_story_1.png';
 import btnStory2 from '../assets/images/buttons/btn_story_2.png';
-import btnStory3 from '../assets/images/buttons/btn_story_3.png';
+//import btnStory3 from '../assets/images/buttons/btn_story_3.png';
 import btnStory4 from '../assets/images/buttons/btn_story_4.png';
 import btnStory5 from '../assets/images/buttons/btn_story_5.png';
 
@@ -33,7 +33,7 @@ function StoryMenuPage({ isMuted }) {
   const stories = [
     { id: 1, image: btnStory1, title: "ราชสีห์กับวัว 4 ตัว" },
     { id: 2, image: btnStory2, title: "กบเลือกนาย" },
-    { id: 3, image: btnStory3, title: "พ่อค้าเกลือกับลา" },
+    //{ id: 3, image: btnStory3, title: "พ่อค้าเกลือกับลา" },
     { id: 4, image: btnStory4, title: "เด็กเลี้ยงแกะ" },
     { id: 5, image: btnStory5, title: "กากับนกยูง" },
   ];

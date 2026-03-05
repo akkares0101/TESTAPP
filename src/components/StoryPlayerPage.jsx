@@ -5,7 +5,7 @@ import bgImage from '../assets/images/bg.png';
 // Import รูปปุ่ม (ให้ตรงกับหน้าเมนู)
 import btnStory1 from '../assets/images/buttons/btn_story_1.png';
 import btnStory2 from '../assets/images/buttons/btn_story_2.png';
-import btnStory3 from '../assets/images/buttons/btn_story_3.png';
+//import btnStory3 from '../assets/images/buttons/btn_story_3.png';
 import btnStory4 from '../assets/images/buttons/btn_story_4.png';
 import btnStory5 from '../assets/images/buttons/btn_story_5.png';
 
@@ -84,14 +84,6 @@ function StoryPlayerPage({ isMuted, onVideoStateChange }) {
       image: btnStory2, 
       color: "text-orange-600",
       bg: "bg-orange-100"
-    },
-    { 
-      id: 3, 
-      title: "พ่อค้าเกลือกับลา", 
-      video: "/videos/stories/story_3.mp4", 
-      image: btnStory3, 
-      color: "text-yellow-600",
-      bg: "bg-yellow-100"
     },
     { 
       id: 4, 
