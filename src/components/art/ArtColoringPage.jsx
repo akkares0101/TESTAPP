@@ -256,7 +256,7 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
         {/* ปุ่มควบคุม */}
         <div className="flex gap-4">
           <button onClick={togglePlay} className={`min-w-[130px] md:min-w-[170px] py-2 rounded-2xl text-base md:text-xl font-black text-white shadow-[0_4px_0_rgba(0,0,0,0.2)] active:translate-y-[4px] active:shadow-none transition-all ${isPlaying ? 'bg-amber-500' : 'bg-emerald-500'}`}>
-            {isPlaying ? '⏸️ หยุดวิดีโอ' : '▶️ เล่นต่อ'}
+            {isPlaying ? '⏸ หยุดวิดีโอ' : '▶ เล่นต่อ'}
           </button>
           <button onClick={clearCanvas} className="min-w-[130px] md:min-w-[170px] py-2 rounded-2xl text-base md:text-xl font-black text-white bg-rose-500 shadow-[0_4px_0_#9f1239] active:translate-y-[4px] active:shadow-none transition-all">
             🧹 ลบทั้งหมด

@@ -19,7 +19,7 @@ function ScienceIntroPage({ isMuted, onVideoStateChange }) {
   // ▶ สั่งให้วิดีโอเริ่มเล่นอัตโนมัติ
   useEffect(() => {
     if (videoRef.current) {
-        videoRef.current.volume = 0.5;
+        videoRef.current.volume = 0.8;
         videoRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
     }
   }, []);
