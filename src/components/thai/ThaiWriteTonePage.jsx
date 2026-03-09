@@ -172,7 +172,7 @@ function ThaiWriteTonePage({ isMuted, onVideoStateChange }) {
         <div className="relative h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden">
           <video
             ref={videoRef}
-            src="/videos/thai/เขียนวรรณยุกต์.mp4" 
+            src="/videos/thai/writetone.mp4" 
             className="w-full h-full object-contain pointer-events-none"
             onPlay={() => setIsPaused(false)}
             onPause={() => setIsPaused(true)}

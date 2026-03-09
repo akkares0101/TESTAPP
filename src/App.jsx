@@ -128,6 +128,7 @@ import draw from "./assets/images/draw.png";
 import Phonics from "./assets/images/Phonics.png";
 import asean from "./assets/images/asean.png";
 import flashcard from "./assets/images/flashcard.png";
+import ebook from "./assets/images/ebook.png";
 
 const menus = [
   { id: 1, title: "ภาษาอังกฤษ", image: eng },
@@ -140,7 +141,7 @@ const menus = [
   { id: 8, title: "ศิลปะ", image: draw },
   { id: 9, title: "นิทานอีสป", image: story },
   { id: 10, title: "บัตรคำศัพท์", image: flashcard },
-  { id: 11, title: "Ebook", image: story },
+  { id: 11, title: "Ebook", image: ebook },
 ];
 
 function GlobalBackButton({ isMuted }) {

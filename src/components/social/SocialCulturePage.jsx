@@ -6,7 +6,7 @@ function SocialCulturePage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🎭 Path วิดีโอหลัก
-  const mainVideo = "/videos/social/วัฒนธรรม.mp4";
+  const mainVideo = "/videos/social/culture.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

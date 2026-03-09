@@ -6,7 +6,7 @@ function SocialRoutinesPage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🧼 Path วิดีโอหลัก
-  const mainVideo = "/videos/social/กิจวัตรประจำวัน.mp4";
+  const mainVideo = "/videos/social/routines.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

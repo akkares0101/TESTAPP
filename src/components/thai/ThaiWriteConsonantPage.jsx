@@ -160,7 +160,7 @@ function ThaiWriteConsonantPage({ isMuted, onVideoStateChange }) {
         <div className="relative h-full aspect-video bg-black rounded-[2rem] md:rounded-[3rem] border-[8px] border-white shadow-2xl overflow-hidden group">
           <video
             ref={videoRef}
-            src="/videos/thai/เขียนพยัญชนะ.mp4" 
+            src="/videos/thai/writecon.mp4" 
             className="w-full h-full object-contain pointer-events-none"
             onPlay={() => setIsPaused(false)}
             onPause={() => setIsPaused(true)}

@@ -6,7 +6,7 @@ function SocialSelfCarePage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // ✨ Path วิดีโอหลัก
-  const mainVideo = "/videos/social/การดูแลตัวเอง.mp4";
+  const mainVideo = "/videos/social/selfcare.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

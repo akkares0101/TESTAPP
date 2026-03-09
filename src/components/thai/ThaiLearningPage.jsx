@@ -107,7 +107,7 @@ function ThaiLearningPage({ isMuted, onVideoStateChange }) {
         >
             <video
                 ref={videoRef}
-                src="/videos/thai/อ่านพยัญชนะ.mp4" 
+                src="/videos/thai/readcon.mp4" 
                 className="w-full h-full object-contain pointer-events-none"
                 muted={isMuted} 
                 playsInline

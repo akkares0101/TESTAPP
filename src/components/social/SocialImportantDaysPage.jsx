@@ -6,7 +6,7 @@ function SocialImportantDaysPage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 📅 Path วิดีโอหลัก
-  const mainVideo = "/videos/social/วันสำคัญ.mp4";
+  const mainVideo = "/videos/social/importantdays.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

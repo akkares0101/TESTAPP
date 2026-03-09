@@ -6,7 +6,7 @@ function SocialDressingPage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 👗 Path วิดีโอหลัก
-  const mainVideo = "/videos/social/การแต่งกาย.mp4";
+  const mainVideo = "/videos/social/dress.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {
