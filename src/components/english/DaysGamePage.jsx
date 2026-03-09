@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png"; // เช็ค path รูปให้ถูกนะครับ
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png"; // เช็ค path รูปให้ถูกนะครับ
 
 function DaysGamePage() {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ function DaysGamePage() {
           <iframe
             ref={iframeRef}
             title="Asean Godot Game"
-            src="/game/english/english-day/index.html"
+            src="https://storage.googleapis.com/mtr-system/media-app/public/game/english/english-day/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />

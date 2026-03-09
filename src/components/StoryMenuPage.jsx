@@ -1,16 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // Import รูปปุ่มนิทาน 5 เรื่อง
-import btnStory1 from '../assets/images/buttons/btn_story_1.png';
-import btnStory2 from '../assets/images/buttons/btn_story_2.png';
-//import btnStory3 from '../assets/images/buttons/btn_story_3.png';
-import btnStory4 from '../assets/images/buttons/btn_story_4.png';
-import btnStory5 from '../assets/images/buttons/btn_story_5.png';
-
-const clickSound = new Audio('/sounds/click.mp3');
-const hoverSound = new Audio('/sounds/pop.mp3'); 
+const btnStory1 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_1.png";
+const btnStory2 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_2.png";
+const btnStory4 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_4.png";
+const btnStory5 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_5.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
+const hoverSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/pop.mp3"); 
 hoverSound.volume = 0.3;
 
 function StoryMenuPage({ isMuted }) {

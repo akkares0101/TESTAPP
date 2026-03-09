@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png"; 
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png"; 
 
 // ⭐ 1. รับ onVideoStateChange เข้ามาทาง Props
 function ArtGamePage({ onVideoStateChange }) {
@@ -44,7 +44,7 @@ function ArtGamePage({ onVideoStateChange }) {
           <iframe
             ref={iframeRef}
             title="Art Godot Game"
-            src="/game/art/art-trace/index.html"
+            src="https://storage.googleapis.com/mtr-system/media-app/public/game/art/art-trace/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />

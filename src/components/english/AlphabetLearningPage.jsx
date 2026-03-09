@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -27,13 +27,13 @@ function AlphabetLearningPage({ isMuted, onVideoStateChange }) {
 
   const getVideoSrc = (char) => {
     if (viewMode === 'writing_upper') {
-        return `/videos/writing/${char}.mp4`; 
+        return `https://storage.googleapis.com/mtr-system/media-app/public/videos/writing/${char}.mp4`; 
     } else if (viewMode === 'writing_lower') {
-        return `/videos/writing/${char.toLowerCase()}_small.mp4`;
+        return `https://storage.googleapis.com/mtr-system/media-app/public/videos/writing/${char.toLowerCase()}_small.mp4`;
     } else if (isUpperCase) {
-      return `/videos/alphabet/${char}.mp4`;
+      return `https://storage.googleapis.com/mtr-system/media-app/public/videos/alphabet/${char}.mp4`;
     } else {
-      return `/videos/alphabet/${char.toLowerCase()}_small.mp4`;
+      return `https://storage.googleapis.com/mtr-system/media-app/public/videos/alphabet/${char.toLowerCase()}_small.mp4`;
     }
   };
 

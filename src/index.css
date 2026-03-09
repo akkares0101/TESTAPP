@@ -19,12 +19,12 @@
 
 /* --- ส่วนของ Cursor เดิมที่คุณตั้งค่าไว้ --- */
 body {
-  cursor: url('./assets/images/cursor.png'), auto; 
+  cursor: url('https://storage.googleapis.com/mtr-system/media-app/src/assets/images/cursor.png'), auto; 
 }
 
 button, 
 a, 
 .cursor-pointer,
 [role="button"] {
-  cursor: url('./assets/images/pointer.png'), pointer;
+  cursor: url('https://storage.googleapis.com/mtr-system/media-app/src/assets/images/pointer.png'), pointer;
 }

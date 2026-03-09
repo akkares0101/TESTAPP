@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ThaiWriteTonePage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -172,7 +172,7 @@ function ThaiWriteTonePage({ isMuted, onVideoStateChange }) {
         <div className="relative h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden">
           <video
             ref={videoRef}
-            src="/videos/thai/writetone.mp4" 
+            src="https://storage.googleapis.com/mtr-system/media-app/public/videos/thai/writetone.mp4" 
             className="w-full h-full object-contain pointer-events-none"
             onPlay={() => setIsPaused(false)}
             onPause={() => setIsPaused(true)}

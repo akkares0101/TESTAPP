@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import bgImage from "../assets/images/bg.png"; 
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png"; 
 
 function LessonPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();

@@ -1,17 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // ⭐ Import รูปภาพจริง 7 รูป
-import btnFlag from '../../assets/images/asean/btn_flag.png';
-import btnGreeting from '../../assets/images/asean/btn_greeting.png';
-import btnFood from '../../assets/images/asean/btn_food.png';
-import btnAnimal from '../../assets/images/asean/btn_animal.png';
-import btnGame from '../../assets/images/asean/btn_game.png';
-import btnCostume from '../../assets/images/asean/btn_costume.png';
-import btnFlower from '../../assets/images/asean/btn_flower.png';
+const btnFlag = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_flag.png";
+const btnGreeting = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_greeting.png";
+const btnFood = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_food.png";
+const btnAnimal = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_animal.png";
+const btnGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_game.png";
+const btnCostume = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_costume.png";
+const btnFlower = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean/btn_flower.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function AseanMenuPage({ isMuted }) {
   const navigate = useNavigate();

@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // Import รูปปุ่ม
-import btnWrite from '../../assets/images/thai/write.png';
-import btnRead from '../../assets/images/thai/read.png';
-import btnGame from '../../assets/images/thai/game.png';
+const btnWrite = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/write.png";
+const btnRead = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/read.png";
+const btnGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/game.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ThaiAlphabetPage({ isMuted }) {
   const navigate = useNavigate();

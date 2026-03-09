@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ThaiReadVowelsPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -57,7 +57,7 @@ function ThaiReadVowelsPage({ isMuted, onVideoStateChange }) {
       <div className="w-full h-[50vh] md:h-[60vh] lg:h-[65vh] flex justify-center items-center shrink-0 z-10 px-4 py-2">
         <video
             ref={videoRef}
-            src="/videos/thai/readvowels.mp4" // ⚠️ เปลี่ยนชื่อไฟล์ตรงนี้
+            src="https://storage.googleapis.com/mtr-system/media-app/public/videos/thai/readvowels.mp4"
             className="h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-emerald-400 shadow-lg object-contain"
             controls
             muted={isMuted} 

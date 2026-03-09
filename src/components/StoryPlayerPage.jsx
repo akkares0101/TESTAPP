@@ -1,16 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import bgImage from '../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // Import รูปปุ่ม (ให้ตรงกับหน้าเมนู)
-import btnStory1 from '../assets/images/buttons/btn_story_1.png';
-import btnStory2 from '../assets/images/buttons/btn_story_2.png';
-//import btnStory3 from '../assets/images/buttons/btn_story_3.png';
-import btnStory4 from '../assets/images/buttons/btn_story_4.png';
-import btnStory5 from '../assets/images/buttons/btn_story_5.png';
-
-// 🔊 โหลดเสียง
-const clickSound = new Audio('/sounds/click.mp3');
+const btnStory1 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_1.png";
+const btnStory2 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_2.png";
+const btnStory4 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_4.png";
+const btnStory5 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_story_5.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function StoryPlayerPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
@@ -72,7 +69,7 @@ function StoryPlayerPage({ isMuted, onVideoStateChange }) {
     { 
       id: 1, 
       title: "ราชสีห์กับวัว 4 ตัว", 
-      video: "/videos/stories/story_1.mp4", 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/stories/story_1.mp4", 
       image: btnStory1, 
       color: "text-green-600",
       bg: "bg-green-100"
@@ -80,7 +77,7 @@ function StoryPlayerPage({ isMuted, onVideoStateChange }) {
     { 
       id: 2, 
       title: "กบเลือกนาย", 
-      video: "/videos/stories/story_2.mp4", 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/stories/story_2.mp4", 
       image: btnStory2, 
       color: "text-orange-600",
       bg: "bg-orange-100"
@@ -88,7 +85,7 @@ function StoryPlayerPage({ isMuted, onVideoStateChange }) {
     { 
       id: 4, 
       title: "เด็กเลี้ยงแกะ", 
-      video: "/videos/stories/story_4.mp4", 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/stories/story_4.mp4", 
       image: btnStory4, 
       color: "text-red-600",
       bg: "bg-red-100"
@@ -96,7 +93,7 @@ function StoryPlayerPage({ isMuted, onVideoStateChange }) {
     { 
       id: 5, 
       title: "กากับนกยูง", 
-      video: "/videos/stories/story_5.mp4", 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/stories/story_5.mp4", 
       image: btnStory5, 
       color: "text-purple-600",
       bg: "bg-purple-100"

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ThaiReadTonePage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -46,7 +46,7 @@ function ThaiReadTonePage({ isMuted, onVideoStateChange }) {
       <div className="w-full h-[50vh] md:h-[60vh] lg:h-[65vh] flex justify-center items-center shrink-0 z-10 px-4 py-2">
         <video
             ref={videoRef}
-            src="/videos/thai/readtone.mp4" 
+            src="https://storage.googleapis.com/mtr-system/media-app/public/videos/thai/readtone.mp4" 
             className="h-full aspect-video bg-black rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-orange-400 shadow-lg object-contain"
             controls
             muted={isMuted} 

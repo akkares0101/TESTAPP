@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function DaysMenuPage({ isMuted }) {
   const videoRef = useRef(null);
@@ -12,7 +12,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-red-400', 
       border: 'border-red-500', // ปรับสีเข้มขึ้นให้เห็นขอบชัด
       text: 'text-red-600',
-      video: '/videos/days/sunday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/sunday.mp4" 
     },
     { 
       id: 'monday', 
@@ -21,7 +21,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-yellow-300', 
       border: 'border-yellow-500',
       text: 'text-yellow-700',
-      video: '/videos/days/monday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/monday.mp4" 
     },
     { 
       id: 'tuesday', 
@@ -30,7 +30,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-pink-300', 
       border: 'border-pink-500',
       text: 'text-pink-600',
-      video: '/videos/days/tuesday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/tuesday.mp4" 
     },
     { 
       id: 'wednesday', 
@@ -39,7 +39,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-green-400', 
       border: 'border-green-500',
       text: 'text-green-700',
-      video: '/videos/days/wednesday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/wednesday.mp4" 
     },
     { 
       id: 'thursday', 
@@ -48,7 +48,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-orange-300', 
       border: 'border-orange-500',
       text: 'text-orange-600',
-      video: '/videos/days/thursday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/thursday.mp4" 
     },
     { 
       id: 'friday', 
@@ -57,7 +57,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-sky-300', 
       border: 'border-sky-500',
       text: 'text-sky-600',
-      video: '/videos/days/friday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/friday.mp4" 
     },
     { 
       id: 'saturday', 
@@ -66,7 +66,7 @@ function DaysMenuPage({ isMuted }) {
       color: 'bg-purple-300', 
       border: 'border-purple-500',
       text: 'text-purple-600',
-      video: '/videos/days/saturday.mp4' 
+      video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/saturday.mp4" 
     },
   ];
 

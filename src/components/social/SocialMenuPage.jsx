@@ -1,19 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-
-// Import รูปปุ่ม (แก้ไขตัวแปรให้ตรงกับความหมายของภาพตามรูปที่ส่งมาล่าสุด)
-import imgReligion from '../../assets/images/social/21.png';
-import imgImportantDays from '../../assets/images/social/22.png';
-import imgCulture from '../../assets/images/social/23.png';
-import imgFlag from '../../assets/images/social/24.png';
-import imgFamily from '../../assets/images/social/25.png';
-import imgRoutines from '../../assets/images/social/26.png';
-import imgDressing from '../../assets/images/social/27.png';
-import imgSelfCare from '../../assets/images/social/28.png';
-import imgGame from '../../assets/images/social/btn_game.png'; 
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const imgReligion = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/21.png";
+const imgImportantDays = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/22.png";
+const imgCulture = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/23.png";
+const imgFlag = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/24.png";
+const imgFamily = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/25.png";
+const imgRoutines = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/26.png";
+const imgDressing = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/27.png";
+const imgSelfCare = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/28.png";
+const imgGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/social/btn_game.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function SocialMenuPage({ isMuted }) {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio("/sounds/click.mp3");
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function AseanGameMenuPage({ isMuted }) {
   const navigate = useNavigate();

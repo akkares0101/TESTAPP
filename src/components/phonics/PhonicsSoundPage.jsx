@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -22,7 +22,7 @@ function PhonicsSoundPage({ isMuted }) {
     id: index + 1,
     num: char,
     title: `เสียงตัวอักษร ${char}`,
-    video: `/videos/phonics/phonic_${char.toLowerCase()}.mp4`,
+    video: `https://storage.googleapis.com/mtr-system/media-app/public/videos/phonics/phonic_${char.toLowerCase()}.mp4`,
     color: [
       "bg-red-500", "bg-orange-500", "bg-yellow-400", "bg-green-500", 
       "bg-teal-500", "bg-blue-500", "bg-indigo-500", "bg-purple-500", "bg-pink-500"

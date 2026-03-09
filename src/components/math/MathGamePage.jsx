@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png"; 
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png"; 
 
 // ⭐ 1. รับ onVideoStateChange เข้ามาจัดการเพลง Background
 function MathGamePage({ onVideoStateChange }) {
@@ -68,7 +68,7 @@ function MathGamePage({ onVideoStateChange }) {
           <iframe
             ref={iframeRef}
             title="Math Godot Game"
-            src="/game/math/gamenumbers/index.html"
+            src="https://storage.googleapis.com/mtr-system/media-app/public/game/math/gamenumbers/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />

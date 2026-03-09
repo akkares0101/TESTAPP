@@ -1,17 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-
-// ⭐ Import รูปปุ่ม 7 ปุ่ม
-import btnSound from '../../assets/images/phonics/btn_sound.png';       
-import btnCompare from '../../assets/images/phonics/btn_compare.png';   
-import btnVowel from '../../assets/images/phonics/btn_vowel.png';       
-import btnSpell from '../../assets/images/phonics/btn_spell.png';       
-import btnRead from '../../assets/images/phonics/btn_read.png';         
-import btnGame from '../../assets/images/phonics/btn_game.png';         
-import btnExercise from '../../assets/images/phonics/btn_exercise.png'; 
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const btnSound = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_sound.png";
+const btnCompare = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_compare.png";
+const btnVowel = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_vowel.png";
+const btnSpell = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_spell.png";
+const btnRead = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_read.png";
+const btnGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_game.png";
+const btnExercise = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/phonics/btn_exercise.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function PhonicsMenuPage({ isMuted }) {
   const navigate = useNavigate();

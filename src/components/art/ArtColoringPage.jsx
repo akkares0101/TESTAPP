@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ArtColoringPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -15,7 +15,7 @@ function ArtColoringPage({ isMuted, onVideoStateChange }) {
   const [currentSize, setCurrentSize] = useState(18);
   const [isEraser, setIsEraser] = useState(false); // ⭐ State สำหรับยางลบ
 
-  const mainVideo = "/videos/art/coloring.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/art/coloring.mp4";
 
   // ⭐ สี 12 สี เพื่อความหลากหลาย
   const colors = [

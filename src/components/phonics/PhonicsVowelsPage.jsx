@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function PhonicsVowelsPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const mainVideo = "/videos/phonics/vowels_song.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/phonics/vowels_song.mp4";
 
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);

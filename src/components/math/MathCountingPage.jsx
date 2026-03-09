@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function MathCountingPage({ isMuted }) {
   const navigate = useNavigate();
@@ -17,17 +17,17 @@ function MathCountingPage({ isMuted }) {
   // ข้อมูลเลข 1-10 และไฟล์วิดีโอ
   // เตรียมไฟล์วิดีโอใน assets/videos/math/ : count_1.mp4 ถึง count_10.mp4
   const numberLessons = [
-    { id: 0, num: "0", color: "bg-rose-500", border: "border-red-300", video: "/videos/math/count_0.mp4" },
-    { id: 1, num: "1", color: "bg-red-500", border: "border-red-700", video: "/videos/math/count_1.mp4" },
-    { id: 2, num: "2", color: "bg-orange-500", border: "border-orange-700", video: "/videos/math/count_2.mp4" },
-    { id: 3, num: "3", color: "bg-yellow-400", border: "border-yellow-600", video: "/videos/math/count_3.mp4" },
-    { id: 4, num: "4", color: "bg-green-500", border: "border-green-700", video: "/videos/math/count_4.mp4" },
-    { id: 5, num: "5", color: "bg-teal-500", border: "border-teal-700", video: "/videos/math/count_5.mp4" },
-    { id: 6, num: "6", color: "bg-blue-500", border: "border-blue-700", video: "/videos/math/count_6.mp4" },
-    { id: 7, num: "7", color: "bg-indigo-500", border: "border-indigo-700", video: "/videos/math/count_7.mp4" },
-    { id: 8, num: "8", color: "bg-purple-500", border: "border-purple-700", video: "/videos/math/count_8.mp4" },
-    { id: 9, num: "9", color: "bg-pink-500", border: "border-pink-700", video: "/videos/math/count_9.mp4" },
-    { id: 10, num: "10", color: "bg-rose-500", border: "border-rose-700", video: "/videos/math/count_10.mp4" },
+    { id: 0, num: "0", color: "bg-rose-500", border: "border-red-300", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_0.mp4" },
+    { id: 1, num: "1", color: "bg-red-500", border: "border-red-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_1.mp4" },
+    { id: 2, num: "2", color: "bg-orange-500", border: "border-orange-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_2.mp4" },
+    { id: 3, num: "3", color: "bg-yellow-400", border: "border-yellow-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_3.mp4" },
+    { id: 4, num: "4", color: "bg-green-500", border: "border-green-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_4.mp4" },
+    { id: 5, num: "5", color: "bg-teal-500", border: "border-teal-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_5.mp4" },
+    { id: 6, num: "6", color: "bg-blue-500", border: "border-blue-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_6.mp4" },
+    { id: 7, num: "7", color: "bg-indigo-500", border: "border-indigo-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_7.mp4" },
+    { id: 8, num: "8", color: "bg-purple-500", border: "border-purple-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_8.mp4" },
+    { id: 9, num: "9", color: "bg-pink-500", border: "border-pink-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_9.mp4" },
+    { id: 10, num: "10", color: "bg-rose-500", border: "border-rose-700", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/count_10.mp4" },
   ];
 
   return (

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 // Import ภาพพื้นหลังและ Components หลัก
-import bgImage from "./assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 import MenuCard from "./components/MenuCard";
 import LessonPage from "./components/LessonPage";
 
@@ -117,18 +117,18 @@ import ColorsGamePage from "./components/ColorsGamePage";
 import StoryMenuPage from "./components/StoryMenuPage";
 import StoryPlayerPage from "./components/StoryPlayerPage";
 
-// Import รูปภาพเมนู
-import thai from "./assets/images/thai.png";
-import eng from "./assets/images/eng.png";
-import math from "./assets/images/math.png";
-import cont from "./assets/images/cont.png";
-import story from "./assets/images/story.png";
-import sci from "./assets/images/sci.png";
-import draw from "./assets/images/draw.png";
-import Phonics from "./assets/images/Phonics.png";
-import asean from "./assets/images/asean.png";
-import flashcard from "./assets/images/flashcard.png";
-import ebook from "./assets/images/ebook.png";
+// Import รูปภาพเมนู (โหลดจาก Cloud Storage)
+const thai = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai.png";
+const eng = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/eng.png";
+const math = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math.png";
+const cont = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/cont.png";
+const story = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/story.png";
+const sci = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/sci.png";
+const draw = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/draw.png";
+const Phonics = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/Phonics.png";
+const asean = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/asean.png";
+const flashcard = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/flashcard.png";
+const ebook = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/ebook.png";
 
 const menus = [
   { id: 1, title: "ภาษาอังกฤษ", image: eng },
@@ -147,7 +147,7 @@ const menus = [
 function GlobalBackButton({ isMuted }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const clickSound = new Audio("/sounds/click.mp3");
+  const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
   if (location.pathname === "/") {
     return null;
@@ -179,7 +179,7 @@ function GlobalBackButton({ isMuted }) {
 function GlobalHomeButton({ isMuted }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const clickSound = new Audio("/sounds/click.mp3");
+  const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
   if (location.pathname === "/") {
     return null;
@@ -311,7 +311,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <audio ref={audioRef} src="/sounds/bg_music.mp3" loop />
+      <audio ref={audioRef} src="https://storage.googleapis.com/mtr-system/media-app/public/sounds/bg_music.mp3" loop />
 
       {/* Control Panel */}
       <div className="fixed top-4 right-4 z-[9999] flex items-center gap-2 bg-white/90 backdrop-blur px-2 py-1.5 rounded-full shadow-lg border-2 border-gray-200">

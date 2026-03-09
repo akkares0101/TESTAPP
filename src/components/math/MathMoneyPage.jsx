@@ -1,20 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // ⭐ Import รูปเงิน (ถ้ายังไม่มีรูป ใช้รูปอะไรแทนไปก่อนก็ได้ครับ หรือคอมเมนต์ออกแล้วใช้สีแทน)
 // แนะนำให้หาภาพจริงมาใส่จะสวยมากครับ
-import imgCoin1 from '../../assets/images/math/money/coin_1.png';
-import imgCoin2 from '../../assets/images/math/money/coin_2.png';
-import imgCoin5 from '../../assets/images/math/money/coin_5.png';
-import imgCoin10 from '../../assets/images/math/money/coin_10.png';
-import imgNote20 from '../../assets/images/math/money/note_20.png';
-import imgNote50 from '../../assets/images/math/money/note_50.png';
-import imgNote100 from '../../assets/images/math/money/note_100.png';
-import imgNote500 from '../../assets/images/math/money/note_500.png';
-import imgNote1000 from '../../assets/images/math/money/note_1000.png';
-
-const clickSound = new Audio('/sounds/click.mp3');
+const imgCoin1 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/coin_1.png";
+const imgCoin2 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/coin_2.png";
+const imgCoin5 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/coin_5.png";
+const imgCoin10 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/coin_10.png";
+const imgNote20 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/note_20.png";
+const imgNote50 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/note_50.png";
+const imgNote100 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/note_100.png";
+const imgNote500 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/note_500.png";
+const imgNote1000 = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/money/note_1000.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function MathMoneyPage({ isMuted }) {
   const navigate = useNavigate();
@@ -29,16 +28,16 @@ function MathMoneyPage({ isMuted }) {
   // 💰 ข้อมูลเงินไทย (รวมเหรียญและแบงก์ไว้ใน Playlist เดียวกันเลย)
   const moneyLessons = [
     // --- โซนเหรียญ ---
-    { id: 1, type: "coin", num: "1", title: "เหรียญ 1 บาท", image: imgCoin1, video: "/videos/math/coin_1.mp4", bgColor: "bg-gray-200" },
-    { id: 2, type: "coin", num: "2", title: "เหรียญ 2 บาท", image: imgCoin2, video: "/videos/math/coin_2.mp4", bgColor: "bg-yellow-100" },
-    { id: 3, type: "coin", num: "5", title: "เหรียญ 5 บาท", image: imgCoin5, video: "/videos/math/coin_5.mp4", bgColor: "bg-gray-300" },
-    { id: 4, type: "coin", num: "10", title: "เหรียญ 10 บาท", image: imgCoin10, video: "/videos/math/coin_10.mp4", bgColor: "bg-yellow-600/50" },
+    { id: 1, type: "coin", num: "1", title: "เหรียญ 1 บาท", image: imgCoin1, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/coin_1.mp4", bgColor: "bg-gray-200" },
+    { id: 2, type: "coin", num: "2", title: "เหรียญ 2 บาท", image: imgCoin2, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/coin_2.mp4", bgColor: "bg-yellow-100" },
+    { id: 3, type: "coin", num: "5", title: "เหรียญ 5 บาท", image: imgCoin5, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/coin_5.mp4", bgColor: "bg-gray-300" },
+    { id: 4, type: "coin", num: "10", title: "เหรียญ 10 บาท", image: imgCoin10, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/coin_10.mp4", bgColor: "bg-yellow-600/50" },
     // --- โซนธนบัตร ---
-    { id: 5, type: "note", num: "20", title: "แบงก์ 20 บาท", image: imgNote20, video: "/videos/math/note_20.mp4", bgColor: "bg-green-500" },
-    { id: 6, type: "note", num: "50", title: "แบงก์ 50 บาท", image: imgNote50, video: "/videos/math/note_50.mp4", bgColor: "bg-blue-500" },
-    { id: 7, type: "note", num: "100", title: "แบงก์ 100 บาท", image: imgNote100, video: "/videos/math/note_100.mp4", bgColor: "bg-red-500" },
-    { id: 8, type: "note", num: "500", title: "แบงก์ 500 บาท", image: imgNote500, video: "/videos/math/note_500.mp4", bgColor: "bg-purple-500" },
-    { id: 9, type: "note", num: "1000", title: "แบงก์ 1000 บาท", image: imgNote1000, video: "/videos/math/note_1000.mp4", bgColor: "bg-neutral-400" },
+    { id: 5, type: "note", num: "20", title: "แบงก์ 20 บาท", image: imgNote20, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/note_20.mp4", bgColor: "bg-green-500" },
+    { id: 6, type: "note", num: "50", title: "แบงก์ 50 บาท", image: imgNote50, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/note_50.mp4", bgColor: "bg-blue-500" },
+    { id: 7, type: "note", num: "100", title: "แบงก์ 100 บาท", image: imgNote100, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/note_100.mp4", bgColor: "bg-red-500" },
+    { id: 8, type: "note", num: "500", title: "แบงก์ 500 บาท", image: imgNote500, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/note_500.mp4", bgColor: "bg-purple-500" },
+    { id: 9, type: "note", num: "1000", title: "แบงก์ 1000 บาท", image: imgNote1000, video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/note_1000.mp4", bgColor: "bg-neutral-400" },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ThaiLearningPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -107,7 +107,7 @@ function ThaiLearningPage({ isMuted, onVideoStateChange }) {
         >
             <video
                 ref={videoRef}
-                src="/videos/thai/readcon.mp4" 
+                src="https://storage.googleapis.com/mtr-system/media-app/public/videos/thai/readcon.mp4" 
                 className="w-full h-full object-contain pointer-events-none"
                 muted={isMuted} 
                 playsInline

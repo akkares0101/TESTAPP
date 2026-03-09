@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function SocialCulturePage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🎭 Path วิดีโอหลัก
-  const mainVideo = "/videos/social/culture.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/social/culture.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

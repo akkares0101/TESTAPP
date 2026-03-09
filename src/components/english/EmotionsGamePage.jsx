@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
-
-// Import รูปภาพ (1-10)
-import imgCrying from "../../assets/images/feeling/1.png";
-import imgHappy from "../../assets/images/feeling/2.png";
-import imgBored from "../../assets/images/feeling/3.png";
-import imgScared from "../../assets/images/feeling/4.png";
-import imgConfident from "../../assets/images/feeling/5.png";
-import imgSurprised from "../../assets/images/feeling/6.png";
-import imgSad from "../../assets/images/feeling/7.png";
-import imgLovely from "../../assets/images/feeling/8.png";
-import imgSleepy from "../../assets/images/feeling/9.png";
-import imgAngry from "../../assets/images/feeling/10.png";
-
-// --- ตั้งค่าเสียง ---
-const clickSound = new Audio("/sounds/click.mp3");
-const correctSound = new Audio("/sounds/correct.mp3");
-const wrongSound = new Audio("/sounds/wrong.mp3");
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const imgCrying = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/1.png";
+const imgHappy = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/2.png";
+const imgBored = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/3.png";
+const imgScared = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/4.png";
+const imgConfident = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/5.png";
+const imgSurprised = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/6.png";
+const imgSad = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/7.png";
+const imgLovely = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/8.png";
+const imgSleepy = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/9.png";
+const imgAngry = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/feeling/10.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
+const correctSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/correct.mp3");
+const wrongSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/wrong.mp3");
 
 // ปรับระดับเสียง
 clickSound.volume = 0.5;

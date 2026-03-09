@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function MathReadEngPage({ isMuted }) {
   const navigate = useNavigate();
@@ -17,16 +17,16 @@ function MathReadEngPage({ isMuted }) {
   // ข้อมูลเลข 1-10 + คำศัพท์อังกฤษ
   // เตรียมไฟล์วิดีโอ: eng_1.mp4 ถึง eng_10.mp4
   const lessons = [
-    { id: 1, num: "1", text: "ONE", title: "Number ONE", color: "bg-red-500", shadow: "shadow-red-500/50", video: "/videos/math/eng_1.mp4" },
-    { id: 2, num: "2", text: "TWO", title: "Number TWO", color: "bg-orange-500", shadow: "shadow-orange-500/50", video: "/videos/math/eng_2.mp4" },
-    { id: 3, num: "3", text: "THREE", title: "Number THREE", color: "bg-yellow-400", shadow: "shadow-yellow-400/50", video: "/videos/math/eng_3.mp4" },
-    { id: 4, num: "4", text: "FOUR", title: "Number FOUR", color: "bg-green-500", shadow: "shadow-green-500/50", video: "/videos/math/eng_4.mp4" },
-    { id: 5, num: "5", text: "FIVE", title: "Number FIVE", color: "bg-teal-500", shadow: "shadow-teal-500/50", video: "/videos/math/eng_5.mp4" },
-    { id: 6, num: "6", text: "SIX", title: "Number SIX", color: "bg-blue-500", shadow: "shadow-blue-500/50", video: "/videos/math/eng_6.mp4" },
-    { id: 7, num: "7", text: "SEVEN", title: "Number SEVEN", color: "bg-indigo-500", shadow: "shadow-indigo-500/50", video: "/videos/math/eng_7.mp4" },
-    { id: 8, num: "8", text: "EIGHT", title: "Number EIGHT", color: "bg-purple-500", shadow: "shadow-purple-500/50", video: "/videos/math/eng_8.mp4" },
-    { id: 9, num: "9", text: "NINE", title: "Number NINE", color: "bg-pink-500", shadow: "shadow-pink-500/50", video: "/videos/math/eng_9.mp4" },
-    { id: 10, num: "10", text: "TEN", title: "Number TEN", color: "bg-rose-500", shadow: "shadow-rose-500/50", video: "/videos/math/eng_10.mp4" },
+    { id: 1, num: "1", text: "ONE", title: "Number ONE", color: "bg-red-500", shadow: "shadow-red-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_1.mp4" },
+    { id: 2, num: "2", text: "TWO", title: "Number TWO", color: "bg-orange-500", shadow: "shadow-orange-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_2.mp4" },
+    { id: 3, num: "3", text: "THREE", title: "Number THREE", color: "bg-yellow-400", shadow: "shadow-yellow-400/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_3.mp4" },
+    { id: 4, num: "4", text: "FOUR", title: "Number FOUR", color: "bg-green-500", shadow: "shadow-green-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_4.mp4" },
+    { id: 5, num: "5", text: "FIVE", title: "Number FIVE", color: "bg-teal-500", shadow: "shadow-teal-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_5.mp4" },
+    { id: 6, num: "6", text: "SIX", title: "Number SIX", color: "bg-blue-500", shadow: "shadow-blue-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_6.mp4" },
+    { id: 7, num: "7", text: "SEVEN", title: "Number SEVEN", color: "bg-indigo-500", shadow: "shadow-indigo-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_7.mp4" },
+    { id: 8, num: "8", text: "EIGHT", title: "Number EIGHT", color: "bg-purple-500", shadow: "shadow-purple-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_8.mp4" },
+    { id: 9, num: "9", text: "NINE", title: "Number NINE", color: "bg-pink-500", shadow: "shadow-pink-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_9.mp4" },
+    { id: 10, num: "10", text: "TEN", title: "Number TEN", color: "bg-rose-500", shadow: "shadow-rose-500/50", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/eng_10.mp4" },
   ];
 
   return (

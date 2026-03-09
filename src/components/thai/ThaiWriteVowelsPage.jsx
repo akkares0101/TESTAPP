@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ThaiWriteVowelsPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -161,7 +160,7 @@ function ThaiWriteVowelsPage({ isMuted, onVideoStateChange }) {
         <div className="relative h-full aspect-video bg-black rounded-[2rem] md:rounded-[3rem] border-[8px] border-white shadow-2xl overflow-hidden group">
           <video
             ref={videoRef}
-            src="/videos/thai/writevowels.mp4" 
+            src="https://storage.googleapis.com/mtr-system/media-app/public/videos/thai/writevowels.mp4" 
             className="w-full h-full object-contain pointer-events-none"
             onPlay={() => setIsPaused(false)}
             onPause={() => setIsPaused(true)}

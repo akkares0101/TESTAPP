@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // ⭐ 1. รับ onVideoStateChange เข้ามาเพื่อจัดการเพลง Background
 function SocialGamePage({ onVideoStateChange }) {

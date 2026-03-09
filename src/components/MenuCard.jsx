@@ -1,8 +1,8 @@
 import React from 'react';
 
 // โหลดเสียง (ใช้แบบ Global เพื่อให้โหลดครั้งเดียว)
-const hoverSound = new Audio('/sounds/pop.mp3');
-const clickSound = new Audio('/sounds/click.mp3');
+const hoverSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/pop.mp3");
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 hoverSound.volume = 0.4;
 clickSound.volume = 0.8;
 

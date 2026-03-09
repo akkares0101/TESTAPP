@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const popSound = new Audio("/sounds/pop.mp3");
+const popSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/pop.mp3");
 popSound.volume = 0.6;
 
 function AlphabetGamePage({ isMuted }) {

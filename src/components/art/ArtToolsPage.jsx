@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ArtToolsPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const mainVideo = "/videos/art/art_tools.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/art/art_tools.mp4";
 
   useEffect(() => {
     if (onVideoStateChange) onVideoStateChange(true);

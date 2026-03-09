@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ColorsLearningPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
-  const MASTER_VIDEO_SRC = '/videos/colors/all_colors.mp4'; 
+  const MASTER_VIDEO_SRC = "https://storage.googleapis.com/mtr-system/media-app/public/videos/colors/all_colors.mp4"; 
 
   // 📂 อัปเดต Timestamp ใหม่ตามที่คุณแจ้งมาครับ
   const colorLessons = [

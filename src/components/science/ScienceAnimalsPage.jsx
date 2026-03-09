@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function ScienceAnimalsPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🦁 Path วิดีโอหลัก
-  const mainVideo = "/videos/science/animals.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/science/animals.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

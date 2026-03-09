@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-import btnMedia from '../../assets/images/buttons/btn_learn.png'; 
-import btnGame from '../../assets/images/buttons/btn_game.png';   
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const btnMedia = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_learn.png";
+const btnGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_game.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ABCSelectionPage({ isMuted }) {
   const navigate = useNavigate();

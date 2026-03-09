@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function MathReadArabicPage({ isMuted }) {
   const navigate = useNavigate();
@@ -16,16 +16,16 @@ function MathReadArabicPage({ isMuted }) {
 //เตรียมไฟล์วิดีโอชื่อ arabic_1.mp4 ถึง arabic_10.mp4
   // ข้อมูลเลข 1-10 (ตัวเลขอารบิก)
   const lessons = [
-    { id: 1, num: "1", title: "เลข 1 (อารบิก)", color: "bg-red-500", border: "border-red-600", video: "/videos/math/arabic_1.mp4" },
-    { id: 2, num: "2", title: "เลข 2 (อารบิก)", color: "bg-orange-500", border: "border-orange-600", video: "/videos/math/arabic_2.mp4" },
-    { id: 3, num: "3", title: "เลข 3 (อารบิก)", color: "bg-yellow-400", border: "border-yellow-600", video: "/videos/math/arabic_3.mp4" },
-    { id: 4, num: "4", title: "เลข 4 (อารบิก)", color: "bg-green-500", border: "border-green-600", video: "/videos/math/arabic_4.mp4" },
-    { id: 5, num: "5", title: "เลข 5 (อารบิก)", color: "bg-teal-500", border: "border-teal-600", video: "/videos/math/arabic_5.mp4" },
-    { id: 6, num: "6", title: "เลข 6 (อารบิก)", color: "bg-blue-500", border: "border-blue-600", video: "/videos/math/arabic_6.mp4" },
-    { id: 7, num: "7", title: "เลข 7 (อารบิก)", color: "bg-indigo-500", border: "border-indigo-600", video: "/videos/math/arabic_7.mp4" },
-    { id: 8, num: "8", title: "เลข 8 (อารบิก)", color: "bg-purple-500", border: "border-purple-600", video: "/videos/math/arabic_8.mp4" },
-    { id: 9, num: "9", title: "เลข 9 (อารบิก)", color: "bg-pink-500", border: "border-pink-600", video: "/videos/math/arabic_9.mp4" },
-    { id: 10, num: "10", title: "เลข 10 (อารบิก)", color: "bg-rose-500", border: "border-rose-600", video: "/videos/math/arabic_10.mp4" },
+    { id: 1, num: "1", title: "เลข 1 (อารบิก)", color: "bg-red-500", border: "border-red-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_1.mp4" },
+    { id: 2, num: "2", title: "เลข 2 (อารบิก)", color: "bg-orange-500", border: "border-orange-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_2.mp4" },
+    { id: 3, num: "3", title: "เลข 3 (อารบิก)", color: "bg-yellow-400", border: "border-yellow-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_3.mp4" },
+    { id: 4, num: "4", title: "เลข 4 (อารบิก)", color: "bg-green-500", border: "border-green-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_4.mp4" },
+    { id: 5, num: "5", title: "เลข 5 (อารบิก)", color: "bg-teal-500", border: "border-teal-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_5.mp4" },
+    { id: 6, num: "6", title: "เลข 6 (อารบิก)", color: "bg-blue-500", border: "border-blue-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_6.mp4" },
+    { id: 7, num: "7", title: "เลข 7 (อารบิก)", color: "bg-indigo-500", border: "border-indigo-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_7.mp4" },
+    { id: 8, num: "8", title: "เลข 8 (อารบิก)", color: "bg-purple-500", border: "border-purple-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_8.mp4" },
+    { id: 9, num: "9", title: "เลข 9 (อารบิก)", color: "bg-pink-500", border: "border-pink-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_9.mp4" },
+    { id: 10, num: "10", title: "เลข 10 (อารบิก)", color: "bg-rose-500", border: "border-rose-600", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/math/arabic_10.mp4" },
   ];
 
   return (

@@ -1,18 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // ⭐ Import รูปปุ่ม 8 ปุ่ม
-import btnVisualElements from '../../assets/images/art/btn_1.png'; // ทัศนธาตุ
-import btnColoring from '../../assets/images/art/btn_2.png';             // ฝึกระบายสี
-import btnTexture from '../../assets/images/art/btn_3.png';               // พื้นผิวในศิลปะ
-import btnBeautifulWorld from '../../assets/images/art/btn_4.png'; // โลกสวยเพราะมีสีสัน
-import btnColorTone from '../../assets/images/art/btn_5.png';           // วรรณะของสี
-import btnLineArt from '../../assets/images/art/btn_6.png';               // เส้นงานในศิลปะ
-import btnArtTools from '../../assets/images/art/btn_7.png';             // อุปกรณ์สร้างงานศิลปะ
-import btnArtGame from '../../assets/images/art/btn_8.png';               // เกมศิลปะ 
+const btnVisualElements = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_1.png"; // ทัศนธาตุ
+const btnColoring = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_2.png";             // ฝึกระบายสี
+const btnTexture = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_3.png";               // พื้นผิวในศิลปะ
+const btnBeautifulWorld = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_4.png"; // โลกสวยเพราะมีสีสัน
+const btnColorTone = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_5.png";           // วรรณะของสี
+const btnLineArt = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_6.png";               // เส้นงานในศิลปะ
+const btnArtTools = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_7.png";             // อุปกรณ์สร้างงานศิลปะ
+const btnArtGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/art/btn_8.png";               // เกมศิลปะ 
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ArtMenuPage({ isMuted }) {
   const navigate = useNavigate();

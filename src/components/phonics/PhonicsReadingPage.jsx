@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 const clickSound = new Audio('/sounds/click.mp3');
 
@@ -101,7 +101,7 @@ function PhonicsReadingPage({ isMuted, onVideoStateChange }) {
         <div className="relative w-full max-w-[1050px] aspect-video max-h-[65vh] bg-black rounded-[2rem] border-[6px] md:border-[10px] border-white shadow-2xl overflow-hidden">
             <video
                 ref={videoRef}
-                src="/videos/phonics/reading.mp4" 
+                src="https://storage.googleapis.com/mtr-system/media-app/public/videos/phonics/reading.mp4" 
                 className="w-full h-full object-contain"
                 onTimeUpdate={handleTimeUpdate} // ⭐ ดักฟังเวลาเพื่อสั่งหยุด
                 muted={isMuted}

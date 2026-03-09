@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // Import รูปภาพประกอบ
-import imgFeeling from '../../assets/images/buttons/img_feeling_card.png';   
-import imgMovement from '../../assets/images/buttons/img_movement_card.png'; 
-
-const clickSound = new Audio('/sounds/click.mp3');
+const imgFeeling = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/img_feeling_card.png";
+const imgMovement = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/img_movement_card.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function FeelingMenuPage({ isMuted }) {
   const navigate = useNavigate();

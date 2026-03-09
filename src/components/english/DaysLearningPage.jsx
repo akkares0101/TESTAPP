@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/Daysbg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/Daysbg.png";
 
 /* ⭐ 1. Import รูปหน้าปกของแต่ละวัน (เตรียมไฟล์ให้ครบนะครับ)
 import imgSun from "../../assets/images/days/sunday.png";
@@ -11,16 +11,21 @@ import imgThu from "../../assets/images/days/thursday.png";
 import imgFri from "../../assets/images/days/friday.png";
 import imgSat from "../../assets/images/days/saturday.png";*/
 
-/* ⭐ 2. Import วิดีโอ
-import vidSun from "../../assets/videos/days/sunday.mp4";
-import vidMon from "../../assets/videos/days/monday.mp4";
-import vidTue from "../../assets/videos/days/tuesday.mp4";
-import vidWed from "../../assets/videos/days/wednesday.mp4";
-import vidThu from "../../assets/videos/days/thursday.mp4";
-import vidFri from "../../assets/videos/days/friday.mp4";
-import vidSat from "../../assets/videos/days/saturday.mp4";*/
-
-const clickSound = new Audio("/sounds/click.mp3");
+const vidSun = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/sunday.mp4";
+const vidMon = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/monday.mp4";
+const vidTue = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/tuesday.mp4";
+const vidWed = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/wednesday.mp4";
+const vidThu = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/thursday.mp4";
+const vidFri = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/friday.mp4";
+const vidSat = "https://storage.googleapis.com/mtr-system/media-app/public/videos/days/saturday.mp4";
+const imgSun = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/sunday.png";
+const imgMon = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/monday.png";
+const imgTue = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/tuesday.png";
+const imgWed = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/wednesday.png";
+const imgThu = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/thursday.png";
+const imgFri = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/friday.png";
+const imgSat = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/days/saturday.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function DaysLearningPage({ isMuted }) {
   const navigate = useNavigate();

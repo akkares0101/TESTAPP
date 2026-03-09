@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // ⭐ 1. รับ onVideoStateChange เข้ามาจัดการเพลง Background
 function PhonicsGamePage({ onVideoStateChange }) {
@@ -54,7 +54,7 @@ function PhonicsGamePage({ onVideoStateChange }) {
           <iframe
             ref={iframeRef}
             title="Phonics Godot Game"
-            src="/game/phonics/gamephonics/index.html"
+            src="https://storage.googleapis.com/mtr-system/media-app/public/game/phonics/gamephonics/index.html"
             className="w-full h-full border-none block"
             allowFullScreen
           />

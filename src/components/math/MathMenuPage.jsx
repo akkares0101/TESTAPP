@@ -1,16 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png'; 
-
-// --- Import รูปภาพของหน้านั้นๆ ---
-import btnCount from '../../assets/images/math/btn_count.png';           
-import btnReadEng from '../../assets/images/math/btn_read_eng.png';     
-import btnReadArabic from '../../assets/images/math/btn_read_arabic.png'; 
-import btnReadThai from '../../assets/images/math/btn_read_thai.png';   
-import btnGame from '../../assets/images/math/btn_game.png';             
-import btnMoney from '../../assets/images/math/btn_money.png';           
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const btnCount = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_count.png";
+const btnReadEng = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_read_eng.png";
+const btnReadArabic = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_read_arabic.png";
+const btnReadThai = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_read_thai.png";
+const btnGame = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_game.png";
+const btnMoney = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/math/btn_money.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function MathMenuPage({ isMuted }) { 
   const navigate = useNavigate();

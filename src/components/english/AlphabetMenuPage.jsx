@@ -1,17 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-
-// Import รูปปุ่มเมนูภาษาอังกฤษ
-import btnABC from '../../assets/images/buttons/btn_abc.png';
-import btnFamily from '../../assets/images/buttons/btn_family.png';
-import btnSound from '../../assets/images/buttons/btn_sound.png';
-import btnFeeling from '../../assets/images/buttons/btn_feeling.png';
-import btnColors from '../../assets/images/buttons/btn_colors.png';
-import btnDays from '../../assets/images/buttons/btn_days.png';
-import btnactivity from '../../assets/images/buttons/btn_months.png';
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const btnABC = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_abc.png";
+const btnFamily = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_family.png";
+const btnSound = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_sound.png";
+const btnFeeling = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_feeling.png";
+const btnColors = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_colors.png";
+const btnDays = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_days.png";
+const btnactivity = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/buttons/btn_months.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function AlphabetMenuPage({ isMuted }) {
   const navigate = useNavigate();

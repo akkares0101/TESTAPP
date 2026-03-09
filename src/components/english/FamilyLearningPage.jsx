@@ -1,20 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-
-// ⭐ Import รูปสมาชิกครอบครัว (ครบ 10 คน)
-import imgFather from '../../assets/images/family/father.png';
-import imgMother from '../../assets/images/family/mother.png';
-import imgSon from '../../assets/images/family/son.png';
-import imgDaughter from '../../assets/images/family/daughter.png';
-import imgBrother from '../../assets/images/family/brother.png';
-import imgSister from '../../assets/images/family/sister.png';
-import imgGrandpa from '../../assets/images/family/grandpa.png';
-import imgGrandma from '../../assets/images/family/grandma.png';
-import imgUncle from '../../assets/images/family/uncle.png';
-import imgAunt from '../../assets/images/family/aunt.png';
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const imgFather = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/father.png";
+const imgMother = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/mother.png";
+const imgSon = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/son.png";
+const imgDaughter = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/daughter.png";
+const imgBrother = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/brother.png";
+const imgSister = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/sister.png";
+const imgGrandpa = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/grandpa.png";
+const imgGrandma = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/grandma.png";
+const imgUncle = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/uncle.png";
+const imgAunt = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/family/aunt.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function FamilyLearningPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
@@ -22,16 +19,16 @@ function FamilyLearningPage({ isMuted, onVideoStateChange }) {
 
   // 📂 ข้อมูลสมาชิก
   const familyMembers = [
-    { id: 1, word: "Father", thai: "พ่อ", image: imgFather, color: "bg-blue-100 border-blue-400", video: "/videos/family/father.mp4" },
-    { id: 2, word: "Mother", thai: "แม่", image: imgMother, color: "bg-pink-100 border-pink-400", video: "/videos/family/mother.mp4" },
-    { id: 3, word: "Son", thai: "ลูกชาย", image: imgSon, color: "bg-cyan-100 border-cyan-400", video: "/videos/family/son.mp4" },
-    { id: 4, word: "Daughter", thai: "ลูกสาว", image: imgDaughter, color: "bg-rose-100 border-rose-400", video: "/videos/family/daughter.mp4" },
-    { id: 5, word: "Brother", thai: "พี่ชาย / น้องชาย", image: imgBrother, color: "bg-green-100 border-green-400", video: "/videos/family/brother.mp4" },
-    { id: 6, word: "Sister", thai: "พี่สาว / น้องสาว", image: imgSister, color: "bg-yellow-100 border-yellow-400", video: "/videos/family/sister.mp4" },
-    { id: 7, word: "Grandfather", thai: "ปู่ / ตา", image: imgGrandpa, color: "bg-gray-100 border-gray-400", video: "/videos/family/grandpa.mp4" },
-    { id: 8, word: "Grandmother", thai: "ย่า / ยาย", image: imgGrandma, color: "bg-purple-100 border-purple-400", video: "/videos/family/grandma.mp4" },
-    { id: 9, word: "Uncle", thai: "ลุง / น้า / อา", image: imgUncle, color: "bg-indigo-100 border-indigo-400", video: "/videos/family/uncle.mp4" },
-    { id: 10, word: "Aunt", thai: "ป้า / น้า / อา", image: imgAunt, color: "bg-orange-100 border-orange-400", video: "/videos/family/aunt.mp4" },
+    { id: 1, word: "Father", thai: "พ่อ", image: imgFather, color: "bg-blue-100 border-blue-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/father.mp4" },
+    { id: 2, word: "Mother", thai: "แม่", image: imgMother, color: "bg-pink-100 border-pink-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/mother.mp4" },
+    { id: 3, word: "Son", thai: "ลูกชาย", image: imgSon, color: "bg-cyan-100 border-cyan-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/son.mp4" },
+    { id: 4, word: "Daughter", thai: "ลูกสาว", image: imgDaughter, color: "bg-rose-100 border-rose-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/daughter.mp4" },
+    { id: 5, word: "Brother", thai: "พี่ชาย / น้องชาย", image: imgBrother, color: "bg-green-100 border-green-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/brother.mp4" },
+    { id: 6, word: "Sister", thai: "พี่สาว / น้องสาว", image: imgSister, color: "bg-yellow-100 border-yellow-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/sister.mp4" },
+    { id: 7, word: "Grandfather", thai: "ปู่ / ตา", image: imgGrandpa, color: "bg-gray-100 border-gray-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/grandpa.mp4" },
+    { id: 8, word: "Grandmother", thai: "ย่า / ยาย", image: imgGrandma, color: "bg-purple-100 border-purple-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/grandma.mp4" },
+    { id: 9, word: "Uncle", thai: "ลุง / น้า / อา", image: imgUncle, color: "bg-indigo-100 border-indigo-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/uncle.mp4" },
+    { id: 10, word: "Aunt", thai: "ป้า / น้า / อา", image: imgAunt, color: "bg-orange-100 border-orange-400", video: "https://storage.googleapis.com/mtr-system/media-app/public/videos/family/aunt.mp4" },
   ];
 
   const [selectedMember, setSelectedMember] = useState(familyMembers[0]);

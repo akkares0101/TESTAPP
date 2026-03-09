@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function PhonicsSpellingPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🎥 Path วิดีโอหลัก
-  const mainVideo = "/videos/phonics/cvc_spelling.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/phonics/cvc_spelling.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

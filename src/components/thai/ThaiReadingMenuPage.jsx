@@ -1,13 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 // Import รูปปุ่ม (3 ปุ่ม)
-import btnConsonant from '../../assets/images/thai/btn_read_consonant.png'; 
-import btnTone from '../../assets/images/thai/btn_read_tone.png';           
-import btnVowel from '../../assets/images/thai/46.png';         
-
-const clickSound = new Audio('/sounds/click.mp3');
+const btnConsonant = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/btn_read_consonant.png";
+const btnTone = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/btn_read_tone.png";
+const btnVowel = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/thai/46.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ThaiReadingMenuPage({ isMuted }) {
   const navigate = useNavigate();

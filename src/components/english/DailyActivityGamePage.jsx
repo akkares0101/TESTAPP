@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
-
-// Import รูปภาพ
-import imgWakeUp from '../../assets/images/daily/wakeup.png';    
-import imgSchool from '../../assets/images/daily/school.png';    
-import imgafter from '../../assets/images/daily/after.png';     
-import imggametime from '../../assets/images/daily/gametime.png';    
-import imgnight from '../../assets/images/daily/night.png';     
-
-// Import วิดีโอ
-import vidWakeUp from '../../assets/videos/daily/wakeup.mp4';
-import vidSchool from '../../assets/videos/daily/school.mp4';
-import vidafter from '../../assets/videos/daily/after.mp4';
-import vidgametime from '../../assets/videos/daily/gametime.mp4';
-import vidnight from '../../assets/videos/daily/night.mp4';
-
-const clickSound = new Audio("/sounds/click.mp3");
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const imgWakeUp = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/daily/wakeup.png";
+const imgSchool = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/daily/school.png";
+const imgafter = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/daily/after.png";
+const imggametime = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/daily/gametime.png";
+const imgnight = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/daily/night.png";
+const vidWakeUp = "https://storage.googleapis.com/mtr-system/media-app/public/videos/daily/wakeup.mp4";
+const vidSchool = "https://storage.googleapis.com/mtr-system/media-app/public/videos/daily/school.mp4";
+const vidafter = "https://storage.googleapis.com/mtr-system/media-app/public/videos/daily/after.mp4";
+const vidgametime = "https://storage.googleapis.com/mtr-system/media-app/public/videos/daily/gametime.mp4";
+const vidnight = "https://storage.googleapis.com/mtr-system/media-app/public/videos/daily/night.mp4";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 // ⭐ รับ onVideoStateChange เข้ามาจัดการเพลง Background
 function DailyActivityPage({ isMuted, onVideoStateChange }) {

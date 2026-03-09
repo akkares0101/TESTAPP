@@ -1,17 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../../assets/images/bg.png";
-
-// Import รูปภาพ
-import imgRun from "../../assets/images/movement/run.png";
-import imgJump from "../../assets/images/movement/jump.png";
-import imgWalk from "../../assets/images/movement/walk.png";
-import imgSpin from "../../assets/images/movement/spin.png";
-import imgClap from "../../assets/images/movement/clap.png";
-
-const clickSound = new Audio("/sounds/click.mp3");
-const correctSound = new Audio("/sounds/correct.mp3");
-const wrongSound = new Audio("/sounds/wrong.mp3");
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const imgRun = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/movement/run.png";
+const imgJump = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/movement/jump.png";
+const imgWalk = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/movement/walk.png";
+const imgSpin = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/movement/spin.png";
+const imgClap = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/movement/clap.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
+const correctSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/correct.mp3");
+const wrongSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/wrong.mp3");
 
 // ปรับเสียง
 clickSound.volume = 0.5;

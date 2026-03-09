@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import bgImage from "../../assets/images/bg.png";
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
 function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
   const videoRef = useRef(null);
@@ -7,7 +7,7 @@ function AseanNationalAnimalsPage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🎥 Path วิดีโอหลัก
-  const mainVideo = "/videos/asean/animals.mp4";
+  const mainVideo = "https://storage.googleapis.com/mtr-system/media-app/public/videos/asean/animals.mp4";
 
   // 🎵 จัดการเสียง BGM
   useEffect(() => {

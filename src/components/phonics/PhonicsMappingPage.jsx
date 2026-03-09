@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function PhonicsMappingPage({ isMuted, onVideoStateChange }) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ function PhonicsMappingPage({ isMuted, onVideoStateChange }) {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // 🎥 Path วิดีโอหลัก
-  const mainVideoPath = "/videos/phonics/phonics_mapping.mp4"; 
+  const mainVideoPath = "https://storage.googleapis.com/mtr-system/media-app/public/videos/phonics/phonics_mapping.mp4"; 
 
   // 🎵 จัดการสถานะวิดีโอ
   useEffect(() => {

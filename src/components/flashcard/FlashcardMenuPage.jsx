@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
 
-const clickSound = new Audio('/sounds/click.mp3');
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function FlashcardMenuPage({ isMuted }) {
   const navigate = useNavigate();
@@ -16,14 +16,14 @@ function FlashcardMenuPage({ isMuted }) {
   };
 
   const categories = [
-    { id: 1, title: "อาหารหลัก 5 หมู่", image: "/images/menu/btn_food.png", type: "food5" },
-    { id: 2, title: "สัตว์โลกน่ารัก", image: "/images/menu/btn_animals.png", type: "animals" },
-    { id: 3, title: "ยานพาหนะ", image: "/images/menu/btn_vehicles.png", type: "vehicles" },
-    { id: 4, title: "ผักและผลไม้", image: "/images/menu/btn_nature.png", type: "veg_fruit" },
-    { id: 5, title: "สีและรูปร่าง", image: "/images/menu/btn_shapes.png", type: "shapes_colors" },
-    { id: 6, title: "แมลง", image: "/images/menu/btn_insects.png", type: "insects" },
-    { id: 7, title: "ดอกไม้", image: "/images/menu/btn_flowers.png", type: "flowers" },
-    { id: 8, title: "อาชีพ", image: "/images/menu/btn_jobs.png", type: "jobs" },
+    { id: 1, title: "อาหารหลัก 5 หมู่", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_food.png", type: "food5" },
+    { id: 2, title: "สัตว์โลกน่ารัก", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_animals.png", type: "animals" },
+    { id: 3, title: "ยานพาหนะ", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_vehicles.png", type: "vehicles" },
+    { id: 4, title: "ผักและผลไม้", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_nature.png", type: "veg_fruit" },
+    { id: 5, title: "สีและรูปร่าง", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_shapes.png", type: "shapes_colors" },
+    { id: 6, title: "แมลง", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_insects.png", type: "insects" },
+    { id: 7, title: "ดอกไม้", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_flowers.png", type: "flowers" },
+    { id: 8, title: "อาชีพ", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/menu/btn_jobs.png", type: "jobs" },
   ];
 
   const subCategoriesData = {

@@ -1,17 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../../assets/images/bg.png';
-
-// Import รูปปุ่ม (ตั้งชื่อไฟล์ตามนี้หรือแก้ให้ตรงกับที่มีครับ)
-import btnIntro from '../../assets/images/science/btn_intro.png';           // 1. วิทยาศาสตร์คืออะไร
-import btnAnimals from '../../assets/images/science/btn_animals.png';       // 2. สิ่งมีชีวิตที่เป็นสัตว์
-import btnOrgans from '../../assets/images/science/btn_organs.png';         // 3. เกมหน้าที่ของอวัยวะภายนอก
-import btnEnvironment from '../../assets/images/science/btn_environment.png'; // 4. สิ่งแวดล้อมที่อยู่รอบตัวเรา
-import btnSorting from '../../assets/images/science/btn_sorting.png';       // 5. แยกขยะสิ่งมีชีวิตและสิ่งไม่มีชีวิต
-import btnReviewEnv from '../../assets/images/science/btn_review_env.png';  // 6. ทบทวนสิ่งแวดล้อมที่อยู่รอบตัวเรา
-import btnReviewBody from '../../assets/images/science/btn_review_body.png'; // 7. ทบทวนเรื่องตัวเรา
-
-const clickSound = new Audio('/sounds/click.mp3');
+const bgImage = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/bg.png";
+const btnIntro = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_intro.png";
+const btnAnimals = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_animals.png";
+const btnOrgans = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_organs.png";
+const btnEnvironment = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_environment.png";
+const btnSorting = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_sorting.png";
+const btnReviewEnv = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_review_env.png";
+const btnReviewBody = "https://storage.googleapis.com/mtr-system/media-app/src/assets/images/science/btn_review_body.png";
+const clickSound = new Audio("https://storage.googleapis.com/mtr-system/media-app/public/sounds/click.mp3");
 
 function ScienceMenuPage({ isMuted }) {
   const navigate = useNavigate();
