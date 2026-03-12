@@ -29,16 +29,12 @@ const categoryGroups = {
   nature: [
     { id: 'vegetables', label: '🥦 ผัก' },
     { id: 'fruits', label: '🍎 ผลไม้' },
-    { id: 'flowers', label: '🌻 ดอกไม้' },
   ],
   basics: [
     { id: 'colors', label: '🎨 สีสัน' },
     { id: 'shapes', label: '🔷 รูปร่าง' },
   ],
-   others: [
-    { id: 'insects', label: '🦋 แมลง' },
-    { id: 'jobs', label: '👮 อาชีพ' },
-  ]
+
 };
 
 const findGroupKey = (catId) => {
