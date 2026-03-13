@@ -264,6 +264,7 @@ const flashcardData = {
     { word: "Squirrel", thai: "กระรอก", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/flashcards/land/squi.jpg" },
     { word: "Elephant", thai: "ช้าง", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/flashcards/land/elephant.jpg" },
     { word: "Lion", thai: "สิงโต", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/flashcards/land/lion.jpg" },
+    { word: "Tiger", thai: "เสือ", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/flashcards/land/tiger.jpg" },
   ],
   animals_water: [
     { word: "Squid", thai: "ปลาหมึก", image: "https://storage.googleapis.com/mtr-system/media-app/public/images/flashcards/sea/Squid.png" },
